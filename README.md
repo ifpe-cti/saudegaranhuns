@@ -23,6 +23,14 @@ Siga os seguintes passos:
 8. Envie o branch modificado para o seu repositório (`$ git push origin ID`)
 9. No GitHub, vá ao site do projeto original, e abra um Pull Request (PR). No comentário do PR, faça a referência a issue aberta (Escreva "Conforme a issue #ID" (sem as aspas))
 
+Para sincronizar as bases, siga os seguintes passos:
+
+1. Adicione (apenas uma vez) o repositório original na lista de seus repositórios remotos (`$ git remote add upstream https://github.com/ifpe-cti/saudegaranhuns.git`)
+2. Baixe o código do repositório original (`$ git fetch upstream`)
+3. Vá para o branch que você quer sincronizar (`$ git checkout master`)
+4. Faça um rebase do repositório original com o seu (`$ git rebase upstream/master`)
+5. Sincronize o seu repositório remoto com o seu local (`$ git push origin master`)
+
 
 # Convenções
 
