@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -26,6 +27,7 @@ public class Paciente implements Serializable{
     private int id;
     private String nome;
     private String cartaoSus;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataNascimento;
     @OneToOne
     private Usuario usuario;
