@@ -5,20 +5,37 @@
  */
 package model.POJO;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Herikles
  */
-public class Paciente {
+@Entity
+public class Paciente implements Serializable{
     
+    @Id
+    @GeneratedValue
+    private int id;
     private String nome;
     private String cartaoSus;
     private Date dataNascimento;
+    @OneToOne
     private Usuario usuario;
+    @OneToMany
     private Endereco enderoco;
+    @ManyToMany
     private PostoSaude postoSaude;    
+
+    public Paciente() {
+    }
 
     public Paciente(String nome, String cartaoSus, Date dataNascimento, Usuario usuario, Endereco enderoco, PostoSaude postoSaude) {
         this.nome = nome;

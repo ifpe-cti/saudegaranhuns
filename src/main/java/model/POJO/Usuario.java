@@ -5,7 +5,9 @@
  */
 package model.POJO;
 
+import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -13,13 +15,17 @@ import javax.persistence.Id;
  *
  * @author Herikles
  */
-public class Usuario {
+@Entity
+public class Usuario implements Serializable{
     @Id
     @GeneratedValue
     private int id;
     @Column(unique = true)
     private String login;
     private String senha;
+
+    public Usuario() {
+    }
 
     public Usuario(String login, String senha) {
         this.login = login;

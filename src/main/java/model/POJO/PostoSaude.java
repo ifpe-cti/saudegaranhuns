@@ -5,6 +5,8 @@
  */
 package model.POJO;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -13,13 +15,17 @@ import javax.persistence.OneToOne;
  *
  * @author Herikles
  */
-public class PostoSaude {
+@Entity
+public class PostoSaude implements Serializable{
     
     @Id
     @GeneratedValue
     private String nome;
     @OneToOne
     private Bairro bairro;
+
+    public PostoSaude() {
+    }
 
     public PostoSaude(String nome, Bairro bairro) {
         this.nome = nome;
