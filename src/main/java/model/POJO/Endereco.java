@@ -5,14 +5,23 @@
  */
 package model.POJO;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 /**
  *
  * @author Herikles
  */
 public class Endereco {
     
-    private Bairro bairro;
+    @Id
+    @GeneratedValue
+    private int id;
     private String numero;
+    
+    @OneToOne
+    private Bairro bairro;
 
     public Endereco(Bairro bairro, String numero) {
         this.bairro = bairro;

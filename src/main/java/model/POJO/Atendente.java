@@ -5,14 +5,23 @@
  */
 package model.POJO;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 /**
  *
  * @author Herikles
  */
 public class Atendente {
     
+    @Id
+    @GeneratedValue
+    private int id;
     private String nome;
+    @OneToOne// eu é m:m?
     private Bairro bairro;
+    @OneToOne
     private Usuario usuario;
 
     public Atendente(String nome, Bairro bairro, Usuario usuario) {

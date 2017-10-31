@@ -5,11 +5,19 @@
  */
 package model.POJO;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  *
  * @author Herikles
  */
 public class Usuario {
+    @Id
+    @GeneratedValue
+    private int id;
+    @Column(unique = true)
     private String login;
     private String senha;
 

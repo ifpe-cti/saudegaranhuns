@@ -5,12 +5,18 @@
  */
 package model.POJO;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  *
  * @author Herikles
  */
 public class Bairro {
     
+    @Id
+    @GeneratedValue
+    private int id;
     private String nome;
 
     public Bairro(String nome) {
