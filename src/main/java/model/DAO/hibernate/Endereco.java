@@ -9,12 +9,11 @@ import java.util.List;
 import org.hibernate.Session;
 import util.HibernateUtil;
 
-
 /**
  *
- * @author herik
+ * @author Herikles
  */
-public class Endereco implements model.DAO.interfaces.Endereco{
+public class Endereco implements model.DAO.interfaces.Endereco {
 
     @Override
     public void insert(model.DAO.interfaces.Endereco o) {
@@ -50,5 +49,5 @@ public class Endereco implements model.DAO.interfaces.Endereco{
     public List<model.DAO.interfaces.Endereco> recuperarTodos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
