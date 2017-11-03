@@ -4,11 +4,12 @@
  * and open the template in the editor.
  */
 package model.DAO.interfaces;
+import model.POJO.Atendente;
 
 /**
  *
- * @author herik
+ * @author Herikles
  */
-public interface Endereco extends DAO<Endereco>{
+public interface AtendenteDAO extends DAO<Atendente>{
     
 }

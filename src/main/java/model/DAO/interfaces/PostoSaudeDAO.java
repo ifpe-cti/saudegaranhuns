@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 package model.DAO.interfaces;
+import model.POJO.PostoSaude;
 
 /**
  *
  * @author Herikles */
-public interface PostoSaude extends DAO<PostoSaude>{
+public interface PostoSaudeDAO extends DAO<PostoSaude>{
     
 }

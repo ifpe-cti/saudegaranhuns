@@ -5,10 +5,11 @@
  */
 package model.DAO.interfaces;
 
+import model.POJO.Paciente;
 /**
  *
  * @author Herikles
  */
-public interface Atendente extends DAO<Atendente>{
+public interface PacienteDAO extends DAO<Paciente>{
     
 }

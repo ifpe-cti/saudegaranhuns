@@ -10,6 +10,7 @@ import java.util.List;
 /**
  *
  * @author Herikles
+ * @param <T>
  */
 public interface DAO <T> {
     void insert(T o);

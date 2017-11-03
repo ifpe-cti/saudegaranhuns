@@ -5,10 +5,12 @@
  */
 package model.DAO.interfaces;
 
+import model.POJO.Endereco;
+
 /**
  *
- * @author herik
+ * @author Herikles
  */
-public interface Usuario extends DAO<Usuario>{
+public interface EnderecoDAO extends DAO<Endereco>{
     
 }
