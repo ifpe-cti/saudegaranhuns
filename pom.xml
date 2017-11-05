@@ -26,11 +26,6 @@
             <version>6.1</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.1.Final</version>
-        </dependency>
-        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
@@ -42,7 +37,11 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.2.12.Final</version>
         </dependency>
-        
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.44</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -105,6 +104,7 @@
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
+                    <!--
                     <execution>
                         <id>jacoco-check</id>
                         <phase>test</phase>
@@ -151,6 +151,7 @@
                             </rules>
                         </configuration>
                     </execution>
+                    -->
                     <execution>
                         <id>jacoco-site</id>
                         <phase>install</phase>
@@ -162,4 +163,48 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>docs</id>
+            <activation>
+                <property>
+                    <name>env.GRAPHVIZ_DOT</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.jeluard</groupId>
+                        <artifactId>plantuml-maven-plugin</artifactId>
+                        <version>1.2</version>
+                        <executions>
+                            <execution>
+                                <id>plantuml-site</id>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                                <phase>generate-sources</phase>
+                                <configuration>
+                                    <sourceFiles>
+                                        <directory>${basedir}</directory>
+                                        <includes>
+                                            <include>docs/uml/*.uml</include>
+                                        </includes>
+                                    </sourceFiles>
+                                    <outputDirectory>${basedir}/target</outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>net.sourceforge.plantuml</groupId>
+                                <artifactId>plantuml</artifactId>
+                                <version>1.2017.18</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
