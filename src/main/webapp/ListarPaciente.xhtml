@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns="http://xmlns.jcp.org/jsf/html"
+      xmlns="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>Facelet Title</title>
+    </head>
+    <body>
+        Hello from Facelets
+    </body>
+    <h:form>
+        <p:dataTable value="#{ClasseControladora.NomeDoMetodoDaOperacaoASerRealizada}" var="paciente"
+                     id="idListarPacientes" selection="#{ClasseControladora.SelectedDoPaciente}" selectionMode="single"
+                     rowKey="#{ClasseBasica.idDoPaciente}">
+            <p:column headerText="Nome do Paciente">
+                <h:outputText value="#{paciente.variavelQueGuardaONomeDoPaciente}"/>
+            </p:column>
+            
+            <p:column headerText="Cartão do SUS">
+                <h:outputText value="#{paciente.variavelQueGuardaONumeroDoCartaoDoSUS}"/>
+            </p:column
+            
+            <p:column headerText="Data de Nascimento">
+                <h:outputText value="#{paciente.variavelQueGuardaADataDeNascimento}"
+            </p:column>
+        </p:dataTable>
+        
+        <p:contextMenu for="idListarPacientes">
+            <p:menuitem value="Deletar" icon="ui-icon-trash" 
+                        action="#{ClasseControladora.MetodoDeDeletar(ClasseControladora.selectedPaciente)}"/>
+            <p:menuitem value="Alterar" icon="ui-icon-pencil"
+                         action="#{ClasseControladora.MetodoDeAlterar(ClasseControladora.selectedPaciente)}"/>
+        </p:contextMenu>
+        
+        
+    </h:form>
+</html>
+
