@@ -14,11 +14,12 @@ import org.hibernate.Session;
  * @author herik
  */
 public class NewClass {
-    public static void main(String[] args){
-         Session session = HibernateUtil.getSession();
+
+    public static void main(String[] args) {
+        Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
-            session.save(new Bairro("lala"));
+            session.save(new Bairro("laaa"));
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();

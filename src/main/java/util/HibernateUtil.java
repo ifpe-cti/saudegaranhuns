@@ -5,6 +5,7 @@
  */
 package util;
 
+import model.POJO.Bairro;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
@@ -27,13 +28,15 @@ public class HibernateUtil {
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
-                //  sessionFactory = new Configuration().configure().buildSessionFactory();
+                //sessionFactory = new Configuration().configure().buildSessionFactory();
                 Configuration conf = new Configuration();
                 conf.configure();
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
                 builder.applySettings(conf.getProperties());
                 MetadataSources ms = new MetadataSources();
+                ms.addAnnotatedClass(Bairro.class);
                 Metadata md = ms.buildMetadata(builder.build());
+                
                 sessionFactory = md.buildSessionFactory();
                 
             } catch (HibernateException ex) {
