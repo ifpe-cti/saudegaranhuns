@@ -6,8 +6,8 @@
 package model.DAO.hibernate;
 
 import java.util.List;
-import model.DAO.interfaces.BairroDAO;
-import model.POJO.Bairro;
+import model.DAO.interfaces.PostoSaudeDAO;
+import model.POJO.PostoSaude;
 import org.hibernate.Session;
 import util.HibernateUtil;
 
@@ -15,10 +15,10 @@ import util.HibernateUtil;
  *
  * @author Herikles
  */
-public class BairroHibernate implements BairroDAO {
+public class PostoSaudeHibernate implements PostoSaudeDAO {
 
     @Override
-    public void insert(Bairro o) {
+    public void insert(PostoSaude o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -26,14 +26,14 @@ public class BairroHibernate implements BairroDAO {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.err.println("Falha ao salvar Bairro. Erro: " + e.toString());
+            System.err.println("Falha ao salvar Posto de Saude. Erro: " + e.toString());
         } finally {
             session.close();
         }
     }
 
     @Override
-    public void update(Bairro o) {
+    public void update(PostoSaude o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -41,14 +41,14 @@ public class BairroHibernate implements BairroDAO {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.err.println("Falha ao alterar Bairro. Erro: " + e.toString());
+            System.err.println("Falha ao alterar Posto de Saude. Erro: " + e.toString());
         } finally {
             session.close();
         }
     }
 
     @Override
-    public void delete(Bairro o) {
+    public void delete(PostoSaude o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -56,20 +56,20 @@ public class BairroHibernate implements BairroDAO {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.err.println("Falha ao remover Bairro. Erro: " + e.toString());
+            System.err.println("Falha ao remover Posto de Saude. Erro: " + e.toString());
         } finally {
             session.close();
         }
     }
 
     @Override
-    public Bairro read(Integer id) {
+    public PostoSaude read(Integer id) {
         Session session = HibernateUtil.getSession();
         try {
-            return (Bairro) session.get(Bairro.class.getName(), id);
+            return (PostoSaude) session.get(PostoSaude.class.getName(), id);
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.err.println("Falha ao recuperar Bairro. Erro: " + e.toString());
+            System.err.println("Falha ao recuperar PostoSaude. Erro: " + e.toString());
         } finally {
             session.close();
         }
@@ -77,16 +77,16 @@ public class BairroHibernate implements BairroDAO {
     }
 
     @Override
-    public List<Bairro> recuperarTodos() {
+    public List<PostoSaude> recuperarTodos() {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
-            List<Bairro> lista = session.createQuery("from " + Bairro.class.getName()).list();
+            List<PostoSaude> lista = session.createQuery("from " + PostoSaude.class.getName()).list();
             session.getTransaction().commit();
             return lista;
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.err.println("Falha ao recuperar todos os Endereço. Erro: " + e.toString());
+            System.err.println("Falha ao recuperar todos os Postos de Saude. Erro: " + e.toString());
         } finally {
             session.close();
         }

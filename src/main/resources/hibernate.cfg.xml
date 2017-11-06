@@ -43,7 +43,7 @@ Contributor(s):
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/saudegaranhuns</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/saudegaranhuns?zeroDateTimeBehavior=convertToNull</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
     
@@ -52,11 +52,10 @@ Contributor(s):
         <property name="hbm2ddl.auto">create</property>
         
         <mapping class="model.POJO.Bairro" />
-        <mapping class="model.POJO.Usuario" />
         <mapping class="model.POJO.Endereco" />
+        <mapping class="model.POJO.Usuario" />
         <mapping class="model.POJO.PostoSaude" />
         <mapping class="model.POJO.Atendente" />
         <mapping class="model.POJO.Paciente" />
-    
     </session-factory>
 </hibernate-configuration>

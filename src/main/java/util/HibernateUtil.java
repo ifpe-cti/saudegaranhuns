@@ -9,6 +9,10 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
 
 /**
  * Hibernate Utility class with a convenient method to get Session Factory
@@ -19,19 +23,27 @@ import org.hibernate.SessionFactory;
 public class HibernateUtil {
 
     private static SessionFactory sessionFactory;
-    
-    public static SessionFactory getSessionFactory () {
-          if (sessionFactory == null) {
-        try {
-            sessionFactory = new Configuration().configure().buildSessionFactory();
-        } catch (HibernateException ex) {
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
+
+    public static SessionFactory getSessionFactory() {
+        if (sessionFactory == null) {
+            try {
+                //  sessionFactory = new Configuration().configure().buildSessionFactory();
+                Configuration conf = new Configuration();
+                conf.configure();
+                StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
+                builder.applySettings(conf.getProperties());
+                MetadataSources ms = new MetadataSources();
+                Metadata md = ms.buildMetadata(builder.build());
+                sessionFactory = md.buildSessionFactory();
+                
+            } catch (HibernateException ex) {
+                System.err.println("Initial SessionFactory creation failed." + ex);
+                throw new ExceptionInInitializerError(ex);
+            }
         }
-          }
-        return sessionFactory;  
+        return sessionFactory;
     }
-    
+
     public static Session getSession() {
         return getSessionFactory().openSession();
     }

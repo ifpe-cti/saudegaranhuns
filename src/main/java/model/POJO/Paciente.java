@@ -11,7 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+//import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
@@ -31,20 +32,20 @@ public class Paciente implements Serializable{
     private Date dataNascimento;
     @OneToOne
     private Usuario usuario;
-    @OneToMany
-    private Endereco enderoco;
-    @ManyToMany
+    @ManyToOne
+    private Endereco endereco;
+    @ManyToOne
     private PostoSaude postoSaude;    
 
     public Paciente() {
     }
 
-    public Paciente(String nome, String cartaoSus, Date dataNascimento, Usuario usuario, Endereco enderoco, PostoSaude postoSaude) {
+    public Paciente(String nome, String cartaoSus, Date dataNascimento, Usuario usuario, Endereco endereco, PostoSaude postoSaude) {
         this.nome = nome;
         this.cartaoSus = cartaoSus;
         this.dataNascimento = dataNascimento;
         this.usuario = usuario;
-        this.enderoco = enderoco;
+        this.endereco = endereco;
         this.postoSaude = postoSaude;
     }
 
@@ -80,12 +81,12 @@ public class Paciente implements Serializable{
         this.usuario = usuario;
     }
 
-    public Endereco getEnderoco() {
-        return enderoco;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setEnderoco(Endereco enderoco) {
-        this.enderoco = enderoco;
+    public void setEnderoco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public PostoSaude getPostoSaude() {
@@ -98,6 +99,6 @@ public class Paciente implements Serializable{
 
     @Override
     public String toString() {
-        return "Paciente{" + "nome=" + nome + ", cartaoSus=" + cartaoSus + ", dataNascimento=" + dataNascimento + ", enderoco=" + enderoco + ", postoSaude=" + postoSaude + '}';
+        return "Paciente{" + "nome=" + nome + ", cartaoSus=" + cartaoSus + ", dataNascimento=" + dataNascimento + ", endereco=" + endereco + ", postoSaude=" + postoSaude + '}';
     }
 }

@@ -81,12 +81,12 @@ public class EnderecoHibernate implements EnderecoDAO {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
-            List<Endereco> enderecos = session.createQuery("from " + Endereco.class.getName()).list();
+            List<Endereco> lista = session.createQuery("from " + Endereco.class.getName()).list();
             session.getTransaction().commit();
-            return enderecos;
+            return lista;
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.err.println("Falha ao recuperar todos os Endereço. Erro: " + e.toString());
+            System.err.println("Falha ao recuperar todos os Endereços. Erro: " + e.toString());
         } finally {
             session.close();
         }
