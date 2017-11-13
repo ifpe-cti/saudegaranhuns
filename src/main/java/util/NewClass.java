@@ -23,7 +23,7 @@ import org.hibernate.Session;
 public class NewClass {
 
     public static void main(String[] args) {
-        EnderecoHibernate eh = new EnderecoHibernate();
+        /*EnderecoHibernate eh = new EnderecoHibernate();
         PacienteHibernate ph = new PacienteHibernate();
         Endereco e = new Endereco("32", "Rua dos bobos", new Bairro("Juliana"));
         Calendar c = Calendar.getInstance();
@@ -35,7 +35,11 @@ public class NewClass {
         
         eh.insert(e);
         ph.insert(p);
-        System.out.println(eh.recuperarTodos().get(0).getBairro().getNome());
+        System.out.println(eh.recuperarTodos().get(0).getBairro().getNome());*/
+        
+        
+        BairroHibernate bh =  new BairroHibernate();
+        bh.deleteOnCascade(bh.readByName("Juliana"));
 
     }
 }

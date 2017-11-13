@@ -7,7 +7,9 @@ package model.DAO.hibernate;
 
 import java.util.List;
 import model.DAO.interfaces.PostoSaudeDAO;
+import model.POJO.Atendente;
 import model.POJO.Bairro;
+import model.POJO.Paciente;
 import model.POJO.PostoSaude;
 import org.hibernate.Session;
 import util.HibernateUtil;
@@ -17,12 +19,12 @@ import util.HibernateUtil;
  * @author Herikles
  */
 public class PostoSaudeHibernate implements PostoSaudeDAO {
-
+    
     @Override
     public void insert(PostoSaude o) {
         Session session = HibernateUtil.getSession();
         BairroHibernate bh = new BairroHibernate();
-
+        
         try {
             session.beginTransaction();
             Bairro b = bh.readByName(o.getBairro().getNome());
@@ -42,7 +44,7 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
             session.close();
         }
     }
-
+    
     @Override
     public void update(PostoSaude o) {
         Session session = HibernateUtil.getSession();
@@ -66,7 +68,7 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
             session.close();
         }
     }
-
+    
     @Override
     public void delete(PostoSaude o) {
         Session session = HibernateUtil.getSession();
@@ -81,7 +83,7 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
             session.close();
         }
     }
-
+    
     @Override
     public PostoSaude read(Integer id) {
         Session session = HibernateUtil.getSession();
@@ -95,7 +97,7 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
         }
         return null;
     }
-
+    
     @Override
     public List<PostoSaude> recuperarTodos() {
         Session session = HibernateUtil.getSession();
@@ -112,12 +114,29 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
         }
         return null;
     }
-
+    
     @Override
     public void deleteOnCascade(PostoSaude ps) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PacienteHibernate ph = new PacienteHibernate();
+        AtendenteHibernate ah = new AtendenteHibernate();
+        
+        List<Paciente> todosPacientes = ph.recuperarTodos();
+        List<Atendente> todosAtendentes = ah.recuperarTodos();
+        
+        for (Paciente p : todosPacientes) {
+            if (p.getEndereco().getId() == ps.getId()) {
+                ph.delete(p);
+            }
+        }
+        for (Atendente a : todosAtendentes) {
+            if (a.getPostoSaude().getId() == ps.getId()) {
+                ah.delete(a);
+            }
+        }
+        
+        delete(ps);
     }
-
+    
     @Override
     public PostoSaude readByName(String name) {
         Session session = HibernateUtil.getSession();
@@ -138,5 +157,5 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
         }
         return null;
     }
-
+    
 }

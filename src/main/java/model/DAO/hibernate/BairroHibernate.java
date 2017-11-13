@@ -6,9 +6,10 @@
 package model.DAO.hibernate;
 
 import java.util.List;
-import javax.swing.JOptionPane;
 import model.DAO.interfaces.BairroDAO;
 import model.POJO.Bairro;
+import model.POJO.PostoSaude;
+import model.POJO.Endereco;
 import org.hibernate.Session;
 import util.HibernateUtil;
 
@@ -17,7 +18,7 @@ import util.HibernateUtil;
  * @author Herikles
  */
 public class BairroHibernate implements BairroDAO {
-
+    
     @Override
     public void insert(Bairro o) {
         Session session = HibernateUtil.getSession();
@@ -32,7 +33,7 @@ public class BairroHibernate implements BairroDAO {
             session.close();
         }
     }
-
+    
     @Override
     public void update(Bairro o) {
         Session session = HibernateUtil.getSession();
@@ -47,7 +48,7 @@ public class BairroHibernate implements BairroDAO {
             session.close();
         }
     }
-
+    
     @Override
     public void delete(Bairro o) {
         Session session = HibernateUtil.getSession();
@@ -62,7 +63,7 @@ public class BairroHibernate implements BairroDAO {
             session.close();
         }
     }
-
+    
     @Override
     public Bairro read(Integer id) {
         Session session = HibernateUtil.getSession();
@@ -76,7 +77,7 @@ public class BairroHibernate implements BairroDAO {
         }
         return null;
     }
-
+    
     @Override
     public List<Bairro> recuperarTodos() {
         Session session = HibernateUtil.getSession();
@@ -93,12 +94,28 @@ public class BairroHibernate implements BairroDAO {
         }
         return null;
     }
-
+    
     @Override
     public void deleteOnCascade(Bairro b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Session session = HibernateUtil.getSession();
+        EnderecoHibernate eh = new EnderecoHibernate();
+        PostoSaudeHibernate ps = new PostoSaudeHibernate();
+        
+        List<Endereco> todosEnderecos = eh.recuperarTodos();
+        List<PostoSaude> todosPostos = ps.recuperarTodos();
+        for (Endereco e : todosEnderecos) {
+            if (e.getBairro().getNome().equals(b.getNome())) {
+                eh.deleteOnCascade(e);
+            }
+        }
+        for (PostoSaude p : todosPostos) {
+            if (p.getBairro().getNome().equals(b.getNome())) {
+                ps.deleteOnCascade(p);
+            }
+        }
+        delete(b);
     }
-
+    
     @Override
     public Bairro readByName(String name) {
         Session session = HibernateUtil.getSession();
@@ -111,7 +128,7 @@ public class BairroHibernate implements BairroDAO {
                 }
             }
             session.getTransaction().commit();
-
+            
         } catch (Exception e) {
             session.getTransaction().rollback();
             System.err.println("Falha ao recuperar o  Endereço por nome. Erro: " + e.toString());
@@ -120,5 +137,5 @@ public class BairroHibernate implements BairroDAO {
         }
         return null;
     }
-
+    
 }

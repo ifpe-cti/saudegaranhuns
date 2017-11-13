@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import util.HibernateUtil;
 import model.DAO.interfaces.EnderecoDAO;
 import model.POJO.Bairro;
+import model.POJO.Paciente;
 import model.POJO.Endereco;
 
 /**
@@ -120,6 +121,16 @@ public class EnderecoHibernate implements EnderecoDAO {
 
     @Override
     public void deleteOnCascade(Endereco b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PacienteHibernate ph = new PacienteHibernate();
+        
+        List<Paciente> todosPacientes = ph.recuperarTodos();
+        
+        for(Paciente p :  todosPacientes){
+            if(p.getEndereco().getId() == b.getId()){
+                ph.delete(p);
+            }
+        }
+        
+        delete(b);
     }
 }
