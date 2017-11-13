@@ -11,5 +11,6 @@ import model.POJO.Bairro;
  * @author Herikles
  */
 public interface BairroDAO extends DAO<Bairro>{
-    
+    public Bairro readByName(String name);
+    public void deleteOnCascade(Bairro b);
 }

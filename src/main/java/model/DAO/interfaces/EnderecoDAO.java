@@ -11,6 +11,6 @@ import model.POJO.Endereco;
  *
  * @author Herikles
  */
-public interface EnderecoDAO extends DAO<Endereco>{
-    
+public interface EnderecoDAO extends DAO<Endereco> {
+    public void deleteOnCascade(Endereco b);
 }

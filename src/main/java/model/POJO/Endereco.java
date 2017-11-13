@@ -16,30 +16,32 @@ import javax.persistence.OneToOne;
  * @author Herikles
  */
 @Entity
-public class Endereco implements Serializable{
-    
+public class Endereco implements Serializable {
+
     @Id
     @GeneratedValue
     private int id;
     private String numero;
-    
+    private String logradouro;
+
     @OneToOne
     private Bairro bairro;
 
     public Endereco() {
     }
 
-    public Endereco(Bairro bairro, String numero) {
-        this.bairro = bairro;
+    public Endereco(String numero, String logradouro, Bairro bairro) {
         this.numero = numero;
-    }
-
-    public Bairro getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(Bairro bairro) {
+        this.logradouro = logradouro;
         this.bairro = bairro;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNumero() {
@@ -50,8 +52,25 @@ public class Endereco implements Serializable{
         this.numero = numero;
     }
 
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public Bairro getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(Bairro bairro) {
+        this.bairro = bairro;
+    }
+
     @Override
     public String toString() {
-        return "Endereco{" + "bairro=" + bairro + ", numero=" + numero + '}';
+        return "Endereco{" + "id=" + id + ", numero=" + numero + ", logradouro=" + logradouro + ", bairro=" + bairro + '}';
     }
+
 }

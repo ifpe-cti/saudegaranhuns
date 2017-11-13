@@ -6,14 +6,12 @@
 package model.POJO;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-//import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -21,32 +19,36 @@ import javax.persistence.Temporal;
  * @author Herikles
  */
 @Entity
-public class Paciente implements Serializable{
-    
+public class Paciente implements Serializable {
+
     @Id
     @GeneratedValue
     private int id;
     private String nome;
     private String cartaoSus;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataNascimento;
-    @OneToOne
-    private Usuario usuario;
+    private Calendar dataNascimento;
+    // private Date dataNascimento;
+    /*@OneToOne
+    private Usuario usuario;*/
     @ManyToOne
     private Endereco endereco;
     @ManyToOne
-    private PostoSaude postoSaude;    
+    private PostoSaude postoSaude;
 
     public Paciente() {
     }
 
-    public Paciente(String nome, String cartaoSus, Date dataNascimento, Usuario usuario, Endereco endereco, PostoSaude postoSaude) {
+    public Paciente(String nome, String cartaoSus, Calendar dataNascimento, Endereco endereco, PostoSaude postoSaude) {
         this.nome = nome;
         this.cartaoSus = cartaoSus;
         this.dataNascimento = dataNascimento;
-        this.usuario = usuario;
         this.endereco = endereco;
         this.postoSaude = postoSaude;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNome() {
@@ -65,27 +67,19 @@ public class Paciente implements Serializable{
         this.cartaoSus = cartaoSus;
     }
 
-    public Date getDataNascimento() {
+    public Calendar getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(Calendar dataNascimento) {
         this.dataNascimento = dataNascimento;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEnderoco(Endereco endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
@@ -99,6 +93,7 @@ public class Paciente implements Serializable{
 
     @Override
     public String toString() {
-        return "Paciente{" + "nome=" + nome + ", cartaoSus=" + cartaoSus + ", dataNascimento=" + dataNascimento + ", endereco=" + endereco + ", postoSaude=" + postoSaude + '}';
+        return "Paciente{" + "id=" + id + ", nome=" + nome + ", cartaoSus=" + cartaoSus + ", dataNascimento=" + dataNascimento + ", endereco=" + endereco + ", postoSaude=" + postoSaude + '}';
     }
+
 }

@@ -7,6 +7,7 @@ package model.DAO.hibernate;
 
 import java.util.List;
 import model.DAO.interfaces.PostoSaudeDAO;
+import model.POJO.Bairro;
 import model.POJO.PostoSaude;
 import org.hibernate.Session;
 import util.HibernateUtil;
@@ -20,9 +21,19 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
     @Override
     public void insert(PostoSaude o) {
         Session session = HibernateUtil.getSession();
+        BairroHibernate bh = new BairroHibernate();
+
         try {
             session.beginTransaction();
-            session.save(o);
+            Bairro b = bh.readByName(o.getBairro().getNome());
+            if (b == null) {
+                bh.insert(o.getBairro());
+                session.save(o);
+            } //perguntar se isso faz sentido
+            else {
+                o.setBairro(b);
+                session.save(o);
+            }
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -35,9 +46,18 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
     @Override
     public void update(PostoSaude o) {
         Session session = HibernateUtil.getSession();
+        BairroHibernate bh = new BairroHibernate();
         try {
             session.beginTransaction();
-            session.update(o);
+            Bairro b = bh.readByName(o.getBairro().getNome());
+            if (b == null) {
+                bh.insert(o.getBairro());
+                session.update(o);
+            } //perguntar se isso faz sentido
+            else {
+                o.setBairro(b);
+                session.update(o);
+            }
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -87,6 +107,32 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
         } catch (Exception e) {
             session.getTransaction().rollback();
             System.err.println("Falha ao recuperar todos os Postos de Saude. Erro: " + e.toString());
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+    @Override
+    public void deleteOnCascade(PostoSaude ps) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public PostoSaude readByName(String name) {
+        Session session = HibernateUtil.getSession();
+        try {
+            session.beginTransaction();
+            List<PostoSaude> postosaude = (session.createQuery("from " + PostoSaude.class.getName()).list());
+            for (PostoSaude p : postosaude) {
+                if (p.getNome().equals(name)) {
+                    return p;
+                }
+            }
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            System.err.println("Falha ao recuperar o  posto de saude por nome. Erro: " + e.toString());
         } finally {
             session.close();
         }

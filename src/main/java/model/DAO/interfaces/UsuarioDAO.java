@@ -12,5 +12,5 @@ import model.POJO.Usuario;
  * @author Herikles
  */
 public interface UsuarioDAO extends DAO<Usuario>{
-    
+    public void deleteOnCascade(Usuario u);
 }

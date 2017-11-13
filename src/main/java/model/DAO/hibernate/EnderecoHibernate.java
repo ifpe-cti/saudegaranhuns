@@ -9,6 +9,7 @@ import java.util.List;
 import org.hibernate.Session;
 import util.HibernateUtil;
 import model.DAO.interfaces.EnderecoDAO;
+import model.POJO.Bairro;
 import model.POJO.Endereco;
 
 /**
@@ -20,9 +21,20 @@ public class EnderecoHibernate implements EnderecoDAO {
     @Override
     public void insert(Endereco o) {
         Session session = HibernateUtil.getSession();
+        BairroHibernate bh = new BairroHibernate();
+        
         try {
             session.beginTransaction();
-            session.save(o);
+            Bairro b = bh.readByName(o.getBairro().getNome());
+            if(b==null){
+                bh.insert(o.getBairro());
+                session.save(o);
+            }
+            //perguntar se isso faz sentido
+            else{
+                o.setBairro(b);
+                session.save(o);
+            }
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -35,9 +47,20 @@ public class EnderecoHibernate implements EnderecoDAO {
     @Override
     public void update(Endereco o) {
         Session session = HibernateUtil.getSession();
+         BairroHibernate bh = new BairroHibernate();
         try {
             session.beginTransaction();
-            session.update(o);
+            Bairro b = bh.readByName(o.getBairro().getNome());
+            if(b==null){
+                bh.insert(o.getBairro());
+                session.update(o);
+            }
+            //perguntar se isso faz sentido
+            else{
+                o.setBairro(b);
+                session.update(o);
+            }
+           
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -50,6 +73,7 @@ public class EnderecoHibernate implements EnderecoDAO {
     @Override
     public void delete(Endereco o) {
         Session session = HibernateUtil.getSession();
+         BairroHibernate bh = new BairroHibernate();
         try {
             session.beginTransaction();
             session.delete(o);
@@ -81,6 +105,7 @@ public class EnderecoHibernate implements EnderecoDAO {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
+            
             List<Endereco> lista = session.createQuery("from " + Endereco.class.getName()).list();
             session.getTransaction().commit();
             return lista;
@@ -91,5 +116,10 @@ public class EnderecoHibernate implements EnderecoDAO {
             session.close();
         }
         return null;
+    }
+
+    @Override
+    public void deleteOnCascade(Endereco b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -6,6 +6,7 @@
 package model.DAO.hibernate;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import model.DAO.interfaces.BairroDAO;
 import model.POJO.Bairro;
 import org.hibernate.Session;
@@ -81,12 +82,39 @@ public class BairroHibernate implements BairroDAO {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
-            List<Bairro> lista = session.createQuery("from " + Bairro.class.getName()).list();
+            List<Bairro> lista = session.createQuery("from " + Bairro.class.getName()).getResultList();
             session.getTransaction().commit();
             return lista;
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.err.println("Falha ao recuperar todos os Endereço. Erro: " + e.toString());
+            System.err.println("Falha ao recuperar todos os Endereços. Erro: " + e.toString());
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+    @Override
+    public void deleteOnCascade(Bairro b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Bairro readByName(String name) {
+        Session session = HibernateUtil.getSession();
+        try {
+            session.beginTransaction();
+            List<Bairro> bairro = (session.createQuery("from " + Bairro.class.getName()).list());
+            for (Bairro b : bairro) {
+                if (b.getNome().equals(name)) {
+                    return b;
+                }
+            }
+            session.getTransaction().commit();
+
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            System.err.println("Falha ao recuperar o  Endereço por nome. Erro: " + e.toString());
         } finally {
             session.close();
         }

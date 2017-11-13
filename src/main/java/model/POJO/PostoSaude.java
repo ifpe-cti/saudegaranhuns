@@ -20,6 +20,7 @@ public class PostoSaude implements Serializable{
     
     @Id
     @GeneratedValue
+    private int id;
     private String nome;
     @OneToOne
     private Bairro bairro;
@@ -30,6 +31,10 @@ public class PostoSaude implements Serializable{
     public PostoSaude(String nome, Bairro bairro) {
         this.nome = nome;
         this.bairro = bairro;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNome() {
@@ -50,6 +55,8 @@ public class PostoSaude implements Serializable{
 
     @Override
     public String toString() {
-        return "PostoSaude{" + "nome=" + nome + ", bairro=" + bairro + '}';
+        return "PostoSaude{" + "id=" + id + ", nome=" + nome + ", bairro=" + bairro + '}';
     }
+
+   
 }

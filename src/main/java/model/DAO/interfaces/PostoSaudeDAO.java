@@ -10,5 +10,6 @@ import model.POJO.PostoSaude;
  *
  * @author Herikles */
 public interface PostoSaudeDAO extends DAO<PostoSaude>{
-    
+    public PostoSaude readByName(String name);
+    public void deleteOnCascade(PostoSaude ps);
 }

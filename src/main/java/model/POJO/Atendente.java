@@ -22,19 +22,28 @@ public class Atendente implements Serializable {
     @GeneratedValue
     private int id;
     private String nome;
-    @OneToOne// eu é m:m?
-    private Bairro bairro;
+    @OneToOne
+    private PostoSaude postoSaude;
     @OneToOne
     private Usuario usuario;
 
     public Atendente() {
     }
 
-    public Atendente(String nome, Bairro bairro, Usuario usuario) {
+    public Atendente(String nome, PostoSaude postoSaude, Usuario usuario) {
         this.nome = nome;
-        this.bairro = bairro;
+        this.postoSaude = postoSaude;
         this.usuario = usuario;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -43,16 +52,24 @@ public class Atendente implements Serializable {
         this.nome = nome;
     }
 
-    public Bairro getBairro() {
-        return bairro;
+    public PostoSaude getPostoSaude() {
+        return postoSaude;
     }
 
-    public void setBairro(Bairro bairro) {
-        this.bairro = bairro;
+    public void setPostoSaude(PostoSaude postoSaude) {
+        this.postoSaude = postoSaude;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
     public String toString() {
-        return "Atendente{" + "nome=" + nome + ", bairro=" + bairro + '}';
+        return "Atendente{" + "id=" + id + ", nome=" + nome + ", postoSaude=" + postoSaude + '}';
     }
 }
