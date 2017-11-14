@@ -9,6 +9,7 @@
     </h:head>
     <h:body>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <p:growl autoUpdate="true" sticky="true"/>
         <h:form>
             <p:fieldset legend="Alteração de consulta">
@@ -38,10 +39,26 @@
 		    <p:outputLabel for="radioEspecialidade" value="Especialidade:" />
 		    <p:selectOneRadio value="#{consultaController.consulta.especialidade}" id="radioEspecialidade" required="true" requiredMessage="Campo especialidade obrigátorio">
 			<f:selectItems value="#{consultaController.especialidade}" var="especialidade" itemLabel="#{especialidade.label}" itemValue="#{especialidade}"/>
+=======
+	<p:growl autoUpdate="true" sticky="true"/>
+	<h:form>
+	    <p:fieldset legend="Alteração de consulta">
+		<p:panelGrid columns="2">
+		    <p:outputLabel for="inputObs" value="Observação:"/>
+		    <p:inputTextarea value="#{consultaController.consulta.observacao}" id="inputObs" cols="67" required="true" requiredMessage="Campo observação obrigátio"/>
+		    <p:outputLabel for="radioPrioridade" value="Prioridade:" />
+		    <p:selectOneRadio value="#{consultaController.consulta.prioridade}" id="radioPrioridade" required="true" requiredMessage="Campo prioridade obrigátio">
+			<f:selectItems value="#{consultaController.prioridade}" var="prioridade" itemLabel="#{prioridade}" itemValue="#{prioridade}"/>
+		    </p:selectOneRadio>
+		    <p:outputLabel for="radioEspecialidade" value="Especialidade:" />
+		    <p:selectOneRadio value="#{consultaController.consulta.especialidade}" id="radioEspecialidade" required="true" requiredMessage="Campo especialidade obrigátio">
+			<f:selectItems value="#{consultaController.especialidade}" var="especialidade" itemLabel="#{especialidade}" itemValue="#{especialidade}"/>
+>>>>>>> Adicionando cadastro e alteração de consulta
 		    </p:selectOneRadio>
 		</p:panelGrid>
 		<br></br>
 		<p:commandButton actionListener="#{consultaController.alterar()}" value="Alterar"/>
+<<<<<<< HEAD
 		<p:commandButton oncomplete="PF('confDialCancelar').show()" value="Cancelar"/>
 	    </p:fieldset>
 	    <p:confirmDialog header="Deseja cancelar?" message="Caso escolha cancelar os dados não salvos serão perdidos" widgetVar="confDialCancelar">
@@ -51,6 +68,10 @@
 	    </p:fieldset>
 	</h:form>
 >>>>>>> Adicionando mensagem de confirmação e ajustando telas de acordo com o diagrama de classes
+=======
+	    </p:fieldset>
+	</h:form>
+>>>>>>> Adicionando cadastro e alteração de consulta
     </h:body>
 </html>
 

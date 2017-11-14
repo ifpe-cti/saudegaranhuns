@@ -1,5 +1,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Adicionando cadastro e alteração de consulta
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,16 +12,24 @@ package controller;
 
 import java.io.Serializable;
 import java.util.List;
+<<<<<<< HEAD
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+=======
+import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+>>>>>>> Adicionando cadastro e alteração de consulta
 import model.ConsultaModel;
 import model.entidades.Consulta;
 import model.entidades.Especialidade;
 import model.entidades.Prioridade;
+<<<<<<< HEAD
 import model.entidades.Status;
+=======
+>>>>>>> Adicionando cadastro e alteração de consulta
 
 /**
  *
@@ -31,6 +42,7 @@ public class ConsultaController implements Serializable {
     private ConsultaModel model;
     private Consulta consulta;
 
+<<<<<<< HEAD
     @PostConstruct
     public void init() {
 	consulta = new Consulta();
@@ -414,3 +426,51 @@ public class ConsultaController implements Serializable {
 //    }
 //}
 >>>>>>> comentando codigo do controller
+=======
+    public Prioridade[] getPrioridade() {
+	return Prioridade.values();
+    }
+
+    public Especialidade[] getEspecialidade() {
+	return Especialidade.values();
+    }
+
+    public ConsultaController() {
+	System.out.println("construtor controller");
+	consulta = new Consulta();
+	model = new ConsultaModel();
+    }
+
+    public void cadastrar() {
+	System.out.println("cadastro controller");
+	model.cadastrar(consulta);
+    }
+
+    public void alterar() {
+	model.alterar(consulta);
+    }
+
+    public void deletar() {
+	model.deletar(consulta);
+    }
+
+    public Consulta buscar(int id) {
+	return model.buscar(id);
+    }
+
+    public List<Consulta> buscarTodos() {
+	return model.buscarTodos();
+    }
+
+    public Consulta getConsulta() {
+	return consulta;
+    }
+
+    public void setConsulta(Consulta consulta) {
+	System.out.println("setconsulta controller");
+	System.out.println(consulta.toString());
+	this.consulta = consulta;
+    }
+
+}
+>>>>>>> Adicionando cadastro e alteração de consulta
