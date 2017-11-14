@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Saúde Garanhuns</title>
+    </h:head>
+    <h:body>
+	<p:growl autoUpdate="true"/>
+	<h:form>
+	    <p:dataTable var="consulta" value="#{consultaController.buscarTodos()}" emptyMessage="Nenhuma consulta cadastrada">
+		<p:column headerText="Status">
+		    <p:outputLabel value="#{consulta.status}"/>
+		</p:column>
+		<p:column headerText="Data">
+		    <p:outputLabel value="#{consulta.agendamento}"/>
+		</p:column>
+		<p:column headerText="Opções">
+		    <center>
+			<p:commandButton value="Alterar" actionListener="#{consultaController.setConsulta(consulta)}" action="alteracao-consulta.xhtml?faces-redirect=true"/>
+			<p:commandButton value="Visualizar" actionListener="#{consultaController.setConsulta(consulta)}" oncomplete="PF('dialogVisualizar').show()" update="@form"/>
+		    </center>
+		</p:column>
+	    </p:dataTable>
+	    <p:dialog header="Dados da consulta" widgetVar="dialogVisualizar">
+		<p:panelGrid columns="2">
+		    <p:outputLabel value="Observação"/>
+		    <p:outputLabel value="#{consultaController.consulta.observacao}"/>
+		    <p:outputLabel value="Status"/>
+		    <p:outputLabel value="#{consultaController.consulta.status}"/>
+		    <p:outputLabel value="Prioridade"/>
+		    <p:outputLabel value="#{consultaController.consulta.prioridade}"/>
+		</p:panelGrid>
+	    </p:dialog>
+	</h:form>
+    </h:body>
+</html>
+
