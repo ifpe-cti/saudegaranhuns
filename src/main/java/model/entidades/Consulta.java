@@ -14,10 +14,15 @@ import java.time.LocalDate;
 public class Consulta {
 
     private int id;
+<<<<<<< HEAD
+=======
+    private String observacao;
+>>>>>>> Classes de suporte, serão apagadas
     private Status status;
     private Prioridade prioridade;
     private Especialidade especialidade;
     private LocalDate agendamento;
+<<<<<<< HEAD
     private LocalDate solicitacao;
 
     public Consulta() {
@@ -92,15 +97,80 @@ public class Consulta {
 
     public void setAgendamento(LocalDate agendamento) {
         this.agendamento = agendamento;
+=======
+
+    public Consulta() {
+    }
+
+    public Consulta(int id, String observacao, Status status, Prioridade prioridade, Especialidade especialidade, LocalDate agendamento) {
+	this.id = id;
+	this.observacao = observacao;
+	this.status = status;
+	this.prioridade = prioridade;
+	this.especialidade = especialidade;
+	this.agendamento = agendamento;
+    }
+
+    public int getId() {
+	return id;
+    }
+
+    public void setId(int id) {
+	this.id = id;
+    }
+
+    public String getObservacao() {
+	return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+	this.observacao = observacao;
+    }
+
+    public Status getStatus() {
+	return status;
+    }
+
+    public void setStatus(Status status) {
+	this.status = status;
+    }
+
+    public Prioridade getPrioridade() {
+	return prioridade;
+    }
+
+    public void setPrioridade(Prioridade prioridade) {
+	this.prioridade = prioridade;
+    }
+
+    public Especialidade getEspecialidade() {
+	return especialidade;
+    }
+
+    public void setEspecialidade(Especialidade especialidade) {
+	this.especialidade = especialidade;
+    }
+
+    public LocalDate getAgendamento() {
+	return agendamento;
+    }
+
+    public void setAgendamento(LocalDate agendamento) {
+	this.agendamento = agendamento;
+>>>>>>> Classes de suporte, serão apagadas
     }
 
     @Override
     public String toString() {
 <<<<<<< HEAD
+<<<<<<< HEAD
         return "Consulta{" + "id=" + id + ", status=" + status + ", prioridade=" + prioridade + ", especialidade=" + especialidade + ", agendamento=" + agendamento + '}';
 =======
 	return "Consulta{" + "id=" + id + ", status=" + status + ", prioridade=" + prioridade + ", especialidade=" + especialidade + ", agendamento=" + agendamento + ", solicitacao=" + solicitacao + '}';
 >>>>>>> Adicionando mensagem de confirmação e ajustando telas de acordo com o diagrama de classes
+=======
+	return "Consulta{" + "id=" + id + ", observacao=" + observacao + ", status=" + status + ", prioridade=" + prioridade + ", especialidade=" + especialidade + ", agendamento=" + agendamento + '}';
+>>>>>>> Classes de suporte, serão apagadas
     }
 
 }

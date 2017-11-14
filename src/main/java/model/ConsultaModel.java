@@ -17,6 +17,7 @@ public class ConsultaModel {
     RepositorioMemoria repositorio = null;
 
     public ConsultaModel() {
+<<<<<<< HEAD
         System.out.println("construtor model");
         repositorio = RepositorioMemoria.getInstance();
     }
@@ -58,6 +59,31 @@ public class ConsultaModel {
 
     public List<Consulta> buscarTodos() {
         return repositorio.buscarTodos();
+=======
+	System.out.println("construtor model");
+	repositorio = RepositorioMemoria.getInstance();
+    }
+
+    public void cadastrar(Consulta consulta) {
+	System.out.println("cadastro model");
+	repositorio.cadastrar(consulta);
+    }
+
+    public void alterar(Consulta consulta) {
+	repositorio.alterar(consulta);
+    }
+
+    public void deletar(Consulta consulta) {
+	repositorio.deletar(consulta);
+    }
+
+    public Consulta buscar(int id) {
+	return repositorio.buscar(id);
+    }
+
+    public List<Consulta> buscarTodos() {
+	return repositorio.buscarTodos();
+>>>>>>> Classes de suporte, serão apagadas
     }
 
 }
