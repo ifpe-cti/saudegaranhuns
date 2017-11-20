@@ -5,6 +5,7 @@
  */
 package recursos;
 
+import com.google.gson.Gson;
 import java.net.URI;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -38,10 +39,11 @@ public class PacientesResource {
      */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response cadastrar(String pacienteJason) {
+    public Response cadastrar(String pacienteJson) {
+        Gson gson = new Gson();
 
         new PacienteHibernate().insert(
-                new Paciente().fromJason(pacienteJason)
+                gson.fromJson(pacienteJson, Paciente.class)
         );
         //Alterar o caminho de resposta
         URI uri = URI.create("/pacienteCadastrado");
