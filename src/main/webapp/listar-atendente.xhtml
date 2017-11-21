@@ -18,20 +18,19 @@
     </body>
     <h:form>
         <p:dataTable value="#{ClasseControladora.NomeDoMetodoDaOperacaoASerRealizada}" var="atendente"
-                     id="idListarAtendentes" selection="#{ClasseControladora.SelectedDoAtendente}" selectionMode="single"
-                     rowKey="#{ClasseBasica.idDoAtendente}">
+                     id="idListarAtendentes">
             <p:column headerText="Nome do Atendente">
-                <h:outputText value="#{paciente.variavelQueGuardaONomeDoPaciente}"/>
+                <h:outputText value="#{atendente.variavelQueGuardaONomeDoPaciente}"/>
+            </p:column>
+            
+            <p:column headerText ="Opções">
+                <p:commandButton value="Deletar"  icon="ui-icon-trash" action="#{ClasseControladora.MetodoDeDeletar(ClasseControladora.selectedAtendente)}"/>
+                <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{ClasseControladora.MetodoSet(atendente)}" action="alterar-atendente.xhtml"/>
             </p:column>
            
         </p:dataTable>
         
-        <p:contextMenu for="idListarAtendentes">
-            <p:menuitem value="Deletar" icon="ui-icon-trash" 
-                        action="#{ClasseControladora.MetodoDeDeletar(ClasseControladora.selectedAtendente)}"/>
-            <p:menuitem value="Alterar" icon="ui-icon-pencil"
-                         action="#{ClasseControladora.MetodoDeAlterar(ClasseControladora.selectedAtendente)}"/>
-        </p:contextMenu>
+       
         
         
     </h:form>
