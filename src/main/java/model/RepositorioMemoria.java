@@ -25,11 +25,11 @@ public class RepositorioMemoria {
     public RepositorioMemoria() {
         System.out.println("construtor repotorio");
         consultas = new ArrayList();
-        consultas.add(new Consulta(1, "blabla", Status.PENDENTE, Prioridade.IDOSO, Especialidade.DENTISTA, LocalDate.now()));
-        consultas.add(new Consulta(2, "blabla", Status.CONSULTADO, Prioridade.BEBEDECOLO, Especialidade.OUTROS, LocalDate.now()));
-        consultas.add(new Consulta(3, "blabla", Status.PENDENTE, Prioridade.DEFICIENTEFISICO, Especialidade.DENTISTA, LocalDate.now()));
-        consultas.add(new Consulta(4, "blabla", Status.CANCELADO, Prioridade.GESTANTE, Especialidade.DENTISTA, LocalDate.now()));
-        consultas.add(new Consulta(5, "blabla", Status.PENDENTE, Prioridade.NENHUMA, Especialidade.OUTROS, LocalDate.now()));
+        consultas.add(new Consulta(1, Status.PENDENTE, Prioridade.IDOSO, Especialidade.DENTISTA, LocalDate.now()));
+        consultas.add(new Consulta(2, Status.CONSULTADO, Prioridade.BEBEDECOLO, Especialidade.OUTROS, LocalDate.now()));
+        consultas.add(new Consulta(3, Status.PENDENTE, Prioridade.DEFICIENTEFISICO, Especialidade.DENTISTA, LocalDate.now()));
+        consultas.add(new Consulta(4, Status.CANCELADO, Prioridade.GESTANTE, Especialidade.DENTISTA, LocalDate.now()));
+        consultas.add(new Consulta(5, Status.PENDENTE, Prioridade.NENHUMA, Especialidade.OUTROS, LocalDate.now()));
     }
 
     public static RepositorioMemoria getInstance() {
@@ -55,7 +55,6 @@ public class RepositorioMemoria {
     public boolean alterar(Consulta consulta) {
         for (Consulta objeto : consultas) {
             if (objeto.getId() == consulta.getId()) {
-                objeto.setObservacao(consulta.getObservacao());
                 objeto.setStatus(consulta.getStatus());
                 objeto.setPrioridade(consulta.getPrioridade());
                 objeto.setEspecialidade(consulta.getEspecialidade());

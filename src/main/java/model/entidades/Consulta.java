@@ -14,7 +14,6 @@ import java.time.LocalDate;
 public class Consulta {
 
     private int id;
-    private String observacao;
     private Status status;
     private Prioridade prioridade;
     private Especialidade especialidade;
@@ -23,66 +22,57 @@ public class Consulta {
     public Consulta() {
     }
 
-    public Consulta(int id, String observacao, Status status, Prioridade prioridade, Especialidade especialidade, LocalDate agendamento) {
-	this.id = id;
-	this.observacao = observacao;
-	this.status = status;
-	this.prioridade = prioridade;
-	this.especialidade = especialidade;
-	this.agendamento = agendamento;
+    public Consulta(int id, Status status, Prioridade prioridade, Especialidade especialidade, LocalDate agendamento) {
+        this.id = id;
+        this.status = status;
+        this.prioridade = prioridade;
+        this.especialidade = especialidade;
+        this.agendamento = agendamento;
     }
 
     public int getId() {
-	return id;
+        return id;
     }
 
     public void setId(int id) {
-	this.id = id;
-    }
-
-    public String getObservacao() {
-	return observacao;
-    }
-
-    public void setObservacao(String observacao) {
-	this.observacao = observacao;
+        this.id = id;
     }
 
     public Status getStatus() {
-	return status;
+        return status;
     }
 
     public void setStatus(Status status) {
-	this.status = status;
+        this.status = status;
     }
 
     public Prioridade getPrioridade() {
-	return prioridade;
+        return prioridade;
     }
 
     public void setPrioridade(Prioridade prioridade) {
-	this.prioridade = prioridade;
+        this.prioridade = prioridade;
     }
 
     public Especialidade getEspecialidade() {
-	return especialidade;
+        return especialidade;
     }
 
     public void setEspecialidade(Especialidade especialidade) {
-	this.especialidade = especialidade;
+        this.especialidade = especialidade;
     }
 
     public LocalDate getAgendamento() {
-	return agendamento;
+        return agendamento;
     }
 
     public void setAgendamento(LocalDate agendamento) {
-	this.agendamento = agendamento;
+        this.agendamento = agendamento;
     }
 
     @Override
     public String toString() {
-	return "Consulta{" + "id=" + id + ", observacao=" + observacao + ", status=" + status + ", prioridade=" + prioridade + ", especialidade=" + especialidade + ", agendamento=" + agendamento + '}';
+        return "Consulta{" + "id=" + id + ", status=" + status + ", prioridade=" + prioridade + ", especialidade=" + especialidade + ", agendamento=" + agendamento + '}';
     }
 
 }
