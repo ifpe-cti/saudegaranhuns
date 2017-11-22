@@ -7,33 +7,42 @@
         <title>Saúde Garanhuns</title>
     </h:head>
     <h:body>
-	<p:growl autoUpdate="true"/>
-	<h:form>
-	    <p:dataTable var="consulta" value="#{consultaController.buscarTodos()}" emptyMessage="Nenhuma consulta cadastrada">
-		<p:column headerText="Status">
-		    <p:outputLabel value="#{consulta.status}"/>
-		</p:column>
-		<p:column headerText="Data">
-		    <p:outputLabel value="#{consulta.agendamento}"/>
-		</p:column>
-		<p:column headerText="Opções">
-		    <center>
-			<p:commandButton value="Alterar" actionListener="#{consultaController.setConsulta(consulta)}" action="alteracao-consulta.xhtml?faces-redirect=true"/>
-			<p:commandButton value="Visualizar" actionListener="#{consultaController.setConsulta(consulta)}" oncomplete="PF('dialogVisualizar').show()" update="@form"/>
-		    </center>
-		</p:column>
-	    </p:dataTable>
-	    <p:dialog header="Dados da consulta" widgetVar="dialogVisualizar">
-		<p:panelGrid columns="2">
-		    <p:outputLabel value="Observação"/>
-		    <p:outputLabel value="#{consultaController.consulta.observacao}"/>
-		    <p:outputLabel value="Status"/>
-		    <p:outputLabel value="#{consultaController.consulta.status}"/>
-		    <p:outputLabel value="Prioridade"/>
-		    <p:outputLabel value="#{consultaController.consulta.prioridade}"/>
-		</p:panelGrid>
-	    </p:dialog>
-	</h:form>
+        <p:growl autoUpdate="true"/>
+        <h:form>
+            <p:dataTable var="consulta" value="#{consultaController.buscarTodos()}" emptyMessage="Nenhuma consulta cadastrada">
+                <p:column headerText="Status">
+                    <p:outputLabel value="#{consulta.status}"/>
+                </p:column>
+                <p:column headerText="Data agendada">
+                    <p:outputLabel value="#{consulta.agendamento}"/>
+                </p:column>
+                <p:column headerText="Opções">
+                    <center>
+                        <p:commandButton value="Alterar" actionListener="#{consultaController.setConsulta(consulta)}" action="alteracao-consulta.xhtml?faces-redirect=true"/>
+                        <p:commandButton value="Visualizar" actionListener="#{consultaController.setConsulta(consulta)}" oncomplete="PF('dialogVisualizar').show()" update="@form"/>
+                        <p:commandButton value="Cancelar" actionListener="#{consultaController.setConsulta(consulta)}" oncomplete="PF('dialogCancelar').show()" update="@form"/>
+                    </center>
+                </p:column>
+            </p:dataTable>
+            <p:dialog header="Dados da consulta" widgetVar="dialogVisualizar">
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Status"/>
+                    <p:outputLabel value="#{consultaController.consulta.status}"/>
+                    <p:outputLabel value="Prioridade"/>
+                    <p:outputLabel value="#{consultaController.consulta.prioridade}"/>
+                    <p:outputLabel value="Especialidade"/>
+                    <p:outputLabel value="#{consultaController.consulta.especialidade}"/>
+                    <p:outputLabel value="Data do pedido de consulta"/>
+                    <p:outputLabel value=""/>
+                    <p:outputLabel value="Data agendada"/>
+                    <p:outputLabel value=""/>
+                    <p:outputLabel value="Nome do paciente"/>
+                    <p:outputLabel value="#{consultaController.consulta.paciente.nome}"/>
+                    <p:outputLabel value="SUS do paciente"/>
+                    <p:outputLabel value="#{consultaController.consulta.paciente.sus}"/>
+                </p:panelGrid>
+            </p:dialog>
+        </h:form>
     </h:body>
 </html>
 
