@@ -16,7 +16,8 @@ import javax.persistence.Id;
  * @author Herikles
  */
 @Entity
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
+
     @Id
     @GeneratedValue
     private int id;
@@ -30,6 +31,10 @@ public class Usuario implements Serializable{
     public Usuario(String login, String senha) {
         this.login = login;
         this.senha = senha;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getLogin() {

@@ -23,14 +23,14 @@ public class PostoSaude implements Serializable{
     private int id;
     private String nome;
     @OneToOne
-    private Bairro bairro;
+    private Endereco endereco;
 
     public PostoSaude() {
     }
 
-    public PostoSaude(String nome, Bairro bairro) {
+    public PostoSaude(String nome, Endereco endereco) {
         this.nome = nome;
-        this.bairro = bairro;
+        this.endereco = endereco;
     }
 
     public int getId() {
@@ -45,18 +45,17 @@ public class PostoSaude implements Serializable{
         this.nome = nome;
     }
 
-    public Bairro getBairro() {
-        return bairro;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setBairro(Bairro bairro) {
-        this.bairro = bairro;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     @Override
     public String toString() {
-        return "PostoSaude{" + "id=" + id + ", nome=" + nome + ", bairro=" + bairro + '}';
+        return "PostoSaude{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + '}';
     }
 
-   
 }

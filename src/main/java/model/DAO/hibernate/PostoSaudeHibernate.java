@@ -8,7 +8,7 @@ package model.DAO.hibernate;
 import java.util.List;
 import model.DAO.interfaces.PostoSaudeDAO;
 import model.POJO.Atendente;
-import model.POJO.Bairro;
+import model.POJO.Endereco;
 import model.POJO.Paciente;
 import model.POJO.PostoSaude;
 import org.hibernate.Session;
@@ -23,17 +23,17 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
     @Override
     public void insert(PostoSaude o) {
         Session session = HibernateUtil.getSession();
-        BairroHibernate bh = new BairroHibernate();
+        EnderecoHibernate eh = new EnderecoHibernate();
         
         try {
             session.beginTransaction();
-            Bairro b = bh.readByName(o.getBairro().getNome());
+            Endereco b = eh.readByName(o.getEndereco().getLogradouro());
             if (b == null) {
-                bh.insert(o.getBairro());
+                eh.insert(o.getEndereco());
                 session.save(o);
             } //perguntar se isso faz sentido
             else {
-                o.setBairro(b);
+                o.setEndereco(b);
                 session.save(o);
             }
             session.getTransaction().commit();
@@ -48,16 +48,16 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
     @Override
     public void update(PostoSaude o) {
         Session session = HibernateUtil.getSession();
-        BairroHibernate bh = new BairroHibernate();
+        EnderecoHibernate eh = new EnderecoHibernate();
         try {
             session.beginTransaction();
-            Bairro b = bh.readByName(o.getBairro().getNome());
+            Endereco b = eh.readByName(o.getEndereco().getLogradouro());
             if (b == null) {
-                bh.insert(o.getBairro());
+                eh.insert(o.getEndereco());
                 session.update(o);
             } //perguntar se isso faz sentido
             else {
-                o.setBairro(b);
+                o.setEndereco(b);
                 session.update(o);
             }
             session.getTransaction().commit();

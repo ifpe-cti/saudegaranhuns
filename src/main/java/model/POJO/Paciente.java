@@ -6,8 +6,7 @@
 package model.POJO;
 
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,7 +26,7 @@ public class Paciente implements Serializable {
     private String nome;
     private String cartaoSus;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar dataNascimento;
+    private LocalDate dataNascimento;
     // private Date dataNascimento;
     /*@OneToOne
     private Usuario usuario;*/
@@ -39,7 +38,7 @@ public class Paciente implements Serializable {
     public Paciente() {
     }
 
-    public Paciente(String nome, String cartaoSus, Calendar dataNascimento, Endereco endereco, PostoSaude postoSaude) {
+    public Paciente(String nome, String cartaoSus, LocalDate dataNascimento, Endereco endereco, PostoSaude postoSaude) {
         this.nome = nome;
         this.cartaoSus = cartaoSus;
         this.dataNascimento = dataNascimento;
@@ -67,11 +66,11 @@ public class Paciente implements Serializable {
         this.cartaoSus = cartaoSus;
     }
 
-    public Calendar getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Calendar dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

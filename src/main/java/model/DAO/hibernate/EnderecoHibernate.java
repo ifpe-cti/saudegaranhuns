@@ -133,4 +133,26 @@ public class EnderecoHibernate implements EnderecoDAO {
         
         delete(b);
     }
+
+    @Override
+    public Endereco readByName(String name) {
+        Session session = HibernateUtil.getSession();
+        try {
+            session.beginTransaction();
+            List<Endereco> enderecos = (session.createQuery("from " + Endereco.class.getName()).list());
+            for (Endereco e : enderecos) {
+                if (e.getLogradouro().equals(name)) {
+                    return e;
+                }
+            }
+            session.getTransaction().commit();
+            
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            System.err.println("Falha ao recuperar o  Endereço por nome. Erro: " + e.toString());
+        } finally {
+            session.close();
+        }
+        return null;
+    }
 }

@@ -12,5 +12,6 @@ import model.POJO.Endereco;
  * @author Herikles
  */
 public interface EnderecoDAO extends DAO<Endereco> {
+    public Endereco readByName(String name);
     public void deleteOnCascade(Endereco b);
 }

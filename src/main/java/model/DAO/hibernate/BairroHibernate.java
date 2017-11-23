@@ -109,7 +109,7 @@ public class BairroHibernate implements BairroDAO {
             }
         }
         for (PostoSaude p : todosPostos) {
-            if (p.getBairro().getNome().equals(b.getNome())) {
+            if (p.getEndereco().getLogradouro().equals(b.getNome())) {
                 ps.deleteOnCascade(p);
             }
         }
@@ -131,7 +131,7 @@ public class BairroHibernate implements BairroDAO {
             
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.err.println("Falha ao recuperar o  Endereço por nome. Erro: " + e.toString());
+            System.err.println("Falha ao recuperar o Bairro por nome. Erro: " + e.toString());
         } finally {
             session.close();
         }
