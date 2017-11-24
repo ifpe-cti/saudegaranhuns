@@ -46,6 +46,8 @@ public class ConsultaModel {
     }
 
     public boolean cancelar(Consulta consulta) {
+	System.out.println("cancelar model");
+	System.out.println(consulta.toString());
 	return repositorio.cancelar(consulta);
 >>>>>>> Adicionando mensagem de confirmação e ajustando telas de acordo com o diagrama de classes
     }

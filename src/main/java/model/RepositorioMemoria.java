@@ -78,9 +78,13 @@ public class RepositorioMemoria {
     }
 
     public boolean cancelar(Consulta consulta) {
+	System.out.println("cancelar repositorio");
+	System.out.println(consulta.toString());
 	for (Consulta objeto : consultas) {
+	    System.out.println("consulta id: " + consulta.getId() + "/nObjeto id: " + objeto.getId());
 	    if (objeto.getId() == consulta.getId()) {
 		objeto.setStatus(Status.CANCELADO);
+		System.out.println("cancelou");
 		return true;
 	    }
 	}

@@ -7,14 +7,16 @@ package controller;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.enterprise.context.SessionScoped;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import model.ConsultaModel;
 import model.entidades.Consulta;
 import model.entidades.Especialidade;
 import model.entidades.Prioridade;
+import model.entidades.Status;
 
 /**
  *
@@ -27,6 +29,17 @@ public class ConsultaController implements Serializable {
     private ConsultaModel model;
     private Consulta consulta;
 
+    @PostConstruct
+    public void init() {
+	System.out.println("init controller");
+	consulta = new Consulta();
+	model = new ConsultaModel();
+    }
+
+    public ConsultaController() {
+	System.out.println("construtor controller");
+    }
+
     public Prioridade[] getPrioridade() {
         return Prioridade.values();
     }
@@ -35,6 +48,7 @@ public class ConsultaController implements Serializable {
         return Especialidade.values();
     }
 
+<<<<<<< HEAD
     public ConsultaController() {
 <<<<<<< HEAD
         System.out.println("construtor controller");
@@ -62,6 +76,10 @@ public class ConsultaController implements Serializable {
 =======
 	consulta = new Consulta();
 	model = new ConsultaModel();
+=======
+    public Status[] getStatus() {
+	return Status.values();
+>>>>>>> removendo pagina de alteracao de consulta e adicionando recursos a tela de cadastro
     }
 
     public void cadastrar() {
@@ -74,6 +92,7 @@ public class ConsultaController implements Serializable {
 			    null
 		    )
 	    );
+	    limpar();
 	}
     }
 
@@ -91,6 +110,23 @@ public class ConsultaController implements Serializable {
     }
 
     public void cancelar() {
+	System.out.println("cancelar controller");
+	System.out.println(consulta.toString());
+	if (model.cancelar(consulta)) {
+	    FacesContext.getCurrentInstance().addMessage(
+		    null,
+		    new FacesMessage(
+			    FacesMessage.SEVERITY_INFO,
+			    "Sucesso, consulta cancelada",
+			    null
+		    )
+	    );
+	}
+    }
+
+    public void cancelar(Consulta consulta) {
+	System.out.println("cancelar controller");
+	System.out.println(consulta.toString());
 	if (model.cancelar(consulta)) {
 	    FacesContext.getCurrentInstance().addMessage(
 		    null,
@@ -118,12 +154,22 @@ public class ConsultaController implements Serializable {
 
     public void setConsulta(Consulta consulta) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         System.out.println("setconsulta controller");
         System.out.println(consulta.toString());
         this.consulta = consulta;
 =======
 	this.consulta = consulta;
 >>>>>>> Adicionando mensagem de confirmação e ajustando telas de acordo com o diagrama de classes
+=======
+	System.out.println("entrou no set");
+	this.consulta = consulta;
+	System.out.println(consulta.toString());
+    }
+
+    public void limpar() {
+	this.consulta = new Consulta();
+>>>>>>> removendo pagina de alteracao de consulta e adicionando recursos a tela de cadastro
     }
 
 }
