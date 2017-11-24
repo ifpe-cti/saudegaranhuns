@@ -42,7 +42,7 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.2.12.Final</version>
         </dependency>
-<<<<<<< HEAD
+
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator-annotation-processor -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -72,18 +72,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.44</version>
-=======
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.44</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-impl -->
-        <dependency>
-            <groupId>com.sun.faces</groupId>
-            <artifactId>jsf-impl</artifactId>
-            <version>2.2.15</version>
-        </dependency>
+        </dependency> 
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -100,7 +89,6 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
->>>>>>> master
         </dependency>
     </dependencies>
     <build>
@@ -164,11 +152,7 @@
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
-<<<<<<< HEAD
-                    
-=======
-                    <!--
->>>>>>> master
+
                     <execution>
                         <id>jacoco-check</id>
                         <phase>test</phase>
@@ -215,21 +199,17 @@
                             </rules>
                         </configuration>
                     </execution>
-<<<<<<< HEAD
-                   
-=======
-                    -->
->>>>>>> master
-                    <execution>
-                        <id>jacoco-site</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        -->
+
+                        <execution>
+                            <id>jacoco-site</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            -->
         </plugins>
     </build>
     <profiles>
@@ -276,8 +256,7 @@
             </build>
         </profile>
     </profiles>
-<<<<<<< HEAD
 </project>
-=======
+
 </project>
->>>>>>> master
+
