@@ -31,13 +31,11 @@ public class ConsultaController implements Serializable {
 
     @PostConstruct
     public void init() {
-	System.out.println("init controller");
 	consulta = new Consulta();
 	model = new ConsultaModel();
     }
 
     public ConsultaController() {
-	System.out.println("construtor controller");
     }
 
     public Prioridade[] getPrioridade() {
@@ -110,8 +108,6 @@ public class ConsultaController implements Serializable {
     }
 
     public void cancelar() {
-	System.out.println("cancelar controller");
-	System.out.println(consulta.toString());
 	if (model.cancelar(consulta)) {
 	    FacesContext.getCurrentInstance().addMessage(
 		    null,
@@ -125,8 +121,6 @@ public class ConsultaController implements Serializable {
     }
 
     public void cancelar(Consulta consulta) {
-	System.out.println("cancelar controller");
-	System.out.println(consulta.toString());
 	if (model.cancelar(consulta)) {
 	    FacesContext.getCurrentInstance().addMessage(
 		    null,
@@ -155,6 +149,7 @@ public class ConsultaController implements Serializable {
     public void setConsulta(Consulta consulta) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         System.out.println("setconsulta controller");
         System.out.println(consulta.toString());
         this.consulta = consulta;
@@ -163,13 +158,13 @@ public class ConsultaController implements Serializable {
 >>>>>>> Adicionando mensagem de confirmação e ajustando telas de acordo com o diagrama de classes
 =======
 	System.out.println("entrou no set");
+=======
+>>>>>>> formatando
 	this.consulta = consulta;
-	System.out.println(consulta.toString());
     }
 
     public void limpar() {
 	this.consulta = new Consulta();
 >>>>>>> removendo pagina de alteracao de consulta e adicionando recursos a tela de cadastro
     }
-
 }
