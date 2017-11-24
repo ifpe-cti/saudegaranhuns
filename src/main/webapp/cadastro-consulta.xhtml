@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>SaÃºde Garanhuns</title>
+        <title>Saúde Garanhuns</title>
     </h:head>
     <f:event listener="#{consultaController.limpar()}" type="preRenderView"/>
     <h:body>
@@ -16,14 +16,14 @@
 		    <p:outputLabel for="radioPrioridade" value="Prioridade:" />
 		    <p:selectOneRadio value="#{consultaController.consulta.prioridade}"
 				      id="radioPrioridade" required="true"
-				      requiredMessage="Campo prioridade obrigÃ¡torio">
+				      requiredMessage="Campo prioridade obrigátorio">
 			<f:selectItems value="#{consultaController.prioridade}" var="prioridade"
 				       itemLabel="#{prioridade.label}" itemValue="#{prioridade}"/>
 		    </p:selectOneRadio>
 		    <p:outputLabel for="radioEspecialidade" value="Especialidade:" />
 		    <p:selectOneRadio value="#{consultaController.consulta.especialidade}"
 				      id="radioEspecialidade" required="true"
-				      requiredMessage="Campo especialidade obrigÃ¡torio">
+				      requiredMessage="Campo especialidade obrigátorio">
 			<f:selectItems value="#{consultaController.especialidade}" var="especialidade"
 				       itemLabel="#{especialidade.label}" itemValue="#{especialidade}"/>
 		    </p:selectOneRadio>
@@ -34,10 +34,10 @@
 		<p:commandButton oncomplete="PF('confDialCancelar').show()" value="Cancelar"/>
 	    </p:fieldset>
 	    <p:confirmDialog header="Deseja cancelar?" widgetVar="confDialCancelar"
-			     message="Caso escolha cancelar, os dados que nÃ£o foram salvos, serÃ£o
+			     message="Caso escolha cancelar, os dados que não foram salvos, serão
 			     perdidos" >
 		<p:button href="listagem-consulta.xhtml" value="Sim"/>
-		<p:commandButton oncomplete="PF('confDialCancelar').hide()" value="NÃ£o"/>
+		<p:commandButton oncomplete="PF('confDialCancelar').hide()" value="Não"/>
 	    </p:confirmDialog>
 	</h:form>
     </h:body>

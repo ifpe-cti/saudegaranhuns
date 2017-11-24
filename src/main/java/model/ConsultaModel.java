@@ -22,7 +22,6 @@ public class ConsultaModel {
     }
 
     public boolean cadastrar(Consulta consulta) {
-	System.out.println("cadastro model");
 	return repositorio.cadastrar(consulta);
     }
 
@@ -31,9 +30,15 @@ public class ConsultaModel {
     }
 
     public boolean cancelar(Consulta consulta) {
-	System.out.println("cancelar model");
-	System.out.println(consulta.toString());
 	return repositorio.cancelar(consulta);
+    }
+
+    public boolean alterar(Consulta consulta) {
+	return repositorio.alterar(consulta);
+    }
+
+    public boolean deletar(Consulta consulta) {
+	return repositorio.deletar(consulta);
     }
 
     public Consulta buscar(int id) {

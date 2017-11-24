@@ -10,7 +10,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import model.ConsultaModel;
 import model.entidades.Consulta;
@@ -45,6 +44,8 @@ public class ConsultaController implements Serializable {
     public Especialidade[] getEspecialidade() {
 	return Especialidade.values();
     }
+
+    <<<<<<< HEAD
 
     public Status[] getStatus() {
 	return Status.values();
