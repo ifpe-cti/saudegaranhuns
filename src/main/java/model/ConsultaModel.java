@@ -22,6 +22,7 @@ public class ConsultaModel {
     }
 
     public boolean cadastrar(Consulta consulta) {
+<<<<<<< HEAD
         System.out.println("cadastro model");
         repositorio.cadastrar(consulta);
         return true;
@@ -35,6 +36,18 @@ public class ConsultaModel {
     public boolean deletar(Consulta consulta) {
         repositorio.deletar(consulta);
         return true;
+=======
+	System.out.println("cadastro model");
+	return repositorio.cadastrar(consulta);
+    }
+
+    public boolean alterar(Consulta consulta) {
+	return repositorio.alterar(consulta);
+    }
+
+    public boolean cancelar(Consulta consulta) {
+	return repositorio.cancelar(consulta);
+>>>>>>> Adicionando mensagem de confirmação e ajustando telas de acordo com o diagrama de classes
     }
 
     public Consulta buscar(int id) {
