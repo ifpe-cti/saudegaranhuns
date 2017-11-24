@@ -21,17 +21,17 @@ public class ConsultaModel {
 	repositorio = RepositorioMemoria.getInstance();
     }
 
-    public void cadastrar(Consulta consulta) {
+    public boolean cadastrar(Consulta consulta) {
 	System.out.println("cadastro model");
-	repositorio.cadastrar(consulta);
+	return repositorio.cadastrar(consulta);
     }
 
-    public void alterar(Consulta consulta) {
-	repositorio.alterar(consulta);
+    public boolean alterar(Consulta consulta) {
+	return repositorio.alterar(consulta);
     }
 
-    public void deletar(Consulta consulta) {
-	repositorio.deletar(consulta);
+    public boolean cancelar(Consulta consulta) {
+	return repositorio.cancelar(consulta);
     }
 
     public Consulta buscar(int id) {

@@ -8,7 +8,9 @@ package controller;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import model.ConsultaModel;
 import model.entidades.Consulta;
 import model.entidades.Especialidade;
@@ -34,22 +36,47 @@ public class ConsultaController implements Serializable {
     }
 
     public ConsultaController() {
-	System.out.println("construtor controller");
 	consulta = new Consulta();
 	model = new ConsultaModel();
     }
 
     public void cadastrar() {
-	System.out.println("cadastro controller");
-	model.cadastrar(consulta);
+	if (model.cadastrar(consulta)) {
+	    FacesContext.getCurrentInstance().addMessage(
+		    null,
+		    new FacesMessage(
+			    FacesMessage.SEVERITY_INFO,
+			    "Sucesso, consulta cadastrada",
+			    null
+		    )
+	    );
+	}
     }
 
     public void alterar() {
-	model.alterar(consulta);
+	if (model.alterar(consulta)) {
+	    FacesContext.getCurrentInstance().addMessage(
+		    null,
+		    new FacesMessage(
+			    FacesMessage.SEVERITY_INFO,
+			    "Sucesso, consulta alterada",
+			    null
+		    )
+	    );
+	}
     }
 
-    public void deletar() {
-	model.deletar(consulta);
+    public void cancelar() {
+	if (model.cancelar(consulta)) {
+	    FacesContext.getCurrentInstance().addMessage(
+		    null,
+		    new FacesMessage(
+			    FacesMessage.SEVERITY_INFO,
+			    "Sucesso, consulta cancelada",
+			    null
+		    )
+	    );
+	}
     }
 
     public Consulta buscar(int id) {
@@ -65,8 +92,6 @@ public class ConsultaController implements Serializable {
     }
 
     public void setConsulta(Consulta consulta) {
-	System.out.println("setconsulta controller");
-	System.out.println(consulta.toString());
 	this.consulta = consulta;
     }
 

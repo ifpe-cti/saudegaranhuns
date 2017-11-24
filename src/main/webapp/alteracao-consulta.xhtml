@@ -8,23 +8,27 @@
         <title>Saúde Garanhuns</title>
     </h:head>
     <h:body>
-	<p:growl autoUpdate="true" sticky="true"/>
+	<p:growl autoUpdate="true"/>
 	<h:form>
 	    <p:fieldset legend="Alteração de consulta">
 		<p:panelGrid columns="2">
-		    <p:outputLabel for="inputObs" value="Observação:"/>
-		    <p:inputTextarea value="#{consultaController.consulta.observacao}" id="inputObs" cols="67" required="true" requiredMessage="Campo observação obrigátio"/>
 		    <p:outputLabel for="radioPrioridade" value="Prioridade:" />
-		    <p:selectOneRadio value="#{consultaController.consulta.prioridade}" id="radioPrioridade" required="true" requiredMessage="Campo prioridade obrigátio">
-			<f:selectItems value="#{consultaController.prioridade}" var="prioridade" itemLabel="#{prioridade}" itemValue="#{prioridade}"/>
+		    <p:selectOneRadio value="#{consultaController.consulta.prioridade}" id="radioPrioridade" required="true" requiredMessage="Campo prioridade obrigátorio">
+			<f:selectItems value="#{consultaController.prioridade}" var="prioridade" itemLabel="#{prioridade.label}" itemValue="#{prioridade}"/>
 		    </p:selectOneRadio>
 		    <p:outputLabel for="radioEspecialidade" value="Especialidade:" />
-		    <p:selectOneRadio value="#{consultaController.consulta.especialidade}" id="radioEspecialidade" required="true" requiredMessage="Campo especialidade obrigátio">
-			<f:selectItems value="#{consultaController.especialidade}" var="especialidade" itemLabel="#{especialidade}" itemValue="#{especialidade}"/>
+		    <p:selectOneRadio value="#{consultaController.consulta.especialidade}" id="radioEspecialidade" required="true" requiredMessage="Campo especialidade obrigátorio">
+			<f:selectItems value="#{consultaController.especialidade}" var="especialidade" itemLabel="#{especialidade.label}" itemValue="#{especialidade}"/>
 		    </p:selectOneRadio>
 		</p:panelGrid>
 		<br></br>
 		<p:commandButton actionListener="#{consultaController.alterar()}" value="Alterar"/>
+		<p:commandButton oncomplete="PF('confDialCancelar').show()" value="Cancelar"/>
+	    </p:fieldset>
+	    <p:confirmDialog header="Deseja cancelar?" message="Caso escolha cancelar os dados não salvos serão perdidos" widgetVar="confDialCancelar">
+		<p:button href="index.html" value="Sim"/>
+		<p:commandButton oncomplete="PF('confDialCancelar').hide()" value="Não"/>
+	    </p:confirmDialog>
 	    </p:fieldset>
 	</h:form>
     </h:body>

@@ -5,7 +5,6 @@
  */
 package model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import model.entidades.Consulta;
@@ -25,11 +24,11 @@ public class RepositorioMemoria {
     public RepositorioMemoria() {
 	System.out.println("construtor repotorio");
 	consultas = new ArrayList();
-	consultas.add(new Consulta(1, "blabla", Status.PENDENTE, Prioridade.IDOSO, Especialidade.DENTISTA, LocalDate.now()));
-	consultas.add(new Consulta(2, "blabla", Status.CONSULTADO, Prioridade.BEBEDECOLO, Especialidade.OUTROS, LocalDate.now()));
-	consultas.add(new Consulta(3, "blabla", Status.PENDENTE, Prioridade.DEFICIENTEFISICO, Especialidade.DENTISTA, LocalDate.now()));
-	consultas.add(new Consulta(4, "blabla", Status.CANCELADO, Prioridade.GESTANTE, Especialidade.DENTISTA, LocalDate.now()));
-	consultas.add(new Consulta(5, "blabla", Status.PENDENTE, Prioridade.NENHUMA, Especialidade.OUTROS, LocalDate.now()));
+	consultas.add(new Consulta(1, Prioridade.IDOSO, Especialidade.DENTISTA));
+	consultas.add(new Consulta(2, Prioridade.DEFICIENTEFISICO, Especialidade.DENTISTA));
+	consultas.add(new Consulta(3, Prioridade.GESTANTE, Especialidade.OUTROS));
+	consultas.add(new Consulta(4, Prioridade.NENHUMA, Especialidade.DENTISTA));
+	consultas.add(new Consulta(5, Prioridade.BEBEDECOLO, Especialidade.OUTROS));
     }
 
     public static RepositorioMemoria getInstance() {
@@ -40,25 +39,31 @@ public class RepositorioMemoria {
 	return self;
     }
 
-    public void cadastrar(Consulta consulta) {
-	consultas.add(consulta);
+    public boolean cadastrar(Consulta consulta) {
 	System.out.println("cadastro repositorio");
 	System.out.println(consulta.toString());
+	return consultas.add(consulta);
     }
 
-    public void deletar(Consulta consulta) {
-	consultas.remove(consulta);
-    }
-
-    public void alterar(Consulta consulta) {
+    public boolean cancelar(Consulta consulta) {
 	for (Consulta objeto : consultas) {
 	    if (objeto.getId() == consulta.getId()) {
-		objeto.setObservacao(consulta.getObservacao());
-		objeto.setStatus(consulta.getStatus());
-		objeto.setPrioridade(consulta.getPrioridade());
-		objeto.setEspecialidade(consulta.getEspecialidade());
+		objeto.setStatus(Status.CANCELADO);
+		return true;
 	    }
 	}
+	return false;
+    }
+
+    public boolean alterar(Consulta consulta) {
+	for (Consulta objeto : consultas) {
+	    if (objeto.getId() == consulta.getId()) {
+		objeto.setPrioridade(consulta.getPrioridade());
+		objeto.setEspecialidade(consulta.getEspecialidade());
+		return true;
+	    }
+	}
+	return false;
     }
 
     public Consulta buscar(int id) {

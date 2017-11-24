@@ -10,5 +10,17 @@ package model.entidades;
  * @author Fernando
  */
 public enum Status {
-    PENDENTE, CANCELADO, CONSULTADO
+    PENDENTE("Pendente"),
+    CANCELADO("Cancelado"),
+    CONSULTADO("Consultado");
+
+    private String label;
+
+    private Status(String label) {
+	this.label = label;
+    }
+
+    public String getLabel() {
+	return label;
+    }
 }

@@ -14,22 +14,23 @@ import java.time.LocalDate;
 public class Consulta {
 
     private int id;
-    private String observacao;
     private Status status;
     private Prioridade prioridade;
     private Especialidade especialidade;
     private LocalDate agendamento;
+    private LocalDate solicitacao;
 
     public Consulta() {
+	this.status = Status.PENDENTE;
+	this.solicitacao = LocalDate.now();
+	this.agendamento = null;
     }
 
-    public Consulta(int id, String observacao, Status status, Prioridade prioridade, Especialidade especialidade, LocalDate agendamento) {
+    public Consulta(int id, Prioridade prioridade, Especialidade especialidade) {
+	this();
 	this.id = id;
-	this.observacao = observacao;
-	this.status = status;
 	this.prioridade = prioridade;
 	this.especialidade = especialidade;
-	this.agendamento = agendamento;
     }
 
     public int getId() {
@@ -40,12 +41,12 @@ public class Consulta {
 	this.id = id;
     }
 
-    public String getObservacao() {
-	return observacao;
+    public LocalDate getSolicitacao() {
+	return solicitacao;
     }
 
-    public void setObservacao(String observacao) {
-	this.observacao = observacao;
+    public void setSolicitacao(LocalDate solicitacao) {
+	this.solicitacao = solicitacao;
     }
 
     public Status getStatus() {
@@ -82,7 +83,7 @@ public class Consulta {
 
     @Override
     public String toString() {
-	return "Consulta{" + "id=" + id + ", observacao=" + observacao + ", status=" + status + ", prioridade=" + prioridade + ", especialidade=" + especialidade + ", agendamento=" + agendamento + '}';
+	return "Consulta{" + "id=" + id + ", status=" + status + ", prioridade=" + prioridade + ", especialidade=" + especialidade + ", agendamento=" + agendamento + ", solicitacao=" + solicitacao + '}';
     }
 
 }
