@@ -31,6 +31,8 @@ public class ConsultaModel {
     }
 
     public boolean cancelar(Consulta consulta) {
+	System.out.println("cancelar model");
+	System.out.println(consulta.toString());
 	return repositorio.cancelar(consulta);
     }
 
