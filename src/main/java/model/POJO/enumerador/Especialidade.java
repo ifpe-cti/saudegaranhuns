@@ -11,8 +11,8 @@ package model.POJO.enumerador;
  */
 public enum Especialidade {
     
-    GERAL(1), 
-    DENTISTA(2);
+    GERAL(0), 
+    DENTISTA(1);
 
     private int valor;
 

@@ -57,5 +57,10 @@ Contributor(s):
         <mapping class="model.POJO.PostoSaude" />
         <mapping class="model.POJO.Atendente" />
         <mapping class="model.POJO.Paciente" />
+        <mapping class="model.POJO.Consulta" />
+        <mapping class="model.POJO.FilaAtendimento" />
+        <mapping class="model.POJO.Atendimento" />
+        <mapping class="model.POJO.HorarioAtendimento" />
+        
     </session-factory>
 </hibernate-configuration>

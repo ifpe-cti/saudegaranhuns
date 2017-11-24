@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import model.POJO.enumerador.Especialidade;
 import model.POJO.enumerador.Prioridade;
 import model.POJO.enumerador.Status;
@@ -28,6 +29,7 @@ public class Consulta implements Serializable {
     private Status status;
     private LocalDate dataSolicitacao;
     private LocalDate dataAgendamento;
+    @OneToOne
     private Paciente paciente;
 
     public Consulta() {

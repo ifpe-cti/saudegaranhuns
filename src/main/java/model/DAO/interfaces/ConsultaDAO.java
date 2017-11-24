@@ -15,5 +15,6 @@ import model.POJO.Paciente;
  */
 public interface ConsultaDAO extends DAO<Consulta> {
     List<Consulta> recuperarConsultasPorPaciente(Paciente c);
+    public void  alterarStatusConsulta(Consulta c,int i);
 
 }

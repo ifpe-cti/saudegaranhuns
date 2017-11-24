@@ -10,6 +10,7 @@ package model.POJO.enumerador;
  * @author Herikles
  */
 public enum Prioridade {
+    NENHUMA(0),
     IDOSO(1),
     GESTANTE(2);
 

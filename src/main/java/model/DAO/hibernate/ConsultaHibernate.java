@@ -10,6 +10,7 @@ import java.util.List;
 import model.DAO.interfaces.ConsultaDAO;
 import model.POJO.Consulta;
 import model.POJO.Paciente;
+import model.POJO.enumerador.Status;
 import org.hibernate.Session;
 import util.HibernateUtil;
 
@@ -131,6 +132,24 @@ public class ConsultaHibernate implements ConsultaDAO {
             session.close();
         }
         return null;
+    }
+
+    @Override
+    public void alterarStatusConsulta(Consulta c, int i) {
+        switch(i){
+            case 1:
+                c.setStatus(Status.FILA);
+            break;
+            case 2:
+                c.setStatus(Status.AGENDADO);
+            break;
+            case 3:
+                c.setStatus(Status.CANSELADO);
+            break;   
+            default:
+                throw new IllegalArgumentException("Agumento invalido!");
+        }
+        update(c);
     }
 
 }

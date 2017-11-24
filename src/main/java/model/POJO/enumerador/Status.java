@@ -10,9 +10,9 @@ package model.POJO.enumerador;
  * @author Herikles
  */
 public enum Status {
-    FILA(1),
-    AGENDADO(2),
-    CANSELADO(3);
+    FILA(0),
+    AGENDADO(1),
+    CANSELADO(2);
 
     private int valor;
 

@@ -124,13 +124,14 @@ public class PacienteHibernate implements PacienteDAO {
                 }
             }
             session.getTransaction().commit();
-            
+
         } catch (Exception e) {
             session.getTransaction().rollback();
             System.err.println("Falha ao recuperar os Pacientes por nome. Erro: " + e.toString());
         } finally {
             session.close();
         }
-        return null;}
+        return null;
+    }
 
 }

@@ -11,13 +11,13 @@ package model.POJO.enumerador;
  */
 public enum DiasSemana {
 
-    DOMINGO(1),
-    SEGUNDA(2),
-    TERÇA(3),
-    QUARTA(4),
-    QUINTA(5),
-    SEXTA(6),
-    SABADO(7);
+    DOMINGO(0),
+    SEGUNDA(1),
+    TERÇA(2),
+    QUARTA(3),
+    QUINTA(4),
+    SEXTA(5),
+    SABADO(6);
 
     private int valor;
 

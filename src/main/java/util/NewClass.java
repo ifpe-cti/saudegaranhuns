@@ -6,15 +6,18 @@
 package util;
 
 import java.time.LocalDate;
-import java.util.Calendar;
+import java.time.Month;
+import model.DAO.hibernate.ConsultaHibernate;
 import model.DAO.hibernate.EnderecoHibernate;
 import model.DAO.hibernate.PacienteHibernate;
 import model.POJO.Bairro;
+import model.POJO.Consulta;
 import model.POJO.Endereco;
 import model.POJO.Paciente;
 import model.POJO.PostoSaude;
-
-
+import model.POJO.enumerador.Especialidade;
+import model.POJO.enumerador.Prioridade;
+import model.POJO.enumerador.Status;
 
 /**
  *
@@ -25,21 +28,18 @@ public class NewClass {
     public static void main(String[] args) {
         EnderecoHibernate eh = new EnderecoHibernate();
         PacienteHibernate ph = new PacienteHibernate();
+        ConsultaHibernate cH = new ConsultaHibernate();
         Endereco e = new Endereco("32", "Rua dos bobos", new Bairro("Juliana"));
-        Calendar c = Calendar.getInstance();
-        c.set(2000, 10, 10);
         //
         Paciente p;
-        //p = new Paciente("Dona maria", "22222", c.set(2010, Calendar.JULY, 1), e, new PostoSaude("lula", new Bairro("Juliana")));
         p = new Paciente("asdf", "321", LocalDate.of(2010, 11, 10), e, new PostoSaude("asd", e));
-        
+        Consulta c = new Consulta(Especialidade.GERAL, Prioridade.IDOSO, Status.FILA, LocalDate.of(2017, 11, 24), LocalDate.of(2018, 1, 1), p);
+
         eh.insert(e);
         ph.insert(p);
+        cH.insert(c);
         System.out.println(eh.recuperarTodos().get(0).getBairro().getNome());
-        
-        
-       /* BairroHibernate bh =  new BairroHibernate();
-        bh.deleteOnCascade(bh.readByName("Juliana"));*/
-       
+        cH.alterarStatusConsulta(c, 2);
+
     }
 }
