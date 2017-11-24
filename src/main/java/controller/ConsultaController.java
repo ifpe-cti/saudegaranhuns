@@ -31,13 +31,11 @@ public class ConsultaController implements Serializable {
 
     @PostConstruct
     public void init() {
-	System.out.println("init controller");
 	consulta = new Consulta();
 	model = new ConsultaModel();
     }
 
     public ConsultaController() {
-	System.out.println("construtor controller");
     }
 
     public Prioridade[] getPrioridade() {
@@ -80,8 +78,6 @@ public class ConsultaController implements Serializable {
     }
 
     public void cancelar() {
-	System.out.println("cancelar controller");
-	System.out.println(consulta.toString());
 	if (model.cancelar(consulta)) {
 	    FacesContext.getCurrentInstance().addMessage(
 		    null,
@@ -95,8 +91,6 @@ public class ConsultaController implements Serializable {
     }
 
     public void cancelar(Consulta consulta) {
-	System.out.println("cancelar controller");
-	System.out.println(consulta.toString());
 	if (model.cancelar(consulta)) {
 	    FacesContext.getCurrentInstance().addMessage(
 		    null,
@@ -122,13 +116,10 @@ public class ConsultaController implements Serializable {
     }
 
     public void setConsulta(Consulta consulta) {
-	System.out.println("entrou no set");
 	this.consulta = consulta;
-	System.out.println(consulta.toString());
     }
 
     public void limpar() {
 	this.consulta = new Consulta();
     }
-
 }
