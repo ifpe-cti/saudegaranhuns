@@ -1,0 +1,42 @@
+@startuml
+
+left to right direction
+skinparam classAttributeIconSize 0
+
+class Usuario {
+  -login
+  -senha
+}
+
+class Paciente {
+  -nome
+  -cartaoSus
+  -dataNascimento 
+}
+
+class Endereco {
+  -logradouro
+  -numero
+}
+
+class Bairro {
+  -nome
+}
+
+class Atendente {
+  -nome
+}
+
+class PostoSaude {
+  -nome
+}
+
+Paciente --> Endereco
+Endereco --> Bairro
+Bairro --> PostoSaude
+PostoSaude --> Paciente
+PostoSaude --> Atendente
+Usuario --> Paciente
+Usuario --> Atendente
+
+@enduml
