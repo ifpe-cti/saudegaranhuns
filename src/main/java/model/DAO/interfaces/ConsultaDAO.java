@@ -5,12 +5,15 @@
  */
 package model.DAO.interfaces;
 
+import java.util.List;
 import model.POJO.Consulta;
+import model.POJO.Paciente;
 
 /**
  *
  * @author Hérikles
  */
 public interface ConsultaDAO extends DAO<Consulta> {
+    List<Consulta> recuperarConsultasPorPaciente(Paciente c);
 
 }

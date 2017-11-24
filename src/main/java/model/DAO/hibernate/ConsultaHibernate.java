@@ -5,69 +5,66 @@
  */
 package model.DAO.hibernate;
 
+import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
-import model.DAO.interfaces.PacienteDAO;
+import model.DAO.interfaces.ConsultaDAO;
+import model.POJO.Consulta;
 import model.POJO.Paciente;
-import model.POJO.PostoSaude;
 import org.hibernate.Session;
 import util.HibernateUtil;
 
 /**
  *
- * @author Herikles
+ * @author Hérikles
  */
-public class PacienteHibernate implements PacienteDAO {
+public class ConsultaHibernate implements ConsultaDAO {
 
     @Override
-    public void insert(Paciente o) {
+    public void insert(Consulta o) {
         Session session = HibernateUtil.getSession();
-        EnderecoHibernate ed = new EnderecoHibernate();
-        PostoSaudeHibernate ph = new PostoSaudeHibernate();
+        PacienteHibernate pH = new PacienteHibernate();
         try {
             session.beginTransaction();
-            System.out.println("##########################################################################");
-            PostoSaude ps = ph.readByName(o.getPostoSaude().getNome());
-            System.out.println("\n\n##########################################################################\n\n");
-            if (ps == null) {
-                ph.insert(o.getPostoSaude());
+            Paciente p = pH.readByName((o.getPaciente()).getNome());
+            if (p == null) {
+                pH.insert(o.getPaciente());
             } else {
-                o.setPostoSaude(ps);
+                o.setPaciente(p);
             }
             session.save(o);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.err.println("Falha ao salvar Paciente. Erro: " + e.toString());
+            System.err.println("Falha ao salvar Consulta. Erro: " + e.toString());
         } finally {
             session.close();
         }
     }
 
     @Override
-    public void update(Paciente o) {
+    public void update(Consulta o) {
         Session session = HibernateUtil.getSession();
-        PostoSaudeHibernate ph = new PostoSaudeHibernate();
+        PacienteHibernate pH = new PacienteHibernate();
         try {
             session.beginTransaction();
-            PostoSaude ps = ph.readByName(o.getPostoSaude().getNome());
-            if (ps == null) {
-                ph.insert(o.getPostoSaude());
+            Paciente p = pH.readByName((o.getPaciente()).getNome());
+            if (p == null) {
+                pH.insert(o.getPaciente());
             } else {
-                o.setPostoSaude(ps);
+                o.setPaciente(p);
             }
             session.update(o);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.err.println("Falha ao alterar Paciente. Erro: " + e.toString());
+            System.err.println("Falha ao salvar Consulta. Erro: " + e.toString());
         } finally {
             session.close();
         }
     }
 
     @Override
-    public void delete(Paciente o) {
+    public void delete(Consulta o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -75,20 +72,20 @@ public class PacienteHibernate implements PacienteDAO {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.err.println("Falha ao remover Paciente. Erro: " + e.toString());
+            System.err.println("Falha ao remover Consulta. Erro: " + e.toString());
         } finally {
             session.close();
         }
     }
 
     @Override
-    public Paciente read(Integer id) {
+    public Consulta read(Integer id) {
         Session session = HibernateUtil.getSession();
         try {
-            return (Paciente) session.get(Paciente.class.getName(), id);
+            return (Consulta) session.get(Consulta.class.getName(), id);
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.err.println("Falha ao recuperar Paciente. Erro: " + e.toString());
+            System.err.println("Falha ao recuperar Consulta. Erro: " + e.toString());
         } finally {
             session.close();
         }
@@ -96,16 +93,16 @@ public class PacienteHibernate implements PacienteDAO {
     }
 
     @Override
-    public List<Paciente> recuperarTodos() {
+    public List<Consulta> recuperarTodos() {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
-            List<Paciente> lista = session.createQuery("from " + Paciente.class.getName()).list();
+            List<Consulta> lista = session.createQuery("from " + Consulta.class.getName()).getResultList();
             session.getTransaction().commit();
             return lista;
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.err.println("Falha ao recuperar todos os Pacientes. Erro: " + e.toString());
+            System.err.println("Falha ao recuperar todos os Consultas. Erro: " + e.toString());
         } finally {
             session.close();
         }
@@ -113,24 +110,27 @@ public class PacienteHibernate implements PacienteDAO {
     }
 
     @Override
-    public Paciente readByName(String name) {
+    public List<Consulta> recuperarConsultasPorPaciente(Paciente c) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
-            List<Paciente> pacientes = (session.createQuery("from " + Paciente.class.getName()).list());
-            for (Paciente p : pacientes) {
-                if (p.getNome().equals(name)) {
-                    return p;
+            List<Consulta> consultas = (session.createQuery("from " + Consulta.class.getName()).list());
+            List<Consulta> retorno = new ArrayList<>();
+            for (Consulta p : consultas) {
+                if (p.getPaciente().equals(c.getNome())) {
+                    retorno.add(p);
                 }
             }
             session.getTransaction().commit();
-            
+            return retorno;
+
         } catch (Exception e) {
             session.getTransaction().rollback();
             System.err.println("Falha ao recuperar os Pacientes por nome. Erro: " + e.toString());
         } finally {
             session.close();
         }
-        return null;}
+        return null;
+    }
 
 }
