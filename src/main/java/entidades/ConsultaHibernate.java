@@ -32,7 +32,8 @@ public class ConsultaHibernate {
         this.consultas = consultas;
     }
 
-    public void salvar(Consulta consulta) {
+    public void insert(Consulta consulta) {
+        System.out.println(consulta.getNome());
         this.consultas.add(consulta);
     }
 
