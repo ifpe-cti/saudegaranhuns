@@ -5,17 +5,16 @@
  */
 package util;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Calendar;
-import model.DAO.hibernate.BairroHibernate;
 import model.DAO.hibernate.EnderecoHibernate;
 import model.DAO.hibernate.PacienteHibernate;
 import model.POJO.Bairro;
 import model.POJO.Endereco;
 import model.POJO.Paciente;
 import model.POJO.PostoSaude;
-import org.hibernate.Session;
+
+
 
 /**
  *
@@ -32,7 +31,7 @@ public class NewClass {
         //
         Paciente p;
         //p = new Paciente("Dona maria", "22222", c.set(2010, Calendar.JULY, 1), e, new PostoSaude("lula", new Bairro("Juliana")));
-        p = new Paciente("asdf", "321", LocalDate.of(1, 11, 2010), e, new PostoSaude("asd", e));
+        p = new Paciente("asdf", "321", LocalDate.of(2010, 11, 10), e, new PostoSaude("asd", e));
         
         eh.insert(e);
         ph.insert(p);
@@ -41,6 +40,6 @@ public class NewClass {
         
        /* BairroHibernate bh =  new BairroHibernate();
         bh.deleteOnCascade(bh.readByName("Juliana"));*/
-
+       
     }
 }

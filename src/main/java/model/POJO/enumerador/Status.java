@@ -3,21 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.POJO;
+package model.POJO.enumerador;
 
 /**
  *
- * @author Hérikles
+ * @author Herikles
  */
-public enum Especialidade {
-    
-    GERAL(1),DENTISTA(2);
-    
+public enum Status {
+    FILA(1),
+    AGENDADO(2),
+    CANSELADO(3);
+
     private int valor;
-    private Especialidade(int valor){
+
+    private Status(int valor) {
         this.valor = valor;
     }
-    public int getValor(){
+
+    public int getValor() {
         return this.valor;
     }
 }

@@ -25,11 +25,7 @@ public class Paciente implements Serializable {
     private int id;
     private String nome;
     private String cartaoSus;
-    @Temporal(javax.persistence.TemporalType.DATE)
     private LocalDate dataNascimento;
-    // private Date dataNascimento;
-    /*@OneToOne
-    private Usuario usuario;*/
     @ManyToOne
     private Endereco endereco;
     @ManyToOne

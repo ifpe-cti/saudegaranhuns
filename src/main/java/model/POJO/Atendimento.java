@@ -5,6 +5,7 @@
  */
 package model.POJO;
 
+import model.POJO.enumerador.Especialidade;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -3,30 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.POJO;
+package model.POJO.enumerador;
 
 /**
  *
  * @author Hérikles
  */
-public enum DiasSemana {
-
-    DOMINGO(1),
-    SEGUNDA(2),
-    TERÇA(3),
-    QUARTA(4),
-    QUINTA(5),
-    SEXTA(6),
-    SABADO(7);
+public enum Especialidade {
+    
+    GERAL(1), 
+    DENTISTA(2);
 
     private int valor;
 
-    private DiasSemana(int valor) {
+    private Especialidade(int valor) {
         this.valor = valor;
     }
 
     public int getValor() {
         return this.valor;
     }
-
 }
