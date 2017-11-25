@@ -5,18 +5,13 @@
  */
 package recursos;
 
-import com.google.gson.Gson;
-import entidades.Consulta;
-import entidades.ConsultaHibernate;
-import java.net.URI;
-import javax.ws.rs.Consumes;
+import java.util.List;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 /**
@@ -41,28 +36,17 @@ public class ConsultasResource {
      *
      * @return an instance of java.lang.String
      */
+    @Path("{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {
-        return "oi";
-    }
+    public List<Consulta> recuperarConsultasPorPaciente(@PathParam("id") String id) {
 
-    /**
-     * PUT method for updating or creating an instance of ConsultasResource
-     *
-     * @param content representation for the resource
-     */
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response cadastroPedidoConsulta(String content) {
+        Paciente paciente = new PacienteHibernate().read(id);
 
-        Gson gson = new Gson();
-
-        new ConsultaHibernate().insert(
-                gson.fromJson(content, Consulta.class)
+        List<Consulta> consultas = new ConsultaHibernate().
+                recuperarConsultasPorPaciente(paciente)
         );
-        //Alterar o caminho de resposta
-        URI uri = URI.create("/pacienteCadastrado");
-        return Response.created(uri).build();
+
+        return consultas;
     }
 }
