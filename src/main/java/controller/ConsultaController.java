@@ -10,12 +10,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import model.ConsultaModel;
-import model.entidades.Consulta;
-import model.entidades.Especialidade;
-import model.entidades.Prioridade;
-import model.entidades.Status;
 
 /**
  *
@@ -30,97 +26,95 @@ public class ConsultaController implements Serializable {
 
     @PostConstruct
     public void init() {
-	consulta = new Consulta();
-	model = new ConsultaModel();
+        consulta = new Consulta();
+        model = new ConsultaModel();
     }
 
     public ConsultaController() {
     }
 
     public Prioridade[] getPrioridade() {
-	return Prioridade.values();
+        return Prioridade.values();
     }
 
     public Especialidade[] getEspecialidade() {
-	return Especialidade.values();
+        return Especialidade.values();
     }
 
-    <<<<<<< HEAD
-
     public Status[] getStatus() {
-	return Status.values();
+        return Status.values();
     }
 
     public void cadastrar() {
-	if (model.cadastrar(consulta)) {
-	    FacesContext.getCurrentInstance().addMessage(
-		    null,
-		    new FacesMessage(
-			    FacesMessage.SEVERITY_INFO,
-			    "Sucesso, consulta cadastrada",
-			    null
-		    )
-	    );
-	    limpar();
-	}
+        if (model.cadastrar(consulta)) {
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(
+                            FacesMessage.SEVERITY_INFO,
+                            "Sucesso, consulta cadastrada",
+                            null
+                    )
+            );
+            limpar();
+        }
     }
 
     public void alterar() {
-	if (model.alterar(consulta)) {
-	    FacesContext.getCurrentInstance().addMessage(
-		    null,
-		    new FacesMessage(
-			    FacesMessage.SEVERITY_INFO,
-			    "Sucesso, consulta alterada",
-			    null
-		    )
-	    );
-	}
+        if (model.alterar(consulta)) {
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(
+                            FacesMessage.SEVERITY_INFO,
+                            "Sucesso, consulta alterada",
+                            null
+                    )
+            );
+        }
     }
 
     public void cancelar() {
-	if (model.cancelar(consulta)) {
-	    FacesContext.getCurrentInstance().addMessage(
-		    null,
-		    new FacesMessage(
-			    FacesMessage.SEVERITY_INFO,
-			    "Sucesso, consulta cancelada",
-			    null
-		    )
-	    );
-	}
+        if (model.cancelar(consulta)) {
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(
+                            FacesMessage.SEVERITY_INFO,
+                            "Sucesso, consulta cancelada",
+                            null
+                    )
+            );
+        }
     }
 
     public void cancelar(Consulta consulta) {
-	if (model.cancelar(consulta)) {
-	    FacesContext.getCurrentInstance().addMessage(
-		    null,
-		    new FacesMessage(
-			    FacesMessage.SEVERITY_INFO,
-			    "Sucesso, consulta cancelada",
-			    null
-		    )
-	    );
-	}
+        if (model.cancelar(consulta)) {
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(
+                            FacesMessage.SEVERITY_INFO,
+                            "Sucesso, consulta cancelada",
+                            null
+                    )
+            );
+        }
     }
 
     public Consulta buscar(int id) {
-	return model.buscar(id);
+        return model.buscar(id);
     }
 
     public List<Consulta> buscarTodos() {
-	return model.buscarTodos();
+        return model.buscarTodos();
     }
 
     public Consulta getConsulta() {
-	return consulta;
+        return consulta;
     }
 
     public void setConsulta(Consulta consulta) {
-	this.consulta = consulta;
+        this.consulta = consulta;
     }
 
     public void limpar() {
-	this.consulta = new Consulta();
+        this.consulta = new Consulta();
     }
 }
