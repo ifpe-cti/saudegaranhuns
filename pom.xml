@@ -42,17 +42,37 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.2.12.Final</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator-annotation-processor -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator-annotation-processor</artifactId>
+            <version>6.0.4.Final</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.dbunit/dbunit -->
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>2.5.4</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.44</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-impl -->
-        <dependency>
-            <groupId>com.sun.faces</groupId>
-            <artifactId>jsf-impl</artifactId>
-            <version>2.2.15</version>
-        </dependency>
+        </dependency> 
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -118,7 +138,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+            <!--plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.7.8</version>
@@ -132,7 +152,7 @@
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
-                    <!--
+
                     <execution>
                         <id>jacoco-check</id>
                         <phase>test</phase>
@@ -179,16 +199,17 @@
                             </rules>
                         </configuration>
                     </execution>
-                    -->
-                    <execution>
-                        <id>jacoco-site</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+
+                        <execution>
+                            <id>jacoco-site</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            -->
         </plugins>
     </build>
     <profiles>
@@ -236,3 +257,6 @@
         </profile>
     </profiles>
 </project>
+
+</project>
+
