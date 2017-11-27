@@ -65,7 +65,7 @@
             <artifactId>jaxrs-ri</artifactId>
             <version>2.26</version>
         </dependency>
-         <dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
