@@ -36,30 +36,6 @@ public class ConsultaController implements Serializable {
     }
 
     public ConsultaController() {
-<<<<<<< HEAD
-        System.out.println("construtor controller");
-        consulta = new Consulta();
-        model = new ConsultaModel();
-    }
-
-    public void cadastrar() {
-        System.out.println("cadastro controller");
-        if (model.cadastrar(consulta)) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Consulta cadastrada"));
-        }
-    }
-
-    public void alterar() {
-        if (model.alterar(consulta)) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Consulta alterada"));
-        }
-    }
-
-    public void deletar() {
-        if (model.deletar(consulta)) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Consulta deletada"));
-        }
-=======
 	consulta = new Consulta();
 	model = new ConsultaModel();
     }
@@ -101,7 +77,6 @@ public class ConsultaController implements Serializable {
 		    )
 	    );
 	}
->>>>>>> Adicionando mensagem de confirmação e ajustando telas de acordo com o diagrama de classes
     }
 
     public Consulta buscar(int id) {
@@ -117,13 +92,7 @@ public class ConsultaController implements Serializable {
     }
 
     public void setConsulta(Consulta consulta) {
-<<<<<<< HEAD
-        System.out.println("setconsulta controller");
-        System.out.println(consulta.toString());
-        this.consulta = consulta;
-=======
 	this.consulta = consulta;
->>>>>>> Adicionando mensagem de confirmação e ajustando telas de acordo com o diagrama de classes
     }
 
 }
