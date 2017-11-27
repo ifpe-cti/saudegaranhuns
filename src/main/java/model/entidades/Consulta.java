@@ -26,6 +26,9 @@ public class Consulta {
     private Especialidade especialidade;
     private LocalDate agendamento;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> resolvendo conflitos 5/9
     private LocalDate solicitacao;
 
     public Consulta() {
@@ -163,6 +166,7 @@ public class Consulta {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         return "Consulta{" + "id=" + id + ", status=" + status + ", prioridade=" + prioridade + ", especialidade=" + especialidade + ", agendamento=" + agendamento + '}';
 =======
 	return "Consulta{" + "id=" + id + ", status=" + status + ", prioridade=" + prioridade + ", especialidade=" + especialidade + ", agendamento=" + agendamento + ", solicitacao=" + solicitacao + '}';
@@ -173,6 +177,12 @@ public class Consulta {
 =======
         return "Consulta{" + "id=" + id + ", status=" + status + ", prioridade=" + prioridade + ", especialidade=" + especialidade + ", agendamento=" + agendamento + '}';
 >>>>>>> Adaptando ao diagrama de classes
+=======
+        return "Consulta{" + "id=" + id + ", status=" + status + ", prioridade=" + prioridade + ", especialidade=" + especialidade + ", agendamento=" + agendamento + '}';
+=======
+	return "Consulta{" + "id=" + id + ", status=" + status + ", prioridade=" + prioridade + ", especialidade=" + especialidade + ", agendamento=" + agendamento + ", solicitacao=" + solicitacao + '}';
+>>>>>>> Adicionando mensagem de confirmação e ajustando telas de acordo com o diagrama de classes
+>>>>>>> resolvendo conflitos 5/9
     }
 
 }

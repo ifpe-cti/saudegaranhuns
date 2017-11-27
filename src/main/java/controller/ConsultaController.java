@@ -441,6 +441,7 @@ public class ConsultaController implements Serializable {
     }
 
     public ConsultaController() {
+<<<<<<< HEAD
         System.out.println("construtor controller");
         consulta = new Consulta();
         model = new ConsultaModel();
@@ -463,6 +464,49 @@ public class ConsultaController implements Serializable {
         if (model.deletar(consulta)) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Consulta deletada"));
         }
+=======
+	consulta = new Consulta();
+	model = new ConsultaModel();
+    }
+
+    public void cadastrar() {
+	if (model.cadastrar(consulta)) {
+	    FacesContext.getCurrentInstance().addMessage(
+		    null,
+		    new FacesMessage(
+			    FacesMessage.SEVERITY_INFO,
+			    "Sucesso, consulta cadastrada",
+			    null
+		    )
+	    );
+	}
+    }
+
+    public void alterar() {
+	if (model.alterar(consulta)) {
+	    FacesContext.getCurrentInstance().addMessage(
+		    null,
+		    new FacesMessage(
+			    FacesMessage.SEVERITY_INFO,
+			    "Sucesso, consulta alterada",
+			    null
+		    )
+	    );
+	}
+    }
+
+    public void cancelar() {
+	if (model.cancelar(consulta)) {
+	    FacesContext.getCurrentInstance().addMessage(
+		    null,
+		    new FacesMessage(
+			    FacesMessage.SEVERITY_INFO,
+			    "Sucesso, consulta cancelada",
+			    null
+		    )
+	    );
+	}
+>>>>>>> Adicionando mensagem de confirmação e ajustando telas de acordo com o diagrama de classes
     }
 
     public Consulta buscar(int id) {
@@ -478,9 +522,13 @@ public class ConsultaController implements Serializable {
     }
 
     public void setConsulta(Consulta consulta) {
+<<<<<<< HEAD
         System.out.println("setconsulta controller");
         System.out.println(consulta.toString());
         this.consulta = consulta;
+=======
+	this.consulta = consulta;
+>>>>>>> Adicionando mensagem de confirmação e ajustando telas de acordo com o diagrama de classes
     }
 
 }

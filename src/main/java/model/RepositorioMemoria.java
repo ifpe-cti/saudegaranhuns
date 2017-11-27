@@ -6,9 +6,12 @@
 package model;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import java.time.LocalDate;
 >>>>>>> Classes de suporte, serão apagadas
+=======
+>>>>>>> resolvendo conflitos 5/9
 import java.util.ArrayList;
 import java.util.List;
 import model.entidades.Consulta;
@@ -29,6 +32,9 @@ public class RepositorioMemoria {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> resolvendo conflitos 5/9
         System.out.println("construtor repotorio");
         consultas = new ArrayList();
         consultas.add(new Consulta(1, Status.PENDENTE, Prioridade.IDOSO, Especialidade.DENTISTA, LocalDate.now()));
@@ -45,6 +51,7 @@ public class RepositorioMemoria {
 	consultas.add(new Consulta(4, Prioridade.NENHUMA, Especialidade.DENTISTA));
 	consultas.add(new Consulta(5, Prioridade.BEBEDECOLO, Especialidade.OUTROS));
 >>>>>>> Adicionando mensagem de confirmação e ajustando telas de acordo com o diagrama de classes
+<<<<<<< HEAD
     }
 
     public static RepositorioMemoria getInstance() {
@@ -145,6 +152,8 @@ public class RepositorioMemoria {
         consultas.add(new Consulta(4, Status.CANCELADO, Prioridade.GESTANTE, Especialidade.DENTISTA, LocalDate.now()));
         consultas.add(new Consulta(5, Status.PENDENTE, Prioridade.NENHUMA, Especialidade.OUTROS, LocalDate.now()));
 >>>>>>> Adaptando ao diagrama de classes
+=======
+>>>>>>> resolvendo conflitos 5/9
     }
 
     public static RepositorioMemoria getInstance() {
@@ -156,6 +165,7 @@ public class RepositorioMemoria {
     }
 
     public boolean cadastrar(Consulta consulta) {
+<<<<<<< HEAD
         consultas.add(consulta);
         System.out.println("cadastro repositorio");
         System.out.println(consulta.toString());
@@ -176,6 +186,32 @@ public class RepositorioMemoria {
             }
         }
         return true;
+=======
+	System.out.println("cadastro repositorio");
+	System.out.println(consulta.toString());
+	return consultas.add(consulta);
+    }
+
+    public boolean cancelar(Consulta consulta) {
+	for (Consulta objeto : consultas) {
+	    if (objeto.getId() == consulta.getId()) {
+		objeto.setStatus(Status.CANCELADO);
+		return true;
+	    }
+	}
+	return false;
+    }
+
+    public boolean alterar(Consulta consulta) {
+	for (Consulta objeto : consultas) {
+	    if (objeto.getId() == consulta.getId()) {
+		objeto.setPrioridade(consulta.getPrioridade());
+		objeto.setEspecialidade(consulta.getEspecialidade());
+		return true;
+	    }
+	}
+	return false;
+>>>>>>> Adicionando mensagem de confirmação e ajustando telas de acordo com o diagrama de classes
     }
 
     public Consulta buscar(int id) {

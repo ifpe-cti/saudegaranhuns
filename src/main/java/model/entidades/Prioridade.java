@@ -10,5 +10,19 @@ package model.entidades;
  * @author Fernando
  */
 public enum Prioridade {
-    NENHUMA, IDOSO, DEFICIENTEFISICO, BEBEDECOLO, GESTANTE
+    NENHUMA("Nenhuma"),
+    IDOSO("Idoso"),
+    DEFICIENTEFISICO("Deficiente fisíco"),
+    BEBEDECOLO("Bebê de colo"),
+    GESTANTE("Gestate");
+
+    private String label;
+
+    private Prioridade(String label) {
+	this.label = label;
+    }
+
+    public String getLabel() {
+	return label;
+    }
 }

@@ -34,6 +34,7 @@
 	    <p:fieldset legend="Cadasto de consulta">
 		<p:panelGrid columns="2">
 		    <p:outputLabel for="radioPrioridade" value="Prioridade:" />
+<<<<<<< HEAD
 		    <p:selectOneRadio value="#{consultaController.consulta.prioridade}"
 				      id="radioPrioridade" required="true"
 				      requiredMessage="Campo prioridade obrigátorio">
@@ -57,10 +58,27 @@
 			     message="Caso escolha cancelar, os dados que não foram salvos, serão
 			     perdidos" >
 		<p:button href="listagem-consulta.xhtml" value="Sim"/>
+=======
+		    <p:selectOneRadio value="#{consultaController.consulta.prioridade}" id="radioPrioridade" required="true" requiredMessage="Campo prioridade obrigátorio">
+			<f:selectItems value="#{consultaController.prioridade}" var="prioridade" itemLabel="#{prioridade.label}" itemValue="#{prioridade}"/>
+		    </p:selectOneRadio>
+		    <p:outputLabel for="radioEspecialidade" value="Especialidade:" />
+		    <p:selectOneRadio value="#{consultaController.consulta.especialidade}" id="radioEspecialidade" required="true" requiredMessage="Campo especialidade obrigátorio">
+			<f:selectItems value="#{consultaController.especialidade}" var="especialidade" itemLabel="#{especialidade.label}" itemValue="#{especialidade}"/>
+		    </p:selectOneRadio>
+		</p:panelGrid>
+		<br></br>
+		<p:commandButton actionListener="#{consultaController.cadastrar()}" value="Cadastrar" update="growl"/>
+		<p:commandButton oncomplete="PF('confDialCancelar').show()" value="Cancelar"/>
+	    </p:fieldset>
+	    <p:confirmDialog header="Deseja cancelar?" message="Caso escolha cancelar os dados não salvos serão perdidos" widgetVar="confDialCancelar">
+		<p:button href="index.html" value="Sim"/>
+>>>>>>> resolvendo conflitos 5/9
 		<p:commandButton oncomplete="PF('confDialCancelar').hide()" value="Não"/>
 	    </p:confirmDialog>
 	</h:form>
 >>>>>>> Adicionando mensagem de confirmação e ajustando telas de acordo com o diagrama de classes
+<<<<<<< HEAD
 =======
     <h:body>
 <<<<<<< HEAD
@@ -103,6 +121,8 @@
             </p:fieldset>
         </h:form>
 >>>>>>> Adaptando ao diagrama de classes
+=======
+>>>>>>> resolvendo conflitos 5/9
     </h:body>
 </html>
 
