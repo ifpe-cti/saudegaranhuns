@@ -10,25 +10,6 @@
 <<<<<<< HEAD
     <f:event listener="#{consultaController.limpar()}" type="preRenderView"/>
     <h:body>
-<<<<<<< HEAD
-        <p:growl autoUpdate="true" sticky="true"/>
-        <h:form>
-            <p:fieldset legend="Cadasto de consulta">
-                <p:panelGrid columns="2">
-                    <p:outputLabel for="radioPrioridade" value="Prioridade:" />
-                    <p:selectOneRadio value="#{consultaController.consulta.prioridade}" id="radioPrioridade" required="true" requiredMessage="Campo prioridade obrigátio">
-                        <f:selectItems value="#{consultaController.prioridade}" var="prioridade" itemLabel="#{prioridade}" itemValue="#{prioridade}"/>
-                    </p:selectOneRadio>
-                    <p:outputLabel for="radioEspecialidade" value="Especialidade:" />
-                    <p:selectOneRadio value="#{consultaController.consulta.especialidade}" id="radioEspecialidade" required="true" requiredMessage="Campo especialidade obrigátio">
-                        <f:selectItems value="#{consultaController.especialidade}" var="especialidade" itemLabel="#{especialidade}" itemValue="#{especialidade}"/>
-                    </p:selectOneRadio>
-                </p:panelGrid>
-                <br></br>
-                <p:commandButton actionListener="#{consultaController.cadastrar()}" value="Cadastrar"/>
-            </p:fieldset>
-        </h:form>
-=======
 	<p:growl id='growl'/>
 	<h:form>
 	    <p:fieldset legend="Cadasto de consulta">
@@ -77,6 +58,7 @@
 		<p:commandButton oncomplete="PF('confDialCancelar').hide()" value="Não"/>
 	    </p:confirmDialog>
 	</h:form>
+<<<<<<< HEAD
 >>>>>>> Adicionando mensagem de confirmação e ajustando telas de acordo com o diagrama de classes
 <<<<<<< HEAD
 =======
@@ -123,6 +105,8 @@
 >>>>>>> Adaptando ao diagrama de classes
 =======
 >>>>>>> resolvendo conflitos 5/9
+=======
+>>>>>>> resolvendo conflitos ultimo passo
     </h:body>
 </html>
 
