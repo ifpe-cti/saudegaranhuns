@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Saúde Garanhuns</title>
+    </h:head>
+    <h:body>
+        <p:growl autoUpdate="true"/>
+        <h:form>
+            <p:dataTable var="consulta" value="#{consultaController.buscarTodos()}"
+                         emptyMessage="Nenhuma consulta cadastrada" paginator="true"
+                         rows="10" paginatorTemplate="{FirstPageLink} {PreviousPageLink}
+                         {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+                <p:column filterBy="#{consulta.status.label}" headerText="Status">
+                    #{consulta.status.label}
+                </p:column>
+                <p:column filterBy="#{consulta.agendamento}" headerText="Agendamento">
+                    #{consulta.agendamento}
+                </p:column>
+                <p:column filterBy="#{consulta.especialidade.label}" headerText="Especialidade">
+                    #{consulta.especialidade.label}
+                </p:column>
+                <p:column filterBy="#{consulta.prioridade.label}" headerText="Prioridade">
+                    #{consulta.prioridade.label}
+                </p:column>
+                <p:column filterBy="#{consulta.solicitacao}" headerText="Solicitação">
+                    #{consulta.solicitacao}
+                </p:column>
+                <p:column width="250" headerText="Opções">
+                    <center>
+                        <p:commandButton value="Visualizar"
+                                         actionListener="#{consultaController.setConsulta(consulta)}"
+                                         oncomplete="PF('dialogVisualizar').show()" update="@form"/>
+                        <p:commandButton value="Cancelar"
+                                         actionListener="#{consultaController.setConsulta(consulta)}"
+                                         oncomplete="PF('confDialCancelar').show()"/>
+                    </center>
+                </p:column>
+            </p:dataTable>
+            <p:dialog header="Dados da consulta" widgetVar="dialogVisualizar" draggable="false"
+                      modal="true" resizable="false">
+                <p:panelGrid columns="2">
+                    <p:outputLabel title="Status" value="Status"/>
+                    <p:outputLabel value="#{consultaController.consulta.status.label}"/>
+                    <p:outputLabel value="Prioridade"/>
+                    <p:outputLabel value="#{consultaController.consulta.prioridade.label}"/>
+                    <p:outputLabel value="Especialidade"/>
+                    <p:outputLabel value="#{consultaController.consulta.especialidade.label}"/>
+                    <p:outputLabel value="Data da solicitação"/>
+                    <p:outputLabel value="#{consultaController.consulta.solicitacao}"/>
+                    <p:outputLabel value="Data do agendamento"/>
+                    <p:outputLabel value="#{consultaController.consulta.agendamento}"/>
+                </p:panelGrid>
+            </p:dialog>
+            <p:confirmDialog widgetVar="confDialCancelar" header="Deseja cancelar?"
+                             message="Caso escolha cancelar, essa ação não poderá ser desfeita.">
+                <p:commandButton action="#{consultaController.cancelar()}"  value="Sim"
+                                 oncomplete="PF('confDialCancelar').hide()" update="@form"/>
+                <p:commandButton oncomplete="PF('confDialCancelar').hide()" value="Não"/>
+            </p:confirmDialog>
+        </h:form>
+    </h:body>
+</html>
+
