@@ -20,8 +20,13 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 =======
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+<<<<<<< HEAD
 >>>>>>> Adicionando cadastro e alteração de consulta
+=======
+import javax.faces.context.FacesContext;
+>>>>>>> resolvendo conflitos
 import model.ConsultaModel;
 import model.entidades.Consulta;
 import model.entidades.Especialidade;
@@ -428,48 +433,54 @@ public class ConsultaController implements Serializable {
 >>>>>>> comentando codigo do controller
 =======
     public Prioridade[] getPrioridade() {
-	return Prioridade.values();
+        return Prioridade.values();
     }
 
     public Especialidade[] getEspecialidade() {
-	return Especialidade.values();
+        return Especialidade.values();
     }
 
     public ConsultaController() {
-	System.out.println("construtor controller");
-	consulta = new Consulta();
-	model = new ConsultaModel();
+        System.out.println("construtor controller");
+        consulta = new Consulta();
+        model = new ConsultaModel();
     }
 
     public void cadastrar() {
-	System.out.println("cadastro controller");
-	model.cadastrar(consulta);
+        System.out.println("cadastro controller");
+        if (model.cadastrar(consulta)) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Consulta cadastrada"));
+        }
     }
 
     public void alterar() {
-	model.alterar(consulta);
+        if (model.alterar(consulta)) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Consulta alterada"));
+        }
     }
 
     public void deletar() {
-	model.deletar(consulta);
+        if (model.deletar(consulta)) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Consulta deletada"));
+        }
     }
 
     public Consulta buscar(int id) {
-	return model.buscar(id);
+        return model.buscar(id);
     }
 
     public List<Consulta> buscarTodos() {
-	return model.buscarTodos();
+        return model.buscarTodos();
     }
 
     public Consulta getConsulta() {
-	return consulta;
+        return consulta;
     }
 
     public void setConsulta(Consulta consulta) {
-	System.out.println("setconsulta controller");
-	System.out.println(consulta.toString());
-	this.consulta = consulta;
+        System.out.println("setconsulta controller");
+        System.out.println(consulta.toString());
+        this.consulta = consulta;
     }
 
 }

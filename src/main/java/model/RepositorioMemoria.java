@@ -28,6 +28,7 @@ public class RepositorioMemoria {
     public RepositorioMemoria() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         System.out.println("construtor repotorio");
         consultas = new ArrayList();
         consultas.add(new Consulta(1, Status.PENDENTE, Prioridade.IDOSO, Especialidade.DENTISTA, LocalDate.now()));
@@ -127,49 +128,65 @@ public class RepositorioMemoria {
 	consultas.add(new Consulta(3, "blabla", Status.PENDENTE, Prioridade.DEFICIENTEFISICO, Especialidade.DENTISTA, LocalDate.now()));
 	consultas.add(new Consulta(4, "blabla", Status.CANCELADO, Prioridade.GESTANTE, Especialidade.DENTISTA, LocalDate.now()));
 	consultas.add(new Consulta(5, "blabla", Status.PENDENTE, Prioridade.NENHUMA, Especialidade.OUTROS, LocalDate.now()));
+=======
+        System.out.println("construtor repotorio");
+        consultas = new ArrayList();
+        consultas.add(new Consulta(1, "blabla", Status.PENDENTE, Prioridade.IDOSO, Especialidade.DENTISTA, LocalDate.now()));
+        consultas.add(new Consulta(2, "blabla", Status.CONSULTADO, Prioridade.BEBEDECOLO, Especialidade.OUTROS, LocalDate.now()));
+        consultas.add(new Consulta(3, "blabla", Status.PENDENTE, Prioridade.DEFICIENTEFISICO, Especialidade.DENTISTA, LocalDate.now()));
+        consultas.add(new Consulta(4, "blabla", Status.CANCELADO, Prioridade.GESTANTE, Especialidade.DENTISTA, LocalDate.now()));
+        consultas.add(new Consulta(5, "blabla", Status.PENDENTE, Prioridade.NENHUMA, Especialidade.OUTROS, LocalDate.now()));
+>>>>>>> resolvendo conflitos
     }
 
     public static RepositorioMemoria getInstance() {
-	System.out.println("getinstance");
-	if (self == null) {
-	    self = new RepositorioMemoria();
-	}
-	return self;
+        System.out.println("getinstance");
+        if (self == null) {
+            self = new RepositorioMemoria();
+        }
+        return self;
     }
 
-    public void cadastrar(Consulta consulta) {
-	consultas.add(consulta);
-	System.out.println("cadastro repositorio");
-	System.out.println(consulta.toString());
+    public boolean cadastrar(Consulta consulta) {
+        consultas.add(consulta);
+        System.out.println("cadastro repositorio");
+        System.out.println(consulta.toString());
+        return true;
     }
 
-    public void deletar(Consulta consulta) {
-	consultas.remove(consulta);
+    public boolean deletar(Consulta consulta) {
+        consultas.remove(consulta);
+        return true;
     }
 
-    public void alterar(Consulta consulta) {
-	for (Consulta objeto : consultas) {
-	    if (objeto.getId() == consulta.getId()) {
-		objeto.setObservacao(consulta.getObservacao());
-		objeto.setStatus(consulta.getStatus());
-		objeto.setPrioridade(consulta.getPrioridade());
-		objeto.setEspecialidade(consulta.getEspecialidade());
-	    }
-	}
+    public boolean alterar(Consulta consulta) {
+        for (Consulta objeto : consultas) {
+            if (objeto.getId() == consulta.getId()) {
+                objeto.setObservacao(consulta.getObservacao());
+                objeto.setStatus(consulta.getStatus());
+                objeto.setPrioridade(consulta.getPrioridade());
+                objeto.setEspecialidade(consulta.getEspecialidade());
+            }
+        }
+        return true;
     }
 
     public Consulta buscar(int id) {
-	for (Consulta consulta : consultas) {
-	    if (consulta.getId() == id) {
-		return consulta;
-	    }
-	}
-	return null;
+        for (Consulta consulta : consultas) {
+            if (consulta.getId() == id) {
+                return consulta;
+            }
+        }
+        return null;
     }
 
     public List<Consulta> buscarTodos() {
+<<<<<<< HEAD
 	return consultas;
 >>>>>>> Classes de suporte, serão apagadas
+=======
+        return consultas;
+>>>>>>> resolvendo conflitos
     }
 
 }
