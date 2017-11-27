@@ -10,5 +10,16 @@ package model.entidades;
  * @author Fernando
  */
 public enum Especialidade {
-    DENTISTA, OUTROS
+    DENTISTA("Dentista"),
+    OUTROS("Outros");
+
+    private String label;
+
+    private Especialidade(String label) {
+	this.label = label;
+    }
+
+    public String getLabel() {
+	return label;
+    }
 }
