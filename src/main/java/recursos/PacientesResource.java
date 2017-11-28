@@ -14,6 +14,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import model.DAO.hibernate.PacienteHibernate;
+import model.POJO.Paciente;
 
 /**
  * REST Web Service
