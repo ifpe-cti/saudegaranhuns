@@ -13,7 +13,7 @@ import javax.ws.rs.core.Application;
  *
  * @author Jose Junio
  */
-@javax.ws.rs.ApplicationPath("webresources")
+@javax.ws.rs.ApplicationPath("psf")
 public class ApplicationConfig extends Application {
 
     @Override
@@ -36,6 +36,7 @@ public class ApplicationConfig extends Application {
      * out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(br.edu.ifpe.garanhuns.sg.recursos.ConsultasResource.class);
         resources.add(br.edu.ifpe.garanhuns.sg.recursos.PacientesResource.class);
         resources.add(org.glassfish.jersey.server.wadl.internal.WadlResource.class);
     }
