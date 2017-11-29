@@ -3,40 +3,93 @@
 left to right direction
 skinparam classAttributeIconSize 0
 
+enum Especialidade {
+}
+
+enum Prioridade {
+}
+
+enum Status {
+}
+
+enum Dia {
+  DOMINGO
+  SEGUNDA
+  TERCA
+  QUARTA
+  QUINTA
+  SEXTA
+  SABADO
+}
+
 class Usuario {
-  -login
-  -senha
+  -String login
+  -String senha
 }
 
 class Paciente {
-  -nome
-  -cartaoSus
-  -dataNascimento 
+  -String nome
+  -String cartaoSus
+  -LocalDate dataNascimento 
 }
 
 class Endereco {
-  -logradouro
-  -numero
+  -String logradouro
+  -String numero
 }
 
 class Bairro {
-  -nome
+  -String nome
 }
 
 class Atendente {
-  -nome
+  -String nome
 }
 
 class PostoSaude {
-  -nome
+  -String nome
 }
 
+class Consulta {
+  -LocalDate dataSolicitacao
+  -LocalDate dataAgendamento
+}
+
+class FilaAtendimento {
+  -LocalDate data
+}
+
+class Atendimento {
+}
+
+class HorarioAtendimento {
+  -String horaInicio
+  -String horaFim
+  -int quantidade
+}
+
+Consulta --> Especialidade
+Consulta --> Prioridade
+Consulta --> Status
+Consulta --> Paciente
+
+Paciente --> PostoSaude
 Paciente --> Endereco
+Paciente --> Usuario
+
+Atendente --> PostoSaude
+Atendente --> Usuario
+
+FilaAtendimento --> Consulta
+
+PostoSaude --> Endereco
+
 Endereco --> Bairro
-Bairro --> PostoSaude
-PostoSaude --> Paciente
-PostoSaude --> Atendente
-Usuario --> Paciente
-Usuario --> Atendente
+
+Atendimento --> Especialidade
+Atendimento --> PostoSaude
+
+HorarioAtendimento --> Dia
+HorarioAtendimento --> Atendimento
 
 @enduml
