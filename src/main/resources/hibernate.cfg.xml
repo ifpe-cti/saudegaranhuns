@@ -51,16 +51,16 @@ Contributor(s):
         <property name="hbm2ddl.auto">create</property>
         <property name="show_sql">true</property>
         
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.Bairro" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.Endereco" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.Usuario" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.PostoSaude" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.Atendente" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.Paciente" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.Consulta" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.FilaAtendimento" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.Atendimento" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.HorarioAtendimento" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.Bairro" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.Endereco" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.Usuario" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.PostoSaude" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.Atendente" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.Paciente" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.Consulta" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.FilaAtendimento" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.Atendimento" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento" />
         
     </session-factory>
 </hibernate-configuration>
