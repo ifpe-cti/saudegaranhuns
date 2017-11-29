@@ -12,5 +12,5 @@ import br.edu.ifpe.garanhuns.sg.model.pojo.Usuario;
  * @author Herikles
  */
 public interface UsuarioDAO extends DAO<Usuario>{
-    public void deleteOnCascade(Usuario u);
+    public void deletarEmCascata(Usuario u);
 }

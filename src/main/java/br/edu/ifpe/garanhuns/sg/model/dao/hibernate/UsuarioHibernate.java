@@ -93,7 +93,7 @@ public class UsuarioHibernate implements UsuarioDAO {
     }
 
     @Override
-    public void deleteOnCascade(Usuario u) {
+    public void deletarEmCascata(Usuario u) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
