@@ -40,6 +40,9 @@
   $ mvn clean package -Pdocs
   ```
 
+### Diagrama de Classes
+  ![DiagramaDeClasses](docs/uml/saudegaranhuns-classes.png)
+
 
 ## Convenções
 
