@@ -7,11 +7,15 @@ package br.edu.ifpe.garanhuns.sg.recursos;
 
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
 import br.edu.ifpe.garanhuns.sg.model.pojo.Consulta;
+import br.edu.ifpe.garanhuns.sg.model.pojo.Paciente;
 import com.google.gson.Gson;
 import java.net.URI;
+import java.util.List;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -39,6 +43,20 @@ public class ConsultasResource {
      *
      * @return an instance of java.lang.String
      */
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public List<Consulta> recuperarConsultasPorPaciente(String pacienteJason) {
+
+        Gson gson = new Gson();
+
+        List<Consulta> consultas = new ConsultaHibernate().
+                recuperarConsultasPorPaciente(gson.fromJson(
+                        pacienteJason, Paciente.class));
+
+        return consultas;
+    }
+
     /**
      * PUT method for updating or creating an instance of ConsultasResource
      *
