@@ -33,6 +33,14 @@
   5. Sincronize o seu repositório remoto com o seu local (`$ git push origin master`)
 
 
+## Documentação
+
+  A documentação do sistema é composta do arquivo README.md (este arquivo) e dos diagramas UML que são gerados pelo [PlantUML](http://plantuml.com) que estão armazenados na pasta `docs/uml`. Caso precise gerar a documentação, deverá utilizar o seguinte comando:  
+  ```
+  $ mvn clean package -Pdocs
+  ```
+
+
 ## Convenções
 
   - Utilizar notação camelCase
