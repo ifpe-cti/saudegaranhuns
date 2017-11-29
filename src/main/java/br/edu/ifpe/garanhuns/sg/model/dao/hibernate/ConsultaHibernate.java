@@ -26,7 +26,7 @@ public class ConsultaHibernate implements ConsultaDAO {
         PacienteHibernate pH = new PacienteHibernate();
         try {
             session.beginTransaction();
-            Paciente p = pH.readByName((o.getPaciente()).getNome());
+            Paciente p = pH.recuperarPorNome((o.getPaciente()).getNome());
             if (p == null) {
                 pH.inserir(o.getPaciente());
             } else {
@@ -48,7 +48,7 @@ public class ConsultaHibernate implements ConsultaDAO {
         PacienteHibernate pH = new PacienteHibernate();
         try {
             session.beginTransaction();
-            Paciente p = pH.readByName((o.getPaciente()).getNome());
+            Paciente p = pH.recuperarPorNome((o.getPaciente()).getNome());
             if (p == null) {
                 pH.inserir(o.getPaciente());
             } else {

@@ -113,7 +113,7 @@ public class PacienteHibernate implements PacienteDAO {
     }
 
     @Override
-    public Paciente readByName(String name) {
+    public Paciente recuperarPorNome(String name) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
