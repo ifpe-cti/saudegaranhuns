@@ -6,6 +6,7 @@
 package br.edu.ifpe.garanhuns.sg.recursos;
 
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
 import br.edu.ifpe.garanhuns.sg.model.pojo.Consulta;
 import br.edu.ifpe.garanhuns.sg.model.pojo.Paciente;
 import com.google.gson.Gson;
@@ -15,6 +16,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -43,16 +45,15 @@ public class ConsultasResource {
      *
      * @return an instance of java.lang.String
      */
+    @Path("{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public List<Consulta> recuperarConsultasPorPaciente(String pacienteJason) {
+    public List<Consulta> recuperarConsultasPorPaciente(@PathParam("id") String id) {
 
-        Gson gson = new Gson();
+        Paciente paciente = new PacienteHibernate().read(Integer.parseInt(id));
 
         List<Consulta> consultas = new ConsultaHibernate().
-                recuperarConsultasPorPaciente(gson.fromJson(
-                        pacienteJason, Paciente.class));
+                recuperarConsultasPorPaciente(paciente);
 
         return consultas;
     }
