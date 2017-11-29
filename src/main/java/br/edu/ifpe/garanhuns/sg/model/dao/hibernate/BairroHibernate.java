@@ -105,7 +105,7 @@ public class BairroHibernate implements BairroDAO {
         List<PostoSaude> todosPostos = ps.recuperarTodos();
         for (Endereco e : todosEnderecos) {
             if (e.getBairro().getNome().equals(b.getNome())) {
-                eh.deleteOnCascade(e);
+                eh.deletarEmCascata(e);
             }
         }
         for (PostoSaude p : todosPostos) {

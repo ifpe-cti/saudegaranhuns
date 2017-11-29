@@ -120,7 +120,7 @@ public class EnderecoHibernate implements EnderecoDAO {
     }
 
     @Override
-    public void deleteOnCascade(Endereco b) {
+    public void deletarEmCascata(Endereco b) {
         PacienteHibernate ph = new PacienteHibernate();
         
         List<Paciente> todosPacientes = ph.recuperarTodos();
@@ -135,7 +135,7 @@ public class EnderecoHibernate implements EnderecoDAO {
     }
 
     @Override
-    public Endereco readByName(String name) {
+    public Endereco recuperarPorNome(String name) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();

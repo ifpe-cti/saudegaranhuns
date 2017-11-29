@@ -27,7 +27,7 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
         
         try {
             session.beginTransaction();
-            Endereco b = eh.readByName(o.getEndereco().getLogradouro());
+            Endereco b = eh.recuperarPorNome(o.getEndereco().getLogradouro());
             if (b == null) {
                 eh.inserir(o.getEndereco());
                 session.save(o);
@@ -51,7 +51,7 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
         EnderecoHibernate eh = new EnderecoHibernate();
         try {
             session.beginTransaction();
-            Endereco b = eh.readByName(o.getEndereco().getLogradouro());
+            Endereco b = eh.recuperarPorNome(o.getEndereco().getLogradouro());
             if (b == null) {
                 eh.inserir(o.getEndereco());
                 session.update(o);
