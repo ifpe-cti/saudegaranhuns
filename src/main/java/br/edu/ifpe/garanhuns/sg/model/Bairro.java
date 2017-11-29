@@ -3,38 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpe.garanhuns.sg.model.pojo;
+package br.edu.ifpe.garanhuns.sg.model;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 /**
  *
  * @author Herikles
  */
 @Entity
-public class PostoSaude implements Serializable{
+public class Bairro implements Serializable{
     
     @Id
     @GeneratedValue
     private int id;
     private String nome;
-    @OneToOne
-    private Endereco endereco;
 
-    public PostoSaude() {
+    public Bairro() {
     }
 
-    public PostoSaude(String nome, Endereco endereco) {
+    public Bairro(String nome) {
         this.nome = nome;
-        this.endereco = endereco;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getNome() {
@@ -45,17 +37,8 @@ public class PostoSaude implements Serializable{
         this.nome = nome;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
     @Override
     public String toString() {
-        return "PostoSaude{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + '}';
-    }
-
+        return "Bairro{" + "nome=" + nome + '}';
+    }    
 }

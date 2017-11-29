@@ -5,7 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.sg.model.dao.interfaces;
 
-import br.edu.ifpe.garanhuns.sg.model.pojo.Paciente;
+import br.edu.ifpe.garanhuns.sg.model.Paciente;
 /**
  *
  * @author Herikles

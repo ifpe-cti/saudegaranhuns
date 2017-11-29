@@ -7,10 +7,10 @@ package br.edu.ifpe.garanhuns.sg.model.dao.hibernate;
 
 import java.util.List;
 import br.edu.ifpe.garanhuns.sg.model.dao.interfaces.PostoSaudeDAO;
-import br.edu.ifpe.garanhuns.sg.model.pojo.Atendente;
-import br.edu.ifpe.garanhuns.sg.model.pojo.Endereco;
-import br.edu.ifpe.garanhuns.sg.model.pojo.Paciente;
-import br.edu.ifpe.garanhuns.sg.model.pojo.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.Atendente;
+import br.edu.ifpe.garanhuns.sg.model.Endereco;
+import br.edu.ifpe.garanhuns.sg.model.Paciente;
+import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 

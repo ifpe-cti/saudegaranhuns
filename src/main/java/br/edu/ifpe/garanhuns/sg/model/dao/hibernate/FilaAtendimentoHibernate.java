@@ -7,7 +7,7 @@ package br.edu.ifpe.garanhuns.sg.model.dao.hibernate;
 
 import java.util.List;
 import br.edu.ifpe.garanhuns.sg.model.dao.interfaces.FilaAtandimentoDAO;
-import br.edu.ifpe.garanhuns.sg.model.pojo.FilaAtendimento;
+import br.edu.ifpe.garanhuns.sg.model.FilaAtendimento;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 
