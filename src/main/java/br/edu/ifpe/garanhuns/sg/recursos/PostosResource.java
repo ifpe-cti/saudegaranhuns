@@ -6,8 +6,7 @@
 package br.edu.ifpe.garanhuns.sg.recursos;
 
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PostoSaudeHibernate;
-import br.edu.ifpe.garanhuns.sg.model.pojo.PostoSaude;
-import java.util.List;
+import com.google.gson.Gson;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -40,7 +39,10 @@ public class PostosResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<PostoSaude> recuperarTodosOsPostos() {
-        return new PostoSaudeHibernate().recuperarTodos();
+    public String recuperarTodosOsPostos() {
+
+        Gson gson = new Gson();
+        return gson.toJson(new PostoSaudeHibernate().recuperarTodos());
+
     }
 }
