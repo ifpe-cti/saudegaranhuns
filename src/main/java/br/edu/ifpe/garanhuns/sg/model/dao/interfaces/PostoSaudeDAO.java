@@ -10,6 +10,6 @@ import br.edu.ifpe.garanhuns.sg.model.pojo.PostoSaude;
  *
  * @author Herikles */
 public interface PostoSaudeDAO extends DAO<PostoSaude>{
-    public PostoSaude readByName(String name);
-    public void deleteOnCascade(PostoSaude ps);
+    public PostoSaude recuperarPorNome(String name);
+    public void deletarEmCascata(PostoSaude ps);
 }

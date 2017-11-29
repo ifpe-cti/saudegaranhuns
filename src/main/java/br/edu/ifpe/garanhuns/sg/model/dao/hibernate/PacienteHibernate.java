@@ -27,7 +27,7 @@ public class PacienteHibernate implements PacienteDAO {
         try {
             session.beginTransaction();
             System.out.println("##########################################################################");
-            PostoSaude ps = ph.readByName(o.getPostoSaude().getNome());
+            PostoSaude ps = ph.recuperarPorNome(o.getPostoSaude().getNome());
             System.out.println("\n\n##########################################################################\n\n");
             if (ps == null) {
                 ph.inserir(o.getPostoSaude());
@@ -50,7 +50,7 @@ public class PacienteHibernate implements PacienteDAO {
         PostoSaudeHibernate ph = new PostoSaudeHibernate();
         try {
             session.beginTransaction();
-            PostoSaude ps = ph.readByName(o.getPostoSaude().getNome());
+            PostoSaude ps = ph.recuperarPorNome(o.getPostoSaude().getNome());
             if (ps == null) {
                 ph.inserir(o.getPostoSaude());
             } else {

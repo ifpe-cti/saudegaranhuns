@@ -24,7 +24,7 @@ public class AtendenteHibernate implements AtendenteDAO {
         PostoSaudeHibernate ph = new PostoSaudeHibernate();
         try {
             session.beginTransaction();
-            PostoSaude ps = ph.readByName(o.getPostoSaude().getNome());
+            PostoSaude ps = ph.recuperarPorNome(o.getPostoSaude().getNome());
             if (ps == null) {
                 ph.inserir(o.getPostoSaude());
             } else {
@@ -46,7 +46,7 @@ public class AtendenteHibernate implements AtendenteDAO {
         PostoSaudeHibernate ph = new PostoSaudeHibernate();
         try {
             session.beginTransaction();
-            PostoSaude ps = ph.readByName(o.getPostoSaude().getNome());
+            PostoSaude ps = ph.recuperarPorNome(o.getPostoSaude().getNome());
             if (ps == null) {
                 ph.inserir(o.getPostoSaude());
             } else {

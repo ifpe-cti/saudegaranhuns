@@ -110,7 +110,7 @@ public class BairroHibernate implements BairroDAO {
         }
         for (PostoSaude p : todosPostos) {
             if (p.getEndereco().getLogradouro().equals(b.getNome())) {
-                ps.deleteOnCascade(p);
+                ps.deletarEmCascata(p);
             }
         }
         deletar(b);

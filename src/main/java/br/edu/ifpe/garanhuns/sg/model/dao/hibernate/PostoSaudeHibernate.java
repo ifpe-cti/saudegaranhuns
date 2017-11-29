@@ -116,7 +116,7 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
     }
     
     @Override
-    public void deleteOnCascade(PostoSaude ps) {
+    public void deletarEmCascata(PostoSaude ps) {
         PacienteHibernate ph = new PacienteHibernate();
         AtendenteHibernate ah = new AtendenteHibernate();
         
@@ -138,7 +138,7 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
     }
     
     @Override
-    public PostoSaude readByName(String name) {
+    public PostoSaude recuperarPorNome(String name) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
