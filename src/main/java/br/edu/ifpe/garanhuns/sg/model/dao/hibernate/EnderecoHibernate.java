@@ -26,7 +26,7 @@ public class EnderecoHibernate implements EnderecoDAO {
         
         try {
             session.beginTransaction();
-            Bairro b = bh.readByName(o.getBairro().getNome());
+            Bairro b = bh.recuperarPorNome(o.getBairro().getNome());
             if(b==null){
                 bh.inserir(o.getBairro());
                 session.save(o);
@@ -51,7 +51,7 @@ public class EnderecoHibernate implements EnderecoDAO {
          BairroHibernate bh = new BairroHibernate();
         try {
             session.beginTransaction();
-            Bairro b = bh.readByName(o.getBairro().getNome());
+            Bairro b = bh.recuperarPorNome(o.getBairro().getNome());
             if(b==null){
                 bh.inserir(o.getBairro());
                 session.update(o);

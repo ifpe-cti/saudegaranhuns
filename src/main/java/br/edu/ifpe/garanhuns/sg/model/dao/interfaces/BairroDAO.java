@@ -11,6 +11,6 @@ import br.edu.ifpe.garanhuns.sg.model.pojo.Bairro;
  * @author Herikles
  */
 public interface BairroDAO extends DAO<Bairro>{
-    public Bairro readByName(String name);
-    public void deleteOnCascade(Bairro b);
+    public Bairro recuperarPorNome(String name);
+    public void deletarEmCascata(Bairro b);
 }

@@ -96,7 +96,7 @@ public class BairroHibernate implements BairroDAO {
     }
     
     @Override
-    public void deleteOnCascade(Bairro b) {
+    public void deletarEmCascata(Bairro b) {
         //Session session = HibernateUtil.getSession();
         EnderecoHibernate eh = new EnderecoHibernate();
         PostoSaudeHibernate ps = new PostoSaudeHibernate();
@@ -117,7 +117,7 @@ public class BairroHibernate implements BairroDAO {
     }
     
     @Override
-    public Bairro readByName(String name) {
+    public Bairro recuperarPorNome(String name) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
