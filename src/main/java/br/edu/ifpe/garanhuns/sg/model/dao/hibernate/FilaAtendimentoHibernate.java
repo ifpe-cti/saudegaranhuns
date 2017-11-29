@@ -18,12 +18,12 @@ import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 public class FilaAtendimentoHibernate implements FilaAtandimentoDAO {
 
     @Override
-    public void insert(FilaAtendimento o) {
+    public void inserir(FilaAtendimento o) {
         Session session = HibernateUtil.getSession();
         ConsultaHibernate cH = new ConsultaHibernate();
         try {
             session.beginTransaction();
-            cH.insert(o.getConsulta());
+            cH.inserir(o.getConsulta());
             session.save(o);
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -35,12 +35,12 @@ public class FilaAtendimentoHibernate implements FilaAtandimentoDAO {
     }
 
     @Override
-    public void update(FilaAtendimento o) {
+    public void atualizar(FilaAtendimento o) {
         Session session = HibernateUtil.getSession();
         ConsultaHibernate cH = new ConsultaHibernate();
         try {
             session.beginTransaction();
-            cH.insert(o.getConsulta());
+            cH.inserir(o.getConsulta());
             session.update(o);
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -52,7 +52,7 @@ public class FilaAtendimentoHibernate implements FilaAtandimentoDAO {
     }
 
     @Override
-    public void delete(FilaAtendimento o) {
+    public void deletar(FilaAtendimento o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -67,7 +67,7 @@ public class FilaAtendimentoHibernate implements FilaAtandimentoDAO {
     }
 
     @Override
-    public FilaAtendimento read(Integer id) {
+    public FilaAtendimento recuperar(Integer id) {
         Session session = HibernateUtil.getSession();
         try {
             return (FilaAtendimento) session.get(FilaAtendimento.class.getName(), id);

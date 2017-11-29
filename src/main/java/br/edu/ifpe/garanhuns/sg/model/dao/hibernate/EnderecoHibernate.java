@@ -20,7 +20,7 @@ import br.edu.ifpe.garanhuns.sg.model.pojo.Endereco;
 public class EnderecoHibernate implements EnderecoDAO {
 
     @Override
-    public void insert(Endereco o) {
+    public void inserir(Endereco o) {
         Session session = HibernateUtil.getSession();
         BairroHibernate bh = new BairroHibernate();
         
@@ -28,7 +28,7 @@ public class EnderecoHibernate implements EnderecoDAO {
             session.beginTransaction();
             Bairro b = bh.readByName(o.getBairro().getNome());
             if(b==null){
-                bh.insert(o.getBairro());
+                bh.inserir(o.getBairro());
                 session.save(o);
             }
             //perguntar se isso faz sentido
@@ -46,14 +46,14 @@ public class EnderecoHibernate implements EnderecoDAO {
     }
 
     @Override
-    public void update(Endereco o) {
+    public void atualizar(Endereco o) {
         Session session = HibernateUtil.getSession();
          BairroHibernate bh = new BairroHibernate();
         try {
             session.beginTransaction();
             Bairro b = bh.readByName(o.getBairro().getNome());
             if(b==null){
-                bh.insert(o.getBairro());
+                bh.inserir(o.getBairro());
                 session.update(o);
             }
             //perguntar se isso faz sentido
@@ -72,7 +72,7 @@ public class EnderecoHibernate implements EnderecoDAO {
     }
 
     @Override
-    public void delete(Endereco o) {
+    public void deletar(Endereco o) {
         Session session = HibernateUtil.getSession();
          BairroHibernate bh = new BairroHibernate();
         try {
@@ -88,7 +88,7 @@ public class EnderecoHibernate implements EnderecoDAO {
     }
 
     @Override
-    public Endereco read(Integer id) {
+    public Endereco recuperar(Integer id) {
         Session session = HibernateUtil.getSession();
         try {
             return (Endereco) session.get(Endereco.class.getName(), id);
@@ -127,11 +127,11 @@ public class EnderecoHibernate implements EnderecoDAO {
         
         for(Paciente p :  todosPacientes){
             if(p.getEndereco().getId() == b.getId()){
-                ph.delete(p);
+                ph.deletar(p);
             }
         }
         
-        delete(b);
+        deletar(b);
     }
 
     @Override

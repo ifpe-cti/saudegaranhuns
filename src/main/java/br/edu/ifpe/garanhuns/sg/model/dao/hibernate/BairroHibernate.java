@@ -20,7 +20,7 @@ import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 public class BairroHibernate implements BairroDAO {
     
     @Override
-    public void insert(Bairro o) {
+    public void inserir(Bairro o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -35,7 +35,7 @@ public class BairroHibernate implements BairroDAO {
     }
     
     @Override
-    public void update(Bairro o) {
+    public void atualizar(Bairro o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -50,7 +50,7 @@ public class BairroHibernate implements BairroDAO {
     }
     
     @Override
-    public void delete(Bairro o) {
+    public void deletar(Bairro o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -65,7 +65,7 @@ public class BairroHibernate implements BairroDAO {
     }
     
     @Override
-    public Bairro read(Integer id) {
+    public Bairro recuperar(Integer id) {
         Session session = HibernateUtil.getSession();
         try {
             return (Bairro) session.get(Bairro.class.getName(), id);
@@ -113,7 +113,7 @@ public class BairroHibernate implements BairroDAO {
                 ps.deleteOnCascade(p);
             }
         }
-        delete(b);
+        deletar(b);
     }
     
     @Override

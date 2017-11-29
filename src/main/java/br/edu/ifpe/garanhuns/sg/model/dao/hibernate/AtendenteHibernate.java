@@ -19,14 +19,14 @@ import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 public class AtendenteHibernate implements AtendenteDAO {
 
     @Override
-    public void insert(Atendente o) {
+    public void inserir(Atendente o) {
         Session session = HibernateUtil.getSession();
         PostoSaudeHibernate ph = new PostoSaudeHibernate();
         try {
             session.beginTransaction();
             PostoSaude ps = ph.readByName(o.getPostoSaude().getNome());
             if (ps == null) {
-                ph.insert(o.getPostoSaude());
+                ph.inserir(o.getPostoSaude());
             } else {
                 o.setPostoSaude(ps);
             }
@@ -41,14 +41,14 @@ public class AtendenteHibernate implements AtendenteDAO {
     }
 
     @Override
-    public void update(Atendente o) {
+    public void atualizar(Atendente o) {
         Session session = HibernateUtil.getSession();
         PostoSaudeHibernate ph = new PostoSaudeHibernate();
         try {
             session.beginTransaction();
             PostoSaude ps = ph.readByName(o.getPostoSaude().getNome());
             if (ps == null) {
-                ph.insert(o.getPostoSaude());
+                ph.inserir(o.getPostoSaude());
             } else {
                 o.setPostoSaude(ps);
             }
@@ -63,7 +63,7 @@ public class AtendenteHibernate implements AtendenteDAO {
     }
 
     @Override
-    public void delete(Atendente o) {
+    public void deletar(Atendente o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -78,7 +78,7 @@ public class AtendenteHibernate implements AtendenteDAO {
     }
 
     @Override
-    public Atendente read(Integer id) {
+    public Atendente recuperar(Integer id) {
         Session session = HibernateUtil.getSession();
         try {
             return (Atendente) session.get(Atendente.class.getName(), id);

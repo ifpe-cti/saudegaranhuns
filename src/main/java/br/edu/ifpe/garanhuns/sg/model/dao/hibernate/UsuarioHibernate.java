@@ -18,7 +18,7 @@ import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 public class UsuarioHibernate implements UsuarioDAO {
 
     @Override
-    public void insert(Usuario o) {
+    public void inserir(Usuario o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -33,7 +33,7 @@ public class UsuarioHibernate implements UsuarioDAO {
     }
 
     @Override
-    public void update(Usuario o) {
+    public void atualizar(Usuario o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -48,7 +48,7 @@ public class UsuarioHibernate implements UsuarioDAO {
     }
 
     @Override
-    public void delete(Usuario o) {
+    public void deletar(Usuario o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -63,7 +63,7 @@ public class UsuarioHibernate implements UsuarioDAO {
     }
 
     @Override
-    public Usuario read(Integer id) {
+    public Usuario recuperar(Integer id) {
         Session session = HibernateUtil.getSession();
         try {
             return (Usuario) session.get(Usuario.class.getName(), id);

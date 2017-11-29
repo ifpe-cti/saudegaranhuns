@@ -49,11 +49,11 @@ public class ConsultaController implements Serializable {
     }
 
     public void cadastrar() {
-        model.insert(consulta);
+        model.inserir(consulta);
     }
 
     public void alterar() {
-        model.update(consulta);
+        model.atualizar(consulta);
     }
 
     public void cancelar() {
@@ -65,7 +65,7 @@ public class ConsultaController implements Serializable {
     }
 
     public Consulta buscar(int id) {
-        return model.read(id);
+        return model.recuperar(id);
     }
 
     public List<Consulta> buscarTodos() {

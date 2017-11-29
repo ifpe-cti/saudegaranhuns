@@ -20,7 +20,7 @@ import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 public class PacienteHibernate implements PacienteDAO {
 
     @Override
-    public void insert(Paciente o) {
+    public void inserir(Paciente o) {
         Session session = HibernateUtil.getSession();
         EnderecoHibernate ed = new EnderecoHibernate();
         PostoSaudeHibernate ph = new PostoSaudeHibernate();
@@ -30,7 +30,7 @@ public class PacienteHibernate implements PacienteDAO {
             PostoSaude ps = ph.readByName(o.getPostoSaude().getNome());
             System.out.println("\n\n##########################################################################\n\n");
             if (ps == null) {
-                ph.insert(o.getPostoSaude());
+                ph.inserir(o.getPostoSaude());
             } else {
                 o.setPostoSaude(ps);
             }
@@ -45,14 +45,14 @@ public class PacienteHibernate implements PacienteDAO {
     }
 
     @Override
-    public void update(Paciente o) {
+    public void atualizar(Paciente o) {
         Session session = HibernateUtil.getSession();
         PostoSaudeHibernate ph = new PostoSaudeHibernate();
         try {
             session.beginTransaction();
             PostoSaude ps = ph.readByName(o.getPostoSaude().getNome());
             if (ps == null) {
-                ph.insert(o.getPostoSaude());
+                ph.inserir(o.getPostoSaude());
             } else {
                 o.setPostoSaude(ps);
             }
@@ -67,7 +67,7 @@ public class PacienteHibernate implements PacienteDAO {
     }
 
     @Override
-    public void delete(Paciente o) {
+    public void deletar(Paciente o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -82,7 +82,7 @@ public class PacienteHibernate implements PacienteDAO {
     }
 
     @Override
-    public Paciente read(Integer id) {
+    public Paciente recuperar(Integer id) {
         Session session = HibernateUtil.getSession();
         try {
             return (Paciente) session.get(Paciente.class.getName(), id);

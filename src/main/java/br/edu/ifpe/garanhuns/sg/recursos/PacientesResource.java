@@ -44,7 +44,7 @@ public class PacientesResource {
     public Response cadastrar(String pacienteJson) {
         Gson gson = new Gson();
 
-        new PacienteHibernate().insert(
+        new PacienteHibernate().inserir(
                 gson.fromJson(pacienteJson, Paciente.class)
         );
         //Alterar o caminho de resposta
