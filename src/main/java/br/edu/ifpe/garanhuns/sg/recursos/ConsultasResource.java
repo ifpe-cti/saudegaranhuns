@@ -50,7 +50,7 @@ public class ConsultasResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Consulta> recuperarConsultasPorPaciente(@PathParam("id") String id) {
 
-        Paciente paciente = new PacienteHibernate().read(Integer.parseInt(id));
+        Paciente paciente = new PacienteHibernate().recuperar(Integer.parseInt(id));
 
         List<Consulta> consultas = new ConsultaHibernate().
                 recuperarConsultasPorPaciente(paciente);
@@ -69,7 +69,7 @@ public class ConsultasResource {
 
         Gson gson = new Gson();
 
-        new ConsultaHibernate().insert(
+        new ConsultaHibernate().inserir(
                 gson.fromJson(content, Consulta.class)
         );
         //Alterar o caminho de resposta

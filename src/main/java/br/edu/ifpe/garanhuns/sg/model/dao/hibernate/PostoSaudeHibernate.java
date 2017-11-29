@@ -21,15 +21,15 @@ import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 public class PostoSaudeHibernate implements PostoSaudeDAO {
     
     @Override
-    public void insert(PostoSaude o) {
+    public void inserir(PostoSaude o) {
         Session session = HibernateUtil.getSession();
         EnderecoHibernate eh = new EnderecoHibernate();
         
         try {
             session.beginTransaction();
-            Endereco b = eh.readByName(o.getEndereco().getLogradouro());
+            Endereco b = eh.recuperarPorNome(o.getEndereco().getLogradouro());
             if (b == null) {
-                eh.insert(o.getEndereco());
+                eh.inserir(o.getEndereco());
                 session.save(o);
             } //perguntar se isso faz sentido
             else {
@@ -46,14 +46,14 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
     }
     
     @Override
-    public void update(PostoSaude o) {
+    public void atualizar(PostoSaude o) {
         Session session = HibernateUtil.getSession();
         EnderecoHibernate eh = new EnderecoHibernate();
         try {
             session.beginTransaction();
-            Endereco b = eh.readByName(o.getEndereco().getLogradouro());
+            Endereco b = eh.recuperarPorNome(o.getEndereco().getLogradouro());
             if (b == null) {
-                eh.insert(o.getEndereco());
+                eh.inserir(o.getEndereco());
                 session.update(o);
             } //perguntar se isso faz sentido
             else {
@@ -70,7 +70,7 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
     }
     
     @Override
-    public void delete(PostoSaude o) {
+    public void deletar(PostoSaude o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -85,7 +85,7 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
     }
     
     @Override
-    public PostoSaude read(Integer id) {
+    public PostoSaude recuperar(Integer id) {
         Session session = HibernateUtil.getSession();
         try {
             return (PostoSaude) session.get(PostoSaude.class.getName(), id);
@@ -116,7 +116,7 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
     }
     
     @Override
-    public void deleteOnCascade(PostoSaude ps) {
+    public void deletarEmCascata(PostoSaude ps) {
         PacienteHibernate ph = new PacienteHibernate();
         AtendenteHibernate ah = new AtendenteHibernate();
         
@@ -125,20 +125,20 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
         
         for (Paciente p : todosPacientes) {
             if (p.getEndereco().getId() == ps.getId()) {
-                ph.delete(p);
+                ph.deletar(p);
             }
         }
         for (Atendente a : todosAtendentes) {
             if (a.getPostoSaude().getId() == ps.getId()) {
-                ah.delete(a);
+                ah.deletar(a);
             }
         }
         
-        delete(ps);
+        deletar(ps);
     }
     
     @Override
-    public PostoSaude readByName(String name) {
+    public PostoSaude recuperarPorNome(String name) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();

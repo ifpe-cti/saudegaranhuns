@@ -21,14 +21,14 @@ import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 public class ConsultaHibernate implements ConsultaDAO {
 
     @Override
-    public void insert(Consulta o) {
+    public void inserir(Consulta o) {
         Session session = HibernateUtil.getSession();
         PacienteHibernate pH = new PacienteHibernate();
         try {
             session.beginTransaction();
-            Paciente p = pH.readByName((o.getPaciente()).getNome());
+            Paciente p = pH.recuperarPorNome((o.getPaciente()).getNome());
             if (p == null) {
-                pH.insert(o.getPaciente());
+                pH.inserir(o.getPaciente());
             } else {
                 o.setPaciente(p);
             }
@@ -43,14 +43,14 @@ public class ConsultaHibernate implements ConsultaDAO {
     }
 
     @Override
-    public void update(Consulta o) {
+    public void atualizar(Consulta o) {
         Session session = HibernateUtil.getSession();
         PacienteHibernate pH = new PacienteHibernate();
         try {
             session.beginTransaction();
-            Paciente p = pH.readByName((o.getPaciente()).getNome());
+            Paciente p = pH.recuperarPorNome((o.getPaciente()).getNome());
             if (p == null) {
-                pH.insert(o.getPaciente());
+                pH.inserir(o.getPaciente());
             } else {
                 o.setPaciente(p);
             }
@@ -65,7 +65,7 @@ public class ConsultaHibernate implements ConsultaDAO {
     }
 
     @Override
-    public void delete(Consulta o) {
+    public void deletar(Consulta o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -80,7 +80,7 @@ public class ConsultaHibernate implements ConsultaDAO {
     }
 
     @Override
-    public Consulta read(Integer id) {
+    public Consulta recuperar(Integer id) {
         Session session = HibernateUtil.getSession();
         try {
             return (Consulta) session.get(Consulta.class.getName(), id);
@@ -149,7 +149,7 @@ public class ConsultaHibernate implements ConsultaDAO {
             default:
                 throw new IllegalArgumentException("Agumento invalido!");
         }
-        update(c);
+        atualizar(c);
     }
 
 }

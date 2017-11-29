@@ -20,7 +20,7 @@ import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 public class BairroHibernate implements BairroDAO {
     
     @Override
-    public void insert(Bairro o) {
+    public void inserir(Bairro o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -35,7 +35,7 @@ public class BairroHibernate implements BairroDAO {
     }
     
     @Override
-    public void update(Bairro o) {
+    public void atualizar(Bairro o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -50,7 +50,7 @@ public class BairroHibernate implements BairroDAO {
     }
     
     @Override
-    public void delete(Bairro o) {
+    public void deletar(Bairro o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -65,7 +65,7 @@ public class BairroHibernate implements BairroDAO {
     }
     
     @Override
-    public Bairro read(Integer id) {
+    public Bairro recuperar(Integer id) {
         Session session = HibernateUtil.getSession();
         try {
             return (Bairro) session.get(Bairro.class.getName(), id);
@@ -96,7 +96,7 @@ public class BairroHibernate implements BairroDAO {
     }
     
     @Override
-    public void deleteOnCascade(Bairro b) {
+    public void deletarEmCascata(Bairro b) {
         //Session session = HibernateUtil.getSession();
         EnderecoHibernate eh = new EnderecoHibernate();
         PostoSaudeHibernate ps = new PostoSaudeHibernate();
@@ -105,19 +105,19 @@ public class BairroHibernate implements BairroDAO {
         List<PostoSaude> todosPostos = ps.recuperarTodos();
         for (Endereco e : todosEnderecos) {
             if (e.getBairro().getNome().equals(b.getNome())) {
-                eh.deleteOnCascade(e);
+                eh.deletarEmCascata(e);
             }
         }
         for (PostoSaude p : todosPostos) {
             if (p.getEndereco().getLogradouro().equals(b.getNome())) {
-                ps.deleteOnCascade(p);
+                ps.deletarEmCascata(p);
             }
         }
-        delete(b);
+        deletar(b);
     }
     
     @Override
-    public Bairro readByName(String name) {
+    public Bairro recuperarPorNome(String name) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();

@@ -12,6 +12,6 @@ import br.edu.ifpe.garanhuns.sg.model.pojo.Endereco;
  * @author Herikles
  */
 public interface EnderecoDAO extends DAO<Endereco> {
-    public Endereco readByName(String name);
-    public void deleteOnCascade(Endereco b);
+    public Endereco recuperarPorNome(String name);
+    public void deletarEmCascata(Endereco b);
 }

@@ -18,12 +18,12 @@ import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
 
     @Override
-    public void insert(HorarioAtendimento o) {
+    public void inserir(HorarioAtendimento o) {
         Session session = HibernateUtil.getSession();
         AtendimentoHibernate aH = new AtendimentoHibernate();
         try {
             session.beginTransaction();
-            aH.insert(o.getAtendimento());
+            aH.inserir(o.getAtendimento());
             session.save(o);
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -35,12 +35,12 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
     }
 
     @Override
-    public void update(HorarioAtendimento o) {
+    public void atualizar(HorarioAtendimento o) {
         Session session = HibernateUtil.getSession();
         AtendimentoHibernate aH = new AtendimentoHibernate();
         try {
             session.beginTransaction();
-            aH.insert(o.getAtendimento());
+            aH.inserir(o.getAtendimento());
             session.save(o);
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -52,7 +52,7 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
     }
 
     @Override
-    public void delete(HorarioAtendimento o) {
+    public void deletar(HorarioAtendimento o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -67,7 +67,7 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
     }
 
     @Override
-    public HorarioAtendimento read(Integer id) {
+    public HorarioAtendimento recuperar(Integer id) {
         Session session = HibernateUtil.getSession();
         try {
             return (HorarioAtendimento) session.get(HorarioAtendimento.class.getName(), id);

@@ -19,14 +19,14 @@ import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 public class AtendimentoHibernate implements AtendimentoDAO {
 
     @Override
-    public void insert(Atendimento o) {
+    public void inserir(Atendimento o) {
         Session session = HibernateUtil.getSession();
         PostoSaudeHibernate ph = new PostoSaudeHibernate();
         try {
             session.beginTransaction();
-            PostoSaude ps = ph.readByName(o.getPostoSaude().getNome());
+            PostoSaude ps = ph.recuperarPorNome(o.getPostoSaude().getNome());
             if (ps == null) {
-                ph.insert(o.getPostoSaude());
+                ph.inserir(o.getPostoSaude());
             } else {
                 o.setPostoSaude(ps);
             }
@@ -41,14 +41,14 @@ public class AtendimentoHibernate implements AtendimentoDAO {
     }
 
     @Override
-    public void update(Atendimento o) {
+    public void atualizar(Atendimento o) {
         Session session = HibernateUtil.getSession();
         PostoSaudeHibernate ph = new PostoSaudeHibernate();
         try {
             session.beginTransaction();
-            PostoSaude ps = ph.readByName(o.getPostoSaude().getNome());
+            PostoSaude ps = ph.recuperarPorNome(o.getPostoSaude().getNome());
             if (ps == null) {
-                ph.insert(o.getPostoSaude());
+                ph.inserir(o.getPostoSaude());
             } else {
                 o.setPostoSaude(ps);
             }
@@ -63,7 +63,7 @@ public class AtendimentoHibernate implements AtendimentoDAO {
     }
 
     @Override
-    public void delete(Atendimento o) {
+    public void deletar(Atendimento o) {
         Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
@@ -78,7 +78,7 @@ public class AtendimentoHibernate implements AtendimentoDAO {
     }
 
     @Override
-    public Atendimento read(Integer id) {
+    public Atendimento recuperar(Integer id) {
         Session session = HibernateUtil.getSession();
         try {
             return (Atendimento) session.get(Atendimento.class.getName(), id);

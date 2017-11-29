@@ -9,14 +9,14 @@ import java.util.List;
 
 /**
  *
- * @author Herikles
+ * @author Hérikles
  * @param <T>
  */
 public interface DAO <T> {
-    void insert(T o);
-    void update(T o);
-    void delete(T o);
-    T read(Integer id);
+    void inserir(T o);
+    void atualizar(T o);
+    void deletar(T o);
+    T recuperar(Integer id);
     List<T> recuperarTodos();
     
 }

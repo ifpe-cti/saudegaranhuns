@@ -11,5 +11,5 @@ import br.edu.ifpe.garanhuns.sg.model.pojo.Paciente;
  * @author Herikles
  */
 public interface PacienteDAO extends DAO<Paciente>{
-    public Paciente readByName(String name);
+    public Paciente recuperarPorNome(String name);
 }
