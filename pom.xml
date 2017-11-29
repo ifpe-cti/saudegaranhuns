@@ -246,7 +246,7 @@
                                             <include>docs/uml/*.uml</include>
                                         </includes>
                                     </sourceFiles>
-                                    <outputDirectory>${basedir}/target</outputDirectory>
+				    <outputDirectory>${basedir}</outputDirectory>
                                 </configuration>
                             </execution>
                         </executions>
