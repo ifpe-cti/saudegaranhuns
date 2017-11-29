@@ -51,16 +51,16 @@ Contributor(s):
         <property name="hbm2ddl.auto">create</property>
         <property name="show_sql">true</property>
         
-        <mapping class="model.POJO.Bairro" />
-        <mapping class="model.POJO.Endereco" />
-        <mapping class="model.POJO.Usuario" />
-        <mapping class="model.POJO.PostoSaude" />
-        <mapping class="model.POJO.Atendente" />
-        <mapping class="model.POJO.Paciente" />
-        <mapping class="model.POJO.Consulta" />
-        <mapping class="model.POJO.FilaAtendimento" />
-        <mapping class="model.POJO.Atendimento" />
-        <mapping class="model.POJO.HorarioAtendimento" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.Bairro" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.Endereco" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.Usuario" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.PostoSaude" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.Atendente" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.Paciente" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.Consulta" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.FilaAtendimento" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.Atendimento" />
+        <mapping class="br.edu.ifpe.garanhuns.sg.model.pojo.HorarioAtendimento" />
         
     </session-factory>
 </hibernate-configuration>
