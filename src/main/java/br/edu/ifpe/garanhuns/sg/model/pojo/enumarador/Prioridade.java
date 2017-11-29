@@ -10,17 +10,23 @@ package br.edu.ifpe.garanhuns.sg.model.pojo.enumarador;
  * @author Herikles
  */
 public enum Prioridade {
-    NENHUMA(0),
-    IDOSO(1),
-    GESTANTE(2);
+    NENHUMA(0, "Nenhuma"),
+    IDOSO(1, "Idoso"),
+    GESTANTE(2, "Gestante");
 
     private int valor;
+    private String nome;
 
-    private Prioridade(int valor) {
+    private Prioridade(int valor, String nome) {
         this.valor = valor;
+        this.nome = nome;
     }
 
     public int getValor() {
         return this.valor;
+    }
+
+    public String getNome() {
+        return nome;
     }
 }

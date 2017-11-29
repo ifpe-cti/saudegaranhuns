@@ -10,17 +10,23 @@ package br.edu.ifpe.garanhuns.sg.model.pojo.enumarador;
  * @author Hérikles
  */
 public enum Especialidade {
-    
-    GERAL(0), 
-    DENTISTA(1);
+
+    GERAL(0, "Geral"),
+    DENTISTA(1, "Dentista");
 
     private int valor;
+    private String nome;
 
-    private Especialidade(int valor) {
+    private Especialidade(int valor, String nome) {
         this.valor = valor;
+        this.nome = nome;
     }
 
     public int getValor() {
         return this.valor;
+    }
+
+    public String getNome() {
+        return this.nome;
     }
 }
