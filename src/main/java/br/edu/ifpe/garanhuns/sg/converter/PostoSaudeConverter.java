@@ -21,24 +21,25 @@ public class PostoSaudeConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
-        if (string != null && string.trim().length() > 0) {
-            try {
+        try {
+            if (string != null && !string.isEmpty()) {
                 PostoSaudeHibernate hibernate = new PostoSaudeHibernate();
                 return hibernate.read(Integer.valueOf(string));
-            } catch (NumberFormatException e) {
-                System.err.println(e);
             }
+        } catch (NumberFormatException e) {
+            System.err.println(e);
         }
         return null;
     }
 
     @Override
     public String getAsString(FacesContext fc, UIComponent uic, Object o) {
-        if (o != null) {
-            try {
+        try {
+            if (o != null) {
                 return String.valueOf(((PostoSaude) o).getId());
-            } catch (Exception ex) {
             }
+        } catch (Exception ex) {
+            System.err.println(ex);
         }
         return null;
     }
