@@ -24,7 +24,7 @@ public class ConsultaConverter implements Converter {
         try {
             if (string != null && !string.isEmpty()) {
                 ConsultaHibernate hibernate = new ConsultaHibernate();
-                return hibernate.read(Integer.valueOf(string));
+                return hibernate.recuperar(Integer.valueOf(string));
             }
         } catch (NumberFormatException e) {
             System.err.println(e);

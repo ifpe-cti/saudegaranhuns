@@ -24,7 +24,7 @@ public class AtendenteConverter implements Converter {
         try {
             if (string != null && !string.isEmpty()) {
                 AtendenteHibernate hibernate = new AtendenteHibernate();
-                return hibernate.read(Integer.valueOf(string));
+                return hibernate.recuperar(Integer.valueOf(string));
             }
         } catch (NumberFormatException e) {
             System.err.println(e);

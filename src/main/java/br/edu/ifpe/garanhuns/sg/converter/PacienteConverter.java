@@ -24,7 +24,7 @@ public class PacienteConverter implements Converter {
         try {
             if (string != null && !string.isEmpty()) {
                 PacienteHibernate hibernate = new PacienteHibernate();
-                return hibernate.read(Integer.valueOf(string));
+                return hibernate.recuperar(Integer.valueOf(string));
             }
         } catch (NumberFormatException e) {
             System.err.println(e);
