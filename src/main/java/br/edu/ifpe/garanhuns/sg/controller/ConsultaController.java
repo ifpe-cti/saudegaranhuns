@@ -7,9 +7,9 @@ package br.edu.ifpe.garanhuns.sg.controller;
 
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
 import br.edu.ifpe.garanhuns.sg.model.Consulta;
-import br.edu.ifpe.garanhuns.sg.model.pojo.enumarador.Especialidade;
-import br.edu.ifpe.garanhuns.sg.model.pojo.enumarador.Prioridade;
-import br.edu.ifpe.garanhuns.sg.model.pojo.enumarador.Status;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;

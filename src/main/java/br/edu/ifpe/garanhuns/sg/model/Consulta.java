@@ -11,9 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import br.edu.ifpe.garanhuns.sg.model.pojo.enumarador.Especialidade;
-import br.edu.ifpe.garanhuns.sg.model.pojo.enumarador.Prioridade;
-import br.edu.ifpe.garanhuns.sg.model.pojo.enumarador.Status;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
 
 /**
  *

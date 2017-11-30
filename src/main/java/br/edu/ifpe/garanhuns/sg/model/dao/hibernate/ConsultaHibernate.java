@@ -10,7 +10,7 @@ import java.util.List;
 import br.edu.ifpe.garanhuns.sg.model.dao.interfaces.ConsultaDAO;
 import br.edu.ifpe.garanhuns.sg.model.Consulta;
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
-import br.edu.ifpe.garanhuns.sg.model.pojo.enumarador.Status;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 

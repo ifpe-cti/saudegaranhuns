@@ -3,21 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpe.garanhuns.sg.model.pojo.enumarador;
+package br.edu.ifpe.garanhuns.sg.model.enumarador;
 
 /**
  *
- * @author Herikles
+ * @author Hérikles
  */
-public enum Status {
-    FILA(0, "Fila"),
-    AGENDADO(1, "Agendado"),
-    CANSELADO(2, "Cancelado");
+public enum DiasSemana {
+
+    DOMINGO(0, "Domingo"),
+    SEGUNDA(1, "Segunda-feira"),
+    TERÇA(2, "Terça-feira"),
+    QUARTA(3, "Quarta-feira"),
+    QUINTA(4, "Quinta-feira"),
+    SEXTA(5, "Sexta-feira"),
+    SABADO(6, "Sábado");
 
     private int valor;
     private String nome;
 
-    private Status(int valor, String nome) {
+    private DiasSemana(int valor, String nome) {
         this.valor = valor;
         this.nome = nome;
     }
@@ -27,6 +32,7 @@ public enum Status {
     }
 
     public String getNome() {
-        return this.nome;
+        return nome;
     }
+
 }

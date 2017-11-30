@@ -5,7 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.sg.model;
 
-import br.edu.ifpe.garanhuns.sg.model.pojo.enumarador.DiasSemana;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.DiasSemana;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
