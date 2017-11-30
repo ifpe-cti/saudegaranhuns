@@ -6,7 +6,7 @@
 package br.edu.ifpe.garanhuns.sg.converter;
 
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
-import br.edu.ifpe.garanhuns.sg.model.pojo.Paciente;
+import br.edu.ifpe.garanhuns.sg.model.Paciente;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
