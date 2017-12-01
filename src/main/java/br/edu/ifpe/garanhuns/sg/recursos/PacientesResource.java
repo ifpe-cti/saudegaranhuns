@@ -5,6 +5,10 @@
  */
 package br.edu.ifpe.garanhuns.sg.recursos;
 
+import br.edu.ifpe.garanhuns.sg.model.Endereco;
+import br.edu.ifpe.garanhuns.sg.model.Paciente;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.EnderecoHibernate;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
 import com.google.gson.Gson;
 import java.net.URI;
 import javax.ws.rs.Consumes;
@@ -14,8 +18,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
-import br.edu.ifpe.garanhuns.sg.model.Paciente;
 
 /**
  * REST Web Service
@@ -42,11 +44,11 @@ public class PacientesResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response cadastrar(String pacienteJson) {
-        Gson gson = new Gson();
 
-        new PacienteHibernate().inserir(
-                gson.fromJson(pacienteJson, Paciente.class)
-        );
+        Paciente paciente = new Gson().fromJson(pacienteJson, Paciente.class);
+        Endereco enderecoPaciente = paciente.getEndereco();
+        new EnderecoHibernate().inserir(enderecoPaciente);
+        new PacienteHibernate().inserir(paciente);
         //Alterar o caminho de resposta
         URI uri = URI.create("/pacienteCadastrado");
         return Response.created(uri).build();
