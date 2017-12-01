@@ -7,7 +7,7 @@ package br.edu.ifpe.garanhuns.sg.model.dao.hibernate;
 
 import java.util.List;
 import br.edu.ifpe.garanhuns.sg.model.dao.interfaces.HorarioAtendimentoDAO;
-import br.edu.ifpe.garanhuns.sg.model.pojo.HorarioAtendimento;
+import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package br.edu.ifpe.garanhuns.sg.model.dao.interfaces;
-import br.edu.ifpe.garanhuns.sg.model.pojo.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 
 /**
  *

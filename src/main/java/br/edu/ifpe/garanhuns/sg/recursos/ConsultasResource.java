@@ -7,8 +7,8 @@ package br.edu.ifpe.garanhuns.sg.recursos;
 
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
-import br.edu.ifpe.garanhuns.sg.model.pojo.Consulta;
-import br.edu.ifpe.garanhuns.sg.model.pojo.Paciente;
+import br.edu.ifpe.garanhuns.sg.model.Consulta;
+import br.edu.ifpe.garanhuns.sg.model.Paciente;
 import com.google.gson.Gson;
 import java.net.URI;
 import java.util.List;

@@ -5,7 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.sg.util;
 
-import br.edu.ifpe.garanhuns.sg.model.pojo.Bairro;
+import br.edu.ifpe.garanhuns.sg.model.Bairro;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;

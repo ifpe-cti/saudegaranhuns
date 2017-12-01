@@ -10,14 +10,14 @@ import java.time.Month;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.EnderecoHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
-import br.edu.ifpe.garanhuns.sg.model.pojo.Bairro;
-import br.edu.ifpe.garanhuns.sg.model.pojo.Consulta;
-import br.edu.ifpe.garanhuns.sg.model.pojo.Endereco;
-import br.edu.ifpe.garanhuns.sg.model.pojo.Paciente;
-import br.edu.ifpe.garanhuns.sg.model.pojo.PostoSaude;
-import br.edu.ifpe.garanhuns.sg.model.pojo.enumarador.Especialidade;
-import br.edu.ifpe.garanhuns.sg.model.pojo.enumarador.Prioridade;
-import br.edu.ifpe.garanhuns.sg.model.pojo.enumarador.Status;
+import br.edu.ifpe.garanhuns.sg.model.Bairro;
+import br.edu.ifpe.garanhuns.sg.model.Consulta;
+import br.edu.ifpe.garanhuns.sg.model.Endereco;
+import br.edu.ifpe.garanhuns.sg.model.Paciente;
+import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
 
 /**
  *

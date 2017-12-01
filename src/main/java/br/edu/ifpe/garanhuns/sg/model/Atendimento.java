@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpe.garanhuns.sg.model.pojo;
+package br.edu.ifpe.garanhuns.sg.model;
 
-import br.edu.ifpe.garanhuns.sg.model.pojo.enumarador.Especialidade;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

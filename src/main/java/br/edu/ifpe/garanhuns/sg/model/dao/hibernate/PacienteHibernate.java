@@ -8,8 +8,8 @@ package br.edu.ifpe.garanhuns.sg.model.dao.hibernate;
 import java.util.List;
 import javax.swing.JOptionPane;
 import br.edu.ifpe.garanhuns.sg.model.dao.interfaces.PacienteDAO;
-import br.edu.ifpe.garanhuns.sg.model.pojo.Paciente;
-import br.edu.ifpe.garanhuns.sg.model.pojo.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.Paciente;
+import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 
