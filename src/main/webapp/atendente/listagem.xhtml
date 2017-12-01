@@ -22,17 +22,14 @@
             <p:column headerText="Nome do Atendente">
                 <h:outputText value="#{atendente.variavelQueGuardaONomeDoPaciente}"/>
             </p:column>
-            
+
             <p:column headerText ="Opções">
                 <p:commandButton value="Deletar"  icon="ui-icon-trash" action="#{ClasseControladora.MetodoDeDeletar(ClasseControladora.selectedAtendente)}"/>
                 <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{ClasseControladora.MetodoSet(atendente)}" action="alterar-atendente.xhtml"/>
             </p:column>
-           
+
         </p:dataTable>
-        
-       
-        
-        
+
     </h:form>
 </html>
 

@@ -7,21 +7,18 @@
     <body>
         Hello from Facelets
     </body>
-    
-     <h:form>
+
+    <h:form>
         <p:dataTable value="#{ClasseControladora.NomeDoMetodoDaOperacaoASerRealizada}" var="consultaDoDia"
                      id="idListarConsultaDoDia">
             <p:column headerText="Nome do Paciente">
                 <h:outputText value="#{consultaDoDia.variavelQueGuardaONomeDoPaciente}"/>
             </p:column>
-            
             <p:column headerText="Status">
                 <h:outputText value="#{consultaDoDia.variavelQueGuardaOStatus}"/>
-            </p:column
-            
+            </p:column    
         </p:dataTable>
-        
-        
+
     </h:form>
 </html>
 

@@ -17,24 +17,24 @@
             <p:column headerText="Nome do Paciente">
                 <h:outputText value="#{paciente.variavelQueGuardaONomeDoPaciente}"/>
             </p:column>
-            
+
             <p:column headerText="Cartão do SUS">
                 <h:outputText value="#{paciente.variavelQueGuardaONumeroDoCartaoDoSUS}"/>
             </p:column
-            
+
             <p:column headerText="Data de Nascimento">
                 <h:outputText value="#{paciente.variavelQueGuardaADataDeNascimento}"
-            </p:column>
-            
-            <p:column headerText ="Opções">
-                <p:commandButton value="Deletar"  icon="ui-icon-trash" action="#{ClasseControladora.MetodoDeDeletar(ClasseControladora.selectedPaciente)}"/>
-                <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{ClasseControladora.MetodoSet(paciente)}" action="alterar-paciente.xhtml"/>
-            </p:column>
-            
-            
-        </p:dataTable>
-        
-        
-    </h:form>
+        </p:column>
+
+        <p:column headerText ="Opções">
+            <p:commandButton value="Deletar"  icon="ui-icon-trash" action="#{ClasseControladora.MetodoDeDeletar(ClasseControladora.selectedPaciente)}"/>
+            <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{ClasseControladora.MetodoSet(paciente)}" action="alterar-paciente.xhtml"/>
+        </p:column>
+
+
+    </p:dataTable>
+
+
+</h:form>
 </html>
 

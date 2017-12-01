@@ -8,37 +8,35 @@
         <title>Atualiza Paciente</title>
     </h:head>
     <h:body>
-       <center>
-        <p:fieldset>
-        <h1> Atualizar Paciente </h1>
-        </p:fieldset>
-            
-            <h:form >
-            
-            <p:fieldset legend="Atualização">
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="Nome"/>
-                    <p:inputText value="" />
-                    <p:outputLabel value="Cartão do SUS"/>
-                    <p:inputText value="" />
-                    <p:outputLabel value="Data de Nascimento"/>
-                    <p:inputMask id="date" value="" mask="99/99/9999" />
-                    <p:outputLabel value="Bairro"/>
-                    <p:inputText value="" />
-                    <p:outputLabel for="Posto" value="Posto de Atendimento:" />
-                    <p:selectOneMenu id="Posto" value="" style="width:125px">
-                    <f:selectItem itemLabel="Indiano" itemValue="" />
-                    <f:selectItem itemLabel="Heliopolis" itemValue="" />
-                    <f:selectItem itemLabel="Boa Vista" itemValue="" />
-                    <f:selectItem itemLabel="Cohab II" itemValue="" />
-                        </p:selectOneMenu>
-                </p:panelGrid>
+        <center>
+            <p:fieldset>
+                <h1> Atualizar Paciente </h1>
             </p:fieldset>
-            
-            <p:commandButton update= "@form" value="Atualizar"/>
-                
-        </h:form>
-            </center>
+            <h:form >
+                <p:fieldset legend="Atualização">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Nome"/>
+                        <p:inputText value="" />
+                        <p:outputLabel value="Cartão do SUS"/>
+                        <p:inputText value="" />
+                        <p:outputLabel value="Data de Nascimento"/>
+                        <p:inputMask id="date" value="" mask="99/99/9999" />
+                        <p:outputLabel value="Bairro"/>
+                        <p:inputText value="" />
+                        <p:outputLabel for="Posto" value="Posto de Atendimento:" />
+                        <p:selectOneMenu id="Posto" value="" style="width:125px">
+                            <f:selectItem itemLabel="Indiano" itemValue="" />
+                            <f:selectItem itemLabel="Heliopolis" itemValue="" />
+                            <f:selectItem itemLabel="Boa Vista" itemValue="" />
+                            <f:selectItem itemLabel="Cohab II" itemValue="" />
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                </p:fieldset>
+
+                <p:commandButton update= "@form" value="Atualizar"/>
+
+            </h:form>
+        </center>
     </h:body>
 </html>
 
