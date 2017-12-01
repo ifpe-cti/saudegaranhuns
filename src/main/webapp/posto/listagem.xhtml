@@ -13,17 +13,13 @@
             <p:column headerText="Nome do Posto">
                 <h:outputText value="#{posto.variavelQueGuardaONomeDoPosto}"/>
             </p:column>
-            
+
             <p:column headerText ="Opções">
                 <p:commandButton value="Deletar"  icon="ui-icon-trash" action="#{ClasseControladora.MetodoDeDeletar(ClasseControladora.selectedPosto)}"/>
                 <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{ClasseControladora.MetodoSet(posto)}" action="alterar-posto.xhtml"/>
             </p:column>
-           
+
         </p:dataTable>
-        
-       
-        
-        
     </h:form>
 </html>
 
