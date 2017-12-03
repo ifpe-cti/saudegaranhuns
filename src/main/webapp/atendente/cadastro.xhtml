@@ -11,24 +11,31 @@
             <p:fieldset>
                 <h1> Cadastrar Atendente </h1>
             </p:fieldset>
-
+            <p:growl id='growl'/>
             <h:form >
 
                 <p:fieldset legend="Cadastro">
                     <p:panelGrid columns="2">
                         <p:outputLabel value="Nome"/>
-                        <p:inputText value="" />
+                        <p:inputText value="#{AtendenteController.Atendente.nome}" />
                         <p:outputLabel value="Posto de Atentendimento"/>
-                        <p:inputText id="date" value="" />
+                        <p:inputText  value="#{AtendenteController.Atendente.postoSaude.nome}" />
                         <p:outputLabel value="Usuario"/>
-                        <p:inputText value="" />
+                        <p:inputText value="#{AtendenteController.Atendente.usuario.login}" />
                         <p:outputLabel value="Senha"/>
-                        <p:inputText value="" />
+                        <p:inputText value="#{AtendenteController.Atendente.usuario.senha}" />
                     </p:panelGrid>
                 </p:fieldset>
 
-                <p:commandButton update= "@form" value="Cadastrar"/>
+                <p:commandButton update= "growl @form" value="Cadastrar" action="#{AtendenteController.cadastrar()}"/>
+                <p:commandButton oncomplete="PF('confDialCancelar').show()" value="Cancelar"/>
 
+                <p:confirmDialog header="Deseja cancelar?" widgetVar="confDialCancelar"
+                                 message="Caso escolha cancelar, os dados que não foram salvos, serão
+                                 perdidos" >
+                    <p:button href="index.html" value="Sim"/>
+                    <p:commandButton oncomplete="PF('confDialCancelar').hide()" value="Não"/>
+                </p:confirmDialog>
             </h:form>
         </center>
     </h:body>
