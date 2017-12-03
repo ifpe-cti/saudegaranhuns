@@ -12,7 +12,7 @@ package br.edu.ifpe.garanhuns.sg.model.enumarador;
 public enum Status {
     FILA(0, "Fila"),
     AGENDADO(1, "Agendado"),
-    CANSELADO(2, "Cancelado");
+    CANCELADO(2, "Cancelado");
 
     private int valor;
     private String nome;
