@@ -12,7 +12,9 @@ package br.edu.ifpe.garanhuns.sg.model.enumarador;
 public enum Prioridade {
     NENHUMA(0, "Nenhuma"),
     IDOSO(1, "Idoso"),
-    GESTANTE(2, "Gestante");
+    GESTANTE(2, "Gestante"),
+    DEFICIENTEFISICO(3, "Deficiente Físico"),
+    BEBEDECOLO(4, "Bebê de colo");
 
     private int valor;
     private String nome;
