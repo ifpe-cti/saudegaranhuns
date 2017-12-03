@@ -14,17 +14,17 @@
                          rows="10" paginatorTemplate="{FirstPageLink} {PreviousPageLink}
                          {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15">
-                <p:column filterBy="#{consulta.status.label}" headerText="Status">
-                    #{consulta.status.label}
+                <p:column filterBy="#{consulta.status.nome}" headerText="Status">
+                    #{consulta.status.nome}
                 </p:column>
                 <p:column filterBy="#{consulta.agendamento}" headerText="Agendamento">
                     #{consulta.agendamento}
                 </p:column>
-                <p:column filterBy="#{consulta.especialidade.label}" headerText="Especialidade">
-                    #{consulta.especialidade.label}
+                <p:column filterBy="#{consulta.especialidade.nome}" headerText="Especialidade">
+                    #{consulta.especialidade.nome}
                 </p:column>
-                <p:column filterBy="#{consulta.prioridade.label}" headerText="Prioridade">
-                    #{consulta.prioridade.label}
+                <p:column filterBy="#{consulta.prioridade.nome}" headerText="Prioridade">
+                    #{consulta.prioridade.nome}
                 </p:column>
                 <p:column filterBy="#{consulta.solicitacao}" headerText="Solicitação">
                     #{consulta.solicitacao}
@@ -44,11 +44,11 @@
                       modal="true" resizable="false">
                 <p:panelGrid columns="2">
                     <p:outputLabel title="Status" value="Status"/>
-                    <p:outputLabel value="#{consultaController.consulta.status.label}"/>
+                    <p:outputLabel value="#{consultaController.consulta.status.nome}"/>
                     <p:outputLabel value="Prioridade"/>
-                    <p:outputLabel value="#{consultaController.consulta.prioridade.label}"/>
+                    <p:outputLabel value="#{consultaController.consulta.prioridade.nome}"/>
                     <p:outputLabel value="Especialidade"/>
-                    <p:outputLabel value="#{consultaController.consulta.especialidade.label}"/>
+                    <p:outputLabel value="#{consultaController.consulta.especialidade.nome}"/>
                     <p:outputLabel value="Data da solicitação"/>
                     <p:outputLabel value="#{consultaController.consulta.solicitacao}"/>
                     <p:outputLabel value="Data do agendamento"/>
