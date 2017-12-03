@@ -18,14 +18,14 @@
                                       id="radioPrioridade" required="true"
                                       requiredMessage="Campo prioridade obrigátorio">
                         <f:selectItems value="#{consultaController.prioridade}" var="prioridade"
-                                       itemLabel="#{prioridade.label}" itemValue="#{prioridade}"/>
+                                       itemLabel="#{prioridade.nome}" itemValue="#{prioridade}"/>
                     </p:selectOneRadio>
                     <p:outputLabel for="radioEspecialidade" value="Especialidade:" />
                     <p:selectOneRadio value="#{consultaController.consulta.especialidade}"
                                       id="radioEspecialidade" required="true"
                                       requiredMessage="Campo especialidade obrigátorio">
                         <f:selectItems value="#{consultaController.especialidade}" var="especialidade"
-                                       itemLabel="#{especialidade.label}" itemValue="#{especialidade}"/>
+                                       itemLabel="#{especialidade.nome}" itemValue="#{especialidade}"/>
                     </p:selectOneRadio>
                 </p:panelGrid>
                 <br></br>
