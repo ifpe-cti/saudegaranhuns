@@ -144,7 +144,7 @@ public class ConsultaHibernate implements ConsultaDAO {
                 c.setStatus(Status.AGENDADO);
             break;
             case 3:
-                c.setStatus(Status.CANSELADO);
+                c.setStatus(Status.CANCELADO);
             break;   
             default:
                 throw new IllegalArgumentException("Agumento invalido!");
