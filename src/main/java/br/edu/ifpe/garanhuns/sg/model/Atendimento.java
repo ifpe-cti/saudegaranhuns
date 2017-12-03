@@ -9,6 +9,7 @@ import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -21,7 +22,7 @@ import javax.persistence.ManyToOne;
 public class Atendimento implements Serializable{
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Especialidade especialidade;
     @ManyToOne
