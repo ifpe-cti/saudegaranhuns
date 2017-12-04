@@ -45,6 +45,8 @@
   $ java -jar target/saudegaranhuns-1.0-SNAPSHOT.jar
   ```
 
+  **Observação**: Há um [bug](https://github.com/joinfaces/joinfaces/issues/310) referente ao Spring Boot / Joinfaces que não permite que a aplicação seja executada em diretórios cujo nome possua algum caractere em branco. Assim, certifique-se, antes de executar, que não há caracteres em branco no PATH da execucação da aplicação. Para maiores detalhes, veja a issue #90.
+
 
 ## Documentação
 
