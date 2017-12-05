@@ -87,7 +87,7 @@ PostoSaude --> Endereco
 Endereco --> Bairro
 
 Atendimento --> Especialidade
-Atendimento --> PostoSaude
+Atendimento "*" --> "1" PostoSaude
 
 HorarioAtendimento --> Dia
 HorarioAtendimento --> Atendimento
