@@ -22,6 +22,12 @@ enum Dia {
   SABADO
 }
 
+enum PerfilUsuario {
+  ADMINISTRADOR
+  PACIENTE
+  ATENDENTE
+}
+
 class Usuario {
   -String login
   -String senha
@@ -55,10 +61,6 @@ class Consulta {
   -LocalDate dataAgendamento
 }
 
-class FilaAtendimento {
-  -LocalDate data
-}
-
 class Atendimento {
 }
 
@@ -77,10 +79,11 @@ Paciente --> PostoSaude
 Paciente --> Endereco
 Paciente --> Usuario
 
+
+
 Atendente --> PostoSaude
 Atendente --> Usuario
-
-FilaAtendimento --> Consulta
+Usuario "1" --> "1" PerfilUsuario
 
 PostoSaude --> Endereco
 
