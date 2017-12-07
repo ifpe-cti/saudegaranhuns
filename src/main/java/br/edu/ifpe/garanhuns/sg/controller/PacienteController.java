@@ -6,6 +6,7 @@
 package br.edu.ifpe.garanhuns.sg.controller;
 
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
+import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
 import java.io.Serializable;
 import java.util.List;
@@ -24,6 +25,15 @@ public class PacienteController implements Serializable {
 
     private PacienteHibernate model;
     private Paciente paciente;
+    private PostoSaude posto;
+
+    public PostoSaude getPosto() {
+        return posto;
+    }
+
+    public void setPosto(PostoSaude posto) {
+        this.posto = posto;
+    }
 
     @PostConstruct
     public void init() {
@@ -57,4 +67,21 @@ public class PacienteController implements Serializable {
     public List<Paciente> recuperarTodos() {
         return model.recuperarTodos();
     }
+
+    public PacienteHibernate getModel() {
+        return model;
+    }
+
+    public void setModel(PacienteHibernate model) {
+        this.model = model;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
 }

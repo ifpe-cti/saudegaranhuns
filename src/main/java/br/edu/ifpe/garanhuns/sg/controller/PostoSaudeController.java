@@ -60,4 +60,21 @@ public class PostoSaudeController implements Serializable {
     public void deletarEmCascata(PostoSaude postosaude) {
         model.deletarEmCascata(postosaude);
     }
+
+    public PostoSaudeHibernate getModel() {
+        return model;
+    }
+
+    public PostoSaude getPostosaude() {
+        return postosaude;
+    }
+
+    public void setModel(PostoSaudeHibernate model) {
+        this.model = model;
+    }
+
+    public void setPostosaude(PostoSaude postosaude) {
+        this.postosaude = postosaude;
+    }
+
 }

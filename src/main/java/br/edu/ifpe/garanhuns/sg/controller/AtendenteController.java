@@ -54,4 +54,20 @@ public class AtendenteController implements Serializable {
         return model.recuperarTodos();
     }
 
+    public AtendenteHibernate getModel() {
+        return model;
+    }
+
+    public void setModel(AtendenteHibernate model) {
+        this.model = model;
+    }
+
+    public Atendente getAtendente() {
+        return atendente;
+    }
+
+    public void setAtendente(Atendente atendente) {
+        this.atendente = atendente;
+    }
+
 }
