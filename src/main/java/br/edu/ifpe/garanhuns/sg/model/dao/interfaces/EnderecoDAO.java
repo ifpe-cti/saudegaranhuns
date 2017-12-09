@@ -12,6 +12,6 @@ import br.edu.ifpe.garanhuns.sg.model.Endereco;
  * @author Herikles
  */
 public interface EnderecoDAO extends DAO<Endereco> {
-    public Endereco recuperarPorNome(String name);
+    public Endereco recuperarPorLogradouro(String name);
     public void deletarEmCascata(Endereco b);
 }
