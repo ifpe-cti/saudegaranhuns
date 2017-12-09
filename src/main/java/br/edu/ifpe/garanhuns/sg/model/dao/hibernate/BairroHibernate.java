@@ -118,22 +118,13 @@ public class BairroHibernate implements BairroDAO {
     
     @Override
     public Bairro recuperarPorNome(String name) {
-        Session session = HibernateUtil.getSession();
-        try {
-            session.beginTransaction();
-            List<Bairro> bairro = (session.createQuery("from " + Bairro.class.getName()).list());
-            for (Bairro b : bairro) {
-                if (b.getNome().equals(name)) {
-                    return b;
-                }
-            }
-            session.getTransaction().commit();
+        try (Session session = HibernateUtil.getSession()) {
+            List<Bairro> bairros = (session.createQuery("from Bairro b where b.nome = :name").setParameter("name", name).list());
+            if(bairros!=null)
+                return bairros.get(0);
             
         } catch (Exception e) {
-            session.getTransaction().rollback();
             System.err.println("Falha ao recuperar o Bairro por nome. Erro: " + e.toString());
-        } finally {
-            session.close();
         }
         return null;
     }
