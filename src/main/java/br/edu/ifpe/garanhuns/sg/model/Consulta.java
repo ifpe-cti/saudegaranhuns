@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
+import javax.persistence.GenerationType;
 
 /**
  *
@@ -22,7 +23,7 @@ import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
 @Entity
 public class Consulta implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Especialidade especialidade;
     private Prioridade prioridade;

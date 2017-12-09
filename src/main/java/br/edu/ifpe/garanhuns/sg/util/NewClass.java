@@ -6,7 +6,6 @@
 package br.edu.ifpe.garanhuns.sg.util;
 
 import java.time.LocalDate;
-import java.time.Month;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.EnderecoHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
@@ -21,7 +20,7 @@ import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
 
 /**
  *
- * @author herik
+ * @author nosso
  */
 public class NewClass {
 
