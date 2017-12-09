@@ -76,7 +76,6 @@ Consulta --> Status
 Consulta --> Paciente
 
 Paciente --> PostoSaude
-Paciente --> Endereco
 Paciente --> Usuario
 
 
