@@ -48,7 +48,7 @@ Contributor(s):
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
 
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
 
         <mapping class="br.edu.ifpe.garanhuns.sg.model.Bairro" />
