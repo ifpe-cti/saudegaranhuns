@@ -37,7 +37,7 @@
 
   Para executar a aplicação, primeiro utilize o maven para construir a aplicação:
   ```bash
-  $ mvn clean package
+  $ ./mvnw clean package
   ```
 
   Depois de construido, utilize o `jar` que se encontra no diretório `target`, assim:
@@ -52,7 +52,7 @@
 
   A documentação do sistema é composta do arquivo README.md (este arquivo) e dos diagramas UML que são gerados pelo [PlantUML](http://plantuml.com) que estão armazenados na pasta `docs/uml`. Caso precise gerar a documentação, deverá utilizar o seguinte comando:  
   ```
-  $ mvn clean package -Pdocs
+  $ ./mvnw clean package -Pdocs
   ```
 
 ### Diagrama de Classes
