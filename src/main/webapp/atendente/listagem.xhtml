@@ -9,15 +9,15 @@
     </head>
     <body>
         <h:form>
-            <p:dataTable value="#{ClasseControladora.NomeDoMetodoDaOperacaoASerRealizada}" var="atendente"
+            <p:dataTable value="#{AtendenteController.recuperarTodos()}" var="atendente"
                          id="idListarAtendentes">
                 <p:column headerText="Nome do Atendente">
-                    <h:outputText value="#{atendente.variavelQueGuardaONomeDoPaciente}"/>
+                    <h:outputText value="#{atendente.atendente.nome}"/>
                 </p:column>
 
                 <p:column headerText ="Opções">
-                    <p:commandButton value="Deletar"  icon="ui-icon-trash" action="#{ClasseControladora.MetodoDeDeletar(ClasseControladora.selectedAtendente)}"/>
-                    <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{ClasseControladora.MetodoSet(atendente)}" action="alterar-atendente.xhtml"/>
+                    <p:commandButton value="Deletar"  icon="ui-icon-trash" action="#{AtendenteController.deletar(AtendenteController.atendente)}"/>
+                    <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{AtendenteController.setAtendente(atendente)}" action="alterar-atendente.xhtml"/>
                 </p:column>
 
             </p:dataTable>

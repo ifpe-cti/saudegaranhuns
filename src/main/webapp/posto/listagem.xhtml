@@ -8,15 +8,15 @@
     </head>
     <body>
         <h:form>
-            <p:dataTable value="#{ClasseControladora.NomeDoMetodoDaOperacaoASerRealizada}" var="posto"
+            <p:dataTable value="#{PostoSaudeController.NomeDoMetodoDaOperacaoASerRealizada}" var="posto"
                          id="idListarPostos">
                 <p:column headerText="Nome do Posto">
-                    <h:outputText value="#{posto.variavelQueGuardaONomeDoPosto}"/>
+                    <h:outputText value="#{posto.postosaude.nome}"/>
                 </p:column>
 
                 <p:column headerText ="Opções">
-                    <p:commandButton value="Deletar"  icon="ui-icon-trash" action="#{ClasseControladora.MetodoDeDeletar(ClasseControladora.selectedPosto)}"/>
-                    <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{ClasseControladora.MetodoSet(posto)}" action="alterar-posto.xhtml"/>
+                    <p:commandButton value="Deletar"  icon="ui-icon-trash" action="#{PostoSaudeController.deletar(PostoSaudeController.postosaude)}"/>
+                    <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{PostoSaudeController.setPostosaude(posto)}" action="alterar-posto.xhtml"/>
                 </p:column>
 
             </p:dataTable>

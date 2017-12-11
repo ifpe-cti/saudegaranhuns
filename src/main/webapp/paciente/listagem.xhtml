@@ -8,23 +8,23 @@
     </head>
     <body>
         <h:form>
-            <p:dataTable value="#{ClasseControladora.NomeDoMetodoDaOperacaoASerRealizada}" var="paciente"
+            <p:dataTable value="#{PacienteController.recuperarTodos()}" var="paciente"
                          id="idListarPacientes">
                 <p:column headerText="Nome do Paciente">
-                    <h:outputText value="#{paciente.variavelQueGuardaONomeDoPaciente}"/>
+                    <h:outputText value="#{paciente.paciente.nome}"/>
                 </p:column>
 
                 <p:column headerText="Cartão do SUS">
-                    <h:outputText value="#{paciente.variavelQueGuardaONumeroDoCartaoDoSUS}"/>
+                    <h:outputText value="#{paciente.paciente.cartaoSus}"/>
                 </p:column>
 
                 <p:column headerText="Data de Nascimento">
-                    <h:outputText value="#{paciente.variavelQueGuardaADataDeNascimento}" />
+                    <h:outputText value="#{paciente.paciente.dataNascimento}" />
                 </p:column>
 
                 <p:column headerText ="Opções">
-                    <p:commandButton value="Deletar"  icon="ui-icon-trash" action="#{ClasseControladora.MetodoDeDeletar(ClasseControladora.selectedPaciente)}"/>
-                    <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{ClasseControladora.MetodoSet(paciente)}" action="alterar-paciente.xhtml"/>
+                    <p:commandButton value="Deletar"  icon="ui-icon-trash" action="#{PacienteController.deletar(PacienteController.paciente)}"/>
+                    <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{PacienteController.setPaciente(paciente)}" action="alterar-paciente.xhtml"/>
                 </p:column>
 
 
