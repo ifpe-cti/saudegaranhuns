@@ -5,6 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.sg.model;
 
+import br.edu.ifpe.garanhuns.sg.model.enumarador.PerfilUsuario;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,13 +26,16 @@ public class Usuario implements Serializable {
     @Column(unique = true)
     private String login;
     private String senha;
+    private PerfilUsuario perfilUsuario;
+    
 
     public Usuario() {
     }
 
-    public Usuario(String login, String senha) {
+    public Usuario(String login, String senha, PerfilUsuario perfilUsuario) {
         this.login = login;
         this.senha = senha;
+        this.perfilUsuario = perfilUsuario;
     }
 
     public int getId() {
@@ -53,4 +57,13 @@ public class Usuario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public PerfilUsuario getPerfilUsuario() {
+        return perfilUsuario;
+    }
+
+    public void setPerfilUsuario(PerfilUsuario perfilUsuario) {
+        this.perfilUsuario = perfilUsuario;
+    }
+    
 }

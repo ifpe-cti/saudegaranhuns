@@ -26,9 +26,7 @@ public class PacienteHibernate implements PacienteDAO {
         PostoSaudeHibernate ph = new PostoSaudeHibernate();
         try {
             session.beginTransaction();
-            System.out.println("##########################################################################");
             PostoSaude ps = ph.recuperarPorNome(o.getPostoSaude().getNome());
-            System.out.println("\n\n##########################################################################\n\n");
             if (ps == null) {
                 ph.inserir(o.getPostoSaude());
             } else {
@@ -132,6 +130,11 @@ public class PacienteHibernate implements PacienteDAO {
             session.close();
         }
         return null;
+    }
+
+    @Override
+    public Paciente recuperarPorCartaoSus(String name) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
