@@ -118,7 +118,7 @@ public class ConsultaHibernate implements ConsultaDAO {
             List<Consulta> consultas = (session.createQuery("from " + Consulta.class.getName()).list());
             List<Consulta> retorno = new ArrayList<>();
             for (Consulta p : consultas) {
-                if (p.getPaciente().equals(c.getNome())) {
+                if (p.getPaciente().getNome().equals(c.getNome())) {
                     retorno.add(p);
                 }
             }
