@@ -37,8 +37,9 @@ public class NewClass {
         eh.inserir(e);
         ph.inserir(p);
         cH.inserir(c);
-        System.out.println(eh.recuperarTodos().get(0).getBairro().getNome());
+        System.out.println("%%%%%%%%%%%%%%%%%%%"+ph.recuperarPorCartaoSus("321"));
         cH.alterarStatusConsulta(c, 2);
+        ph.recuperarPorCartaoSus("321");
 
     }
 }

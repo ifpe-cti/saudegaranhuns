@@ -12,5 +12,5 @@ import br.edu.ifpe.garanhuns.sg.model.Paciente;
  */
 public interface PacienteDAO extends DAO<Paciente>{
     public Paciente recuperarPorNome(String name);
-    public Paciente recuperarPorCartaoSus(String name);
+    public Paciente recuperarPorCartaoSus(String numeroCartao);
 }

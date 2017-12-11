@@ -133,8 +133,15 @@ public class PacienteHibernate implements PacienteDAO {
     }
 
     @Override
-    public Paciente recuperarPorCartaoSus(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public Paciente recuperarPorCartaoSus(String numeroCartao) {
+         try (Session session = HibernateUtil.getSession()) {
+            List<Paciente> pacientes = (session.createQuery("from Paciente p where p.cartaoSus = :numeroCartao").setParameter("numeroCartao", numeroCartao).list());
+            if(pacientes!=null)
+                return pacientes.get(0);
+            
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar o  Paciente por Cartão do SUS. Erro: " + e.toString());
+        }
+        return null;}
 
 }
