@@ -22,8 +22,8 @@ public class PacienteHibernate implements PacienteDAO {
     @Override
     public void inserir(Paciente o) {
         Session session = HibernateUtil.getSession();
-        EnderecoHibernate ed = new EnderecoHibernate();
         PostoSaudeHibernate ph = new PostoSaudeHibernate();
+        UsuarioHibernate uH = new UsuarioHibernate();
         try {
             session.beginTransaction();
             PostoSaude ps = ph.recuperarPorNome(o.getPostoSaude().getNome());
@@ -32,6 +32,7 @@ public class PacienteHibernate implements PacienteDAO {
             } else {
                 o.setPostoSaude(ps);
             }
+            uH.inserir(o.getUsuario());
             session.save(o);
             session.getTransaction().commit();
         } catch (Exception e) {
