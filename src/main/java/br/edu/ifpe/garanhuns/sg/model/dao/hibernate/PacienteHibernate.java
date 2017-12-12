@@ -22,18 +22,17 @@ public class PacienteHibernate implements PacienteDAO {
     @Override
     public void inserir(Paciente o) {
         Session session = HibernateUtil.getSession();
-        EnderecoHibernate ed = new EnderecoHibernate();
         PostoSaudeHibernate ph = new PostoSaudeHibernate();
+        UsuarioHibernate uH = new UsuarioHibernate();
         try {
             session.beginTransaction();
-            System.out.println("##########################################################################");
             PostoSaude ps = ph.recuperarPorNome(o.getPostoSaude().getNome());
-            System.out.println("\n\n##########################################################################\n\n");
             if (ps == null) {
                 ph.inserir(o.getPostoSaude());
             } else {
                 o.setPostoSaude(ps);
             }
+            uH.inserir(o.getUsuario());
             session.save(o);
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -133,5 +132,17 @@ public class PacienteHibernate implements PacienteDAO {
         }
         return null;
     }
+
+    @Override
+    public Paciente recuperarPorCartaoSus(String numeroCartao) {
+         try (Session session = HibernateUtil.getSession()) {
+            List<Paciente> pacientes = (session.createQuery("from Paciente p where p.cartaoSus = :numeroCartao").setParameter("numeroCartao", numeroCartao).list());
+            if(pacientes!=null)
+                return pacientes.get(0);
+            
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar o  Paciente por Cartão do SUS. Erro: " + e.toString());
+        }
+        return null;}
 
 }

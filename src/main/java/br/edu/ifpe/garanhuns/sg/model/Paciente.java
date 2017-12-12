@@ -7,12 +7,13 @@ package br.edu.ifpe.garanhuns.sg.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -25,24 +26,29 @@ public class Paciente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
+    @Column(unique = true)
     private String cartaoSus;
     private LocalDate dataNascimento;
     @ManyToOne
     private Endereco endereco;
     @ManyToOne
     private PostoSaude postoSaude;
+    @OneToOne
+    private Usuario usuario;
 
     public Paciente() {
     }
 
-    public Paciente(String nome, String cartaoSus, LocalDate dataNascimento, Endereco endereco, PostoSaude postoSaude) {
+    public Paciente(String nome, String cartaoSus, LocalDate dataNascimento, Endereco endereco, PostoSaude postoSaude, Usuario usuario) {
         this.nome = nome;
         this.cartaoSus = cartaoSus;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.postoSaude = postoSaude;
+        this.usuario = usuario;
     }
 
+    
     public int getId() {
         return id;
     }
@@ -86,6 +92,15 @@ public class Paciente implements Serializable {
     public void setPostoSaude(PostoSaude postoSaude) {
         this.postoSaude = postoSaude;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
 
     @Override
     public String toString() {
