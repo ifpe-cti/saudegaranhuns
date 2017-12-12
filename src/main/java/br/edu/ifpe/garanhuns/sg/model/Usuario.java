@@ -27,7 +27,6 @@ public class Usuario implements Serializable {
     private String login;
     private String senha;
     private PerfilUsuario perfilUsuario;
-    
 
     public Usuario() {
     }
@@ -65,5 +64,30 @@ public class Usuario implements Serializable {
     public void setPerfilUsuario(PerfilUsuario perfilUsuario) {
         this.perfilUsuario = perfilUsuario;
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
+
 }

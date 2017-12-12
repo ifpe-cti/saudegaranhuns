@@ -13,14 +13,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-
 /**
  *
  * @author Hérikles
  */
-
 @Entity
 public class HorarioAtendimento implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -85,9 +84,35 @@ public class HorarioAtendimento implements Serializable {
     public void setAtendimento(Atendimento atendimento) {
         this.atendimento = atendimento;
     }
-    
+
     @Override
     public String toString() {
         return "HorarioAtendimento{" + "id=" + id + ", dia=" + dia + ", horaInicio=" + horaInicio + ", horaTermino=" + horaTermino + ", quantidade=" + quantidade + ", atendimento=" + atendimento + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 37 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final HorarioAtendimento other = (HorarioAtendimento) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
+
 }
