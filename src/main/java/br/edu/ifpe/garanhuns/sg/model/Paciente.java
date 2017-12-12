@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -32,18 +33,22 @@ public class Paciente implements Serializable {
     private Endereco endereco;
     @ManyToOne
     private PostoSaude postoSaude;
+    @OneToOne
+    private Usuario usuario;
 
     public Paciente() {
     }
 
-    public Paciente(String nome, String cartaoSus, LocalDate dataNascimento, Endereco endereco, PostoSaude postoSaude) {
+    public Paciente(String nome, String cartaoSus, LocalDate dataNascimento, Endereco endereco, PostoSaude postoSaude, Usuario usuario) {
         this.nome = nome;
         this.cartaoSus = cartaoSus;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.postoSaude = postoSaude;
+        this.usuario = usuario;
     }
 
+    
     public int getId() {
         return id;
     }
@@ -87,6 +92,15 @@ public class Paciente implements Serializable {
     public void setPostoSaude(PostoSaude postoSaude) {
         this.postoSaude = postoSaude;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
 
     @Override
     public String toString() {

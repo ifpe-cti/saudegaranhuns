@@ -14,7 +14,9 @@ import br.edu.ifpe.garanhuns.sg.model.Consulta;
 import br.edu.ifpe.garanhuns.sg.model.Endereco;
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.Usuario;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.PerfilUsuario;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
 
@@ -31,7 +33,7 @@ public class NewClass {
         Endereco e = new Endereco("32", "Rua dos bobos", new Bairro("Juliana"));
         //
         Paciente p;
-        p = new Paciente("asdf", "321", LocalDate.of(2010, 11, 10), e, new PostoSaude("asd", e));
+        p = new Paciente("asdf", "321", LocalDate.of(2010, 11, 10), e, new PostoSaude("asd", e),new Usuario("login", "senha", PerfilUsuario.ADMINISTRADOR));
         Consulta c = new Consulta(Especialidade.GERAL, Prioridade.IDOSO, Status.FILA, LocalDate.of(2017, 11, 24), LocalDate.of(2018, 1, 1), p);
 
         eh.inserir(e);
