@@ -74,4 +74,29 @@ public class Endereco implements Serializable {
         return "Endereco{" + "id=" + id + ", numero=" + numero + ", logradouro=" + logradouro + ", bairro=" + bairro + '}';
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 67 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Endereco other = (Endereco) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
+
 }

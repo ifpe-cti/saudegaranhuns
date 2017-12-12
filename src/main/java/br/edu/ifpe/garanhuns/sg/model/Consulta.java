@@ -5,16 +5,16 @@
  */
 package br.edu.ifpe.garanhuns.sg.model;
 
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
-import javax.persistence.GenerationType;
 
 /**
  *
@@ -22,6 +22,7 @@ import javax.persistence.GenerationType;
  */
 @Entity
 public class Consulta implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -101,6 +102,30 @@ public class Consulta implements Serializable {
     public String toString() {
         return "Consulta{" + "especialidade=" + especialidade + ", prioridade=" + prioridade + ", status=" + status + ", dataSolicitacao=" + dataSolicitacao + ", dataAgendamento=" + dataAgendamento + ", paciente=" + paciente + '}';
     }
-    
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Consulta other = (Consulta) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
+
 }

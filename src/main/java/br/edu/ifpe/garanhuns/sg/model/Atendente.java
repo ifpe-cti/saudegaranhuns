@@ -18,7 +18,7 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class Atendente implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -72,5 +72,30 @@ public class Atendente implements Serializable {
     @Override
     public String toString() {
         return "Atendente{" + "id=" + id + ", nome=" + nome + ", postoSaude=" + postoSaude + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Atendente other = (Atendente) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
     }
 }

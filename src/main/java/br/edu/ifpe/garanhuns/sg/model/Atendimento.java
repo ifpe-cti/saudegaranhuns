@@ -17,10 +17,9 @@ import javax.persistence.ManyToOne;
  *
  * @author Hérikles
  */
-
 @Entity
-public class Atendimento implements Serializable{
-    
+public class Atendimento implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -60,7 +59,30 @@ public class Atendimento implements Serializable{
     public String toString() {
         return "Atendimento{" + "id=" + id + ", especialidade=" + especialidade + ", postoSaude=" + postoSaude + '}';
     }
-    
-    
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 47 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Atendimento other = (Atendimento) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
+
 }
