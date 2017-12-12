@@ -7,19 +7,23 @@ package br.edu.ifpe.garanhuns.sg.recursos;
 
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PostoSaudeHibernate;
 import com.google.gson.Gson;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.client.ResponseProcessingException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * REST Web Service
  *
  * @author Jose Junio
  */
-@Path("postos")
+@RestController
+@RequestMapping(value = "/postos")
 public class PostosResource {
 
     @Context
@@ -37,12 +41,23 @@ public class PostosResource {
      *
      * @return an instance of java.lang.String
      */
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String recuperarTodosOsPostos() {
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
+    public ResponseEntity<String> recuperarTodosOsPostos() {
 
-        Gson gson = new Gson();
-        return gson.toJson(new PostoSaudeHibernate().recuperarTodos());
+        String postosJson;
+        try {
+            postosJson = new Gson().toJson(
+                    new PostoSaudeHibernate().recuperarTodos());
+        } catch (ResponseProcessingException err) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+        if (postosJson == null) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("null");
+        }
+        if (postosJson.equals("[]")) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(postosJson);
 
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(postosJson);
     }
 }
