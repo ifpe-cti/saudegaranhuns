@@ -40,27 +40,24 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-configuration>
-    <session-factory>
-        <!-- SQL dialect -->
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/saudegaranhuns?zeroDateTimeBehavior=convertToNull</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">root</property>
-
-        <property name="hbm2ddl.auto">update</property>
-        <property name="show_sql">true</property>
-
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.Bairro" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.Endereco" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.Usuario" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.PostoSaude" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.Atendente" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.Paciente" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.Consulta" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.FilaAtendimento" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.Atendimento" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento" />
-
-    </session-factory>
+  <session-factory>
+    <!-- SQL dialect -->
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/saudegaranhuns?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">ifpe</property>
+    <property name="hbm2ddl.auto">update</property>
+    <property name="show_sql">true</property>
+    <mapping class="br.edu.ifpe.garanhuns.sg.model.Bairro"/>
+    <mapping class="br.edu.ifpe.garanhuns.sg.model.Endereco"/>
+    <mapping class="br.edu.ifpe.garanhuns.sg.model.Usuario"/>
+    <mapping class="br.edu.ifpe.garanhuns.sg.model.PostoSaude"/>
+    <mapping class="br.edu.ifpe.garanhuns.sg.model.Atendente"/>
+    <mapping class="br.edu.ifpe.garanhuns.sg.model.Paciente"/>
+    <mapping class="br.edu.ifpe.garanhuns.sg.model.Consulta"/>
+    <mapping class="br.edu.ifpe.garanhuns.sg.model.FilaAtendimento"/>
+    <mapping class="br.edu.ifpe.garanhuns.sg.model.Atendimento"/>
+    <mapping class="br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento"/>
+  </session-factory>
 </hibernate-configuration>

@@ -12,8 +12,8 @@
                 <h1> Atualizar Posto de Saúde </h1>
             </p:fieldset>
             <p:growl id='growl'/>
-            <h:form >
-                <p:fieldset legend="Atualização">
+            <h:form>
+                <p:panelGrid columns="2">
                     <p:outputLabel value="Nome"/>
                     <p:inputText value="#{postoSaudeController.postosaude.nome}" />
                     <p:outputLabel value="Logradouro"/>
@@ -22,9 +22,7 @@
                     <p:inputText value="#{postoSaudeController.postosaude.endereco.numero}" />
                     <p:outputLabel value="Bairro"/>
                     <p:inputText value="#{postoSaudeController.postosaude.endereco.bairro.nome}" />
-                    </p:panelGrid>
-                </p:fieldset>
-
+                </p:panelGrid>
                 <p:commandButton update= "growl @form" value="Atualizar" action="#{postoSaudeController.alterar()}"/>
                 <p:commandButton oncomplete="PF('confDialCancelar').show()" value="Cancelar"/>
                 <p:confirmDialog header="Deseja cancelar?" widgetVar="confDialCancelar"

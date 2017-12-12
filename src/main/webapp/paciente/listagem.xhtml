@@ -3,36 +3,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-    <head>
-        <title>Saude Garanhuns</title>
-    </head>
-    <body>
+    <h:head>
+        <title>Listagem dos pacientes</title>
+    </h:head>
+    <h:body>
         <h:form>
-            <p:dataTable value="#{PacienteController.recuperarTodos()}" var="paciente"
+            <p:dataTable value="#{pacienteController.recuperarTodos()}" var="paciente"
                          id="idListarPacientes">
                 <p:column headerText="Nome do Paciente">
-                    <h:outputText value="#{paciente.paciente.nome}"/>
+                    <h:outputText value="#{paciente.nome}"/>
                 </p:column>
-
                 <p:column headerText="Cartão do SUS">
-                    <h:outputText value="#{paciente.paciente.cartaoSus}"/>
+                    <h:outputText value="#{paciente.cartaoSus}"/>
                 </p:column>
-
                 <p:column headerText="Data de Nascimento">
-                    <h:outputText value="#{paciente.paciente.dataNascimento}" />
+                    <h:outputText value="#{paciente.dataNascimento}" />
                 </p:column>
-
                 <p:column headerText ="Opções">
-                    <p:commandButton value="Deletar"  icon="ui-icon-trash" action="#{PacienteController.deletar(PacienteController.paciente)}"/>
-                    <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{PacienteController.setPaciente(paciente)}" action="alterar-paciente.xhtml"/>
+                    <p:commandButton value="Deletar"  icon="ui-icon-trash" actionListener="#{pacienteController.setPaciente(paciente)}" action="#{pacienteController.deletar()}" update="@form"/>
+                    <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{pacienteController.setPaciente(paciente)}" action="alterar.xhtml"/>
                 </p:column>
-
-
             </p:dataTable>
-
-
         </h:form>
-    </body>
-
+    </h:body>
 </html>
+
 

@@ -3,25 +3,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-    <head>
-        <title>Saude Garanhuns</title>
-    </head>
-    <body>
+    <h:head>
+        <title>Listagem dos postos de saúde</title>
+    </h:head>
+    <h:body>
         <h:form>
-            <p:dataTable value="#{PostoSaudeController.NomeDoMetodoDaOperacaoASerRealizada}" var="posto"
+            <p:dataTable value="#{postoSaudeController.recuperarTodos()}" var="posto"
                          id="idListarPostos">
                 <p:column headerText="Nome do Posto">
-                    <h:outputText value="#{posto.postosaude.nome}"/>
+                    <h:outputText value="#{posto.nome}"/>
                 </p:column>
-
                 <p:column headerText ="Opções">
-                    <p:commandButton value="Deletar"  icon="ui-icon-trash" action="#{PostoSaudeController.deletar(PostoSaudeController.postosaude)}"/>
-                    <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{PostoSaudeController.setPostosaude(posto)}" action="alterar-posto.xhtml"/>
+                    <p:commandButton value="Deletar"  icon="ui-icon-trash" actionListener="#{postoSaudeController.setPostosaude(posto)}" action="#{postoSaudeController.deletar()}" update="@form"/>
+                    <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{postoSaudeController.setPostosaude(posto)}"  action="alterar.xhtml?faces-redirect=true"/>
                 </p:column>
-
             </p:dataTable>
         </h:form>
-    </body>
-
+   </h:body>
 </html>
-
