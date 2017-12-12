@@ -6,6 +6,7 @@
 package br.edu.ifpe.garanhuns.sg.controller;
 
 import br.edu.ifpe.garanhuns.sg.model.Atendente;
+import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.AtendenteHibernate;
 import java.io.Serializable;
 import java.util.List;
@@ -24,11 +25,13 @@ public class AtendenteController implements Serializable {
 
     private AtendenteHibernate model;
     private Atendente atendente;
+    private PostoSaude postosaude;
 
     @PostConstruct
     public void init() {
         atendente = new Atendente();
         model = new AtendenteHibernate();
+        postosaude = new PostoSaude();
     }
 
     public AtendenteController() {

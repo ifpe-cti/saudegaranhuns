@@ -22,7 +22,7 @@
                         <p:outputLabel value="Número"/>
                         <p:inputText value="#{postoSaudeController.postosaude.endereco.numero}" />
                         <p:outputLabel value="Bairro"/>
-                        <p:inputText value="#{postoSaudeController.postosaude.endereco.bairro.nome}" />
+                        <p:inputText value="#{postoSaudeController.postosaude.endereco.bairro.nome}"/>
                     </p:panelGrid>
                 </p:fieldset>
                 <p:commandButton update= "growl @form" value="Cadastrar" action="#{postoSaudeController.cadastrar()}"/>

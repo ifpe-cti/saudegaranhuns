@@ -23,7 +23,7 @@
                         <p:outputLabel value="Data de Nascimento"/>
                         <p:inputMask value="#{pacienteController.paciente.dataNascimento}" mask="99/99/9999" />
                         <p:outputLabel for="Posto" value="Posto de Atendimento:" />
-                        <p:selectOneMenu id="Posto" value="#{pacienteController.posto}" style="width:125px" converter='postoSaudeConverter'>
+                        <p:selectOneMenu id="Posto" value="#{pacienteController.posto}" style="width:125px" converter="postoSaudeConverter">
                             <f:selectItems value="#{postoSaudeController.recuperarTodos()}" var='posto' itemLabel="#{posto.nome}" itemValue="#{posto}" />
                         </p:selectOneMenu>
                     </p:panelGrid>

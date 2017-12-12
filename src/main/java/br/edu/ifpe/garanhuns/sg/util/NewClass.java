@@ -14,7 +14,11 @@ import br.edu.ifpe.garanhuns.sg.model.Consulta;
 import br.edu.ifpe.garanhuns.sg.model.Endereco;
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
+<<<<<<< HEAD
 import br.edu.ifpe.garanhuns.sg.model.Usuario;
+=======
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PostoSaudeHibernate;
+>>>>>>> iniciação de correção cadastro paciente
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.PerfilUsuario;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
