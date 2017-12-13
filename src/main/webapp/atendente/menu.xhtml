@@ -4,7 +4,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <head>
-        <title>Facelet Title</title>
+        <title>Menu do atendente</title>
     </head>
     <body>
         <p:menubar id="menuAtendente">
@@ -12,6 +12,11 @@
                 <p:menuitem value="Cadastrar" url="../paciente/cadastro.xhtml"/>
                 <p:menuitem value="Listagem" url="../paciente/listagem.xhtml"/>
             </p:submenu>
+            <p:submenu label="Consulta">
+                <p:menuitem value="Listagem de Consultas" url="../consulta/listagem.xhtml"/>
+                <p:menuitem value="Consultas do dia" url="../consulta/listagem-do-dia.xhtml"/>
+            </p:submenu>
+            <p:commandButton value ="Sair" action="#{usuarioController.logout()}"/>
         </p:menubar>
     </body>
 </html>
