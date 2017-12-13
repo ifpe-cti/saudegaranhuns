@@ -5,6 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.sg.model;
 
+import com.google.gson.Gson;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Column;
@@ -130,4 +131,24 @@ public class Paciente implements Serializable {
         return true;
     }
 
+    public static boolean validarPacienteJson(String pacienteJson) {
+
+        Paciente pacienteValidado;
+
+        try {
+            pacienteValidado = new Gson().fromJson(pacienteJson, Paciente.class);
+            if (pacienteValidado.getId() == 0
+                    && pacienteValidado.getNome() != null
+                    && pacienteValidado.getCartaoSus() != null
+                    && pacienteValidado.getDataNascimento() != null
+                    && pacienteValidado.getEndereco() != null
+                    && pacienteValidado.getPostoSaude() != null
+                    && pacienteValidado.getUsuario() != null) {
+                return true;
+            }
+        } catch (com.google.gson.JsonSyntaxException err) {
+            return false;
+        }
+        return false;
+    }
 }
