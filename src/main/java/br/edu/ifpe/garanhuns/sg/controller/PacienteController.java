@@ -25,15 +25,6 @@ public class PacienteController implements Serializable {
 
     private PacienteHibernate model;
     private Paciente paciente;
-    private PostoSaude posto;
-
-    public PostoSaude getPosto() {
-        return posto;
-    }
-
-    public void setPosto(PostoSaude posto) {
-        this.posto = posto;
-    }
 
     @PostConstruct
     public void init() {
