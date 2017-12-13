@@ -11,20 +11,20 @@ import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.EnderecoHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
 import com.google.gson.Gson;
 import java.net.URI;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * REST Web Service
  *
  * @author Jose Junio
  */
-@Path("pacientes")
+@RestController
+@RequestMapping(value = "/pacientes")
 public class PacientesResource {
 
     @Context
@@ -41,8 +41,7 @@ public class PacientesResource {
      *
      * @return an instance of java.lang.String
      */
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
+    @RequestMapping(method = RequestMethod.POST)
     public Response cadastrar(String pacienteJson) {
 
         Paciente paciente = new Gson().fromJson(pacienteJson, Paciente.class);
