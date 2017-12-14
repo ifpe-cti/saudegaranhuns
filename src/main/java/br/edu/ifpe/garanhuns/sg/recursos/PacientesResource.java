@@ -9,7 +9,6 @@ import br.edu.ifpe.garanhuns.sg.model.Paciente;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
 import com.google.gson.Gson;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
