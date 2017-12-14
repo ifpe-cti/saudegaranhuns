@@ -7,7 +7,9 @@ package br.edu.ifpe.garanhuns.sg.controller;
 
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.Usuario;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.PerfilUsuario;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -30,12 +32,17 @@ public class PacienteController implements Serializable {
     public void init() {
         paciente = new Paciente();
         model = new PacienteHibernate();
+        paciente.setUsuario(new Usuario());
+        paciente.setPostoSaude(new PostoSaude());
     }
 
     public PacienteController() {
     }
 
     public void cadastrar() {
+        paciente.getUsuario().setLogin(paciente.getCartaoSus());
+        paciente.getUsuario().setSenha("00000");
+        paciente.getUsuario().setPerfilUsuario(PerfilUsuario.PACIENTE);
         model.inserir(paciente);
     }
 

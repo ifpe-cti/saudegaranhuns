@@ -15,6 +15,6 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class PacienteLoginController implements Serializable{
+public class LoginUsuarioController {
     
 }

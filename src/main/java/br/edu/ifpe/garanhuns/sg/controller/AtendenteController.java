@@ -7,7 +7,9 @@ package br.edu.ifpe.garanhuns.sg.controller;
 
 import br.edu.ifpe.garanhuns.sg.model.Atendente;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.Usuario;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.AtendenteHibernate;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.PerfilUsuario;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -25,19 +27,21 @@ public class AtendenteController implements Serializable {
 
     private AtendenteHibernate model;
     private Atendente atendente;
-    private PostoSaude postosaude;
+       
 
     @PostConstruct
     public void init() {
         atendente = new Atendente();
         model = new AtendenteHibernate();
-        postosaude = new PostoSaude();
+        atendente.setUsuario(new Usuario());
+        atendente.setPostoSaude(new PostoSaude());
     }
 
     public AtendenteController() {
     }
 
     public void cadastrar() {
+        atendente.getUsuario().setPerfilUsuario(PerfilUsuario.ATENDENTE);
         model.inserir(atendente);
     }
 
