@@ -137,8 +137,7 @@ public class Paciente implements Serializable {
 
         try {
             pacienteValidado = new Gson().fromJson(pacienteJson, Paciente.class);
-            if (pacienteValidado.getId() == 0
-                    && pacienteValidado.getNome() != null
+            if (pacienteValidado.getNome() != null
                     && pacienteValidado.getCartaoSus() != null
                     && pacienteValidado.getDataNascimento() != null
                     && pacienteValidado.getEndereco() != null
