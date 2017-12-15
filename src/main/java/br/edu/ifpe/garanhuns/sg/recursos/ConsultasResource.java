@@ -13,6 +13,7 @@ import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,13 +44,24 @@ public class ConsultasResource {
      * @return an instance of java.lang.String
      */
     @RequestMapping(value = "/consultas{id}", method = RequestMethod.GET)
-    public String recuperarConsultasPorPaciente(@RequestParam("id") int id) {
+    public ResponseEntity<String> recuperarConsultasPorPaciente(@RequestParam("id") int id) {
 
-        //Paciente paciente = new PacienteHibernate().recuperar(id);
-        List<Consulta> consultas = new ConsultaHibernate().
-                recuperarConsultasPorPaciente(new PacienteHibernate().recuperar(id));
+        if (id == 0) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        try {
+            List<Consulta> consultas = new ConsultaHibernate().
+                    recuperarConsultasPorPaciente(new PacienteHibernate().recuperar(id));
+            if (consultas == null) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
 
-        return new Gson().toJson(consultas);
+            String consultaJson = new Gson().toJson(consultas);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(consultaJson);
+
+        } catch (Exception err) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     /**
