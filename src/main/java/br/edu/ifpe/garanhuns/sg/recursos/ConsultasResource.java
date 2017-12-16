@@ -57,7 +57,7 @@ public class ConsultasResource {
             }
 
             String consultaJson = new Gson().toJson(consultas);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(consultaJson);
+            return ResponseEntity.status(HttpStatus.OK).body(consultaJson);
 
         } catch (Exception err) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
