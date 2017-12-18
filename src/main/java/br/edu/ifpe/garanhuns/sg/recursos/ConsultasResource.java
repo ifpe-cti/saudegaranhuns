@@ -73,11 +73,18 @@ public class ConsultasResource {
     @RequestMapping(value = "/consultas", method = RequestMethod.POST)
     public ResponseEntity cadastroPedidoConsulta(@RequestBody String pedidoConsultaJson) {
 
-        new ConsultaHibernate().inserir(
-                new Gson().fromJson(
-                        pedidoConsultaJson, Consulta.class)
-        );
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        if (Consulta.validarConsultaJson(pedidoConsultaJson)) {
+
+            Consulta consultaJson = new Gson().fromJson(pedidoConsultaJson, Consulta.class);
+            try {
+                new ConsultaHibernate().inserir(consultaJson);
+                return ResponseEntity.status(HttpStatus.CREATED).build();
+            } catch (Exception err) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).build();
+        }
 
     }
 }
