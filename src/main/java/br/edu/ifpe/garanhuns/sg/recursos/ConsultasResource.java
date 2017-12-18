@@ -71,12 +71,13 @@ public class ConsultasResource {
      * @return
      */
     @RequestMapping(value = "/consultas", method = RequestMethod.POST)
-    public HttpStatus cadastroPedidoConsulta(@RequestBody String pedidoConsultaJson) {
+    public ResponseEntity cadastroPedidoConsulta(@RequestBody String pedidoConsultaJson) {
 
         new ConsultaHibernate().inserir(
                 new Gson().fromJson(
                         pedidoConsultaJson, Consulta.class)
         );
-        return HttpStatus.CREATED;
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+
     }
 }
