@@ -1,35 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns="http://xmlns.jcp.org/jsf/html"
-      xmlns="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:p="http://primefaces.org/ui">
-    <head>
-        <title>Facelet Title</title>
-    </head>
-    <body>
-        Hello from Facelets
-    </body>
-    <h:form>
-        <p:dataTable value="#{ClasseControladora.NomeDoMetodoDaOperacaoASerRealizada}" var="atendente"
-                     id="idListarAtendentes">
-            <p:column headerText="Nome do Atendente">
-                <h:outputText value="#{atendente.variavelQueGuardaONomeDoPaciente}"/>
-            </p:column>
-
-            <p:column headerText ="Opções">
-                <p:commandButton value="Deletar"  icon="ui-icon-trash" action="#{ClasseControladora.MetodoDeDeletar(ClasseControladora.selectedAtendente)}"/>
-                <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{ClasseControladora.MetodoSet(atendente)}" action="alterar-atendente.xhtml"/>
-            </p:column>
-
-        </p:dataTable>
-
-    </h:form>
+      xmlns:p="http://primefaces.org/ui" >
+    <h:head>
+        <title>Listagem dos atendentes</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:dataTable value="#{atendenteController.recuperarTodos()}" var="atendente"
+                         id="idListarAtendentes">
+                <p:column headerText="Nome do Atendente">
+                    <h:outputText value="#{atendente.nome}"/>
+                </p:column>
+                <p:column headerText ="Opções">
+                    <p:commandButton value="Deletar"  icon="ui-icon-trash" actionListener="#{atendenteController.setAtendente(atendente)}" action="#{atendenteController.deletar()}" update="@form"/>
+                    <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{atendenteController.setAtendente(atendente)}" action="alterar.xhtml"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+  </h:body>
 </html>
 

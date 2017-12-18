@@ -5,6 +5,8 @@
  */
 package br.edu.ifpe.garanhuns.sg.controller;
 
+import br.edu.ifpe.garanhuns.sg.model.Bairro;
+import br.edu.ifpe.garanhuns.sg.model.Endereco;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PostoSaudeHibernate;
 import java.io.Serializable;
@@ -28,6 +30,8 @@ public class PostoSaudeController implements Serializable {
     public void init() {
         postosaude = new PostoSaude();
         model = new PostoSaudeHibernate();
+        postosaude.setEndereco(new Endereco());
+        postosaude.getEndereco().setBairro(new Bairro());
     }
 
     public PostoSaudeController() {
