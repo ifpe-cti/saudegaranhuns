@@ -57,4 +57,12 @@ public class PacientesResource {
         }
 
     }
+
+    public ResponseEntity<String> recuperarPacientePorCartaoDoSus(@RequestBody String cartaoSus) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body("");
+        } catch (Exception err) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 }
