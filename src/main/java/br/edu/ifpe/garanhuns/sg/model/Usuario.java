@@ -66,6 +66,11 @@ public class Usuario implements Serializable {
     }
 
     @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", login=" + login + ", perfilUsuario=" + perfilUsuario + '}';
+    }
+    
+    @Override
     public int hashCode() {
         int hash = 5;
         hash = 97 * hash + this.id;

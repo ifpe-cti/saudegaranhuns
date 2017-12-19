@@ -97,4 +97,17 @@ public class UsuarioHibernate implements UsuarioDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public Usuario recuperarUsuarioPorLogin(String login, String senha) {
+        try (Session session = HibernateUtil.getSession()) {
+            List<Usuario> usuarios = (session.createQuery("from Usuario u where u.login = :login and u.senha = :senha").setParameter("login", login).setParameter("senha", senha).list());
+            System.out.println(usuarios);
+            if(usuarios!=null && !usuarios.isEmpty())
+                return usuarios.get(0);
+            
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar usuario. Erro: " + e.toString());
+        }
+        return null;
+    }
 }
