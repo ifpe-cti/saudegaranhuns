@@ -30,6 +30,7 @@ public class AtendenteHibernate implements AtendenteDAO {
             } else {
                 o.setPostoSaude(ps);
             }
+            new UsuarioHibernate().inserir(o.getUsuario());
             session.save(o);
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -52,6 +53,7 @@ public class AtendenteHibernate implements AtendenteDAO {
             } else {
                 o.setPostoSaude(ps);
             }
+            new UsuarioHibernate().inserir(o.getUsuario());
             session.update(o);
             session.getTransaction().commit();
         } catch (Exception e) {

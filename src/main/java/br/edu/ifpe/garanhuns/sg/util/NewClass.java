@@ -24,6 +24,8 @@ import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
  *
  * @author nosso
  */
+
+
 public class NewClass {
 
     public static void main(String[] args) {
@@ -33,13 +35,13 @@ public class NewClass {
         Endereco e = new Endereco("32", "Rua dos bobos", new Bairro("Juliana"));
         //
         Paciente p;
-        p = new Paciente("asdf", "321", LocalDate.of(2010, 11, 10), e, new PostoSaude("asd", e),new Usuario("login", "senha", PerfilUsuario.ADMINISTRADOR));
+        p = new Paciente("asdf", "321", LocalDate.of(2010, 11, 10), e, new PostoSaude("asd", e), new Usuario("login", "senha", PerfilUsuario.ADMINISTRADOR));
         Consulta c = new Consulta(Especialidade.GERAL, Prioridade.IDOSO, Status.FILA, LocalDate.of(2017, 11, 24), LocalDate.of(2018, 1, 1), p);
 
         eh.inserir(e);
         ph.inserir(p);
         cH.inserir(c);
-        System.out.println("%%%%%%%%%%%%%%%%%%%"+ph.recuperarPorCartaoSus("321"));
+        System.out.println("%%%%%%%%%%%%%%%%%%%" + ph.recuperarPorCartaoSus("321"));
         cH.alterarStatusConsulta(c, 2);
         ph.recuperarPorCartaoSus("321");
 
