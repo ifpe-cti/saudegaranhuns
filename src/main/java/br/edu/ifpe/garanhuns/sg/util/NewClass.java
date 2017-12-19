@@ -24,11 +24,5 @@ public class NewClass {
 
     public static void main(String[] args) {
 
-        PacienteHibernate pH = new PacienteHibernate();
-        UsuarioHibernate uH = new UsuarioHibernate();
-        pH.inserir(new Paciente("Satanás", "123456", LocalDate.now(), new Endereco("0", "rua 1", new Bairro("COHAB 5")), new PostoSaude("Casa do senhor", new Endereco("0", "CEÚ", new Bairro("Ceú"))), new Usuario("deus", "00000", PerfilUsuario.PACIENTE)));
-        pH.inserir(new Paciente("Satanás1", "1123456", LocalDate.now(), new Endereco("01", "rua1 1", new Bairro("COHAB 15")), new PostoSaude("Casa do senhor1", new Endereco("01", "CEÚ1", new Bairro("C1eú"))), new Usuario("deus1", "00000", PerfilUsuario.PACIENTE)));
-        Usuario u = uH.recuperarUsuarioPorLogin("deus", "00000");
-        System.out.println(u);
     }
 }
