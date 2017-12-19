@@ -10,6 +10,9 @@ enum Prioridade {
 }
 
 enum Status {
+  AGENDADO
+  ATENDIDO
+  CANCELADO
 }
 
 enum Dia {

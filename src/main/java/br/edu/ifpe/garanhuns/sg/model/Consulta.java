@@ -8,6 +8,7 @@ package br.edu.ifpe.garanhuns.sg.model;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
+import com.google.gson.Gson;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Entity;
@@ -126,6 +127,26 @@ public class Consulta implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public static boolean validarConsultaJson(String consultaJson) {
+
+        Consulta consultaValidada;
+
+        try {
+            consultaValidada = new Gson().fromJson(consultaJson, Consulta.class);
+            if (consultaValidada.getDataAgendamento() != null
+                    && consultaValidada.getDataSolicitacao() != null
+                    && consultaValidada.getEspecialidade() != null
+                    && consultaValidada.getPrioridade() != null
+                    && consultaValidada.getStatus() != null
+                    && (Paciente.validarPacienteJson(new Gson().toJson(consultaValidada.getPaciente())))) {
+                return true;
+            }
+        } catch (com.google.gson.JsonSyntaxException err) {
+            return false;
+        }
+        return false;
     }
 
 }

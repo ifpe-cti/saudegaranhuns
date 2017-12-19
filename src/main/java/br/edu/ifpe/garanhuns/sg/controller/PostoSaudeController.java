@@ -33,7 +33,8 @@ public class PostoSaudeController implements Serializable {
         model = new PostoSaudeHibernate();
         postosaude.setEndereco(new Endereco());
         postosaude.getEndereco().setBairro(new Bairro()) ;
-                }
+    }
+
 
     public PostoSaudeController() {
     }
