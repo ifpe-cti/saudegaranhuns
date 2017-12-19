@@ -31,8 +31,6 @@ public class Paciente implements Serializable {
     private String cartaoSus;
     private LocalDate dataNascimento;
     @ManyToOne
-    private Endereco endereco;
-    @ManyToOne
     private PostoSaude postoSaude;
     @OneToOne
     private Usuario usuario;
@@ -40,11 +38,10 @@ public class Paciente implements Serializable {
     public Paciente() {
     }
 
-    public Paciente(String nome, String cartaoSus, LocalDate dataNascimento, Endereco endereco, PostoSaude postoSaude, Usuario usuario) {
+    public Paciente(String nome, String cartaoSus, LocalDate dataNascimento, PostoSaude postoSaude, Usuario usuario) {
         this.nome = nome;
         this.cartaoSus = cartaoSus;
         this.dataNascimento = dataNascimento;
-        this.endereco = endereco;
         this.postoSaude = postoSaude;
         this.usuario = usuario;
     }
@@ -77,14 +74,6 @@ public class Paciente implements Serializable {
         this.dataNascimento = dataNascimento;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
     public PostoSaude getPostoSaude() {
         return postoSaude;
     }
@@ -103,7 +92,7 @@ public class Paciente implements Serializable {
 
     @Override
     public String toString() {
-        return "Paciente{" + "id=" + id + ", nome=" + nome + ", cartaoSus=" + cartaoSus + ", dataNascimento=" + dataNascimento + ", endereco=" + endereco + ", postoSaude=" + postoSaude + '}';
+        return "Paciente{" + "id=" + id + ", nome=" + nome + ", cartaoSus=" + cartaoSus + ", dataNascimento=" + dataNascimento + ", postoSaude=" + postoSaude + '}';
     }
 
     @Override
@@ -140,7 +129,6 @@ public class Paciente implements Serializable {
             if (pacienteValidado.getNome() != null
                     && pacienteValidado.getCartaoSus() != null
                     && pacienteValidado.getDataNascimento() != null
-                    && pacienteValidado.getEndereco() != null
                     && pacienteValidado.getPostoSaude() != null
                     && pacienteValidado.getUsuario() != null) {
                 return true;
