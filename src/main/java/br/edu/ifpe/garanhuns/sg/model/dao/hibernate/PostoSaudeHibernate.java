@@ -123,11 +123,6 @@ public class PostoSaudeHibernate implements PostoSaudeDAO {
         List<Paciente> todosPacientes = ph.recuperarTodos();
         List<Atendente> todosAtendentes = ah.recuperarTodos();
         
-        for (Paciente p : todosPacientes) {
-            if (p.getEndereco().getId() == ps.getId()) {
-                ph.deletar(p);
-            }
-        }
         for (Atendente a : todosAtendentes) {
             if (a.getPostoSaude().getId() == ps.getId()) {
                 ah.deletar(a);
