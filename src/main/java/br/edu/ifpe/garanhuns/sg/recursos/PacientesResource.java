@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -23,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Jose Junio
  */
 @RestController
-@RequestMapping(value = "/pacientes")
 public class PacientesResource {
 
     @Context
@@ -41,7 +41,7 @@ public class PacientesResource {
      * @param pacienteJson
      * @return an instance of java.lang.String
      */
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/pacientes", method = RequestMethod.POST)
     public ResponseEntity cadastrarPaciente(@RequestBody String pacienteJson) {
 
         if (Paciente.validarPacienteJson(pacienteJson)) {
@@ -58,9 +58,14 @@ public class PacientesResource {
 
     }
 
-    public ResponseEntity<String> recuperarPacientePorCartaoDoSus(@RequestBody String cartaoSus) {
+    @RequestMapping(value = "/pacientes{cartaoSus}", method = RequestMethod.GET)
+    public ResponseEntity<String> recuperarPacientePorCartaoDoSus(@RequestParam("cartaoSus") String cartaoSus) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body("");
+            Paciente paciente = new PacienteHibernate().recuperarPorCartaoSus(cartaoSus);
+            if (null == paciente) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
+            return ResponseEntity.status(HttpStatus.OK).body(new Gson().toJson(paciente));
         } catch (Exception err) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
