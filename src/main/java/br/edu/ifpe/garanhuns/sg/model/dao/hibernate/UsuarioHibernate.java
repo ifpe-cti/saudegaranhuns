@@ -99,7 +99,14 @@ public class UsuarioHibernate implements UsuarioDAO {
 
     @Override
     public Usuario recuperarUsuarioPorLogin(String login, String senha) {
-        
+        try (Session session = HibernateUtil.getSession()) {
+            List<Usuario> usuarios = (session.createQuery("from Usuario u where u.login = :login and u.senha = senha").setParameter("login", login).setParameter("senha", senha).list());
+            if(usuarios!=null)
+                return usuarios.get(0);
+            
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar usuario. Erro: " + e.toString());
+        }
+        return null;
     }
-
 }
