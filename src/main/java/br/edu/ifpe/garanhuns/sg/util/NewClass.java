@@ -20,10 +20,9 @@ import java.time.LocalDate;
  * @author nosso
  */
 
-
 public class NewClass {
 
     public static void main(String[] args) {
-        
+
     }
 }

@@ -121,15 +121,6 @@ public class EnderecoHibernate implements EnderecoDAO {
 
     @Override
     public void deletarEmCascata(Endereco b) {
-        PacienteHibernate ph = new PacienteHibernate();
-        
-        List<Paciente> todosPacientes = ph.recuperarTodos();
-        
-        for(Paciente p :  todosPacientes){
-            if(p.getEndereco().getId() == b.getId()){
-                ph.deletar(p);
-            }
-        }
         
         deletar(b);
     }
