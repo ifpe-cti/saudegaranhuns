@@ -13,4 +13,5 @@ import br.edu.ifpe.garanhuns.sg.model.Usuario;
  */
 public interface UsuarioDAO extends DAO<Usuario>{
     public void deletarEmCascata(Usuario u);
+    public Usuario recuperarUsuarioPorLogin(String login, String senha);
 }
