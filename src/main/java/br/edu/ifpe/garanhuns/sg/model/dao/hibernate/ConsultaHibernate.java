@@ -13,6 +13,7 @@ import br.edu.ifpe.garanhuns.sg.model.Paciente;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
+import java.time.LocalDate;
 
 /**
  *
@@ -135,17 +136,30 @@ public class ConsultaHibernate implements ConsultaDAO {
     }
 
     @Override
+    public List<Consulta> recuperarConsultasDoDia(LocalDate dia) {
+        try (Session session = HibernateUtil.getSession()) {
+            List<Consulta> consultas = session.createQuery("from Consulta c where c.dataAgendamento = :data and c.status = 1").setParameter("data", dia).list();
+            if(consultas!=null && !consultas.isEmpty())
+                return consultas;
+            
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar usuario. Erro: " + e.toString());
+        }
+        return null;
+    }
+
+    @Override
     public void alterarStatusConsulta(Consulta c, int i) {
-        switch(i){
+        switch (i) {
             case 1:
                 c.setStatus(Status.FILA);
-            break;
+                break;
             case 2:
                 c.setStatus(Status.AGENDADO);
-            break;
+                break;
             case 3:
                 c.setStatus(Status.CANCELADO);
-            break;   
+                break;
             default:
                 throw new IllegalArgumentException("Agumento invalido!");
         }

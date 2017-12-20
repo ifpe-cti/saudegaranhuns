@@ -101,9 +101,10 @@ public class Consulta implements Serializable {
 
     @Override
     public String toString() {
-        return "Consulta{" + "especialidade=" + especialidade + ", prioridade=" + prioridade + ", status=" + status + ", dataSolicitacao=" + dataSolicitacao + ", dataAgendamento=" + dataAgendamento + ", paciente=" + paciente + '}';
+        return "Consulta{" + "id=" + id + ", especialidade=" + especialidade + ", prioridade=" + prioridade + ", status=" + status + ", dataSolicitacao=" + dataSolicitacao + ", dataAgendamento=" + dataAgendamento + ", paciente=" + paciente + '}';
     }
 
+   
     @Override
     public int hashCode() {
         int hash = 3;

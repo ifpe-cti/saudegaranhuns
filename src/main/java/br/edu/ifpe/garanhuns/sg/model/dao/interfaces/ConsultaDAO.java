@@ -8,6 +8,7 @@ package br.edu.ifpe.garanhuns.sg.model.dao.interfaces;
 import java.util.List;
 import br.edu.ifpe.garanhuns.sg.model.Consulta;
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
+import java.time.LocalDate;
 
 /**
  *
@@ -16,5 +17,5 @@ import br.edu.ifpe.garanhuns.sg.model.Paciente;
 public interface ConsultaDAO extends DAO<Consulta> {
     List<Consulta> recuperarConsultasPorPaciente(Paciente c);
     public void  alterarStatusConsulta(Consulta c,int i);
-
+    public  List<Consulta> recuperarConsultasDoDia(LocalDate dia);
 }
