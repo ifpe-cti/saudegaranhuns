@@ -7,13 +7,15 @@
         <title>Menu de paciente</title>
     </h:head>
     <h:body>
-        <p:menubar id="menuPaciente">
-            <p:submenu label="Consulta">
-                <p:menuitem value="Listagem" url="../consulta/listagem.xhtml"/>
-                <p:menuitem value="Cadastro" url="../consulta/cadastro.xhtml"/>
-            </p:submenu>
-            <p:menuitem value="Logout"/>
-        </p:menubar>
+        <h:form>
+            <p:menubar id="menuPaciente">
+                <p:submenu label="Consulta">
+                    <p:menuitem value="Cadastro" url="../consulta/cadastro.xhtml"/>
+                    <p:menuitem value="Listagem" url="../consulta/listagem.xhtml"/>
+                </p:submenu>
+                <p:menuitem value="Sair" action="#{loginUsuarioController.logout()}"/>
+            </p:menubar>
+        </h:form>
     </h:body>
 </html>
 
