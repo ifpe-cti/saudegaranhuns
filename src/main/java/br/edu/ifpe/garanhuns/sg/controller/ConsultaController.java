@@ -5,8 +5,8 @@
  */
 package br.edu.ifpe.garanhuns.sg.controller;
 
-import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
 import br.edu.ifpe.garanhuns.sg.model.Consulta;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
@@ -62,6 +62,14 @@ public class ConsultaController implements Serializable {
 
     public void cancelar(Consulta consulta) {
         model.alterarStatusConsulta(consulta, 3);
+    }
+
+    public void alterarStatusAtendido() {
+        model.alterarStatusConsulta(consulta, 1);
+    }
+
+    public void alterarStatusAtendido(Consulta consulta) {
+        model.alterarStatusConsulta(consulta, 1);
     }
 
     public Consulta buscar(int id) {
