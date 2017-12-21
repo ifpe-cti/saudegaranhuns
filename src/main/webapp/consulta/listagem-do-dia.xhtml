@@ -8,17 +8,33 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:dataTable value="#{ClasseControladora.NomeDoMetodoDaOperacaoASerRealizada}" var="consultaDoDia"
-                         id="idListarConsultaDoDia">
+            <p:growl autoUpdate="true"/>
+            <p:dataTable value="#{consultaController.buscarConsultasDoDia()}" var="consulta" id="dtConsultas"
+                         emptyMessage="Nenhuma consulta cadastrada para o dia de hoje" paginator="true"
+                         rows="10" rowsPerPageTemplate="5,10,15">
                 <p:column headerText="Nome do Paciente">
-                    <h:outputText value="#{consultaDoDia.variavelQueGuardaONomeDoPaciente}"/>
+                    <h:outputText value="#{consulta.paciente.nome}"/>
                 </p:column>
                 <p:column headerText="Status">
-                    <h:outputText value="#{consultaDoDia.variavelQueGuardaOStatus}"/>
+                    <h:outputText value="#{consulta.status.nome}"/>
+                </p:column>
+                <p:column headerText="Prioridade">
+                    <h:outputText value="#{consulta.prioridade.nome}"/>
+                </p:column>
+                <p:column headerText="Especialidade">
+                    <h:outputText value="#{consulta.especialidade.nome}"/>
+                </p:column>
+                <p:column headerText="Opções">
+                    <p:commandButton actionListener="#{consultaController.setConsulta(consulta)}"
+                                     action="#{consultaController.alterarStatusAtendido()}"
+                                     value="Atendido" update="dtConsultas"/>
+                    <p:commandButton actionListener="#{consultaController.setConsulta(consulta)}"
+                                     action="#{consultaController.cancelar()}" value="Cancelado"
+                                     update="dtConsultas"/>
                 </p:column>
             </p:dataTable>
 
         </h:form>
-   </h:body>
+    </h:body>
 </html>
 
