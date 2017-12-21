@@ -80,6 +80,10 @@ public class ConsultaController implements Serializable {
         return model.recuperarTodos();
     }
 
+    public List<Consulta> buscarConsultasDoDia() {
+        return model.recuperarConsultasDoDia(LocalDate.now());
+    }
+
     public Consulta getConsulta() {
         return consulta;
     }
