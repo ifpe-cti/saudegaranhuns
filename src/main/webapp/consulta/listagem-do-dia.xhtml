@@ -26,14 +26,23 @@
                 </p:column>
                 <p:column headerText="Opções">
                     <p:commandButton actionListener="#{consultaController.setConsulta(consulta)}"
-                                     action="#{consultaController.alterarStatusAtendido()}"
-                                     value="Atendido" update="dtConsultas"/>
+                                     value="Atendido" oncomplete="PF('confDialAtendido').show()"/>
                     <p:commandButton actionListener="#{consultaController.setConsulta(consulta)}"
-                                     action="#{consultaController.cancelar()}" value="Cancelado"
-                                     update="dtConsultas"/>
+                                     value="Cancelado" oncomplete="PF('confDialCancelar').show()"/>
                 </p:column>
             </p:dataTable>
-
+            <p:confirmDialog header="Deseja cancelar a consulta?" widgetVar="confDialCancelar"
+                             message="Confirmação necessária, ação não poderá ser desfeita." >
+                <p:commandButton oncomplete="PF('confDialCancelar').hide()" value="Sim"
+                                 action="#{consultaController.cancelar()}"  update="dtConsultas"/>
+                <p:commandButton oncomplete="PF('confDialCancelar').hide()" value="Não"/>
+            </p:confirmDialog>
+            <p:confirmDialog header="Confirmar o atendimento da consulta" widgetVar="confDialAtendido"
+                             message="Confirmação necessária, ação não poderá ser desfeita." >
+                <p:commandButton oncomplete="PF('confDialAtendido').hide()" value="Sim"  update="dtConsultas"
+                                 action="#{consultaController.alterarStatusAtendido()}"/>
+                <p:commandButton oncomplete="PF('confDialAtendido').hide()" value="Não"/>
+            </p:confirmDialog>
         </h:form>
     </h:body>
 </html>

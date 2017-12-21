@@ -11,6 +11,7 @@ import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
