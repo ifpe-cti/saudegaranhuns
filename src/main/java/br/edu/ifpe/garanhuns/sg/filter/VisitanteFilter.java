@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author fernando
  */
-@WebFilter(urlPatterns = "*/index.xhtml")
+@WebFilter(urlPatterns = {"*.xhtml"})
 public class VisitanteFilter implements Filter {
 
     @Override
@@ -36,12 +36,13 @@ public class VisitanteFilter implements Filter {
             HttpServletResponse res = (HttpServletResponse) response;
             HttpSession session = req.getSession();
             Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
-            if (usuario == null && (req.getRequestURI().endsWith("login.xhtml") || req.getRequestURI().endsWith("/paciente/cadasdro.xhtml") || req.getRequestURI().contains("javax.faces.resource/"))) {
+            if (usuario != null || req.getRequestURI().endsWith("login.xhtml") || req.getRequestURI().endsWith("index.xhtml") || req.getRequestURI().endsWith("/paciente/cadastro.xhtml") || req.getRequestURI().contains("javax.faces.resource/")) {
                 chain.doFilter(request, response);
+            } else {
+                res.sendRedirect("/index.xhtml");
             }
-            res.sendRedirect("/index.xhtml");
         } catch (IOException | ServletException e) {
-            System.err.println("Falha ao verificar permissão de acesso a página index. Erro: " + e);
+            System.err.println("Falha ao verificar permissão de acesso para visitante. Erro: " + e);
         }
     }
 

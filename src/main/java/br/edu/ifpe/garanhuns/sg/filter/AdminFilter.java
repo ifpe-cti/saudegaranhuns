@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author fernando
  */
-@WebFilter(urlPatterns = {"*/consulta/cadastro.xhtml", "/consulta/listagem.xhtml"})
+@WebFilter(urlPatterns = {"/consulta/cadastro.xhtml", "/consulta/listagem.xhtml"})
 public class AdminFilter implements Filter {
 
     @Override
@@ -43,8 +43,7 @@ public class AdminFilter implements Filter {
             }
             chain.doFilter(request, response);
         } catch (IOException | ServletException e) {
-            System.err.println("Falha ao verificar permissão de acesso as páginas de cadastro e listagem de "
-                    + "consultas. Erro: " + e);
+            System.err.println("Falha ao verificar permissão de acesso para administrador. Erro: " + e);
         }
 
     }

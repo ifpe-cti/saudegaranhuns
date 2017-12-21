@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author fernando
  */
-@WebFilter(urlPatterns = {"*/atendente/*", "*/posto/*", "*/consulta/listagem-do-dia.xhtml"})
+@WebFilter(urlPatterns = {"/atendente/*", "/posto/*", "/consulta/listagem-do-dia.xhtml"})
 public class PacienteFilter implements Filter {
 
     @Override
@@ -42,8 +42,7 @@ public class PacienteFilter implements Filter {
             }
             chain.doFilter(request, response);
         } catch (IOException | ServletException e) {
-            System.err.println("Falha ao verificar permissão de acesso as páginas refente a posto, atendente"
-                    + " e listagem de consultas do dia. Erro: " + e);
+            System.err.println("Falha ao verificar permissão de acesso para paciente. Erro: " + e);
         }
     }
 
