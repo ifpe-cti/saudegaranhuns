@@ -4,21 +4,19 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Saúde Garanhuns</title>
+        <title>Listagem de consultas do paciente</title>
     </h:head>
     <h:body>
         <p:growl autoUpdate="true"/>
         <h:form>
             <p:dataTable var="consulta" value="#{consultaController.buscarTodos()}"
                          emptyMessage="Nenhuma consulta cadastrada" paginator="true"
-                         rows="10" paginatorTemplate="{FirstPageLink} {PreviousPageLink}
-                         {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15">
+                         rows="10" rowsPerPageTemplate="5,10,15">
                 <p:column filterBy="#{consulta.status.nome}" headerText="Status">
-                    #{consulta.status.nome}
+                    <p:outputLabel value="#{consulta.status.nome}"/>
                 </p:column>
-                <p:column filterBy="#{consulta.agendamento}" headerText="Agendamento">
-                    #{consulta.agendamento}
+                <p:column filterBy="#{consulta.dataAgendamento}" headerText="Agendamento">
+                    <p:outputLabel value="#{consulta.dataAgendamento}" converter="localDateConverter"/>
                 </p:column>
                 <p:column filterBy="#{consulta.especialidade.nome}" headerText="Especialidade">
                     #{consulta.especialidade.nome}
@@ -26,18 +24,20 @@
                 <p:column filterBy="#{consulta.prioridade.nome}" headerText="Prioridade">
                     #{consulta.prioridade.nome}
                 </p:column>
-                <p:column filterBy="#{consulta.solicitacao}" headerText="Solicitação">
-                    #{consulta.solicitacao}
+                <p:column filterBy="#{consulta.dataSolicitacao}" headerText="Solicitação">
+                    <p:outputLabel value="#{consulta.dataSolicitacao}" converter="localDateConverter"/>
                 </p:column>
-                <p:column width="250" headerText="Opções">
-                    <center>
-                        <p:commandButton value="Visualizar"
-                                         actionListener="#{consultaController.setConsulta(consulta)}"
-                                         oncomplete="PF('dialogVisualizar').show()" update="@form"/>
-                        <p:commandButton value="Cancelar"
-                                         actionListener="#{consultaController.setConsulta(consulta)}"
-                                         oncomplete="PF('confDialCancelar').show()"/>
-                    </center>
+                <p:column>
+                    <p:menuButton value="Opções">
+                        <p:menuitem value="Visualizar"
+                                    actionListener="#{consultaController.setConsulta(consulta)}"
+                                    oncomplete="PF('dialogVisualizar').show()" update="@form"/>
+                        <p:menuitem value="Cancelar" oncomplete="PF('confDialCancelar').show()"
+                                    actionListener="#{consultaController.setConsulta(consulta)}"/>
+                        <p:menuitem value="Comprovante" ajax="false"
+                                    actionListener="#{consultaController.setConsulta(consulta)}"
+                                    action="#{consultaController.gerarComprovante()}"/>
+                    </p:menuButton>
                 </p:column>
             </p:dataTable>
             <p:dialog header="Dados da consulta" widgetVar="dialogVisualizar" draggable="false"
@@ -50,9 +50,9 @@
                     <p:outputLabel value="Especialidade"/>
                     <p:outputLabel value="#{consultaController.consulta.especialidade.nome}"/>
                     <p:outputLabel value="Data da solicitação"/>
-                    <p:outputLabel value="#{consultaController.consulta.solicitacao}"/>
+                    <p:outputLabel value="#{consultaController.consulta.dataSolicitacao}" converter="localDateConverter"/>
                     <p:outputLabel value="Data do agendamento"/>
-                    <p:outputLabel value="#{consultaController.consulta.agendamento}"/>
+                    <p:outputLabel value="#{consultaController.consulta.dataAgendamento}" converter="localDateConverter"/>
                 </p:panelGrid>
             </p:dialog>
             <p:confirmDialog widgetVar="confDialCancelar" header="Deseja cancelar?"
