@@ -8,6 +8,7 @@ package br.edu.ifpe.garanhuns.sg.model.dao.hibernate;
 import java.util.List;
 import br.edu.ifpe.garanhuns.sg.model.dao.interfaces.HorarioAtendimentoDAO;
 import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
+import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 
@@ -96,5 +97,27 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
         }
         return null;
     }
-}
 
+    @Override
+    public List<HorarioAtendimento> recuperarHorarioAtendimentoPorPostoSaude(PostoSaude ps) {
+        Session session = HibernateUtil.getSession();
+        try {
+            List<HorarioAtendimento> horarios = session.createNativeQuery(
+                    "select * "
+                    + "from HorarioAtendimento h "
+                    + "where h.atendimento_id in (select id"
+                    + "	from Atendimento a "
+                    + "	where a.postoSaude_id = 1)"
+                    + ")"
+                    + "").list();
+            System.out.println("&&&&&&&&&&&&&"+horarios.toString());
+            if (horarios != null) {
+                return horarios;
+            }
+
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar o Bairro por nome. Erro: " + e.toString());
+        }
+        return null;
+    }
+}
