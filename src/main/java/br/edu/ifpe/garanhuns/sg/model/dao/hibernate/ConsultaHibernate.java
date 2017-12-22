@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import br.edu.ifpe.garanhuns.sg.model.dao.interfaces.ConsultaDAO;
 import br.edu.ifpe.garanhuns.sg.model.Consulta;
+import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
+import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
@@ -164,6 +166,13 @@ public class ConsultaHibernate implements ConsultaDAO {
                 throw new IllegalArgumentException("Agumento invalido!");
         }
         atualizar(c);
+    }
+
+    @Override
+    public List<LocalDate> agendamentoAutomáticoConsulta(PostoSaude posto) {
+        List<HorarioAtendimento> horarios = new HorarioAtendimentoHibernate().recuperarHorarioAtendimentoPorPostoSaude(posto);
+        
+        return null;
     }
 
 }

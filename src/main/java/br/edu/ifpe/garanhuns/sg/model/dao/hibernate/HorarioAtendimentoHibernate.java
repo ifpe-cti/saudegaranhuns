@@ -103,16 +103,15 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
         Session session = HibernateUtil.getSession();
         try {
             List<HorarioAtendimento> horarios = session.createNativeQuery(
-                    "select * from HorarioAtendimento h where h.atendimento_id in (select id from Atendimento a where a.postoSaude_id = 1)",HorarioAtendimento.class).list();
-            for (HorarioAtendimento horario : horarios) {
-                System.out.println(horario);
-            }
-            if (horarios != null && !horarios.isEmpty()) {
+                    "select * from HorarioAtendimento h where h.atendimento_id in ("
+                    + "select id from Atendimento a where a.postoSaude_id = 1)", HorarioAtendimento.class).list();
+
+            if (horarios != null) {
                 return horarios;
             }
 
         } catch (Exception e) {
-            System.err.println("Falha ao recuperar o Bairro por nome. Erro: " + e.toString());
+            System.err.println("Falha ao recuperar o Horario. Erro: " + e.toString());
         }
         return null;
     }

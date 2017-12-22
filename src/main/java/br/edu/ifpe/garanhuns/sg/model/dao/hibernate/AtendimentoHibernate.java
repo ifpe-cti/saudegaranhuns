@@ -108,4 +108,9 @@ public class AtendimentoHibernate implements AtendimentoDAO {
         return null;
     }
 
+    @Override
+    public List<Atendimento> recuperarAtendimentoPorPosto(PostoSaude posto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
