@@ -5,12 +5,13 @@
  */
 package br.edu.ifpe.garanhuns.sg.controller;
 
-import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
 import br.edu.ifpe.garanhuns.sg.model.Consulta;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -64,12 +65,24 @@ public class ConsultaController implements Serializable {
         model.alterarStatusConsulta(consulta, 3);
     }
 
+    public void alterarStatusAtendido() {
+        model.alterarStatusConsulta(consulta, 1);
+    }
+
+    public void alterarStatusAtendido(Consulta consulta) {
+        model.alterarStatusConsulta(consulta, 1);
+    }
+
     public Consulta buscar(int id) {
         return model.recuperar(id);
     }
 
     public List<Consulta> buscarTodos() {
         return model.recuperarTodos();
+    }
+
+    public List<Consulta> buscarConsultasDoDia() {
+        return model.recuperarConsultasDoDia(LocalDate.now());
     }
 
     public Consulta getConsulta() {
