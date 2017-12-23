@@ -17,8 +17,12 @@ import java.time.LocalDate;
  * @author Hérikles
  */
 public interface ConsultaDAO extends DAO<Consulta> {
+
     List<Consulta> recuperarConsultasPorPaciente(Paciente c);
-    public void  alterarStatusConsulta(Consulta c,int i);
+
+    public void alterarStatusConsulta(Consulta c, int i);
+
     public List<Consulta> recuperarConsultasDoDia(LocalDate dia);
+
     public List<LocalDate> agendamentoAutomáticoConsulta(PostoSaude posto, Especialidade especialidade);
 }

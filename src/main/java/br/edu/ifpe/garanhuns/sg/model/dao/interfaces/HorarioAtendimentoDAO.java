@@ -13,6 +13,7 @@ import java.util.List;
  *
  * @author Hérikles
  */
-public interface HorarioAtendimentoDAO extends DAO<HorarioAtendimento>{
+public interface HorarioAtendimentoDAO extends DAO<HorarioAtendimento> {
+
     public List<HorarioAtendimento> recuperarHorarioAtendimentoPorPostoSaude(PostoSaude ps);
 }

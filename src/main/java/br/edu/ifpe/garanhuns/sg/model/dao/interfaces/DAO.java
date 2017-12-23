@@ -12,11 +12,16 @@ import java.util.List;
  * @author Hérikles
  * @param <T>
  */
-public interface DAO <T> {
+public interface DAO<T> {
+
     void inserir(T o);
+
     void atualizar(T o);
+
     void deletar(T o);
+
     T recuperar(Integer id);
+
     List<T> recuperarTodos();
-    
+
 }

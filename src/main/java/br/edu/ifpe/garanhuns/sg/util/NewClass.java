@@ -35,7 +35,7 @@ public class NewClass {
         HorarioAtendimentoHibernate hH = new HorarioAtendimentoHibernate();
         ConsultaHibernate cH = new ConsultaHibernate();
 
-        hH.inserir(new HorarioAtendimento(DiasSemana.SEGUNDA, "08:00", "12:00", 10, new Atendimento(Especialidade.GERAL, new PostoSaude("Casa de deus", new Endereco("0", "Rua do cão 2", new Bairro("COHAB 6"))))));
+        hH.inserir(new HorarioAtendimento(DiasSemana.SEGUNDA, "08:00", "12:00", 10, new Atendimento(Especialidade.DENTISTA, new PostoSaude("Casa de deus", new Endereco("0", "Rua do cão 2", new Bairro("COHAB 6"))))));
         hH.inserir(new HorarioAtendimento(DiasSemana.TERÇA, "08:00", "12:00", 10, new Atendimento(Especialidade.GERAL, new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))))));
         hH.inserir(new HorarioAtendimento(DiasSemana.DOMINGO, "01:00", "12:00", 10, new Atendimento(Especialidade.GERAL, new PostoSaude("Casa de deus", new Endereco("0", "Rua do cão 2", new Bairro("COHAB 6"))))));
         hH.inserir(new HorarioAtendimento(DiasSemana.SEGUNDA, "03:00", "12:00", 10, new Atendimento(Especialidade.GERAL, new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))))));
@@ -63,7 +63,7 @@ public class NewClass {
         PostoSaude ps = new PostoSaudeHibernate().recuperarPorNome("Casa de deus");
         System.out.println("###4######################" + ps);
         //System.out.println(hH.recuperarHorarioAtendimentoPorPostoSaude(ps));
-        System.out.println(new AtendimentoHibernate().recuperarAtendimentoPorPosto(ps));
+        System.out.println(new AtendimentoHibernate().recuperarAtendimentoPorPostoEspecialidade(ps, Especialidade.GERAL));
         System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
     }
 }
