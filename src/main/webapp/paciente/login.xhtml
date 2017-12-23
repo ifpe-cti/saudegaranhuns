@@ -19,12 +19,12 @@
                 <center>
                     <h:panelGrid columns="2"  >
                         <h:outputLabel for="loginA" value="Cartão do SUS:" />
-                        <p:inputText id="loginA"  required="true" label="login" />
+                        <p:inputText id="loginA" value="#{login}" required="true" label="login" />
                     </h:panelGrid>
                 </center>        
                 <h6> </h6>
                 <center>
-                    <p:commandButton value="LOGIN" /> 
+                    <p:commandButton value="LOGIN" action="#{loginUsuarioController.realizarLogin(login, "00000")}" update="form"/> 
                     <p:commandButton value="CADASTRAR"/> 
                 </center>
             </p:panel>  
