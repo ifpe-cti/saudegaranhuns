@@ -9,6 +9,7 @@ import java.util.List;
 import br.edu.ifpe.garanhuns.sg.model.Consulta;
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import java.time.LocalDate;
 
 /**
@@ -19,5 +20,5 @@ public interface ConsultaDAO extends DAO<Consulta> {
     List<Consulta> recuperarConsultasPorPaciente(Paciente c);
     public void  alterarStatusConsulta(Consulta c,int i);
     public List<Consulta> recuperarConsultasDoDia(LocalDate dia);
-    public List<LocalDate> agendamentoAutomáticoConsulta(PostoSaude posto);
+    public List<LocalDate> agendamentoAutomáticoConsulta(PostoSaude posto, Especialidade especialidade);
 }

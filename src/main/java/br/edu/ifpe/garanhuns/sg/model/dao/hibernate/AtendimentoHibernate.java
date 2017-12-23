@@ -110,7 +110,16 @@ public class AtendimentoHibernate implements AtendimentoDAO {
 
     @Override
     public List<Atendimento> recuperarAtendimentoPorPosto(PostoSaude posto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = HibernateUtil.getSession();
+        try {
+            List<Atendimento> atendimentos = session.createNativeQuery("select * from atendimento a where a.postoSaude_id = " + posto.getId(), Atendimento.class).list();
+            if (atendimentos != null) {
+                return atendimentos;
+            }
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar o atendimentos. Erro: " + e.toString());
+        }
+        return null;
     }
 
 }

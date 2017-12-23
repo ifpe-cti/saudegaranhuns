@@ -12,6 +12,7 @@ import br.edu.ifpe.garanhuns.sg.model.Consulta;
 import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
@@ -169,7 +170,7 @@ public class ConsultaHibernate implements ConsultaDAO {
     }
 
     @Override
-    public List<LocalDate> agendamentoAutomáticoConsulta(PostoSaude posto) {
+    public List<LocalDate> agendamentoAutomáticoConsulta(PostoSaude posto, Especialidade especialidade) {
         List<HorarioAtendimento> horarios = new HorarioAtendimentoHibernate().recuperarHorarioAtendimentoPorPostoSaude(posto);
         
         return null;
