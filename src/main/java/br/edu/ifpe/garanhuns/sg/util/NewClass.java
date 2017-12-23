@@ -63,7 +63,8 @@ public class NewClass {
         PostoSaude ps = new PostoSaudeHibernate().recuperarPorNome("Casa de deus");
         System.out.println("###4######################" + ps);
         //System.out.println(hH.recuperarHorarioAtendimentoPorPostoSaude(ps));
-        System.out.println(new AtendimentoHibernate().recuperarAtendimentoPorPostoEspecialidade(ps, Especialidade.GERAL));
+        //System.out.println(new AtendimentoHibernate().recuperarAtendimentoPorPostoEspecialidade(ps, Especialidade.GERAL));
+        System.out.println(hH.recuperarHorarioAtendimentoPorPostoSaudeEspecialidade(ps, Especialidade.GERAL));
         System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
     }
 }
