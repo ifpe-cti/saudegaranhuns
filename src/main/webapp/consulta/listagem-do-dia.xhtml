@@ -8,17 +8,42 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:dataTable value="#{ClasseControladora.NomeDoMetodoDaOperacaoASerRealizada}" var="consultaDoDia"
-                         id="idListarConsultaDoDia">
+            <p:growl autoUpdate="true"/>
+            <p:dataTable value="#{consultaController.buscarConsultasDoDia()}" var="consulta" id="dtConsultas"
+                         emptyMessage="Nenhuma consulta cadastrada para o dia de hoje" paginator="true"
+                         rows="10" rowsPerPageTemplate="5,10,15">
                 <p:column headerText="Nome do Paciente">
-                    <h:outputText value="#{consultaDoDia.variavelQueGuardaONomeDoPaciente}"/>
+                    <h:outputText value="#{consulta.paciente.nome}"/>
                 </p:column>
                 <p:column headerText="Status">
-                    <h:outputText value="#{consultaDoDia.variavelQueGuardaOStatus}"/>
+                    <h:outputText value="#{consulta.status.nome}"/>
+                </p:column>
+                <p:column headerText="Prioridade">
+                    <h:outputText value="#{consulta.prioridade.nome}"/>
+                </p:column>
+                <p:column headerText="Especialidade">
+                    <h:outputText value="#{consulta.especialidade.nome}"/>
+                </p:column>
+                <p:column headerText="Opções">
+                    <p:commandButton actionListener="#{consultaController.setConsulta(consulta)}"
+                                     value="Atendido" oncomplete="PF('confDialAtendido').show()"/>
+                    <p:commandButton actionListener="#{consultaController.setConsulta(consulta)}"
+                                     value="Cancelado" oncomplete="PF('confDialCancelar').show()"/>
                 </p:column>
             </p:dataTable>
-
+            <p:confirmDialog header="Deseja cancelar a consulta?" widgetVar="confDialCancelar"
+                             message="Confirmação necessária, ação não poderá ser desfeita." >
+                <p:commandButton oncomplete="PF('confDialCancelar').hide()" value="Sim"
+                                 action="#{consultaController.cancelar()}"  update="dtConsultas"/>
+                <p:commandButton oncomplete="PF('confDialCancelar').hide()" value="Não"/>
+            </p:confirmDialog>
+            <p:confirmDialog header="Confirmar o atendimento da consulta" widgetVar="confDialAtendido"
+                             message="Confirmação necessária, ação não poderá ser desfeita." >
+                <p:commandButton oncomplete="PF('confDialAtendido').hide()" value="Sim"  update="dtConsultas"
+                                 action="#{consultaController.alterarStatusAtendido()}"/>
+                <p:commandButton oncomplete="PF('confDialAtendido').hide()" value="Não"/>
+            </p:confirmDialog>
         </h:form>
-   </h:body>
+    </h:body>
 </html>
 

@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -66,6 +67,14 @@ public class ConsultaController implements Serializable {
         model.alterarStatusConsulta(consulta, 3);
     }
 
+    public void alterarStatusAtendido() {
+        model.alterarStatusConsulta(consulta, 1);
+    }
+
+    public void alterarStatusAtendido(Consulta consulta) {
+        model.alterarStatusConsulta(consulta, 1);
+    }
+
     public Consulta buscar(int id) {
         return model.recuperar(id);
     }
@@ -73,7 +82,7 @@ public class ConsultaController implements Serializable {
     public List<Consulta> buscarTodos() {
         return model.recuperarTodos();
     }
-
+  
     public void gerarComprovante() {
         try {
             ec.responseReset();
@@ -119,6 +128,10 @@ public class ConsultaController implements Serializable {
 
     public Status[] getStatus() {
         return Status.values();
+    }
+  
+    public List<Consulta> buscarConsultasDoDia() {
+        return model.recuperarConsultasDoDia(LocalDate.now());
     }
 
     public Consulta getConsulta() {

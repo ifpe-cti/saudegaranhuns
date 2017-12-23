@@ -22,14 +22,14 @@
                     <h:panelGrid columns="2"  >
 
                         <h:outputLabel for="loginA" value="Login:" />
-                        <p:inputText id="loginA"  required="true" label="login" />
+                        <p:inputText id="loginA" value="#{login}" required="true" label="login" />
                         <h:outputLabel for="senhaA" value="Senha:" />
-                        <p:password id="senhaA"  required="true" label="senha" />
+                        <p:password id="senhaA"  #{login} required="true" label="senha" />
                     </h:panelGrid>
                 </center>        
                 <h6> </h6>
                 <center>
-                    <p:commandButton value="LOGIN" /> 
+                    <p:commandButton value="LOGIN" action="#{loginUsuaioController.realizarLogin(login, senha)}" update="form"/> 
                     <p:commandButton value="CADASTRAR"/> 
                 </center>
             </p:panel>  
