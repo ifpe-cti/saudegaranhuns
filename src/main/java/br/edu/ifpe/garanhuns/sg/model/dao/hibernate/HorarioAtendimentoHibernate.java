@@ -120,19 +120,16 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
 
     @Override
     public List<HorarioAtendimento> recuperarHorarioAtendimentoPorPostoSaudeEspecialidade(PostoSaude ps, Especialidade especialidade) {
-
-        List<Atendimento> atendimentos = new AtendimentoHibernate().recuperarAtendimentoPorPostoEspecialidade(ps, especialidade);
-        String in = "";
-        for (int i = 0; i < atendimentos.size(); i++) {
-            in += atendimentos.get(i).getId();
-            if (i < atendimentos.size() - 1) {
-                in += ", ";
-            }
-        }
         Session session = HibernateUtil.getSession();
         try {
+            
             List<HorarioAtendimento> horarios = session.createNativeQuery(
-                    "select * from HorarioAtendimento h where h.atendimento_id in (" + in + ")", HorarioAtendimento.class).list();
+                    "select * \n"
+                    + "from HorarioAtendimento h\n"
+                    + "where h.atendimento_id in (\n"
+                    + "	select id\n"
+                    + "	from Atendimento a \n"
+                    + "	where a.postoSaude_id = "+ps.getId()+" and especialidade ="+especialidade.getValor()+");", HorarioAtendimento.class).list();
 
             if (horarios != null) {
                 return horarios;
