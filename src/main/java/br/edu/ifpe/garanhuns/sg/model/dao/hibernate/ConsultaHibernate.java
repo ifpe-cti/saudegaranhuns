@@ -171,13 +171,6 @@ public class ConsultaHibernate implements ConsultaDAO {
     }
 
     @Override
-    public List<LocalDate> agendamentoAutomáticoConsulta(PostoSaude posto, Especialidade especialidade) {
-        List<HorarioAtendimento> horarios = new HorarioAtendimentoHibernate().recuperarHorarioAtendimentoPorPostoSaude(posto);
-
-        return null;
-    }
-
-    @Override
     public List<Consulta> recuperarTodasConsultasDoPosto(PostoSaude posto) {
         Session session = HibernateUtil.getSession();
         try {
@@ -207,6 +200,68 @@ public class ConsultaHibernate implements ConsultaDAO {
         } catch (Exception e) {
             System.err.println("Falha ao recuperar usuario. Erro: " + e.toString());
         }
+        return null;
+    }
+
+    @Override
+    public List<Consulta> recuperarConsultasDoPostoPorDiaEspecialidade(PostoSaude posto, LocalDate data, Especialidade especialidade) {
+        Session session = HibernateUtil.getSession();
+        try {
+            List<Consulta> consultas = session.createNativeQuery(
+                    "select * from consulta"
+                    + " where especialidade = " + especialidade.getValor()
+                    + " and dataAgendamento = \"" + data
+                    + "\" and paciente_id in ("
+                    + "select id from paciente "
+                    + "where postoSaude_id = " + posto.getId() + ");",
+                    Consulta.class).list();
+            if (consultas != null && !consultas.isEmpty()) {
+                return consultas;
+            }
+
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar usuario. Erro: " + e.toString());
+        }
+        return null;
+    }
+
+    @Override
+    public List<Consulta> recuperarConsultasDoPostoPorDiaEspecialidadeStatus(PostoSaude posto, LocalDate data, Especialidade especialidade, Status status) {
+        Session session = HibernateUtil.getSession();
+        try {
+            List<Consulta> consultas = session.createNativeQuery(
+                    "select * from consulta"
+                    + " where especialidade = " + especialidade.getValor()
+                    + " and dataAgendamento = \"" + data
+                    + " and status = " + status.getValor()
+                    + "\" and paciente_id in ("
+                    + "select id from paciente "
+                    + "where postoSaude_id = " + posto.getId() + ");",
+                    Consulta.class).list();
+            if (consultas != null && !consultas.isEmpty()) {
+                return consultas;
+            }
+
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar usuario. Erro: " + e.toString());
+        }
+        return null;
+    }
+
+    @Override
+    public List<LocalDate> agendamentoAutomaticoConsulta(PostoSaude posto, Especialidade especialidade) {
+        List<HorarioAtendimento> horariosAtandimento = new HorarioAtendimentoHibernate().recuperarHorarioAtendimentoPorPostoSaudeEspecialidade(posto, especialidade);
+        List<LocalDate> retorno = new ArrayList<>();
+        ConsultaHibernate cH = new ConsultaHibernate();
+        for (int i = 0; i < horariosAtandimento.size(); i++) {
+            for (int j = 0; j < 60; j++) {
+                if ((horariosAtandimento.get(i).getDia().getValor()) + 1 == LocalDate.now().plusDays(j).getDayOfWeek().getValue()) {
+                    List<Consulta> consultas = cH.recuperarConsultasDoPostoPorDiaEspecialidadeStatus(posto, LocalDate.now().plusDays(j), especialidade, Status.AGENDADO);
+                    
+                }
+            }
+        }
+
         return null;
     }
 
