@@ -50,6 +50,9 @@ public class LoginUsuarioController {
 
     public String tipoUsuarioLogado() {
         Usuario usuario = (Usuario) ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("usuarioLogado");
-        return usuario.getPerfilUsuario().getNome();
+        if (usuario != null) {
+            return usuario.getPerfilUsuario().getNome();
+        }
+        return "";
     }
 }
