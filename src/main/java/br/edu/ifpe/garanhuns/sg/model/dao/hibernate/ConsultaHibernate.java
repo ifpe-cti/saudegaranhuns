@@ -252,19 +252,23 @@ public class ConsultaHibernate implements ConsultaDAO {
     public List<LocalDate> agendamentoAutomaticoConsulta(PostoSaude posto, Especialidade especialidade) {
         List<HorarioAtendimento> horariosAtandimento = new HorarioAtendimentoHibernate().recuperarHorarioAtendimentoPorPostoSaudeEspecialidade(posto, especialidade);
         List<LocalDate> retorno = new ArrayList<>();
+
         ConsultaHibernate cH = new ConsultaHibernate();
+        //veriafica qual é o HorarioAtendimentoPorPostoSaudeEspecialidade
         for (int i = 0; i < horariosAtandimento.size(); i++) {
+            //para verificar todas as datas em 2 meses 
             for (int j = 0; j < 60; j++) {
+                //Compatibilidade dos dias da samana, se o dia testado é uma dia que o posto atende
                 if (horariosAtandimento.get(i).getDia().getValor() == LocalDate.now().plusDays(j).getDayOfWeek().getValue()) {
                     List<Consulta> consultas = cH.recuperarConsultasDoPostoPorDiaEspecialidadeStatus(posto, LocalDate.now().plusDays(j), especialidade, Status.AGENDADO);
-                    if(consultas.size()<= horariosAtandimento.get(i).getQuantidade()){
-                        
+                    //Qua a quantidade de vagas no dia 
+                    if (consultas.size() <= horariosAtandimento.get(i).getQuantidade()) {
+                        retorno.add(LocalDate.now().plusDays(j));
                     }
                 }
             }
         }
-
-        return null;
+        return retorno;
     }
 
 }
