@@ -185,7 +185,7 @@ public class ConsultaHibernate implements ConsultaDAO {
                     + "from consulta\n"
                     + "where paciente_id in (\n"
                     + "select id from paciente where postoSaude_id = " + posto.getId()
-                    + ")",Consulta.class).list();
+                    + ")", Consulta.class).list();
             if (consultas != null && !consultas.isEmpty()) {
                 return consultas;
             }
