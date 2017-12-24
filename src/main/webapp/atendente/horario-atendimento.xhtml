@@ -17,9 +17,8 @@
                 <p:fieldset>
                     <p:panelGrid columns="2">
                         <p:outputLabel value="Posto de Atendimento"/>
-                        <p:selectOneMenu id="Posto" value="#{horarioAtendimentoController.horarioAtendimento.atendimento.postoSaude}" style="width:125px" converter="postoSaudeConverter">
-                            <f:selectItems value="#{postoSaudeController.recuperarTodos()}" var='posto' itemLabel="#{posto.nome}" itemValue="#{horarioAtendimentoController.horarioAtendimento.atendimento.postoSaude}" />
-                        </p:selectOneMenu>
+                        <p:outputLabel  value="#{atendenteController.atendente.postoSaude.nome}"></p:outputLabel>
+
                         <p:outputLabel value="Especialidade"/>
                         <p:selectOneMenu id="especialidade" value="#{horarioAtendimentoController.horarioAtendimento.atendimento.especialidade}">
                             <f:selectItem itemLabel="GERAL"  itemValue="GERAL"/>
@@ -36,7 +35,7 @@
                             <f:selectItem itemLabel="DOMINGO" itemValue="DOMINGO"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="Quantidade"/>
-                        <p:inputNumber decimalPlaces="0"  value="#{horarioAtendimentoController.horarioAtendimento.quantidade}"></p:inputNumber>
+                        <p:inputNumber minValue="1" decimalPlaces="0"  value="#{horarioAtendimentoController.horarioAtendimento.quantidade}"></p:inputNumber>
                     </p:panelGrid>
                 </p:fieldset>
                 <p:commandButton update= "growl @form" value="Cadastrar" action="#{horarioAtendimentoController.cadastrarHorarioAtendimentoPosto()}"/>
