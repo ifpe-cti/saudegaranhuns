@@ -156,7 +156,7 @@ public class ConsultaHibernate implements ConsultaDAO {
     public void alterarStatusConsulta(Consulta c, int i) {
         switch (i) {
             case 1:
-                c.setStatus(Status.FILA);
+                c.setStatus(Status.ATENDIMENTO);
                 break;
             case 2:
                 c.setStatus(Status.AGENDADO);

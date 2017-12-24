@@ -10,7 +10,7 @@ package br.edu.ifpe.garanhuns.sg.model.enumarador;
  * @author Herikles
  */
 public enum Status {
-    FILA(0, "Fila"),
+    ATENDIMENTO(0, "Atendimento"),
     AGENDADO(1, "Agendado"),
     CANCELADO(2, "Cancelado");
 
