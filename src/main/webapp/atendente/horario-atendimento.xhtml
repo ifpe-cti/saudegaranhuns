@@ -35,10 +35,6 @@
                             <f:selectItem itemLabel="SABADO" itemValue="SABADO"/>
                             <f:selectItem itemLabel="DOMINGO" itemValue="DOMINGO"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="Horário de Início"/>
-                        <p:inputMask placeholder="hh:mm" mask='99:99' required="true"  requiredMessage="Horário de Início Obrigatório" value="#{horarioAtendimentoController.horarioAtendimento.horaInicio}"></p:inputMask>
-                        <p:outputLabel value="Horário de Término"/>
-                        <p:inputMask placeholder="hh:mm" required="true" requiredMessage="Horário de Término Obrigatório" mask='99:99' value="#{horarioAtendimentoController.horarioAtendimento.horaTermino}"></p:inputMask>
                         <p:outputLabel value="Quantidade"/>
                         <p:inputNumber decimalPlaces="0"  value="#{horarioAtendimentoController.horarioAtendimento.quantidade}"></p:inputNumber>
                     </p:panelGrid>
