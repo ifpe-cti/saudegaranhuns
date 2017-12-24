@@ -142,9 +142,10 @@ public class ConsultaHibernate implements ConsultaDAO {
     public List<Consulta> recuperarConsultasDoDia(LocalDate dia) {
         try (Session session = HibernateUtil.getSession()) {
             List<Consulta> consultas = session.createQuery("from Consulta c where c.dataAgendamento = :data and c.status = 1").setParameter("data", dia).list();
-            if(consultas!=null && !consultas.isEmpty())
+            if (consultas != null && !consultas.isEmpty()) {
                 return consultas;
-            
+            }
+
         } catch (Exception e) {
             System.err.println("Falha ao recuperar usuario. Erro: " + e.toString());
         }
@@ -172,7 +173,26 @@ public class ConsultaHibernate implements ConsultaDAO {
     @Override
     public List<LocalDate> agendamentoAutomáticoConsulta(PostoSaude posto, Especialidade especialidade) {
         List<HorarioAtendimento> horarios = new HorarioAtendimentoHibernate().recuperarHorarioAtendimentoPorPostoSaude(posto);
-        
+
+        return null;
+    }
+
+    @Override
+    public List<Consulta> recuperarTodasConsultasDoPosto(PostoSaude posto) {
+        Session session = HibernateUtil.getSession();
+        try {
+            List<Consulta> consultas = session.createNamedQuery("select *\n"
+                    + "from consulta\n"
+                    + "where paciente_id in (\n"
+                    + "select id from paciente where postoSaude_id = " + posto.getId()
+                    + ")",Consulta.class).list();
+            if (consultas != null && !consultas.isEmpty()) {
+                return consultas;
+            }
+
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar usuario. Erro: " + e.toString());
+        }
         return null;
     }
 

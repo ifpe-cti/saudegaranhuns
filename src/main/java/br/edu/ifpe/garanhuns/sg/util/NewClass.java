@@ -30,36 +30,56 @@ import java.time.LocalDate;
  * @author nosso
  */
 public class NewClass {
-    
+
     public static void main(String[] args) {
         HorarioAtendimentoHibernate hH = new HorarioAtendimentoHibernate();
         ConsultaHibernate cH = new ConsultaHibernate();
-        
+
         hH.inserir(new HorarioAtendimento(DiasSemana.SEGUNDA, "08:00", "12:00", 10, new Atendimento(Especialidade.DENTISTA, new PostoSaude("Casa de deus", new Endereco("0", "Rua do cão 2", new Bairro("COHAB 6"))))));
         hH.inserir(new HorarioAtendimento(DiasSemana.TERÇA, "08:00", "12:00", 10, new Atendimento(Especialidade.GERAL, new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))))));
         hH.inserir(new HorarioAtendimento(DiasSemana.DOMINGO, "01:00", "12:00", 10, new Atendimento(Especialidade.GERAL, new PostoSaude("Casa de deus", new Endereco("0", "Rua do cão 2", new Bairro("COHAB 6"))))));
         hH.inserir(new HorarioAtendimento(DiasSemana.SEGUNDA, "03:00", "12:00", 10, new Atendimento(Especialidade.GERAL, new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))))));
         hH.inserir(new HorarioAtendimento(DiasSemana.SEXTA, "07:00", "13:00", 10, new Atendimento(Especialidade.GERAL, new PostoSaude("Casa de deus", new Endereco("0", "Rua do cão 2", new Bairro("COHAB 6"))))));
         hH.inserir(new HorarioAtendimento(DiasSemana.TERÇA, "18:00", "19:00", 10, new Atendimento(Especialidade.GERAL, new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))))));
-        
-        LocalDate ld = LocalDate.now();
+
+        //LocalDate ld = LocalDate.now();
         /*LocalDate ld1 = LocalDate.of(2017, 12, 25);
         Period periodo = Period.between(ld , ld1);
         System.out.println(ld.getDayOfWeek());
         System.out.println(ld1.getDayOfWeek());
         System.out.println(ld1.getDayOfYear());
         System.out.println(ld1.plusDays(2));*/
-        
+ /*       
         cH.inserir(new Consulta(Especialidade.GERAL, Prioridade.IDOSO, Status.FILA, ld, null, new Paciente("lala", "123456", LocalDate.of(1995, 06, 1), new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))), new Usuario("1231", "123", PerfilUsuario.ADMINISTRADOR))));
         cH.inserir(new Consulta(Especialidade.DENTISTA, Prioridade.BEBEDECOLO, Status.FILA, ld, null, new Paciente("lala1", "1234w56", LocalDate.of(1995, 06, 1), new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))), new Usuario("1232", "123", PerfilUsuario.ADMINISTRADOR))));
         cH.inserir(new Consulta(Especialidade.GERAL, Prioridade.DEFICIENTEFISICO, Status.FILA, ld, null, new Paciente("lalwa", "12w3456", LocalDate.of(1995, 06, 1), new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))), new Usuario("1233", "123", PerfilUsuario.ADMINISTRADOR))));
         cH.inserir(new Consulta(Especialidade.GERAL, Prioridade.NENHUMA, Status.FILA, ld, null, new Paciente("lawela", "123wwwww456", LocalDate.of(1995, 06, 1), new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))), new Usuario("123", "1234", PerfilUsuario.ADMINISTRADOR))));
         cH.inserir(new Consulta(Especialidade.DENTISTA, Prioridade.GESTANTE, Status.FILA, ld, null, new Paciente("lalweqwea", "1234wwewe56", LocalDate.of(1995, 06, 1), new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))), new Usuario("1235", "123", PerfilUsuario.ADMINISTRADOR))));
-
+        cH.inserir(new Consulta(Especialidade.GERAL, Prioridade.IDOSO, Status.FILA, ld, null, new Paciente("lala", "123456", LocalDate.of(1995, 06, 1), new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))), new Usuario("1231", "123", PerfilUsuario.ADMINISTRADOR))));
+        cH.inserir(new Consulta(Especialidade.DENTISTA, Prioridade.BEBEDECOLO, Status.FILA, ld, null, new Paciente("lala1", "1234w56", LocalDate.of(1995, 06, 1), new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))), new Usuario("1232", "123", PerfilUsuario.ADMINISTRADOR))));
+        cH.inserir(new Consulta(Especialidade.GERAL, Prioridade.DEFICIENTEFISICO, Status.FILA, ld, null, new Paciente("lalwa", "12w3456", LocalDate.of(1995, 06, 1), new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))), new Usuario("1233", "123", PerfilUsuario.ADMINISTRADOR))));
+        cH.inserir(new Consulta(Especialidade.GERAL, Prioridade.NENHUMA, Status.FILA, ld, null, new Paciente("lawela", "123wwwww456", LocalDate.of(1995, 06, 1), new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))), new Usuario("123", "1234", PerfilUsuario.ADMINISTRADOR))));
+        cH.inserir(new Consulta(Especialidade.DENTISTA, Prioridade.GESTANTE, Status.FILA, ld, null, new Paciente("lalweqwea", "1234wwewe56", LocalDate.of(1995, 06, 1), new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))), new Usuario("1235", "123", PerfilUsuario.ADMINISTRADOR))));
+         */
         //cH.deletar(cH.recuperar(1));
+        
+        cH.inserir(new Consulta(Especialidade.GERAL, Prioridade.IDOSO, Status.FILA, LocalDate.now(), LocalDate.now().plusDays(0), new Paciente("João", "123", LocalDate.of(1995,01,01), new PostoSaude("Casa de deus", new Endereco("1", "rua rua", new Bairro("não sei"))), new Usuario("a123", "123", PerfilUsuario.PACIENTE))));
+        cH.inserir(new Consulta(Especialidade.DENTISTA, Prioridade.BEBEDECOLO, Status.FILA, LocalDate.now(), LocalDate.now().plusDays(0), new Paciente("João", "123", LocalDate.of(1995,01,01), new PostoSaude("Casa de deus", new Endereco("1", "rua rua", new Bairro("não sei"))), new Usuario("a123", "123", PerfilUsuario.PACIENTE))));
+        cH.inserir(new Consulta(Especialidade.GERAL, Prioridade.DEFICIENTEFISICO, Status.FILA, LocalDate.now(), LocalDate.now().plusDays(1), new Paciente("João", "123", LocalDate.of(1995,01,01), new PostoSaude("Casa de deus", new Endereco("1", "rua rua", new Bairro("não sei"))), new Usuario("a123", "123", PerfilUsuario.PACIENTE))));
+        cH.inserir(new Consulta(Especialidade.DENTISTA, Prioridade.GESTANTE, Status.FILA, LocalDate.now(), LocalDate.now().plusDays(1), new Paciente("João", "123", LocalDate.of(1995,01,01), new PostoSaude("Casa de deus", new Endereco("1", "rua rua", new Bairro("não sei"))), new Usuario("a123", "123", PerfilUsuario.PACIENTE))));
+        cH.inserir(new Consulta(Especialidade.GERAL, Prioridade.NENHUMA, Status.FILA, LocalDate.now(), LocalDate.now().plusDays(2), new Paciente("João", "123", LocalDate.of(1995,01,01), new PostoSaude("Casa de deus", new Endereco("1", "rua rua", new Bairro("não sei"))), new Usuario("a123", "123", PerfilUsuario.PACIENTE))));
+        cH.inserir(new Consulta(Especialidade.DENTISTA, Prioridade.IDOSO, Status.FILA, LocalDate.now(), LocalDate.now().plusDays(2), new Paciente("João", "123", LocalDate.of(1995,01,01), new PostoSaude("Casa de deus", new Endereco("1", "rua rua", new Bairro("não sei"))), new Usuario("a123", "123", PerfilUsuario.PACIENTE))));
+        cH.inserir(new Consulta(Especialidade.GERAL, Prioridade.BEBEDECOLO, Status.FILA, LocalDate.now(), LocalDate.now().plusDays(3), new Paciente("João", "123", LocalDate.of(1995,01,01), new PostoSaude("Casa de deus", new Endereco("1", "rua rua", new Bairro("não sei"))), new Usuario("a123", "123", PerfilUsuario.PACIENTE))));
+        cH.inserir(new Consulta(Especialidade.DENTISTA, Prioridade.DEFICIENTEFISICO, Status.FILA, LocalDate.now(), LocalDate.now().plusDays(3), new Paciente("João", "123", LocalDate.of(1995,01,01), new PostoSaude("Casa de deus", new Endereco("1", "rua rua", new Bairro("não sei"))), new Usuario("a123", "123", PerfilUsuario.PACIENTE))));
+        cH.inserir(new Consulta(Especialidade.GERAL, Prioridade.GESTANTE, Status.FILA, LocalDate.now(), LocalDate.now().plusDays(4), new Paciente("João", "123", LocalDate.of(1995,01,01), new PostoSaude("Casa de deus", new Endereco("1", "rua rua", new Bairro("não sei"))), new Usuario("a123", "123", PerfilUsuario.PACIENTE))));
+        cH.inserir(new Consulta(Especialidade.DENTISTA, Prioridade.NENHUMA, Status.FILA, LocalDate.now(), LocalDate.now().plusDays(4), new Paciente("João", "123", LocalDate.of(1995,01,01), new PostoSaude("Casa de deus", new Endereco("1", "rua rua", new Bairro("não sei"))), new Usuario("a123", "123", PerfilUsuario.PACIENTE))));
+        cH.inserir(new Consulta(Especialidade.DENTISTA, Prioridade.BEBEDECOLO, Status.FILA, LocalDate.now(), LocalDate.now().plusDays(5), new Paciente("João", "123", LocalDate.of(1995,01,01), new PostoSaude("Casa de deus", new Endereco("1", "rua rua", new Bairro("não sei"))), new Usuario("a123", "123", PerfilUsuario.PACIENTE))));
+        cH.inserir(new Consulta(Especialidade.GERAL, Prioridade.DEFICIENTEFISICO, Status.FILA, LocalDate.now(), LocalDate.now().plusDays(5), new Paciente("João", "123", LocalDate.of(1995,01,01), new PostoSaude("Casa de deus", new Endereco("1", "rua rua", new Bairro("não sei"))), new Usuario("a123", "123", PerfilUsuario.PACIENTE))));
+        cH.inserir(new Consulta(Especialidade.DENTISTA, Prioridade.IDOSO, Status.FILA, LocalDate.now(), LocalDate.now().plusDays(6), new Paciente("João", "123", LocalDate.of(1995,01,01), new PostoSaude("Casa de deus", new Endereco("1", "rua rua", new Bairro("não sei"))), new Usuario("a123", "123", PerfilUsuario.PACIENTE))));
+        
         System.out.println(new PostoSaudeHibernate().recuperarPorNome("Casa de deus"));
         System.out.println(new BairroHibernate().recuperarPorNome("COHAB 6") + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@2");
-        
+
         PostoSaude ps = new PostoSaudeHibernate().recuperarPorNome("Casa de deus");
         System.out.println("###4######################" + ps);
         //System.out.println(hH.recuperarHorarioAtendimentoPorPostoSaude(ps));
