@@ -181,10 +181,24 @@ public class ConsultaHibernate implements ConsultaDAO {
     public List<Consulta> recuperarTodasConsultasDoPosto(PostoSaude posto) {
         Session session = HibernateUtil.getSession();
         try {
-            List<Consulta> consultas = session.createNamedQuery("select *\n"
-                    + "from consulta\n"
-                    + "where paciente_id in (\n"
-                    + "select id from paciente where postoSaude_id = " + posto.getId()
+            List<Consulta> consultas = session.createNativeQuery("select * from Consulta where paciente_id in (select id from Paciente where postoSaude_id = " + posto.getId() + ")", Consulta.class).list();
+            if (consultas != null && !consultas.isEmpty()) {
+                return consultas;
+            }
+
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar usuario. Erro: " + e.toString());
+        }
+        return null;
+    }
+
+    @Override
+    public List<Consulta> recuperarConsultasDoPostoPorDia(PostoSaude posto, LocalDate data) {
+        Session session = HibernateUtil.getSession();
+        try {
+            List<Consulta> consultas = session.createNativeQuery(
+                    "select * from Consulta where dataAgendamento = \"" + data + "\" and paciente_id in ("
+                    + "select id from Paciente where postoSaude_id = " + posto.getId()
                     + ")", Consulta.class).list();
             if (consultas != null && !consultas.isEmpty()) {
                 return consultas;

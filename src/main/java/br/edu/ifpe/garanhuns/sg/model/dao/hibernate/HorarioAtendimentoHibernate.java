@@ -106,7 +106,7 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
         try {
             List<HorarioAtendimento> horarios = session.createNativeQuery(
                     "select * from HorarioAtendimento h where h.atendimento_id in ("
-                    + "select id from Atendimento a where a.postoSaude_id = 1)", HorarioAtendimento.class).list();
+                    + "select id from Atendimento a where a.postoSaude_id = " + ps.getId() + ")", HorarioAtendimento.class).list();
 
             if (horarios != null) {
                 return horarios;
