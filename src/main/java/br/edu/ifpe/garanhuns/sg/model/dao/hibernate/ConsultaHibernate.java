@@ -142,7 +142,7 @@ public class ConsultaHibernate implements ConsultaDAO {
     public List<Consulta> recuperarConsultasDoDia(LocalDate dia) {
         try (Session session = HibernateUtil.getSession()) {
             List<Consulta> consultas = session.createQuery("from Consulta c where c.dataAgendamento = :data and c.status = 1").setParameter("data", dia).list();
-            if (consultas != null && !consultas.isEmpty()) {
+            if (consultas != null) {
                 return consultas;
             }
 
@@ -175,7 +175,7 @@ public class ConsultaHibernate implements ConsultaDAO {
         Session session = HibernateUtil.getSession();
         try {
             List<Consulta> consultas = session.createNativeQuery("select * from Consulta where paciente_id in (select id from Paciente where postoSaude_id = " + posto.getId() + ")", Consulta.class).list();
-            if (consultas != null && !consultas.isEmpty()) {
+            if (consultas != null) {
                 return consultas;
             }
 
@@ -193,7 +193,7 @@ public class ConsultaHibernate implements ConsultaDAO {
                     "select * from Consulta where dataAgendamento = \"" + data + "\" and paciente_id in ("
                     + "select id from Paciente where postoSaude_id = " + posto.getId()
                     + ")", Consulta.class).list();
-            if (consultas != null && !consultas.isEmpty()) {
+            if (consultas != null) {
                 return consultas;
             }
 
@@ -215,7 +215,7 @@ public class ConsultaHibernate implements ConsultaDAO {
                     + "select id from paciente "
                     + "where postoSaude_id = " + posto.getId() + ");",
                     Consulta.class).list();
-            if (consultas != null && !consultas.isEmpty()) {
+            if (consultas != null) {
                 return consultas;
             }
 
@@ -238,7 +238,7 @@ public class ConsultaHibernate implements ConsultaDAO {
                     + "select id from paciente "
                     + "where postoSaude_id = " + posto.getId() + ");",
                     Consulta.class).list();
-            if (consultas != null && !consultas.isEmpty()) {
+            if (consultas != null) {
                 return consultas;
             }
 
@@ -255,9 +255,11 @@ public class ConsultaHibernate implements ConsultaDAO {
         ConsultaHibernate cH = new ConsultaHibernate();
         for (int i = 0; i < horariosAtandimento.size(); i++) {
             for (int j = 0; j < 60; j++) {
-                if ((horariosAtandimento.get(i).getDia().getValor()) + 1 == LocalDate.now().plusDays(j).getDayOfWeek().getValue()) {
+                if (horariosAtandimento.get(i).getDia().getValor() == LocalDate.now().plusDays(j).getDayOfWeek().getValue()) {
                     List<Consulta> consultas = cH.recuperarConsultasDoPostoPorDiaEspecialidadeStatus(posto, LocalDate.now().plusDays(j), especialidade, Status.AGENDADO);
-                    
+                    if(consultas.size()<= horariosAtandimento.get(i).getQuantidade()){
+                        
+                    }
                 }
             }
         }
