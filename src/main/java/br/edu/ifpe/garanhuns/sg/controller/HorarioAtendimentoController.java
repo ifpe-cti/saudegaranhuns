@@ -8,6 +8,7 @@ package br.edu.ifpe.garanhuns.sg.controller;
 import br.edu.ifpe.garanhuns.sg.model.Atendimento;
 import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.HorarioAtendimentoHibernate;
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import org.springframework.web.context.annotation.RequestScope;
@@ -18,7 +19,7 @@ import org.springframework.web.context.annotation.RequestScope;
  */
 @ManagedBean
 @RequestScope
-public class HorarioAtendimentoController {
+public class HorarioAtendimentoController implements Serializable {
 
     HorarioAtendimentoHibernate model;
     HorarioAtendimento horarioAtendimento;
