@@ -5,18 +5,18 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Cadastro Horario Atendimento</title>
+        <title>Saúde Garanhuns</title>
     </h:head>
     <h:body>
         <center>
             <p:fieldset>
-                <h1> Cadastro Horario Atendimento </h1>
+                <h1> Cadastrar Horário de Atendimento </h1>
             </p:fieldset>
             <p:growl id='growl'/>
             <h:form >
                 <p:fieldset>
                     <p:panelGrid columns="2">
-                        <p:outputLabel value="Posto de Atentendimento"/>
+                        <p:outputLabel value="Posto de Atendimento"/>
                         <p:selectOneMenu id="Posto" value="#{horarioAtendimentoController.horarioAtendimento.atendimento.postoSaude}" style="width:125px" converter="postoSaudeConverter">
                             <f:selectItems value="#{postoSaudeController.recuperarTodos()}" var='posto' itemLabel="#{posto.nome}" itemValue="#{horarioAtendimentoController.horarioAtendimento.atendimento.postoSaude}" />
                         </p:selectOneMenu>
@@ -25,7 +25,7 @@
                             <f:selectItem itemLabel="GERAL"  itemValue="GERAL"/>
                             <f:selectItem itemLabel="DENTISTA" itemValue="DENTISTA"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="Dia da Semana"/>
+                        <p:outputLabel value="Dia"/>
                         <p:selectOneMenu id="dias" value="#{horarioAtendimentoController.horarioAtendimento.dia}">
                             <f:selectItem itemLabel="SEGUNDA" itemValue="SEGUNDA"/>
                             <f:selectItem itemLabel="TERÇA" itemValue="TERÇA"/>
@@ -35,12 +35,12 @@
                             <f:selectItem itemLabel="SABADO" itemValue="SABADO"/>
                             <f:selectItem itemLabel="DOMINGO" itemValue="DOMINGO"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="Horário Início"/>
-                        <p:inputMask placeholder="hh:mm" mask='99:99' value="#{horarioAtendimentoController.horarioAtendimento.horaInicio}"></p:inputMask>
-                        <p:outputLabel value="Horário Término"/>
-                        <p:inputMask placeholder="hh:mm" mask='99:99' value="#{horarioAtendimentoController.horarioAtendimento.horaTermino}"></p:inputMask>
+                        <p:outputLabel value="Horário de Início"/>
+                        <p:inputMask placeholder="hh:mm" mask='99:99' required="true"  requiredMessage="Horário de Início Obrigatório" value="#{horarioAtendimentoController.horarioAtendimento.horaInicio}"></p:inputMask>
+                        <p:outputLabel value="Horário de Término"/>
+                        <p:inputMask placeholder="hh:mm" required="true" requiredMessage="Horário de Término Obrigatório" mask='99:99' value="#{horarioAtendimentoController.horarioAtendimento.horaTermino}"></p:inputMask>
                         <p:outputLabel value="Quantidade"/>
-                        <p:inputNumber value="#{horarioAtendimentoController.horarioAtendimento.quantidade}"></p:inputNumber>
+                        <p:inputNumber decimalPlaces="0"  value="#{horarioAtendimentoController.horarioAtendimento.quantidade}"></p:inputNumber>
                     </p:panelGrid>
                 </p:fieldset>
                 <p:commandButton update= "growl @form" value="Cadastrar" action="#{horarioAtendimentoController.cadastrarHorarioAtendimentoPosto()}"/>
