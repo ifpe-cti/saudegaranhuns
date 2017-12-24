@@ -5,8 +5,10 @@
  */
 package br.edu.ifpe.garanhuns.sg.controller;
 
+import br.edu.ifpe.garanhuns.sg.model.Atendimento;
 import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.HorarioAtendimentoHibernate;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import org.springframework.web.context.annotation.RequestScope;
 
@@ -18,15 +20,34 @@ import org.springframework.web.context.annotation.RequestScope;
 @RequestScope
 public class HorarioAtendimentoController {
 
-    HorarioAtendimentoHibernate model = new HorarioAtendimentoHibernate();
-    HorarioAtendimento horarioAtendimento = new HorarioAtendimento();
+    HorarioAtendimentoHibernate model;
+    HorarioAtendimento horarioAtendimento;
+    Atendimento atendimento;
 
     public HorarioAtendimentoController() {
+
+    }
+
+    @PostConstruct
+    public void init() {
+
+        model = new HorarioAtendimentoHibernate();
+        atendimento = new Atendimento();
+        horarioAtendimento = new HorarioAtendimento();
+        horarioAtendimento.setAtendimento(atendimento);
     }
 
     public void cadastrarHorarioAtendimentoPosto() {
 
         model.inserir(horarioAtendimento);
+    }
+
+    public HorarioAtendimento getHorarioAtendimento() {
+        return horarioAtendimento;
+    }
+
+    public void setHorarioAtendimento(HorarioAtendimento horarioAtendimento) {
+        this.horarioAtendimento = horarioAtendimento;
     }
 
 }
