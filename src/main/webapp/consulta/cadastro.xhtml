@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Saúde Garanhuns</title>
+        <title>Cadastro de consulta</title>
     </h:head>
     <f:event listener="#{consultaController.limpar()}" type="preRenderView"/>
     <h:body>
@@ -30,14 +30,20 @@
                 </p:panelGrid>
                 <br></br>
                 <p:commandButton actionListener="#{consultaController.cadastrar()}" value="Cadastrar"
-                                 update="growl @form"/>
+                                 update="growl @form" oncomplete="PF('confDialComprovante').show()"/>
                 <p:commandButton oncomplete="PF('confDialCancelar').show()" value="Cancelar"/>
             </p:fieldset>
             <p:confirmDialog header="Deseja cancelar?" widgetVar="confDialCancelar"
                              message="Caso escolha cancelar, os dados que não foram salvos, serão
                              perdidos" >
-                <p:button href="listagem-consulta.xhtml" value="Sim"/>
+                <p:button href="listagem.xhtml" value="Sim"/>
                 <p:commandButton oncomplete="PF('confDialCancelar').hide()" value="Não"/>
+            </p:confirmDialog>
+            <p:confirmDialog header="Deseja gerar o comprovante?" widgetVar="confDialComprovante"
+                             message="Caso escolha não gerar, poderá gerar depois na página de
+                             listagem de consultas" >
+                <p:commandButton action="#{consultaController.gerarComprovante()}" value="Sim"/>
+                <p:button href="listagem.xhtml" value="Não"/>
             </p:confirmDialog>
         </h:form>
     </h:body>
