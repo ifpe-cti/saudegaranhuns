@@ -6,15 +6,16 @@
 package br.edu.ifpe.garanhuns.sg.recursos;
 
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
-import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
-import br.edu.ifpe.garanhuns.sg.model.Consulta;
+import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PostoSaudeHibernate;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import com.google.gson.Gson;
+import java.time.LocalDate;
 import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,7 +48,12 @@ public class AgendamentoResource {
     @RequestMapping(value = "/agendamentos/{id}/{enum}", method = RequestMethod.GET)
     public ResponseEntity<String> recuperarDatasDisponiveisParaConsulta(@RequestParam("id") int id, @RequestParam("enum") int emum) {
 
-        return ResponseEntity.status(HttpStatus.OK).body("teste");
+        PostoSaude posto = new PostoSaudeHibernate().recuperar(id);
+
+        List<LocalDate> datasDisponiveis = new ConsultaHibernate().agendamentoAutomaticoConsulta(posto,
+                Especialidade.valueOf("DENTISTA"));
+
+        return ResponseEntity.status(HttpStatus.OK).body(new Gson().toJson(datasDisponiveis));
 
     }
 
