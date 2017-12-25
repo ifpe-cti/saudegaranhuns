@@ -45,15 +45,21 @@ public class AgendamentoResource {
      * @param emum
      * @return an instance of java.lang.String
      */
-    @RequestMapping(value = "/agendamentos/{id}/{enum}", method = RequestMethod.GET)
-    public ResponseEntity<String> recuperarDatasDisponiveisParaConsulta(@RequestParam("id") int id, @RequestParam("enum") int emum) {
+    @RequestMapping(value = "/agendamentos{id}{enum}", method = RequestMethod.GET)
+    public ResponseEntity<String> recuperarDatasDisponiveisParaConsulta(@RequestParam("id") int id, @RequestParam("enum") String emum) {
 
-        PostoSaude posto = new PostoSaudeHibernate().recuperar(id);
+        try {
+            PostoSaude posto = new PostoSaudeHibernate().recuperar(id);
 
-        List<LocalDate> datasDisponiveis = new ConsultaHibernate().agendamentoAutomaticoConsulta(posto,
-                Especialidade.valueOf("DENTISTA"));
+            List<LocalDate> datasDisponiveis = new ConsultaHibernate().agendamentoAutomaticoConsulta(posto,
+                    Especialidade.DENTISTA);
 
-        return ResponseEntity.status(HttpStatus.OK).body(new Gson().toJson(datasDisponiveis));
+            return ResponseEntity.status(HttpStatus.OK).body(new Gson().toJson(datasDisponiveis));
+
+        } catch (Exception err) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+
+        }
 
     }
 
