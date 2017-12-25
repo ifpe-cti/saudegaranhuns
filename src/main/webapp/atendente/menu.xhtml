@@ -1,23 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-    <head>
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
         <title>Menu do atendente</title>
-    </head>
-    <body>
+    </h:head>
+    <h:body>
         <p:menubar id="menuAtendente">
             <p:submenu label="Paciente">
                 <p:menuitem value="Cadastrar" url="../paciente/cadastro.xhtml"/>
                 <p:menuitem value="Listagem" url="../paciente/listagem.xhtml"/>
             </p:submenu>
             <p:submenu label="Consulta">
-                <p:menuitem value="Listagem de Consultas" url="../consulta/listagem.xhtml"/>
-                <p:menuitem value="Consultas do dia" url="../consulta/listagem-do-dia.xhtml"/>
+                <p:menuitem value="Listagem" url="../consulta/listagem.xhtml"/>
+                <p:menuitem value="Listagem do dia" url="../consulta/listagem-do-dia.xhtml"/>
             </p:submenu>
-            <p:commandButton value ="Sair" action="#{usuarioController.logout()}"/>
         </p:menubar>
-    </body>
+    </h:body>
 </html>
 

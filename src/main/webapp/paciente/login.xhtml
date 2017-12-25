@@ -2,11 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Login Paciente</title>
     </h:head>
     <h:body>
+        <ui:include src="../menus.xhtml"/>
         <center>
             <h5> </h5>
             <p:fieldset>
@@ -14,20 +16,20 @@
             </p:fieldset>
             <h5> </h5>
         </center>
-        <h:form id="form"> 
+        <h:form id="form">
             <p:panel >
                 <center>
                     <h:panelGrid columns="2"  >
                         <h:outputLabel for="loginA" value="Cartão do SUS:" />
                         <p:inputText id="loginA" value="#{login}" required="true" label="login" />
                     </h:panelGrid>
-                </center>        
+                </center>
                 <h6> </h6>
                 <center>
                     <p:commandButton value="LOGIN" action="#{loginUsuarioController.realizarLogin(login, "00000")}" update="form"/> 
                     <p:commandButton value="CADASTRAR"/> 
                 </center>
-            </p:panel>  
+            </p:panel>
        	</h:form>
     </h:body>
 </html>

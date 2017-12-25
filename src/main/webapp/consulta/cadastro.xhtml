@@ -3,12 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Cadastro de consulta</title>
     </h:head>
     <f:event listener="#{consultaController.limpar()}" type="preRenderView"/>
     <h:body>
+        <ui:include src="../menus.xhtml"/>
         <p:growl id='growl'/>
         <h:form>
             <p:fieldset legend="Cadasto de consulta">
