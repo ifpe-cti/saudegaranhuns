@@ -26,6 +26,8 @@ public class HorarioAtendimentoController implements Serializable {
     HorarioAtendimentoHibernate model;
     HorarioAtendimento horarioAtendimento;
     Atendimento atendimento;
+    Especialidade especialidade;
+    DiasSemana dias;
 
     public HorarioAtendimentoController() {
 
@@ -54,11 +56,12 @@ public class HorarioAtendimentoController implements Serializable {
         this.horarioAtendimento = horarioAtendimento;
     }
 
-    public Especialidade[] recuperarEspecialidades() {
+    public Especialidade[] getEspecialidade() {
         return Especialidade.values();
     }
 
-    public DiasSemana[] recuperarDiasDaSemana() {
+    public DiasSemana[] getDias() {
         return DiasSemana.values();
     }
+
 }
