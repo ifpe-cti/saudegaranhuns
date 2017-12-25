@@ -4,12 +4,16 @@
  * and open the template in the editor.
  */
 package br.edu.ifpe.garanhuns.sg.model.dao.interfaces;
+
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 
 /**
  *
- * @author Herikles */
-public interface PostoSaudeDAO extends DAO<PostoSaude>{
+ * @author Herikles
+ */
+public interface PostoSaudeDAO extends DAO<PostoSaude> {
+
     public PostoSaude recuperarPorNome(String name);
+
     public void deletarEmCascata(PostoSaude ps);
 }

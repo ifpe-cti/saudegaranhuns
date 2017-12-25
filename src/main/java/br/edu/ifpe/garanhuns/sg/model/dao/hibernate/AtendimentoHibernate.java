@@ -9,8 +9,10 @@ import java.util.List;
 import br.edu.ifpe.garanhuns.sg.model.dao.interfaces.AtendimentoDAO;
 import br.edu.ifpe.garanhuns.sg.model.Atendimento;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
+import java.util.ArrayList;
 
 /**
  *
@@ -104,6 +106,35 @@ public class AtendimentoHibernate implements AtendimentoDAO {
             System.err.println("Falha ao recuperar todos os Atendimentos. Erro: " + e.toString());
         } finally {
             session.close();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Atendimento> recuperarAtendimentoPorPosto(PostoSaude posto) {
+        Session session = HibernateUtil.getSession();
+        try {
+            List<Atendimento> atendimentos = session.createNativeQuery("select * from atendimento a where a.postoSaude_id = " + posto.getId(), Atendimento.class).list();
+            if (atendimentos != null) {
+                return atendimentos;
+            }
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar o atendimentos. Erro: " + e.toString());
+        }
+        return null;
+    }
+
+    @Override
+    public List<Atendimento> recuperarAtendimentoPorPostoEspecialidade(PostoSaude posto, Especialidade especialidade) {
+        List<Atendimento> atendimentos = recuperarAtendimentoPorPosto(posto);
+        List<Atendimento> retorno = new ArrayList<>();
+        if (atendimentos != null) {
+            for (Atendimento atendimento : atendimentos) {
+                if (atendimento.getEspecialidade().equals(especialidade)) {
+                    retorno.add(atendimento);
+                }
+            }
+            return retorno;
         }
         return null;
     }

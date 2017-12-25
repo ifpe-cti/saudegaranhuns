@@ -6,6 +6,9 @@
 package br.edu.ifpe.garanhuns.sg.model.dao.interfaces;
 
 import br.edu.ifpe.garanhuns.sg.model.Atendimento;
+import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
+import java.util.List;
 
 /**
  *
@@ -13,4 +16,7 @@ import br.edu.ifpe.garanhuns.sg.model.Atendimento;
  */
 public interface AtendimentoDAO extends DAO<Atendimento> {
 
+    public List<Atendimento> recuperarAtendimentoPorPosto(PostoSaude posto);
+
+    public List<Atendimento> recuperarAtendimentoPorPostoEspecialidade(PostoSaude posto, Especialidade especialidade);
 }

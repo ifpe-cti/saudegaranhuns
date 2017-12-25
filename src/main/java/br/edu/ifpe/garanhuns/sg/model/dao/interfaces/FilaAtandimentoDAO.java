@@ -11,6 +11,6 @@ import br.edu.ifpe.garanhuns.sg.model.FilaAtendimento;
  *
  * @author Hérikles
  */
-public interface FilaAtandimentoDAO extends DAO<FilaAtendimento>{
-    
+public interface FilaAtandimentoDAO extends DAO<FilaAtendimento> {
+
 }

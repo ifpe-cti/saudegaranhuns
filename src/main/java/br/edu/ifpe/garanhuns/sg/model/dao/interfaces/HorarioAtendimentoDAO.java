@@ -6,11 +6,17 @@
 package br.edu.ifpe.garanhuns.sg.model.dao.interfaces;
 
 import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
+import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
+import java.util.List;
 
 /**
  *
  * @author Hérikles
  */
-public interface HorarioAtendimentoDAO extends DAO<HorarioAtendimento>{
-    
+public interface HorarioAtendimentoDAO extends DAO<HorarioAtendimento> {
+
+    public List<HorarioAtendimento> recuperarHorarioAtendimentoPorPostoSaude(PostoSaude ps);
+
+    public List<HorarioAtendimento> recuperarHorarioAtendimentoPorPostoSaudeEspecialidade(PostoSaude ps, Especialidade especialidade);
 }

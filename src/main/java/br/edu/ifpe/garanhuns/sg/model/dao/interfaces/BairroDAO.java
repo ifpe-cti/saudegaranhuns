@@ -6,11 +6,14 @@
 package br.edu.ifpe.garanhuns.sg.model.dao.interfaces;
 
 import br.edu.ifpe.garanhuns.sg.model.Bairro;
+
 /**
  *
  * @author Herikles
  */
-public interface BairroDAO extends DAO<Bairro>{
+public interface BairroDAO extends DAO<Bairro> {
+
     public Bairro recuperarPorNome(String name);
+
     public void deletarEmCascata(Bairro b);
 }

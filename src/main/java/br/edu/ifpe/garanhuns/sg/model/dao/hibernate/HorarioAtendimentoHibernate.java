@@ -5,9 +5,12 @@
  */
 package br.edu.ifpe.garanhuns.sg.model.dao.hibernate;
 
+import br.edu.ifpe.garanhuns.sg.model.Atendimento;
 import java.util.List;
 import br.edu.ifpe.garanhuns.sg.model.dao.interfaces.HorarioAtendimentoDAO;
 import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
+import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 
@@ -96,5 +99,46 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
         }
         return null;
     }
-}
 
+    @Override
+    public List<HorarioAtendimento> recuperarHorarioAtendimentoPorPostoSaude(PostoSaude ps) {
+        Session session = HibernateUtil.getSession();
+        try {
+            List<HorarioAtendimento> horarios = session.createNativeQuery(
+                    "select * from HorarioAtendimento h where h.atendimento_id in ("
+                    + "select id from Atendimento a where a.postoSaude_id = " + ps.getId() + ")", HorarioAtendimento.class).list();
+
+            if (horarios != null) {
+                return horarios;
+            }
+
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar o Horario. Erro: " + e.toString());
+        }
+        return null;
+    }
+
+    @Override
+    public List<HorarioAtendimento> recuperarHorarioAtendimentoPorPostoSaudeEspecialidade(PostoSaude ps, Especialidade especialidade) {
+        Session session = HibernateUtil.getSession();
+        try {
+
+            List<HorarioAtendimento> horarios = session.createNativeQuery(
+                    "select * \n"
+                    + "from HorarioAtendimento h\n"
+                    + "where h.atendimento_id in (\n"
+                    + "	select id\n"
+                    + "	from Atendimento a \n"
+                    + "	where a.postoSaude_id = " + ps.getId() + " and especialidade =" + especialidade.getValor() + ");", HorarioAtendimento.class).list();
+
+            if (horarios != null) {
+                return horarios;
+            }
+
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar o Horario. Erro: " + e.toString());
+        }
+
+        return null;
+    }
+}
