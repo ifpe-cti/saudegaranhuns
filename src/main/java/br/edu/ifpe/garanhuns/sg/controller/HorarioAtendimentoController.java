@@ -8,6 +8,8 @@ package br.edu.ifpe.garanhuns.sg.controller;
 import br.edu.ifpe.garanhuns.sg.model.Atendimento;
 import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.HorarioAtendimentoHibernate;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.DiasSemana;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -52,4 +54,11 @@ public class HorarioAtendimentoController implements Serializable {
         this.horarioAtendimento = horarioAtendimento;
     }
 
+    public Especialidade[] recuperarEspecialidades() {
+        return Especialidade.values();
+    }
+
+    public DiasSemana[] recuperarDiasDaSemana() {
+        return DiasSemana.values();
+    }
 }
