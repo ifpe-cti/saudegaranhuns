@@ -21,18 +21,13 @@
 
                         <p:outputLabel value="Especialidade"/>
                         <p:selectOneMenu id="especialidade" value="#{horarioAtendimentoController.horarioAtendimento.atendimento.especialidade}">
-                            <f:selectItem itemLabel="GERAL"  itemValue="GERAL"/>
-                            <f:selectItem itemLabel="DENTISTA" itemValue="DENTISTA"/>
+                            <f:selectItems var="especialidades" value="#{horarioAtendimentoController.especialidade}"
+                                           itemLabel="#{especialidades.nome}" itemValue="#{especialidades}" ></f:selectItems>
                         </p:selectOneMenu>
                         <p:outputLabel value="Dia"/>
                         <p:selectOneMenu id="dias" value="#{horarioAtendimentoController.horarioAtendimento.dia}">
-                            <f:selectItem itemLabel="SEGUNDA" itemValue="SEGUNDA"/>
-                            <f:selectItem itemLabel="TERÇA" itemValue="TERÇA"/>
-                            <f:selectItem itemLabel="QUARTA" itemValue="QUARTA"/>
-                            <f:selectItem itemLabel="QUINTA" itemValue="QUINTA"/>
-                            <f:selectItem itemLabel="SEXTA" itemValue="SEXTA"/>
-                            <f:selectItem itemLabel="SABADO" itemValue="SABADO"/>
-                            <f:selectItem itemLabel="DOMINGO" itemValue="DOMINGO"/>
+                            <f:selectItems var="dias" value="#{horarioAtendimentoController.dias}"
+                                           itemLabel="#{dias.nome}" itemValue="#{dias}" ></f:selectItems>
                         </p:selectOneMenu>
                         <p:outputLabel value="Quantidade"/>
                         <p:inputNumber minValue="1" decimalPlaces="0"  value="#{horarioAtendimentoController.horarioAtendimento.quantidade}"></p:inputNumber>
