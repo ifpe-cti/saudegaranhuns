@@ -26,8 +26,6 @@ public class HorarioAtendimentoController implements Serializable {
     HorarioAtendimentoHibernate model;
     HorarioAtendimento horarioAtendimento;
     Atendimento atendimento;
-    Especialidade especialidade;
-    DiasSemana dias;
 
     public HorarioAtendimentoController() {
 
