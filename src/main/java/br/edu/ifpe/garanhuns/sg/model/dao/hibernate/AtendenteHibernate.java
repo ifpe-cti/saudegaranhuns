@@ -115,9 +115,9 @@ public class AtendenteHibernate implements AtendenteDAO {
     public Atendente recuperarAtendentePorUsuario(Usuario usuario) {
         Session session = HibernateUtil.getSession();
         try {
-            Atendente atendente = session.createNamedQuery("select * from atendente where usuario_id = " + usuario.getId(), Atendente.class).getSingleResult();
+            List<Atendente> atendente = session.createNativeQuery("select * from atendente where usuario_id = " + usuario.getId(), Atendente.class).list();
             if (atendente != null) {
-                return atendente;
+                return atendente.get(0);
             }
         } catch (Exception e) {
             System.err.println("Falha ao recuperar o  Atendente por Usuário. Erro: " + e.toString());
