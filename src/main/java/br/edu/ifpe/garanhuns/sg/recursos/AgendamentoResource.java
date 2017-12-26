@@ -42,17 +42,24 @@ public class AgendamentoResource {
      * Retrieves representation of an instance of recursos.ConsultasResource
      *
      * @param id
-     * @param emum
+     * @param numero
      * @return an instance of java.lang.String
      */
     @RequestMapping(value = "/agendamentos{id}{enum}", method = RequestMethod.GET)
-    public ResponseEntity<String> recuperarDatasDisponiveisParaConsulta(@RequestParam("id") int id, @RequestParam("enum") String emum) {
+    public ResponseEntity<String> recuperarDatasDisponiveisParaConsulta(@RequestParam("id") int id, @RequestParam("enum") int numero) {
+
+        Especialidade especialidade = Especialidade.GERAL;
+        if (numero == 1) {
+            especialidade = Especialidade.DENTISTA;
+        } else if (numero == 0) {
+            especialidade = Especialidade.GERAL;
+        }
 
         try {
             PostoSaude posto = new PostoSaudeHibernate().recuperar(id);
 
             List<LocalDate> datasDisponiveis = new ConsultaHibernate().agendamentoAutomaticoConsulta(posto,
-                    Especialidade.valueOf(emum));
+                    especialidade);
 
             return ResponseEntity.status(HttpStatus.OK).body(new Gson().toJson(datasDisponiveis));
 
