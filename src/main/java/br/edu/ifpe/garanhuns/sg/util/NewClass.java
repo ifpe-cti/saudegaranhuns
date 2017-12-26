@@ -100,6 +100,5 @@ public class NewClass {
         }
 
         System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-        System.out.println(cH.gerarRelatorioConsultaPorPostoStatus(ps,Status.AGENDADO, LocalDate.of(2017,12,27), LocalDate.of(2017,12,30)));
     }
 }
