@@ -11,7 +11,7 @@
         <ui:include src="../menus.xhtml"/>
         <h:form>
             <p:growl autoUpdate="true"/>
-            <p:dataTable value="#{consultaController.buscarConsultasDoDia()}" var="consulta" id="dtConsultas"
+            <p:dataTable value="#{consultaController.buscarConsultasDoPostoPorDia()}" var="consulta" id="dtConsultas"
                          emptyMessage="Nenhuma consulta cadastrada para o dia de hoje" paginator="true"
                          rows="10" rowsPerPageTemplate="5,10,15">
                 <p:column headerText="Nome do Paciente">
