@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpe.garanhuns.model;
+package br.edu.ifpe.garanhuns.model.testes;
 
+import br.edu.ifpe.garanhuns.sg.model.Bairro;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.BairroHibernate;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -36,10 +38,11 @@ public class BairroTest {
     @After
     public void tearDown() {
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
+    @Test
+    public void deveRetornarBairroPorId(){
+        Bairro bairro = new BairroHibernate().recuperar(1);
+        
+        Assert.assertEquals(bairro, new Bairro(1,"COHAB 1"));
+    }
 }

@@ -29,6 +29,19 @@ public class Bairro implements Serializable {
     public Bairro(String nome) {
         this.nome = nome;
     }
+    
+    public Bairro(int id,String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
