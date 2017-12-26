@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
  * @author Herikles
  */
 public class ConnectionHelper {
+
     private ConnectionHelper() {
     }
 
