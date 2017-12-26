@@ -31,8 +31,7 @@
                     </p:selectOneRadio>
                 </p:panelGrid>
                 <br></br>
-                <p:commandButton actionListener="#{consultaController.cadastrar()}" value="Cadastrar"
-                                 update="growl @form" oncomplete="PF('confDialComprovante').show()"/>
+                <p:commandButton value="Prosseguir" action="finalizar-cadastro.xhtml"/>
                 <p:commandButton oncomplete="PF('confDialCancelar').show()" value="Cancelar"/>
             </p:fieldset>
             <p:confirmDialog header="Deseja cancelar?" widgetVar="confDialCancelar"
@@ -40,12 +39,6 @@
                              perdidos" >
                 <p:button href="listagem.xhtml" value="Sim"/>
                 <p:commandButton oncomplete="PF('confDialCancelar').hide()" value="Não"/>
-            </p:confirmDialog>
-            <p:confirmDialog header="Deseja gerar o comprovante?" widgetVar="confDialComprovante"
-                             message="Caso escolha não gerar, poderá gerar depois na página de
-                             listagem de consultas" >
-                <p:commandButton action="#{consultaController.gerarComprovante()}" value="Sim"/>
-                <p:button href="listagem.xhtml" value="Não"/>
             </p:confirmDialog>
         </h:form>
     </h:body>
