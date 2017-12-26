@@ -52,7 +52,7 @@ public class AgendamentoResource {
             PostoSaude posto = new PostoSaudeHibernate().recuperar(id);
 
             List<LocalDate> datasDisponiveis = new ConsultaHibernate().agendamentoAutomaticoConsulta(posto,
-                    Especialidade.DENTISTA);
+                    Especialidade.valueOf(emum));
 
             return ResponseEntity.status(HttpStatus.OK).body(new Gson().toJson(datasDisponiveis));
 
