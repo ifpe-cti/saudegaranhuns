@@ -50,7 +50,8 @@ public class BairroTest {
     @Test
     public void deveRetornarBairroPorId(){
         Bairro bairro = new BairroHibernate().recuperar(99);
-        Bairro b = new Bairro("COHAB 99");        
+        Bairro b = new Bairro("COHAB 99");
+        
         Assert.assertEquals(bairro.getNome(),b.getNome());
     }
 }
