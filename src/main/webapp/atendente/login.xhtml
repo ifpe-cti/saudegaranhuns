@@ -26,13 +26,13 @@
                         <h:outputLabel for="loginA" value="Login:" />
                         <p:inputText id="loginA" value="#{login}" required="true" label="login" />
                         <h:outputLabel for="senhaA" value="Senha:" />
-                        <p:password id="senhaA"  #{login} required="true" label="senha" />
+                        <p:password id="senhaA"  value="#{login}" required="true" label="senha" />
                     </h:panelGrid>
                 </center>
                 <h6> </h6>
                 <center>
                     <p:commandButton value="LOGIN" action="#{loginUsuaioController.realizarLogin(login, senha)}" update="form"/> 
-                    <p:commandButton value="CADASTRAR"/> 
+                    <p:commandButton value="CADASTRAR" action="../atendente/cadastro.xhtml"/> 
                 </center>
             </p:panel>
        	</h:form>
