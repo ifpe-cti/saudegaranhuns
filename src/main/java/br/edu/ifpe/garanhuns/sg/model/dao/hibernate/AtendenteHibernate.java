@@ -9,6 +9,7 @@ import java.util.List;
 import br.edu.ifpe.garanhuns.sg.model.dao.interfaces.AtendenteDAO;
 import br.edu.ifpe.garanhuns.sg.model.Atendente;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.Usuario;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 
@@ -106,6 +107,20 @@ public class AtendenteHibernate implements AtendenteDAO {
             System.err.println("Falha ao recuperar todos os Atendentes. Erro: " + e.toString());
         } finally {
             session.close();
+        }
+        return null;
+    }
+
+    @Override
+    public Atendente recuperarAtendentePorUsuario(Usuario usuario) {
+        Session session = HibernateUtil.getSession();
+        try {
+            Atendente atendente = session.createNativeQuery("select * from atendente where usuario_id = " + usuario.getId(), Atendente.class).getSingleResult();
+            if (atendente != null) {
+                return atendente;
+            }
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar o  Atendente por Usuário. Erro: " + e.toString());
         }
         return null;
     }

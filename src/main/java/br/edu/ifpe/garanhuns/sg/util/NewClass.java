@@ -5,6 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.sg.util;
 
+import br.edu.ifpe.garanhuns.sg.model.Atendente;
 import br.edu.ifpe.garanhuns.sg.model.Atendimento;
 import br.edu.ifpe.garanhuns.sg.model.Bairro;
 import br.edu.ifpe.garanhuns.sg.model.Consulta;
@@ -13,10 +14,12 @@ import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import br.edu.ifpe.garanhuns.sg.model.Usuario;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.AtendenteHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.BairroHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.HorarioAtendimentoHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PostoSaudeHibernate;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.UsuarioHibernate;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.DiasSemana;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.PerfilUsuario;
@@ -100,5 +103,10 @@ public class NewClass {
         }
 
         System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        
+        new AtendenteHibernate().inserir(new Atendente("Nesaa", ps, new Usuario("nada", "00000", PerfilUsuario.ATENDENTE)));
+        new AtendenteHibernate().inserir(new Atendente("Neseee", ps, new Usuario("nada1", "00000", PerfilUsuario.ATENDENTE)));
+        
+        System.out.println(new AtendenteHibernate().recuperarAtendentePorUsuario(new UsuarioHibernate().recuperarUsuarioPorLogin("nada", "00000")));
     }
 }

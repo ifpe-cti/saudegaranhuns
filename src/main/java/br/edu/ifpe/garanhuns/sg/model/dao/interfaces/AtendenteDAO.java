@@ -6,6 +6,7 @@
 package br.edu.ifpe.garanhuns.sg.model.dao.interfaces;
 
 import br.edu.ifpe.garanhuns.sg.model.Atendente;
+import br.edu.ifpe.garanhuns.sg.model.Usuario;
 
 /**
  *
@@ -13,4 +14,5 @@ import br.edu.ifpe.garanhuns.sg.model.Atendente;
  */
 public interface AtendenteDAO extends DAO<Atendente> {
 
+    public Atendente recuperarAtendentePorUsuario(Usuario usuario);
 }
