@@ -131,7 +131,7 @@ public class ConsultaHibernate implements ConsultaDAO {
 
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.err.println("Falha ao recuperar os Pacientes por nome. Erro: " + e.toString());
+            System.err.println("Falha ao recuperar os Consulta por Paciente. Erro: " + e.toString());
         } finally {
             session.close();
         }
@@ -147,7 +147,7 @@ public class ConsultaHibernate implements ConsultaDAO {
             }
 
         } catch (Exception e) {
-            System.err.println("Falha ao recuperar usuario. Erro: " + e.toString());
+            System.err.println("Falha ao recuperar recuperarConsultasDoDia. Erro: " + e.toString());
         }
         return null;
     }
@@ -165,7 +165,7 @@ public class ConsultaHibernate implements ConsultaDAO {
                 c.setStatus(Status.CANCELADO);
                 break;
             default:
-                throw new IllegalArgumentException("Agumento invalido!");
+                throw new IllegalArgumentException("Argumento invalido!");
         }
         atualizar(c);
     }
@@ -180,7 +180,7 @@ public class ConsultaHibernate implements ConsultaDAO {
             }
 
         } catch (Exception e) {
-            System.err.println("Falha ao recuperar usuario. Erro: " + e.toString());
+            System.err.println("Falha ao recuperar TodasConsultas Do Posto. Erro: " + e.toString());
         }
         return null;
     }
@@ -198,7 +198,7 @@ public class ConsultaHibernate implements ConsultaDAO {
             }
 
         } catch (Exception e) {
-            System.err.println("Falha ao recuperar usuario. Erro: " + e.toString());
+            System.err.println("Falha ao rrecuperar Consultas Do Posto Por Dia. Erro: " + e.toString());
         }
         return null;
     }
@@ -208,11 +208,11 @@ public class ConsultaHibernate implements ConsultaDAO {
         Session session = HibernateUtil.getSession();
         try {
             List<Consulta> consultas = session.createNativeQuery(
-                    "select * from consulta"
+                    "select * from Consulta"
                     + " where especialidade = " + especialidade.getValor()
                     + " and dataAgendamento = \"" + data
                     + "\" and paciente_id in ("
-                    + "select id from paciente "
+                    + "select id from Paciente "
                     + "where postoSaude_id = " + posto.getId() + ");",
                     Consulta.class).list();
             if (consultas != null) {
@@ -220,7 +220,7 @@ public class ConsultaHibernate implements ConsultaDAO {
             }
 
         } catch (Exception e) {
-            System.err.println("Falha ao recuperar usuario. Erro: " + e.toString());
+            System.err.println("Falha ao recuperar Consultas Do Posto Por Dia Especialidade. Erro: " + e.toString());
         }
         return null;
     }
@@ -230,12 +230,12 @@ public class ConsultaHibernate implements ConsultaDAO {
         Session session = HibernateUtil.getSession();
         try {
             List<Consulta> consultas = session.createNativeQuery(
-                    "select * from consulta"
+                    "select * from Consulta"
                     + " where especialidade = " + especialidade.getValor()
                     + " and dataAgendamento = \"" + data
-                    + " and status = " + status.getValor()
-                    + "\" and paciente_id in ("
-                    + "select id from paciente "
+                    + "\" and status = " + status.getValor()
+                    + " and paciente_id in ("
+                    + "select id from Paciente "
                     + "where postoSaude_id = " + posto.getId() + ");",
                     Consulta.class).list();
             if (consultas != null) {
@@ -243,7 +243,7 @@ public class ConsultaHibernate implements ConsultaDAO {
             }
 
         } catch (Exception e) {
-            System.err.println("Falha ao recuperar usuario. Erro: " + e.toString());
+            System.err.println("Falha ao recuperar Consultas Do Posto Por Dia Especialidade Status. Erro: " + e.toString());
         }
         return null;
     }
