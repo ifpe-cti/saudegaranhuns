@@ -50,7 +50,7 @@ public class BairroTest {
 
     @After
     public void tearDown() {
-        dbUnitHelper.deleteAll("/tabelas/Bairro.xml");
+      //  dbUnitHelper.deleteAll("/tabelas/Bairro.xml");
     }
 
     @Test
@@ -59,4 +59,25 @@ public class BairroTest {
         Bairro b = new Bairro("COHAB 99");
         Assert.assertEquals(bairro.getNome(), b.getNome());
     }
+    /*
+    @Test
+    public void deveRetornarBairroPorNome(){
+        Bairro bairro = bH.recuperarPorNome("não sei");
+        Bairro b = new Bairro("não sei");
+        Assert.assertEquals(bairro.getNome(), b.getNome());
+    }
+    
+    @Test
+    public void deveInserirBairro(){
+        Bairro b = new Bairro("Test1");
+        bH.inserir(b);
+        Assert.assertEquals(bH.recuperarPorNome("Test1").getNome(), b.getNome());
+    }
+    */
+    /*@Test
+    public void deveDeletarBairro(){
+        Bairro b = new Bairro("Test1");
+        bH.deletar(bH.recuperarPorNome("Test1"));
+        Assert.assertNull(bH.recuperarPorNome("Test1"));
+    }*/
 }
