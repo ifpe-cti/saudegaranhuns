@@ -5,6 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.model.testes;
 
+import br.edu.ifpe.garanhuns.model.Helper.DbUnitHelper;
 import br.edu.ifpe.garanhuns.sg.model.Bairro;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.BairroHibernate;
 import org.junit.After;
@@ -16,15 +17,20 @@ import org.junit.Test;
 
 /**
  *
- * @author herik
+ * @author Herikles
  */
 public class BairroTest {
+    
+    private static BairroHibernate bH;
+    private static DbUnitHelper dbUnitHelper; 
     
     public BairroTest() {
     }
     
     @BeforeClass
     public static void setUpClass() {
+        bH = new BairroHibernate();
+        dbUnitHelper = new DbUnitHelper();
     }
     
     @AfterClass
@@ -33,16 +39,18 @@ public class BairroTest {
     
     @Before
     public void setUp() {
+         dbUnitHelper.cleanInsert("/tabelas/Bairro.xml");
     }
     
     @After
     public void tearDown() {
+        dbUnitHelper.deleteAll("/tabelas/Bairro.xml");
     }
     
     @Test
     public void deveRetornarBairroPorId(){
-        Bairro bairro = new BairroHibernate().recuperar(1);
-        
-        Assert.assertEquals(bairro, new Bairro(1,"COHAB 1"));
+        Bairro bairro = new BairroHibernate().recuperar(99);
+        Bairro b = new Bairro("COHAB 99");        
+        Assert.assertEquals(bairro.getNome(),b.getNome());
     }
 }

@@ -5,60 +5,70 @@
  */
 package br.edu.ifpe.garanhuns.model.Helper;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import org.dbunit.database.DatabaseConfig;
+import org.dbunit.DatabaseUnitException;
 import org.dbunit.database.DatabaseConnection;
+import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.ReplacementDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
-import org.dbunit.ext.mysql.MySqlDataTypeFactory;
 import org.dbunit.operation.DatabaseOperation;
+import org.dbunit.operation.TransactionOperation;
 
 /**
  *
- * @author herik
+ * @author Herikles
  */
 public class DbUnitHelper {
 
-    private Connection conexao;
-    private DatabaseConnection conexaoDBUnit;
-    private String xmlFolder;
+    private final Connection connection = ConnectionHelper.getConnection();
 
-    public DbUnitHelper(String xmlFolder) {
-        this.xmlFolder = xmlFolder;
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/saudegaranhuns", "root", "root");
-            conexaoDBUnit = new DatabaseConnection(conexao);
-            DatabaseConfig config = conexaoDBUnit.getConfig();
-            config.setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY, new MySqlDataTypeFactory());
-        } catch (Exception e) {
-            throw new RuntimeException("Erro inicializando DBUnit", e);
-        }
+    public void cleanInsert(String resourcePath) {
+        execute(resourcePath, TransactionOperation.CLEAN_INSERT);
     }
 
-    public void execute(DatabaseOperation operation, String xml) {
-        try {
-            InputStream is = getClass().getResourceAsStream("/" + xmlFolder + "/" + xml);
-            FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
-            IDataSet dataSet = builder.build(is);
-
-            operation.execute(conexaoDBUnit, dataSet);
-        } catch (Exception e) {
-            throw new RuntimeException("Erro executando DbUnit", e);
-        }
+    public void truncateAndInsert(String resourcePath) {
+        execute(resourcePath, TransactionOperation.TRUNCATE_TABLE);
+        execute(resourcePath, TransactionOperation.INSERT);
     }
 
-    public void close() {
-        try {
-            conexaoDBUnit.close();
-            conexao.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void insert(String resourcePath) {
+        execute(resourcePath, DatabaseOperation.INSERT);
+    }
 
+    public void delete(String resourcePath) {
+        execute(resourcePath, DatabaseOperation.DELETE);
+    }
+
+    public void deleteAll(String resourcePath) {
+        execute(resourcePath, DatabaseOperation.DELETE_ALL);
+    }
+
+    public void truncate(String resourcePath) {
+        execute(resourcePath, DatabaseOperation.TRUNCATE_TABLE);
+    }
+
+    private void execute(String resourcePath, DatabaseOperation... operations) {
+
+        try (InputStream resourceAsStream = DbUnitHelper.class.getResourceAsStream(resourcePath)) {
+            FlatXmlDataSetBuilder builder
+                    = new FlatXmlDataSetBuilder();
+
+            builder.setCaseSensitiveTableNames(true);
+            IDataSet dataSet = builder.build(resourceAsStream);
+
+            ReplacementDataSet replacementDataSet = new ReplacementDataSet(dataSet);
+            replacementDataSet.addReplacementObject("[null]", null);
+            IDatabaseConnection iConnection = new DatabaseConnection(connection);
+
+            for (DatabaseOperation operation : operations) {
+                operation.execute(iConnection, replacementDataSet);
+            }
+        } catch (IOException | SQLException | DatabaseUnitException e) {
+            System.err.println("Erro ao executar operação usando DbUnit. Erro: " + e.toString());
+        }
     }
 }
