@@ -5,6 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.sg.util;
 
+import br.edu.ifpe.garanhuns.sg.model.Atendente;
 import br.edu.ifpe.garanhuns.sg.model.Atendimento;
 import br.edu.ifpe.garanhuns.sg.model.Bairro;
 import br.edu.ifpe.garanhuns.sg.model.Consulta;
@@ -13,10 +14,12 @@ import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import br.edu.ifpe.garanhuns.sg.model.Usuario;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.AtendenteHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.BairroHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.HorarioAtendimentoHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PostoSaudeHibernate;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.UsuarioHibernate;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.DiasSemana;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.PerfilUsuario;
@@ -34,7 +37,7 @@ public class NewClass {
     public static void main(String[] args) {
         HorarioAtendimentoHibernate hH = new HorarioAtendimentoHibernate();
         ConsultaHibernate cH = new ConsultaHibernate();
-
+      
         hH.inserir(new HorarioAtendimento(DiasSemana.SEGUNDA, "08:00", "12:00", 10, new Atendimento(Especialidade.DENTISTA, new PostoSaude("Casa de deus", new Endereco("0", "Rua do cão 2", new Bairro("COHAB 6"))))));
         hH.inserir(new HorarioAtendimento(DiasSemana.TERÇA, "08:00", "12:00", 10, new Atendimento(Especialidade.GERAL, new PostoSaude("Casa de deus2", new Endereco("0", "Rua do cão 3", new Bairro("COHAB 5"))))));
         hH.inserir(new HorarioAtendimento(DiasSemana.SEXTA, "01:00", "12:00", 10, new Atendimento(Especialidade.GERAL, new PostoSaude("Casa de deus", new Endereco("0", "Rua do cão 2", new Bairro("COHAB 6"))))));
@@ -97,8 +100,14 @@ public class NewClass {
 
             //  System.out.println(LocalDate.now().plusDays(i)+" - "+LocalDate.now().plusDays(i).getDayOfWeek().getValue());
             System.out.println(c);
+
         }
 
         System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        
+        new AtendenteHibernate().inserir(new Atendente("Nesaa", ps, new Usuario("nada", "00000", PerfilUsuario.ATENDENTE)));
+        new AtendenteHibernate().inserir(new Atendente("Neseee", ps, new Usuario("nada1", "00000", PerfilUsuario.ATENDENTE)));
+        
+        System.out.println(new AtendenteHibernate().recuperarAtendentePorUsuario(new UsuarioHibernate().recuperarUsuarioPorLogin("nada", "00000")));
     }
 }
