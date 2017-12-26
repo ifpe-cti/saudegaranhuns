@@ -275,7 +275,7 @@ public class ConsultaHibernate implements ConsultaDAO {
     public List<Consulta> gerarRelatorioConsultaPorStatus(Status status, LocalDate dataInicio, LocalDate dataFim) {
         Session session = HibernateUtil.getSession();
         try {
-            List<Consulta> consultas = session.createNativeQuery("select * from consulta where status = " + status.getValor() + " and dataAgendamento between " + dataInicio + " and " + dataFim, Consulta.class).list();
+            List<Consulta> consultas = session.createNativeQuery("select * from consulta where status = " + status.getValor() + " and dataAgendamento between \"" + dataInicio + "\" and \"" + dataFim+"\"", Consulta.class).list();
             if (consultas != null) {
                 return consultas;
             }
