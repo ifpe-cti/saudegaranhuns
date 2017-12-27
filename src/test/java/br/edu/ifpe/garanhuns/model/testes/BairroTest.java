@@ -8,7 +8,10 @@ package br.edu.ifpe.garanhuns.model.testes;
 import br.edu.ifpe.garanhuns.model.Helper.DbUnitHelper;
 import br.edu.ifpe.garanhuns.sg.model.Bairro;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.BairroHibernate;
-import javax.swing.JOptionPane;
+import java.io.FileInputStream;
+import org.dbunit.DBTestCase;
+import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -22,12 +25,12 @@ import org.junit.rules.ExpectedException;
  *
  * @author Herikles
  */
-public class BairroTest {
+public class BairroTest extends DBTestCase{
 
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
-   private static BairroHibernate bH;
+    private static BairroHibernate bH;
     private static DbUnitHelper dbUnitHelper;
 
     public BairroTest() {
@@ -45,12 +48,12 @@ public class BairroTest {
 
     @Before
     public void setUp() {
-        dbUnitHelper.cleanInsert("/tabelas/Bairro.xml");
+        dbUnitHelper.cleanInsert("Bairro.xml");
     }
 
     @After
     public void tearDown() {
-      //  dbUnitHelper.deleteAll("/tabelas/Bairro.xml");
+        dbUnitHelper.deleteAll("Bairro.xml");
     }
 
     @Test
@@ -73,11 +76,16 @@ public class BairroTest {
         bH.inserir(b);
         Assert.assertEquals(bH.recuperarPorNome("Test1").getNome(), b.getNome());
     }
-    */
-    /*@Test
+     */
+ /*@Test
     public void deveDeletarBairro(){
         Bairro b = new Bairro("Test1");
         bH.deletar(bH.recuperarPorNome("Test1"));
         Assert.assertNull(bH.recuperarPorNome("Test1"));
     }*/
+
+    @Override
+    protected IDataSet getDataSet() throws Exception {
+         return new FlatXmlDataSetBuilder().build(new FileInputStream("Bairro.xml"));
+    }
 }
