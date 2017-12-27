@@ -3,26 +3,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
-    
-    <head>
+
+    <h:head>
         <title>Menu do Administrador</title>
-    </head>
-    <body>
-        <p:menubar id="menuAdmin">
-            <p:submenu label="Paciente">
-                <p:menuitem value="Cadastrar" url="../paciente/cadastro.xhtml"/>
-                <p:menuitem value="Listagem" url="../paciente/listagem.xhtml"/>
-            </p:submenu>
-            <p:submenu label="Atendente">
-                <p:menuitem value="Cadastrar" url="../atendente/cadastro.xhtml"/>
-                <p:menuitem value="Listagem" url="../atendente/listagem.xhtml"/>
-            </p:submenu>
-            <p:submenu label="Posto">
-                <p:menuitem value="Cadastrar" url="../posto/cadastro.xhtml"/>
-                <p:menuitem value="Listagem" url="../posto/listagem.xhtml"/>
-            </p:submenu>
-            <p:menuitem value="Sair" action="#{loginUsuarioController.logout()}"/>
-        </p:menubar>
-    </body>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:menubar id="menuAdmin">
+                <p:submenu label="Paciente">
+                    <p:menuitem value="Cadastrar" url="../paciente/cadastro.xhtml"/>
+                    <p:menuitem value="Listagem" url="../paciente/listagem.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Atendente">
+                    <p:menuitem value="Cadastrar" url="../atendente/cadastro.xhtml"/>
+                    <p:menuitem value="Listagem" url="../atendente/listagem.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Posto">
+                    <p:menuitem value="Cadastrar" url="../posto/cadastro.xhtml"/>
+                    <p:menuitem value="Listagem" url="../posto/listagem.xhtml"/>
+                </p:submenu>
+                <p:menuitem value="Sair" action="#{loginUsuarioController.realizarLogout()}" update="@all"/>
+            </p:menubar>
+        </h:form>
+    </h:body>
 </html>
 
