@@ -36,6 +36,13 @@ public class AtendenteController implements Serializable {
         atendente.setUsuario(new Usuario());
         atendente.setPostoSaude(new PostoSaude());
     }
+    
+    public void limparCampos() {
+        atendente = new Atendente();
+        model = new AtendenteHibernate();
+        atendente.setUsuario(new Usuario());
+        atendente.setPostoSaude(new PostoSaude());
+    }
 
     public AtendenteController() {
     }
