@@ -9,14 +9,15 @@ import br.edu.ifpe.garanhuns.model.JDBC.SGBD;
 import br.edu.ifpe.garanhuns.sg.model.Bairro;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.BairroHibernate;
 import java.sql.SQLException;
+import java.util.List;
+import static org.hamcrest.CoreMatchers.hasItems;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
+import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 /**
  *
@@ -24,8 +25,6 @@ import org.junit.rules.ExpectedException;
  */
 public class BairroTest {
 
-    @Rule
-    public ExpectedException exception = ExpectedException.none();
 
     private static BairroHibernate bH;
     private static SGBD sg;
@@ -62,23 +61,29 @@ public class BairroTest {
         Bairro b = new Bairro("Bairro1");
         Assert.assertEquals(bairro.getNome(), b.getNome());
     }
-    
+
     @Test
-    public void deveRetornarBairroPorNome(){
+    public void deveRetornarBairroPorNome() {
         Bairro bairro = bH.recuperarPorNome("Bairro2");
         Bairro b = new Bairro("Bairro2");
         Assert.assertEquals(bairro.getNome(), b.getNome());
     }
     
     @Test
-    public void deveInserirBairro(){
+    public void deveRetornarTodosBairro() {
+        List<Bairro> bairros  = bH.recuperarTodos();
+        assertThat(bairros, hasItems(new Bairro(1,"Bairro1"), new Bairro(2,"Bairro2")));
+    }
+
+    @Test
+    public void deveInserirBairro() {
         Bairro b = new Bairro("Test1");
         bH.inserir(b);
         Assert.assertEquals(bH.recuperarPorNome("Test1").getNome(), b.getNome());
     }
-    
- @Test
-    public void deveDeletarBairro(){
+
+    @Test
+    public void deveDeletarBairro() {
         Bairro b = new Bairro("Test1");
         bH.deletar(bH.recuperarPorNome("Test1"));
         Assert.assertNull(bH.recuperarPorNome("Test1"));

@@ -10,3 +10,9 @@
 
 INSERT INTO Bairro VALUES (1,"Bairro1");
 
+INSERT INTO Bairro VALUES (1,"COHAB 6");
+INSERT INTO Endereco VALUES (1 ,"0", "Rua do cão 2", 1);
+INSERT INTO PostoSaude VALUES(1, "Casa de deus", 1);
+INSERT INTO Atendimento VALUES(1, 1, 1);
+INSERT INTO HorarioAtendimento VALUES (1,1, "08:00", "12:00", 10, 1);
+
