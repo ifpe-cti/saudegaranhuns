@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author fernando
  */
-@WebFilter(urlPatterns = {"/posto/*", "/consulta/cadastro.xhtml", "/consulta/finalizar-cadastro.xhtml", "/consulta/listagem.xhtml"})
+@WebFilter(urlPatterns = {"/posto/*", "/consulta/cadastro.xhtml", "/consulta/listagem.xhtml"})
 public class AtendenteFilter implements Filter {
 
     @Override
