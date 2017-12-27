@@ -38,7 +38,6 @@ public class PacienteController implements Serializable {
 
     public void limparCampos() {
         paciente = new Paciente();
-        model = new PacienteHibernate();
         paciente.setUsuario(new Usuario());
         paciente.setPostoSaude(new PostoSaude());
     }
