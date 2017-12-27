@@ -5,14 +5,19 @@
  */
 package br.edu.ifpe.garanhuns.sg.controller;
 
+import br.edu.ifpe.garanhuns.sg.model.Atendente;
 import br.edu.ifpe.garanhuns.sg.model.Atendimento;
 import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
+import br.edu.ifpe.garanhuns.sg.model.Usuario;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.AtendenteHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.HorarioAtendimentoHibernate;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.DiasSemana;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import org.springframework.web.context.annotation.RequestScope;
 
 /**
@@ -26,6 +31,7 @@ public class HorarioAtendimentoController implements Serializable {
     HorarioAtendimentoHibernate model;
     HorarioAtendimento horarioAtendimento;
     Atendimento atendimento;
+    Atendente atendente;
 
     public HorarioAtendimentoController() {
 
@@ -38,6 +44,7 @@ public class HorarioAtendimentoController implements Serializable {
         atendimento = new Atendimento();
         horarioAtendimento = new HorarioAtendimento();
         horarioAtendimento.setAtendimento(atendimento);
+        recuperarAtendenteLogado();
     }
 
     public void cadastrarHorarioAtendimentoPosto() {
@@ -60,6 +67,13 @@ public class HorarioAtendimentoController implements Serializable {
 
     public DiasSemana[] getDias() {
         return DiasSemana.values();
+    }
+
+    public void recuperarAtendenteLogado() {
+
+        Usuario usuario = (Usuario) ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("usuarioLogado");
+
+        this.atendente = new AtendenteHibernate().recuperarAtendentePorUsuario(usuario);
     }
 
 }
