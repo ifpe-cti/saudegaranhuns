@@ -30,8 +30,12 @@ public interface ConsultaDAO extends DAO<Consulta> {
     public List<Consulta> recuperarConsultasDoPostoPorDia(PostoSaude posto, LocalDate data);
 
     public List<Consulta> recuperarConsultasDoPostoPorDiaEspecialidade(PostoSaude posto, LocalDate data, Especialidade especialidade);
-    
+
     public List<Consulta> recuperarConsultasDoPostoPorDiaEspecialidadeStatus(PostoSaude posto, LocalDate data, Especialidade especialidade, Status status);
 
     public List<LocalDate> agendamentoAutomaticoConsulta(PostoSaude posto, Especialidade especialidade);
+
+    public List<Consulta> gerarRelatorioConsultaPorStatus(Status status, LocalDate dataInicio, LocalDate dataFim);
+
+    public List<Consulta> gerarRelatorioConsultaPorPostoStatus(PostoSaude posto, Status status, LocalDate dataInicio, LocalDate dataFim);
 }

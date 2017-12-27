@@ -271,4 +271,34 @@ public class ConsultaHibernate implements ConsultaDAO {
         return retorno;
     }
 
+    @Override
+    public List<Consulta> gerarRelatorioConsultaPorStatus(Status status, LocalDate dataInicio, LocalDate dataFim) {
+        Session session = HibernateUtil.getSession();
+        try {
+            List<Consulta> consultas = session.createNativeQuery("select * from Consulta where status = " + status.getValor() + " and dataAgendamento between \"" + dataInicio + "\" and \"" + dataFim + "\"", Consulta.class).list();
+            if (consultas != null) {
+                return consultas;
+            }
+
+        } catch (Exception e) {
+            System.err.println("Falha ao gerarRelatorioConsultaPorStatus. Erro: " + e.toString());
+        }
+        return null;
+    }
+
+    @Override
+    public List<Consulta> gerarRelatorioConsultaPorPostoStatus(PostoSaude posto, Status status, LocalDate dataInicio, LocalDate dataFim) {
+        Session session = HibernateUtil.getSession();
+        try {
+            List<Consulta> consultas = session.createNativeQuery("select * from Consulta where status = " + status.getValor() + " and dataAgendamento between \"" + dataInicio + "\" and \"" + dataFim + "\" and paciente_id in(select id from Paciente p where p.postoSaude_id = " + posto.getId() + ");", Consulta.class).list();
+            if (consultas != null) {
+                return consultas;
+            }
+
+        } catch (Exception e) {
+            System.err.println("Falha ao gerarRelatorioConsultaPorPostoStatus. Erro: " + e.toString());
+        }
+        return null;
+    }
+
 }
