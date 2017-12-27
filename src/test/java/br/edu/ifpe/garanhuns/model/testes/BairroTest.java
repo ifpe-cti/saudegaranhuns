@@ -5,13 +5,10 @@
  */
 package br.edu.ifpe.garanhuns.model.testes;
 
-import br.edu.ifpe.garanhuns.model.Helper.DbUnitHelper;
+import br.edu.ifpe.garanhuns.model.JDBC.SGBD;
 import br.edu.ifpe.garanhuns.sg.model.Bairro;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.BairroHibernate;
-import java.io.FileInputStream;
-import org.dbunit.DBTestCase;
-import org.dbunit.dataset.IDataSet;
-import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
+import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -25,13 +22,13 @@ import org.junit.rules.ExpectedException;
  *
  * @author Herikles
  */
-public class BairroTest extends DBTestCase{
+public class BairroTest {
 
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
     private static BairroHibernate bH;
-    private static DbUnitHelper dbUnitHelper;
+    private static SGBD sg;
 
     public BairroTest() {
     }
@@ -39,7 +36,8 @@ public class BairroTest extends DBTestCase{
     @BeforeClass
     public static void setUpClass() {
         bH = new BairroHibernate();
-        dbUnitHelper = new DbUnitHelper();
+        sg = new SGBD();
+
     }
 
     @AfterClass
@@ -47,26 +45,28 @@ public class BairroTest extends DBTestCase{
     }
 
     @Before
-    public void setUp() {
-        dbUnitHelper.cleanInsert("Bairro.xml");
+    public void setUp() throws SQLException {
+        sg.query("DELETE FROM Bairro");
+        sg.query("INSERT INTO Bairro VALUES (1,\"Bairro1\")");
+        sg.query("INSERT INTO Bairro VALUES (2,\"Bairro2\")");
     }
 
     @After
-    public void tearDown() {
-        dbUnitHelper.deleteAll("Bairro.xml");
+    public void tearDown() throws SQLException {
+        sg.query("DELETE FROM Bairro");
     }
 
     @Test
-    public void deveRetornarBairroPorId() {
-        Bairro bairro = bH.recuperar(9);
-        Bairro b = new Bairro("COHAB 99");
+    public void deveRetornarBairroPorId() throws SQLException {
+        Bairro bairro = bH.recuperar(1);
+        Bairro b = new Bairro("Bairro1");
         Assert.assertEquals(bairro.getNome(), b.getNome());
     }
-    /*
+    
     @Test
     public void deveRetornarBairroPorNome(){
-        Bairro bairro = bH.recuperarPorNome("não sei");
-        Bairro b = new Bairro("não sei");
+        Bairro bairro = bH.recuperarPorNome("Bairro2");
+        Bairro b = new Bairro("Bairro2");
         Assert.assertEquals(bairro.getNome(), b.getNome());
     }
     
@@ -76,16 +76,11 @@ public class BairroTest extends DBTestCase{
         bH.inserir(b);
         Assert.assertEquals(bH.recuperarPorNome("Test1").getNome(), b.getNome());
     }
-     */
- /*@Test
+    
+ @Test
     public void deveDeletarBairro(){
         Bairro b = new Bairro("Test1");
         bH.deletar(bH.recuperarPorNome("Test1"));
         Assert.assertNull(bH.recuperarPorNome("Test1"));
-    }*/
-
-    @Override
-    protected IDataSet getDataSet() throws Exception {
-         return new FlatXmlDataSetBuilder().build(new FileInputStream("Bairro.xml"));
     }
 }
