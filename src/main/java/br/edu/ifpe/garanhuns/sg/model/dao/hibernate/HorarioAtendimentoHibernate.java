@@ -109,7 +109,7 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
                     + "select id from Atendimento a where a.postoSaude_id = " + ps.getId() + ")", HorarioAtendimento.class).list();
 
             if (horarios != null) {
-                return horarios;
+                return corricaoDiaSemana(horarios);
             }
 
         } catch (Exception e) {
@@ -142,7 +142,7 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
         return null;
     }
 
-    public List<HorarioAtendimento> corricaoDiaSemana(List<HorarioAtendimento> listaAntiga) {
+    private List<HorarioAtendimento> corricaoDiaSemana(List<HorarioAtendimento> listaAntiga) {
         List<HorarioAtendimento> listaNova = new ArrayList<>();
         for (HorarioAtendimento horarioAtendimento : listaAntiga) {
             switch (horarioAtendimento.getDia()) {
