@@ -34,7 +34,12 @@ public class PostoSaudeController implements Serializable {
         postosaude.setEndereco(new Endereco());
         postosaude.getEndereco().setBairro(new Bairro()) ;
     }
-
+    
+    public void limparCampos() {
+        postosaude = new PostoSaude();
+        postosaude.setEndereco(new Endereco());
+        postosaude.getEndereco().setBairro(new Bairro()) ;
+    }
 
     public PostoSaudeController() {
     }

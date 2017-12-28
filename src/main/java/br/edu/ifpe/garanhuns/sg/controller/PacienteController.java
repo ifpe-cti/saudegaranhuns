@@ -36,6 +36,12 @@ public class PacienteController implements Serializable {
         paciente.setPostoSaude(new PostoSaude());
     }
 
+    public void limparCampos() {
+        paciente = new Paciente();
+        paciente.setUsuario(new Usuario());
+        paciente.setPostoSaude(new PostoSaude());
+    }
+    
     public PacienteController() {
     }
 
