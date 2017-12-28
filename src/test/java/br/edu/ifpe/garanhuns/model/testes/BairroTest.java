@@ -51,9 +51,6 @@ public class BairroTest {
 
     }
     
-    @Test
-    public void iniciarBanco(){
-    }
     
     @Ignore
     @Test
