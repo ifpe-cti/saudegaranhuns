@@ -110,7 +110,7 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
                     + "select id from Atendimento a where a.postoSaude_id = " + ps.getId() + ")", HorarioAtendimento.class).list();
 
             if (horarios != null) {
-                return correcaoDiaSemana(horarios);
+                return horarios;
             }
 
         } catch (Exception e) {
@@ -133,7 +133,7 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
                     + "	where a.postoSaude_id = " + ps.getId() + " and especialidade =" + especialidade.getValor() + ");", HorarioAtendimento.class).list();
 
             if (horarios != null) {
-                return correcaoDiaSemana(horarios);
+                return horarios;
             }
 
         } catch (Exception e) {
@@ -142,7 +142,7 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
 
         return null;
     }
-
+/*
     private List<HorarioAtendimento> correcaoDiaSemana(List<HorarioAtendimento> listaAntiga) {
         List<HorarioAtendimento> listaNova = new ArrayList<>();
         for (HorarioAtendimento horarioAtendimento : listaAntiga) {
@@ -174,5 +174,5 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
             listaNova.add(horarioAtendimento);
         }
         return listaNova;
-    }
+    }*/
 }
