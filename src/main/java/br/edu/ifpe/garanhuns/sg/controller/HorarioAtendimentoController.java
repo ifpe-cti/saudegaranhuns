@@ -53,6 +53,7 @@ public class HorarioAtendimentoController implements Serializable {
         atendimento.setPostoSaude(atendente.getPostoSaude());
         horarioAtendimento.setAtendimento(atendimento);
         model.inserir(this.horarioAtendimento);
+        horarioAtendimento.setQuantidade(0);
     }
 
     public HorarioAtendimento getHorarioAtendimento() {
