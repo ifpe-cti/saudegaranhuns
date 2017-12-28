@@ -11,13 +11,10 @@
             <p:menubar>
                 <p:submenu label="Paciente">
                     <p:menuitem value="Cadastro" action="/paciente/cadastro.xhtml"/>
-                    <p:menuitem value="Login" action="/paciente/login.xhtml"/>
                 </p:submenu>
-                <p:submenu label="Atendente">
-                    <p:menuitem value="Login" action="/atendente/login.xhtml"/>
-                </p:submenu>
-                <p:submenu label="Administrador">
-                    <p:menuitem value="Login" action="/admin/login.xhtml"/>
+                <p:submenu label="Login">
+                    <p:menuitem value="Paciente" action="/paciente/login.xhtml"/>
+                    <p:menuitem value="Atendente/Administrador" action="/atendente/login.xhtml"/>
                 </p:submenu>
             </p:menubar>
         </h:form>
