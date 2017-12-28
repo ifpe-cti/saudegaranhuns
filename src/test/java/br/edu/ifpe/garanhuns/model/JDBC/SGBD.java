@@ -23,8 +23,6 @@ public class SGBD {
         stmt.execute();
         stmt.close();
 
-        System.out.println(
-                "Gravado!");
     }
 
 }

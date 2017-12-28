@@ -32,23 +32,23 @@ public class ConsultaTest {
     }
 
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() throws SQLException {
         cH = new ConsultaHibernate();
         cB = new CenarioBanco();
+        cB.iniciarBancoTest();
     }
 
     @AfterClass
-    public static void tearDownClass() {
+    public static void tearDownClass() throws SQLException {
+        cB.limparBancoTest();
     }
 
     @Before
     public void setUp() throws SQLException {
-        cB.iniciarBancoTest();
     }
 
     @After
     public void tearDown() throws SQLException {
-        cB.limparBancoTest();
     }
 
     @Test
