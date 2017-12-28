@@ -8,7 +8,7 @@ package br.edu.ifpe.garanhuns.sg.model.dao;
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
 
 /**
- *
+ * 
  * @author Herikles
  */
 public interface PacienteDAO extends DAO<Paciente> {
