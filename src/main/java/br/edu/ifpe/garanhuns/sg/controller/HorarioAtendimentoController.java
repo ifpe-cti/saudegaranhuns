@@ -28,10 +28,10 @@ import org.springframework.web.context.annotation.RequestScope;
 @RequestScope
 public class HorarioAtendimentoController implements Serializable {
 
-    HorarioAtendimentoHibernate model;
-    HorarioAtendimento horarioAtendimento;
-    Atendimento atendimento;
-    Atendente atendente;
+    private HorarioAtendimentoHibernate model;
+    private HorarioAtendimento horarioAtendimento;
+    private Atendimento atendimento;
+    private Atendente atendente;
 
     public HorarioAtendimentoController() {
 
@@ -76,6 +76,30 @@ public class HorarioAtendimentoController implements Serializable {
         Usuario usuario = (Usuario) ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("usuarioLogado");
 
         this.atendente = new AtendenteHibernate().recuperarAtendentePorUsuario(usuario);
+    }
+
+    public HorarioAtendimentoHibernate getModel() {
+        return model;
+    }
+
+    public void setModel(HorarioAtendimentoHibernate model) {
+        this.model = model;
+    }
+
+    public Atendimento getAtendimento() {
+        return atendimento;
+    }
+
+    public void setAtendimento(Atendimento atendimento) {
+        this.atendimento = atendimento;
+    }
+
+    public Atendente getAtendente() {
+        return atendente;
+    }
+
+    public void setAtendente(Atendente atendente) {
+        this.atendente = atendente;
     }
 
 }
