@@ -9,8 +9,6 @@
             //<![CDATA[
             var tamanho = #{consultaController.buscarDatasAgendamento().size()};
             var listaDatas = "#{consultaController.buscarDatasAgendamento()}";
-            console.log(tamanho);
-            console.log(listaDatas);
             var datas = [];
             var aux = 0;
             for (var i = 0; i < tamanho; i++) {
@@ -18,7 +16,6 @@
                 for (var j = 0; j < 10; j++) {
                     data += listaDatas[++aux];
                 }
-                console.log(data);
                 aux += 2;
                 datas[i] = data;
             }
@@ -32,14 +29,8 @@
                     dia = "0" + dia;
                 }
                 if ($.inArray(date.getFullYear() + "-" + mes + "-" + dia, datas) !== -1) {
-                    console.log("true");
-                    console.log("date: " + date.getFullYear() + "-" + mes + "-" + date.getDate());
-                    console.log("datas: " + datas);
                     return [true];
                 }
-                console.log("false");
-                console.log("date: " + date.getFullYear() + "-" + mes + "-" + date.getDate());
-                console.log("datas: " + datas);
                 return [false];
             }
             //]]>
