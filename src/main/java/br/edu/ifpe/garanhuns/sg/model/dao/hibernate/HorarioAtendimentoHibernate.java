@@ -131,9 +131,7 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
                     + "	from Atendimento a \n"
                     + "	where a.postoSaude_id = " + ps.getId() + " and especialidade =" + especialidade.getValor() + ");", HorarioAtendimento.class).list();
             
-            for (int i = 0; i < horarios.size(); i++) {
-               //horarios.get(i).setDia(horarios.get(i).getDia()-1);
-            }
+
             if (horarios != null) {
                 return horarios;
             }

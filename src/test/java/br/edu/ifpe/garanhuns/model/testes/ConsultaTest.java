@@ -53,14 +53,13 @@ public class ConsultaTest {
 
     @Test
     public void test() {
-        PostoSaude p = new PostoSaudeHibernate().recuperar(2);
+        PostoSaude p = new PostoSaudeHibernate().recuperar(1);
         List<LocalDate> test = cH.agendamentoAutomaticoConsulta(p, Especialidade.GERAL);
-        System.out.println("dsf" + p);
-        System.out.println("dsf" + new HorarioAtendimentoHibernate().recuperarHorarioAtendimentoPorPostoSaudeEspecialidade(p, Especialidade.GERAL));
 
         for (LocalDate ob : test) {
             System.out.println("dsf" + ob);
         }
+        System.out.println("dsf" + new HorarioAtendimentoHibernate().recuperarHorarioAtendimentoPorPostoSaudeEspecialidade(p, Especialidade.GERAL));
     }
 
 }
