@@ -18,6 +18,7 @@ import org.junit.AfterClass;
 import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -51,7 +52,7 @@ public class ConsultaTest {
     @After
     public void tearDown() throws SQLException {
     }
-
+    @Ignore
     @Test
     public void deveRetornarTodasDatasPosto1() {
         PostoSaude p = new PostoSaudeHibernate().recuperar(1);
@@ -61,6 +62,7 @@ public class ConsultaTest {
 
     }
 
+    @Ignore
     @Test
     public void deveRetornarTodasDatasPosto2() {
         PostoSaude p = new PostoSaudeHibernate().recuperar(2);
