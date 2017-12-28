@@ -142,37 +142,5 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
 
         return null;
     }
-/*
-    private List<HorarioAtendimento> correcaoDiaSemana(List<HorarioAtendimento> listaAntiga) {
-        List<HorarioAtendimento> listaNova = new ArrayList<>();
-        for (HorarioAtendimento horarioAtendimento : listaAntiga) {
-            switch (horarioAtendimento.getDia()) {
-                case SEGUNDA:
-                    horarioAtendimento.setDia(DiasSemana.DOMINGO);
-                    break;
-                case TERÇA:
-                    horarioAtendimento.setDia(DiasSemana.SEGUNDA);
-                    break;
-                case QUARTA:
-                    horarioAtendimento.setDia(DiasSemana.TERÇA);
-                    break;
-                case QUINTA:
-                    horarioAtendimento.setDia(DiasSemana.QUARTA);
-                    break;
-                case SEXTA:
-                    horarioAtendimento.setDia(DiasSemana.QUINTA);
-                    break;
-                case SABADO:
-                    horarioAtendimento.setDia(DiasSemana.SEXTA);
-                    break;
-                case DOMINGO:
-                    horarioAtendimento.setDia(DiasSemana.SABADO);
-                    break;
-                default:
-                    throw new AssertionError(horarioAtendimento.getDia().name());
-            }
-            listaNova.add(horarioAtendimento);
-        }
-        return listaNova;
-    }*/
+    
 }
