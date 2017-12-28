@@ -5,11 +5,11 @@
  */
 package br.edu.ifpe.garanhuns.model.testes;
 
+import br.edu.ifpe.garanhuns.sg.model.Especialidade;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.HorarioAtendimentoHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PostoSaudeHibernate;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;

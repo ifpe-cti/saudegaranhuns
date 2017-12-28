@@ -6,8 +6,7 @@
 package br.edu.ifpe.garanhuns.model.testes;
 
 import br.edu.ifpe.garanhuns.model.JDBC.SGBD;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.DiasSemana;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
+import br.edu.ifpe.garanhuns.sg.model.DiasSemana;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 import java.sql.SQLException;
 import java.time.LocalDate;
