@@ -7,9 +7,9 @@ package br.edu.ifpe.garanhuns.sg.controller;
 
 import br.edu.ifpe.garanhuns.sg.model.Consulta;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
+import br.edu.ifpe.garanhuns.sg.model.Especialidade;
+import br.edu.ifpe.garanhuns.sg.model.Prioridade;
+import br.edu.ifpe.garanhuns.sg.model.Status;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;

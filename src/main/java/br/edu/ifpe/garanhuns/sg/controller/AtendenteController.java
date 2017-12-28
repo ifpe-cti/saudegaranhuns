@@ -9,7 +9,7 @@ import br.edu.ifpe.garanhuns.sg.model.Atendente;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import br.edu.ifpe.garanhuns.sg.model.Usuario;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.AtendenteHibernate;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.PerfilUsuario;
+import br.edu.ifpe.garanhuns.sg.model.PerfilUsuario;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;

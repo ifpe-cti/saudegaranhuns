@@ -6,7 +6,7 @@
 package br.edu.ifpe.garanhuns.sg.filter;
 
 import br.edu.ifpe.garanhuns.sg.model.Usuario;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.PerfilUsuario;
+import br.edu.ifpe.garanhuns.sg.model.PerfilUsuario;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
