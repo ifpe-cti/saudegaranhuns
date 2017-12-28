@@ -8,6 +8,15 @@
  * Created: 27/12/2017
  */
 
+DELETE FROM HorarioAtendimento;
+DELETE FROM Atendimento;
+DELETE FROM Consulta;
+DELETE FROM Paciente;
+DELETE FROM Usuario;
+DELETE FROM PostoSaude;
+DELETE FROM Endereco;
+DELETE FROM BAIRRO;
+
 INSERT INTO Bairro VALUES (1,"Bairro1");
 
 INSERT INTO Bairro VALUES (1,"COHAB 6");

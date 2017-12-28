@@ -28,7 +28,7 @@ import org.junit.Test;
 public class BairroTest {
 
     private static BairroHibernate bH;
-    private static SGBD sg;
+    private static CenarioBanco cB;
 
     public BairroTest() {
     }
@@ -36,48 +36,44 @@ public class BairroTest {
     @BeforeClass
     public static void setUpClass() {
         bH = new BairroHibernate();
-        sg = new SGBD();
+        cB = new CenarioBanco();
 
     }
 
     @AfterClass
-    public static void tearDownClass() {
+    public static void tearDownClass() throws SQLException {
     }
 
     @Before
     public void setUp() throws SQLException {
-        Session session = HibernateUtil.getSession();
-        session.beginTransaction();
-        session.close();
-        
-        sg.query("DELETE FROM Bairro");
-        sg.query("INSERT INTO Bairro VALUES (1,\"Bairro1\")");
-        sg.query("INSERT INTO Bairro VALUES (2,\"Bairro2\")");
+        cB.iniciarBancoTest();
     }
 
     @After
     public void tearDown() throws SQLException {
-        sg.query("DELETE FROM Bairro");
+        cB.limparBanco();
+
     }
 
     @Test
     public void deveRetornarBairroPorId() throws SQLException {
         Bairro bairro = bH.recuperar(1);
-        Bairro b = new Bairro("Bairro1");
+        Bairro b = new Bairro("COHAB 6");
         Assert.assertEquals(bairro.getNome(), b.getNome());
     }
 
     @Test
     public void deveRetornarBairroPorNome() {
-        Bairro bairro = bH.recuperarPorNome("Bairro2");
-        Bairro b = new Bairro("Bairro2");
+        Bairro bairro = bH.recuperarPorNome("COHAB 5");
+        Bairro b = new Bairro("COHAB 5");
         Assert.assertEquals(bairro.getNome(), b.getNome());
     }
 
     @Test
     public void deveRetornarTodosBairro() {
         List<Bairro> bairros = bH.recuperarTodos();
-        assertThat(bairros, hasItems(new Bairro(1, "Bairro1"), new Bairro(2, "Bairro2")));
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&"+bairros);
+        assertThat(bairros, hasItems(new Bairro(1, "COHAB 6"), new Bairro(2, "COHAB 5")));
     }
 
     @Test
