@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import br.edu.ifpe.garanhuns.sg.model.dao.PacienteDAO;
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
+import br.edu.ifpe.garanhuns.sg.model.Usuario;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 
@@ -135,14 +136,30 @@ public class PacienteHibernate implements PacienteDAO {
 
     @Override
     public Paciente recuperarPorCartaoSus(String numeroCartao) {
-         try (Session session = HibernateUtil.getSession()) {
+        try (Session session = HibernateUtil.getSession()) {
             List<Paciente> pacientes = (session.createQuery("from Paciente p where p.cartaoSus = :numeroCartao").setParameter("numeroCartao", numeroCartao).list());
-            if(pacientes!=null)
+            if (pacientes != null) {
                 return pacientes.get(0);
-            
+            }
+
         } catch (Exception e) {
             System.err.println("Falha ao recuperar o  Paciente por Cartão do SUS. Erro: " + e.toString());
         }
-        return null;}
+        return null;
+    }
+
+    @Override
+    public Paciente recuperarPacientePorUsuario(Usuario usuario) {
+        try (Session session = HibernateUtil.getSession()) {
+            List<Paciente> pacientes = session.createNativeQuery("select * from Paciente where usuario_id = "+usuario.getId(), Paciente.class).list();
+            if (pacientes != null) {
+                return pacientes.get(0);
+            }
+
+        } catch (Exception e) {
+            System.err.println("Falha ao recuperar o  Paciente por Usuário. Erro: " + e.toString());
+        }
+        return null;
+    }
 
 }
