@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpe.garanhuns.sg.model;
+package br.edu.ifpe.garanhuns.model.testes;
 
 import br.edu.ifpe.garanhuns.model.JDBC.SGBD;
 import br.edu.ifpe.garanhuns.sg.model.DiasSemana;
@@ -45,20 +45,20 @@ public class CenarioBanco {
         sgbd.query("INSERT INTO PostoSaude VALUES(1, \"Casa de deus\", 1)");
 
         sgbd.query("INSERT INTO Atendimento VALUES(1, 1, 1)");
-        sgbd.query("INSERT INTO HorarioAtendimento VALUES (1," + (DiasSemana.SEGUNDA.getValor()-1) + ", \"08:00\", \"12:00\", 10, 1)");
+        sgbd.query("INSERT INTO HorarioAtendimento VALUES (1," + DiasSemana.SEGUNDA.getValor() + ", \"08:00\", \"12:00\", 10, 1)");
 
         sgbd.query("INSERT INTO Bairro VALUES (2,\"COHAB 5\")");
         sgbd.query("INSERT INTO Endereco VALUES (2, \"0\", \"Rua do cão 3\", 2)");
         sgbd.query("INSERT INTO PostoSaude VALUES (2,\"Casa de deus2\", 2)");
 
         sgbd.query("INSERT INTO Atendimento VALUES (2, 0, 2);");
-        sgbd.query("INSERT INTO HorarioAtendimento VALUES (2 ," + (DiasSemana.TERÇA.getValor()-1) + ", \"08:00\", \"12:00\", 10, 2)");
+        sgbd.query("INSERT INTO HorarioAtendimento VALUES (2 ," + DiasSemana.TERÇA.getValor() + ", \"08:00\", \"12:00\", 10, 2)");
 
         sgbd.query("INSERT INTO Atendimento VALUES (3, 0, 1)");
-        sgbd.query("INSERT INTO HorarioAtendimento VALUES (3," + (DiasSemana.SEXTA.getValor()-1)+ ", \"01:00\", \"12:00\", 10, 3)");
+        sgbd.query("INSERT INTO HorarioAtendimento VALUES (3," + DiasSemana.SEXTA.getValor() + ", \"01:00\", \"12:00\", 10, 3)");
 
         sgbd.query("INSERT INTO Atendimento VALUES (4,0, 2)");
-        sgbd.query("INSERT INTO HorarioAtendimento VALUES (4," + (DiasSemana.SEGUNDA.getValor()-1) + ", \"03:00\", \"12:00\", 10, 4)");
+        sgbd.query("INSERT INTO HorarioAtendimento VALUES (4," + DiasSemana.SEGUNDA.getValor() + ", \"03:00\", \"12:00\", 10, 4)");
 
         sgbd.query("INSERT INTO Usuario VALUES(1, \"a123\", 2,\"123\");");
         sgbd.query("INSERT INTO Paciente VALUES(1, \"123\",\"1995-06-01\",\"João\", 1, 1);");

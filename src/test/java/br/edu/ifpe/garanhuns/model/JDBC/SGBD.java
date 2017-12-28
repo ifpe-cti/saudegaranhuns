@@ -23,5 +23,6 @@ public class SGBD {
         stmt.close();
 
     }
+    
 
 }

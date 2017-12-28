@@ -5,22 +5,17 @@
  */
 package br.edu.ifpe.garanhuns.model.testes;
 
-import br.edu.ifpe.garanhuns.sg.model.Atendimento;
-import br.edu.ifpe.garanhuns.sg.model.Bairro;
-import br.edu.ifpe.garanhuns.sg.model.CenarioBanco;
-import br.edu.ifpe.garanhuns.sg.model.DiasSemana;
-import br.edu.ifpe.garanhuns.sg.model.Endereco;
 import br.edu.ifpe.garanhuns.sg.model.Especialidade;
-import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
-import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.HorarioAtendimentoHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PostoSaudeHibernate;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+import static org.hamcrest.CoreMatchers.hasItems;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -58,20 +53,22 @@ public class ConsultaTest {
     }
 
     @Test
-    public void deveRetornarDatasAtomaticamentePorPostoEspecialidade() {
+    public void deveRetornarTodasDatasPosto1() {
         PostoSaude p = new PostoSaudeHibernate().recuperar(1);
-        List<LocalDate> test = cH.agendamentoAutomaticoConsulta(p, Especialidade.GERAL);
+        List<LocalDate> datas = cH.agendamentoAutomaticoConsulta(p, Especialidade.GERAL);
 
-        for (LocalDate ob : test) {
-            System.out.println("dsf" + ob);
-        }
-        System.out.println("dsf" + new HorarioAtendimentoHibernate().recuperarHorarioAtendimentoPorPostoSaudeEspecialidade(p, Especialidade.GERAL));
+        assertThat(datas, hasItems(LocalDate.of(2018, 1, 5), LocalDate.of(2018, 1, 12), LocalDate.of(2018, 1, 19), LocalDate.of(2018, 1, 26), LocalDate.of(2018, 2, 2), LocalDate.of(2018, 2, 9), LocalDate.of(2018, 2, 16), LocalDate.of(2018, 2, 23)));
+
     }
+
     @Test
-    public void deve() {
-        new HorarioAtendimentoHibernate().inserir(new HorarioAtendimento(DiasSemana.SEGUNDA, "07:00", "17:00", 20, new Atendimento(Especialidade.GERAL, new PostoSaude("PostoTeste", new Endereco("0", "lsls", new Bairro("deusa"))))));
-        new HorarioAtendimentoHibernate().inserir(new HorarioAtendimento(DiasSemana.SEGUNDA, "07:00", "17:00", 20, new Atendimento(Especialidade.GERAL, new PostoSaude("PostoTeste", new Endereco("0", "lsls", new Bairro("deusa"))))));
+    public void deveRetornarTodasDatasPosto2() {
+        PostoSaude p = new PostoSaudeHibernate().recuperar(2);
+        List<LocalDate> datas = cH.agendamentoAutomaticoConsulta(p, Especialidade.GERAL);
+
+        assertThat(datas, hasItems(LocalDate.of(2018,1,2), LocalDate.of(2018,1,9), LocalDate.of(2018,1,16), LocalDate.of(2018,1,23), LocalDate.of(2018,1,30), LocalDate.of(2018,2,6), LocalDate.of(2018,2,13), LocalDate.of(2018,2,20), LocalDate.of(2018,1,1), LocalDate.of(2018,1,8) , LocalDate.of(2018,1,15), LocalDate.of(2018,1,22), LocalDate.of(2018,1,29), LocalDate.of(2018,2,5), LocalDate.of(2018,2,12), LocalDate.of(2018,2,19)));
+      
+
     }
-    
 
 }
