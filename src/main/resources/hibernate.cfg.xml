@@ -37,9 +37,10 @@ Contributor(s):
 <hibernate-configuration>
     <session-factory>
         <!-- SQL dialect -->
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <!--property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>  
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/saudegaranhuns?zeroDateTimeBehavior=convertToNull</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/saudegaranhuns?autoReconnect=true&amp;characterEncoding=UTF-8&amp;useUnicode=true&amp;createDatabaseIfNotExist=true&amp;zeroDateTimeBehavior=convertToNull</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">ifpe</property>
 
@@ -53,7 +54,6 @@ Contributor(s):
         <mapping class="br.edu.ifpe.garanhuns.sg.model.Atendente" />
         <mapping class="br.edu.ifpe.garanhuns.sg.model.Paciente" />
         <mapping class="br.edu.ifpe.garanhuns.sg.model.Consulta" />
-        <mapping class="br.edu.ifpe.garanhuns.sg.model.FilaAtendimento" />
         <mapping class="br.edu.ifpe.garanhuns.sg.model.Atendimento" />
         <mapping class="br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento" />
 
