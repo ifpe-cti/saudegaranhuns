@@ -5,17 +5,6 @@
  */
 package br.edu.ifpe.garanhuns.sg.model;
 
-import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.AtendenteHibernate;
-import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.HorarioAtendimentoHibernate;
-import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.DiasSemana;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.PerfilUsuario;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
-import com.google.gson.Gson;
-import java.time.LocalDate;
-import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
