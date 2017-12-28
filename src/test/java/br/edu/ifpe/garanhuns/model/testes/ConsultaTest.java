@@ -42,7 +42,6 @@ public class ConsultaTest {
 
     @AfterClass
     public static void tearDownClass() throws SQLException {
-        cB.limparBancoTest();
     }
 
     @Before
@@ -52,6 +51,7 @@ public class ConsultaTest {
     @After
     public void tearDown() throws SQLException {
     }
+    
     @Ignore
     @Test
     public void deveRetornarTodasDatasPosto1() {

@@ -5,20 +5,18 @@
  */
 package br.edu.ifpe.garanhuns.model.testes;
 
-import br.edu.ifpe.garanhuns.model.JDBC.SGBD;
 import br.edu.ifpe.garanhuns.sg.model.Bairro;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.BairroHibernate;
-import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 import java.sql.SQLException;
 import java.util.List;
 import static org.hamcrest.CoreMatchers.hasItems;
-import org.hibernate.Session;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -42,7 +40,6 @@ public class BairroTest {
 
     @AfterClass
     public static void tearDownClass() throws SQLException {
-        cB.limparBancoTest();
     }
 
     @Before
@@ -53,7 +50,12 @@ public class BairroTest {
     public void tearDown() throws SQLException {
 
     }
-
+    
+    @Test
+    public void iniciarBanco(){
+    }
+    
+    @Ignore
     @Test
     public void deveRetornarBairroPorId() throws SQLException {
         Bairro bairro = bH.recuperar(1);
@@ -61,6 +63,7 @@ public class BairroTest {
         Assert.assertEquals(bairro.getNome(), b.getNome());
     }
 
+    @Ignore
     @Test
     public void deveRetornarBairroPorNome() {
         Bairro bairro = bH.recuperarPorNome("COHAB 5");
@@ -68,12 +71,14 @@ public class BairroTest {
         Assert.assertEquals(bairro.getNome(), b.getNome());
     }
 
+    @Ignore
     @Test
     public void deveRetornarTodosBairro() {
         List<Bairro> bairros = bH.recuperarTodos();
         assertThat(bairros, hasItems(new Bairro(1, "COHAB 6"), new Bairro(2, "COHAB 5")));
     }
 
+    @Ignore
     @Test
     public void deveInserirBairro() {
         Bairro b = new Bairro("Test1");
@@ -81,6 +86,7 @@ public class BairroTest {
         Assert.assertEquals(bH.recuperarPorNome("Test1").getNome(), b.getNome());
     }
 
+    @Ignore
     @Test
     public void deveDeletarBairro() {
         Bairro b = new Bairro("Test1");

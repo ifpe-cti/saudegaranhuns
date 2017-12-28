@@ -6,7 +6,9 @@
 package br.edu.ifpe.garanhuns.model.testes;
 
 import br.edu.ifpe.garanhuns.model.JDBC.SGBD;
+import br.edu.ifpe.garanhuns.sg.model.Atendente;
 import br.edu.ifpe.garanhuns.sg.model.DiasSemana;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.AtendenteHibernate;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -62,6 +64,8 @@ public class CenarioBanco {
 
         sgbd.query("INSERT INTO Usuario VALUES(1, \"a123\", 2,\"123\");");
         sgbd.query("INSERT INTO Paciente VALUES(1, \"123\",\"1995-06-01\",\"João\", 1, 1);");
+        
+         sgbd.query("INSERT INTO Usuario VALUES(99, \"admin\", 0,\"admin\");");
 
         LocalDate ds = LocalDate.now();
         List<LocalDate> diasSemana = new ArrayList<>();
@@ -85,31 +89,17 @@ public class CenarioBanco {
             LocalDate daAux = diasSemana.get(2).plusDays(0);
             sgbd.query("INSERT INTO Consulta VALUES (" + i + ", \"" + daAux + "\",\"" + ds + "\", 0, 0, 1,  1)");
         }
-
-        /*
-            sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(1).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
-            sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(1).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
-            sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(2).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
-            sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(2).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
-            sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(2).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
-            sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(2).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
-            sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(2).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
-            sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(2).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
-            sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(2).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
-            sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(2).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
-            sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(2).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
-            sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(2).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
-         */
+        
     }
 
     public void limparBancoTest() throws SQLException {
-        /*sgbd.query("DELETE FROM HorarioAtendimento");
+        sgbd.query("DELETE FROM HorarioAtendimento");
         sgbd.query("DELETE FROM Atendimento");
         sgbd.query("DELETE FROM Consulta");
         sgbd.query("DELETE FROM Paciente");
         sgbd.query("DELETE FROM Usuario");
         sgbd.query("DELETE FROM PostoSaude");
         sgbd.query("DELETE FROM Endereco");
-        sgbd.query("DELETE FROM BAIRRO");*/
+        sgbd.query("DELETE FROM BAIRRO");
     }
 }
