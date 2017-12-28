@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Finalizar cadastro de consulta</title>
+        <script>
+            //<![CDATA[
+            var tamanho = #{consultaController.buscarDatasAgendamento().size()};
+            var listaDatas = "#{consultaController.buscarDatasAgendamento()}";
+            var datas = [];
+            var aux = 0;
+            for (var i = 0; i < tamanho; i++) {
+                var data = "";
+                for (var j = 0; j < 10; j++) {
+                    data += listaDatas[++aux];
+                }
+                aux += 2;
+                datas[i] = data;
+            }
+            function disabilitarDias(date) {
+                var mes = date.getMonth() + 1;
+                var dia = date.getDate();
+                if (mes <= 9) {
+                    mes = "0" + mes;
+                }
+                if (dia <= 9) {
+                    dia = "0" + dia;
+                }
+                if ($.inArray(date.getFullYear() + "-" + mes + "-" + dia, datas) !== -1) {
+                    return [true];
+                }
+                return [false];
+            }
+            //]]>
+        </script>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:fieldset legend="Cadastro de consulta">
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Data do agendamento" for="dtAgendamento"/>
+                    <p:calendar value="#{consultaController.consulta.dataAgendamento}" id="dtAgendamento"
+                                beforeShowDay="disabilitarDias" converter="localDateConverter" pattern="dd/MM/yyyy"/>
+                </p:panelGrid>
+                <br/>
+                <p:commandButton actionListener="#{consultaController.cadastrar()}" value="Cadastrar"
+                                 action="listagem.xhtml?faces-redirect=true"/>
+                <p:commandButton oncomplete="PF('confDialCancelar').show()" value="Cancelar"/>
+            </p:fieldset>
+            <p:confirmDialog header="Deseja cancelar?" widgetVar="confDialCancelar"
+                             message="Caso escolha cancelar, os dados que não foram salvos, serão
+                             perdidos" >
+                <p:button href="listagem.xhtml" value="Sim"/>
+                <p:commandButton oncomplete="PF('confDialCancelar').hide()" value="Não"/>
+            </p:confirmDialog>
+        </h:form>
+    </h:body>
+</html>
+

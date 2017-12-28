@@ -11,7 +11,7 @@
         <ui:include src="../menus.xhtml"/>
         <p:growl autoUpdate="true"/>
         <h:form>
-            <p:dataTable var="consulta" value="#{consultaController.buscarTodos()}"
+            <p:dataTable var="consulta" value="#{consultaController.buscarTodasPorPaciente()}"
                          emptyMessage="Nenhuma consulta cadastrada" paginator="true"
                          rows="10" rowsPerPageTemplate="5,10,15">
                 <p:column filterBy="#{consulta.status.nome}" headerText="Status">

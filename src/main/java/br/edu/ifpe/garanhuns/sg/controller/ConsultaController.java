@@ -5,8 +5,13 @@
  */
 package br.edu.ifpe.garanhuns.sg.controller;
 
+import br.edu.ifpe.garanhuns.sg.model.Atendente;
 import br.edu.ifpe.garanhuns.sg.model.Consulta;
+import br.edu.ifpe.garanhuns.sg.model.Paciente;
+import br.edu.ifpe.garanhuns.sg.model.Usuario;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.AtendenteHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
 import br.edu.ifpe.garanhuns.sg.model.Especialidade;
 import br.edu.ifpe.garanhuns.sg.model.Prioridade;
 import br.edu.ifpe.garanhuns.sg.model.Status;
@@ -18,14 +23,15 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Serializable;
-import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -42,16 +48,19 @@ public class ConsultaController implements Serializable {
 
     @PostConstruct
     public void init() {
-        consulta = new Consulta();
-        model = new ConsultaHibernate();
         fc = FacesContext.getCurrentInstance();
         ec = fc.getExternalContext();
+        model = new ConsultaHibernate();
+        consulta = new Consulta();
+        consulta.setPaciente(pacienteLogado());
     }
 
     public ConsultaController() {
     }
 
     public void cadastrar() {
+        consulta.setDataSolicitacao(LocalDate.now());
+        consulta.setStatus(Status.AGENDADO);
         model.inserir(consulta);
     }
 
@@ -82,10 +91,27 @@ public class ConsultaController implements Serializable {
     public List<Consulta> buscarTodos() {
         return model.recuperarTodos();
     }
-  
+
+    public List<Consulta> buscarTodasPorPaciente() {
+        return model.recuperarConsultasPorPaciente(pacienteLogado());
+    }
+
+    public List<Consulta> buscarConsultasDoPostoPorDia() {
+        return model.recuperarConsultasDoPostoPorDia(atendenteLogado().getPostoSaude(), LocalDate.now());
+    }
+
+    public List<Consulta> buscarConsultasDoDia() {
+        return model.recuperarConsultasDoDia(LocalDate.now());
+    }
+
+    public List<LocalDate> buscarDatasAgendamento() {
+        return model.agendamentoAutomaticoConsulta(consulta.getPaciente().getPostoSaude(), consulta.getEspecialidade());
+    }
+
     public void gerarComprovante() {
         try {
-            ec.responseReset();
+            fc = FacesContext.getCurrentInstance();
+            ec = fc.getExternalContext();
             ec.setResponseContentType("application/pdf");
             ec.setResponseHeader("Content-Disposition", "inline; filename=\"dynamic.pdf\"");
             OutputStream output = ec.getResponseOutputStream();
@@ -108,7 +134,6 @@ public class ConsultaController implements Serializable {
             Paragraph infoNome = new Paragraph("Nome do paciente: " + consulta.getPaciente().getNome(), fontInfo);
             Paragraph infoPosto = new Paragraph("Nome do posto de saúde: " + consulta.getPaciente().getPostoSaude().getNome(), fontInfo);
             document.add(titulo);
-            document.add(new Paragraph());
             document.add(infoData);
             document.add(infoNome);
             document.add(infoPosto);
@@ -129,10 +154,6 @@ public class ConsultaController implements Serializable {
     public Status[] getStatus() {
         return Status.values();
     }
-  
-    public List<Consulta> buscarConsultasDoDia() {
-        return model.recuperarConsultasDoDia(LocalDate.now());
-    }
 
     public Consulta getConsulta() {
         return consulta;
@@ -142,7 +163,20 @@ public class ConsultaController implements Serializable {
         this.consulta = consulta;
     }
 
+    private Paciente pacienteLogado() {
+        Usuario usuarioLogado = (Usuario) ((HttpSession) ec.getSession(true)).getAttribute("usuarioLogado");
+        Paciente pacienteLogado = new PacienteHibernate().recuperarPacientePorUsuario(usuarioLogado);
+        return pacienteLogado;
+    }
+
+    private Atendente atendenteLogado() {
+        Usuario usuarioLogado = (Usuario) ((HttpSession) ec.getSession(true)).getAttribute("usuarioLogado");
+        Atendente atendenteLogado = new AtendenteHibernate().recuperarAtendentePorUsuario(usuarioLogado);
+        return atendenteLogado;
+    }
+
     public void limpar() {
         this.consulta = new Consulta();
+        consulta.setPaciente(pacienteLogado());
     }
 }
