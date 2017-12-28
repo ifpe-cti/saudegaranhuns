@@ -7,7 +7,7 @@ package br.edu.ifpe.garanhuns.sg.model.dao;
 
 import br.edu.ifpe.garanhuns.sg.model.Atendimento;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
+import br.edu.ifpe.garanhuns.sg.model.Especialidade;
 import java.util.List;
 
 /**

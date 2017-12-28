@@ -8,7 +8,7 @@ package br.edu.ifpe.garanhuns.sg.recursos;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PostoSaudeHibernate;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
+import br.edu.ifpe.garanhuns.sg.model.Especialidade;
 import com.google.gson.Gson;
 import java.time.LocalDate;
 import java.util.List;

@@ -3,21 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpe.garanhuns.sg.model.enumarador;
+package br.edu.ifpe.garanhuns.sg.model;
 
 /**
  *
  * @author Herikles
  */
-public enum Status {
-    ATENDIMENTO(0, "Atendimento"),
-    AGENDADO(1, "Agendado"),
-    CANCELADO(2, "Cancelado");
+public enum Prioridade {
+    NENHUMA(0, "Nenhuma"),
+    IDOSO(1, "Idoso"),
+    GESTANTE(2, "Gestante"),
+    DEFICIENTEFISICO(3, "Deficiente Físico"),
+    BEBEDECOLO(4, "Bebê de colo");
 
     private int valor;
     private String nome;
 
-    private Status(int valor, String nome) {
+    private Prioridade(int valor, String nome) {
         this.valor = valor;
         this.nome = nome;
     }
@@ -27,6 +29,6 @@ public enum Status {
     }
 
     public String getNome() {
-        return this.nome;
+        return nome;
     }
 }
