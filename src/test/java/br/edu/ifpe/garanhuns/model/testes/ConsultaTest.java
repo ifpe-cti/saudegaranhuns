@@ -5,7 +5,13 @@
  */
 package br.edu.ifpe.garanhuns.model.testes;
 
+import br.edu.ifpe.garanhuns.sg.model.Atendimento;
+import br.edu.ifpe.garanhuns.sg.model.Bairro;
+import br.edu.ifpe.garanhuns.sg.model.CenarioBanco;
+import br.edu.ifpe.garanhuns.sg.model.DiasSemana;
+import br.edu.ifpe.garanhuns.sg.model.Endereco;
 import br.edu.ifpe.garanhuns.sg.model.Especialidade;
+import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.HorarioAtendimentoHibernate;
@@ -52,8 +58,8 @@ public class ConsultaTest {
     }
 
     @Test
-    public void test() {
-        PostoSaude p = new PostoSaudeHibernate().recuperar(1);
+    public void deveRetornarDatasAtomaticamentePorPostoEspecialidade() {
+        PostoSaude p = new PostoSaudeHibernate().recuperar(2);
         List<LocalDate> test = cH.agendamentoAutomaticoConsulta(p, Especialidade.GERAL);
 
         for (LocalDate ob : test) {
@@ -61,5 +67,10 @@ public class ConsultaTest {
         }
         System.out.println("dsf" + new HorarioAtendimentoHibernate().recuperarHorarioAtendimentoPorPostoSaudeEspecialidade(p, Especialidade.GERAL));
     }
+    @Test
+    public void deve() {
+        new HorarioAtendimentoHibernate().inserir(new HorarioAtendimento(DiasSemana.SEGUNDA, "07:00", "17:00", 20, new Atendimento(Especialidade.GERAL, new PostoSaude("PostoTeste", new Endereco("0", "lsls", new Bairro("deusa"))))));
+    }
+    
 
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpe.garanhuns.model.testes;
+package br.edu.ifpe.garanhuns.sg.model;
 
 import br.edu.ifpe.garanhuns.model.JDBC.SGBD;
 import br.edu.ifpe.garanhuns.sg.model.Bairro;
@@ -34,24 +34,23 @@ public class BairroTest {
     }
 
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() throws SQLException {
         bH = new BairroHibernate();
         cB = new CenarioBanco();
-
+        cB.iniciarBancoTest();
     }
 
     @AfterClass
     public static void tearDownClass() throws SQLException {
+        cB.limparBancoTest();
     }
 
     @Before
     public void setUp() throws SQLException {
-        cB.iniciarBancoTest();
     }
 
     @After
     public void tearDown() throws SQLException {
-        cB.limparBancoTest();
 
     }
 
