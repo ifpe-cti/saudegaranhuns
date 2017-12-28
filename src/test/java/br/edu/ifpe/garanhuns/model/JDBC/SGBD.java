@@ -15,10 +15,9 @@ import java.sql.SQLException;
  */
 public class SGBD {
 
-    private Connection con;
+    private Connection con  = new ConnectionFactory().getConnection();
 
     public void query(String sql) throws SQLException  {
-        con = new ConnectionFactory().getConnection();
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.execute();
         stmt.close();

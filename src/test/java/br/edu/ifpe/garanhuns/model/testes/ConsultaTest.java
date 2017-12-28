@@ -59,7 +59,7 @@ public class ConsultaTest {
 
     @Test
     public void deveRetornarDatasAtomaticamentePorPostoEspecialidade() {
-        PostoSaude p = new PostoSaudeHibernate().recuperar(2);
+        PostoSaude p = new PostoSaudeHibernate().recuperar(1);
         List<LocalDate> test = cH.agendamentoAutomaticoConsulta(p, Especialidade.GERAL);
 
         for (LocalDate ob : test) {
@@ -69,6 +69,7 @@ public class ConsultaTest {
     }
     @Test
     public void deve() {
+        new HorarioAtendimentoHibernate().inserir(new HorarioAtendimento(DiasSemana.SEGUNDA, "07:00", "17:00", 20, new Atendimento(Especialidade.GERAL, new PostoSaude("PostoTeste", new Endereco("0", "lsls", new Bairro("deusa"))))));
         new HorarioAtendimentoHibernate().inserir(new HorarioAtendimento(DiasSemana.SEGUNDA, "07:00", "17:00", 20, new Atendimento(Especialidade.GERAL, new PostoSaude("PostoTeste", new Endereco("0", "lsls", new Bairro("deusa"))))));
     }
     
