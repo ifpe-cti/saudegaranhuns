@@ -6,7 +6,7 @@
 package br.edu.ifpe.garanhuns.sg.model.dao.hibernate;
 
 import java.util.List;
-import br.edu.ifpe.garanhuns.sg.model.dao.interfaces.AtendimentoDAO;
+import br.edu.ifpe.garanhuns.sg.model.dao.AtendimentoDAO;
 import br.edu.ifpe.garanhuns.sg.model.Atendimento;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;

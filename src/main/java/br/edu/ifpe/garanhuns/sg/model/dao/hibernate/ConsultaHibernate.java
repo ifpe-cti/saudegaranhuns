@@ -7,7 +7,7 @@ package br.edu.ifpe.garanhuns.sg.model.dao.hibernate;
 
 import java.util.ArrayList;
 import java.util.List;
-import br.edu.ifpe.garanhuns.sg.model.dao.interfaces.ConsultaDAO;
+import br.edu.ifpe.garanhuns.sg.model.dao.ConsultaDAO;
 import br.edu.ifpe.garanhuns.sg.model.Consulta;
 import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
