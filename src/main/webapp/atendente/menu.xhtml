@@ -16,6 +16,9 @@
                 <p:submenu label="Consulta">
                     <p:menuitem value="Listagem do dia" url="../consulta/listagem-do-dia.xhtml"/>
                 </p:submenu>
+                <p:submenu label="Posto">
+                    <p:menuitem value="Horário de Atendimento" url="../horario-atendimento/cadastro.xhtml"/>
+                </p:submenu>
                 <p:menuitem value="Sair" action="#{loginUsuarioController.realizarLogout()}" update="@all"/>
             </p:menubar>
         </h:form>

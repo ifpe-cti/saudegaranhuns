@@ -17,7 +17,7 @@
                 <p:fieldset>
                     <p:panelGrid columns="2">
                         <p:outputLabel value="Posto de Atendimento"/>
-                        <p:outputLabel  value="#{atendenteController.atendente.postoSaude.nome}"></p:outputLabel>
+                        <p:outputLabel  value="#{horarioAtendimentoController.atendente.postoSaude.nome}"></p:outputLabel>
 
                         <p:outputLabel value="Especialidade"/>
                         <p:selectOneMenu id="especialidade" value="#{horarioAtendimentoController.horarioAtendimento.atendimento.especialidade}">
@@ -29,7 +29,7 @@
                             <f:selectItems var="dias" value="#{horarioAtendimentoController.dias}"
                                            itemLabel="#{dias.nome}" itemValue="#{dias}" ></f:selectItems>
                         </p:selectOneMenu>
-                        <p:outputLabel value="Quantidade"/>
+                        <p:outputLabel value="Quantidade de atendimentos"/>
                         <p:inputNumber minValue="1" decimalPlaces="0"  value="#{horarioAtendimentoController.horarioAtendimento.quantidade}"></p:inputNumber>
                     </p:panelGrid>
                 </p:fieldset>
