@@ -21,7 +21,6 @@ import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import br.edu.ifpe.garanhuns.sg.model.enumarador.PerfilUsuario;
 import java.time.LocalDate;
 import java.util.List;
-import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -49,7 +48,7 @@ public class CenarioMobileTest {
                 recuperarHorarioAtendimentoPorPostoSaudeEspecialidade(posto, Especialidade.DENTISTA);
 
         new PacienteHibernate().inserir(new Paciente("Teste", "009", LocalDate.now(), posto, new Usuario("teste", "teste", PerfilUsuario.PACIENTE)));
-        new AtendenteHibernate().inserir(new Atendente("ADMIN SUPREMO", posto, new Usuario("admin", "admin", PerfilUsuario.ADMINISTRADOR)));
+        new AtendenteHibernate().inserir(new Atendente("ADMINSTRADOR", posto, new Usuario("admin", "admin", PerfilUsuario.ADMINISTRADOR)));
 
         // Assert.assertEquals(1, horarioBDDentista.size());
         // Assert.assertEquals(1, horarioBDGeral.size());
