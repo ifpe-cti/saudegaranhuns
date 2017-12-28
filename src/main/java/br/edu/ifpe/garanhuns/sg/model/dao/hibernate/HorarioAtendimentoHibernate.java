@@ -99,7 +99,7 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
         }
         return null;
     }
-
+ 
     @Override
     public List<HorarioAtendimento> recuperarHorarioAtendimentoPorPostoSaude(PostoSaude ps) {
         Session session = HibernateUtil.getSession();
