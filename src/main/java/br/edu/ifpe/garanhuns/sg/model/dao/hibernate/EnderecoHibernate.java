@@ -8,7 +8,7 @@ package br.edu.ifpe.garanhuns.sg.model.dao.hibernate;
 import java.util.List;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
-import br.edu.ifpe.garanhuns.sg.model.dao.interfaces.EnderecoDAO;
+import br.edu.ifpe.garanhuns.sg.model.dao.EnderecoDAO;
 import br.edu.ifpe.garanhuns.sg.model.Bairro;
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
 import br.edu.ifpe.garanhuns.sg.model.Endereco;

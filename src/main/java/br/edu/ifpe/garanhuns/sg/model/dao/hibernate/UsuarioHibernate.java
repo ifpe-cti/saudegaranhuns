@@ -6,7 +6,7 @@
 package br.edu.ifpe.garanhuns.sg.model.dao.hibernate;
 
 import java.util.List;
-import br.edu.ifpe.garanhuns.sg.model.dao.interfaces.UsuarioDAO;
+import br.edu.ifpe.garanhuns.sg.model.dao.UsuarioDAO;
 import br.edu.ifpe.garanhuns.sg.model.Usuario;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;

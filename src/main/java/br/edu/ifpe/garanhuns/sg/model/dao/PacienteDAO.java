@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpe.garanhuns.sg.model.dao.interfaces;
+package br.edu.ifpe.garanhuns.sg.model.dao;
 
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
 
 /**
- *
+ * 
  * @author Herikles
  */
 public interface PacienteDAO extends DAO<Paciente> {
