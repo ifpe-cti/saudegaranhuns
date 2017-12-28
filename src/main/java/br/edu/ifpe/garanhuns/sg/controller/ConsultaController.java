@@ -110,6 +110,8 @@ public class ConsultaController implements Serializable {
 
     public void gerarComprovante() {
         try {
+            fc = FacesContext.getCurrentInstance();
+            ec = fc.getExternalContext();
             ec.setResponseContentType("application/pdf");
             ec.setResponseHeader("Content-Disposition", "inline; filename=\"dynamic.pdf\"");
             OutputStream output = ec.getResponseOutputStream();
