@@ -51,7 +51,7 @@ public class BairroTest {
 
     @After
     public void tearDown() throws SQLException {
-        cB.limparBanco();
+        cB.limparBancoTest();
 
     }
 
@@ -72,7 +72,6 @@ public class BairroTest {
     @Test
     public void deveRetornarTodosBairro() {
         List<Bairro> bairros = bH.recuperarTodos();
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&"+bairros);
         assertThat(bairros, hasItems(new Bairro(1, "COHAB 6"), new Bairro(2, "COHAB 5")));
     }
 
