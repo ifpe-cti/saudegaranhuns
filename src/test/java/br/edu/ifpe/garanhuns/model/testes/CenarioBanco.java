@@ -6,6 +6,8 @@
 package br.edu.ifpe.garanhuns.model.testes;
 
 import br.edu.ifpe.garanhuns.model.JDBC.SGBD;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.DiasSemana;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -40,23 +42,24 @@ public class CenarioBanco {
 
         sgbd.query("INSERT INTO Bairro VALUES (1,\"COHAB 6\")");
         sgbd.query("INSERT INTO Endereco VALUES (1 ,\"0\", \"Rua do cão 2\", 1);");
-        
+
         sgbd.query("INSERT INTO PostoSaude VALUES(1, \"Casa de deus\", 1)");
+
         sgbd.query("INSERT INTO Atendimento VALUES(1, 1, 1)");
-        sgbd.query("INSERT INTO HorarioAtendimento VALUES (1,1, \"08:00\", \"12:00\", 10, 1)");
+        sgbd.query("INSERT INTO HorarioAtendimento VALUES (1," + DiasSemana.SEGUNDA.getValor() + ", \"08:00\", \"12:00\", 10, 1)");
 
         sgbd.query("INSERT INTO Bairro VALUES (2,\"COHAB 5\")");
         sgbd.query("INSERT INTO Endereco VALUES (2, \"0\", \"Rua do cão 3\", 2)");
         sgbd.query("INSERT INTO PostoSaude VALUES (2,\"Casa de deus2\", 2)");
 
         sgbd.query("INSERT INTO Atendimento VALUES (2, 0, 2);");
-        sgbd.query("INSERT INTO HorarioAtendimento VALUES (2 ,2, \"08:00\", \"12:00\", 10, 2)");
+        sgbd.query("INSERT INTO HorarioAtendimento VALUES (2 ," + DiasSemana.TERÇA.getValor() + ", \"08:00\", \"12:00\", 10, 2)");
 
         sgbd.query("INSERT INTO Atendimento VALUES (3, 0, 1)");
-        sgbd.query("INSERT INTO HorarioAtendimento VALUES (3, 5, \"01:00\", \"12:00\", 10, 3)");
+        sgbd.query("INSERT INTO HorarioAtendimento VALUES (3," + DiasSemana.SEXTA.getValor() + ", \"01:00\", \"12:00\", 10, 3)");
 
         sgbd.query("INSERT INTO Atendimento VALUES (4,0, 2)");
-        sgbd.query("INSERT INTO HorarioAtendimento VALUES (4, 1, \"03:00\", \"12:00\", 10, 4)");
+        sgbd.query("INSERT INTO HorarioAtendimento VALUES (4," + DiasSemana.SEGUNDA.getValor() + ", \"03:00\", \"12:00\", 10, 4)");
 
         sgbd.query("INSERT INTO Usuario VALUES(1, \"a123\", 2,\"123\");");
         sgbd.query("INSERT INTO Paciente VALUES(1, \"123\",\"1995-06-01\",\"João\", 1, 1);");
@@ -73,17 +76,17 @@ public class CenarioBanco {
         int i = 1;
         for (; i <= 10; i++) {
             LocalDate daAux = diasSemana.get(0).plusDays(0);
-            sgbd.query("INSERT INTO Consulta VALUES ("+i+", \"" + daAux + "\",\"" + ds + "\", 0, 0, 1,  1)");
+            sgbd.query("INSERT INTO Consulta VALUES (" + i + ", \"" + daAux + "\",\"" + ds + "\", 0, 0, 1,  1)");
         }
-        for (; i <= 17 ; i++) {
+        for (; i <= 17; i++) {
             LocalDate daAux = diasSemana.get(1).plusDays(0);
-            sgbd.query("INSERT INTO Consulta VALUES ("+i+", \"" + daAux + "\",\"" + ds + "\", 0, 0, 1,  1)");
+            sgbd.query("INSERT INTO Consulta VALUES (" + i + ", \"" + daAux + "\",\"" + ds + "\", 0, 0, 1,  1)");
         }
-        for (; i <= 27 ; i++) {
+        for (; i <= 27; i++) {
             LocalDate daAux = diasSemana.get(2).plusDays(0);
-            sgbd.query("INSERT INTO Consulta VALUES ("+i+", \"" + daAux + "\",\"" + ds + "\", 0, 0, 1,  1)");
+            sgbd.query("INSERT INTO Consulta VALUES (" + i + ", \"" + daAux + "\",\"" + ds + "\", 0, 0, 1,  1)");
         }
-        
+
         /*
             sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(1).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
             sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(1).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
@@ -97,8 +100,7 @@ public class CenarioBanco {
             sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(2).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
             sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(2).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
             sgbd.query("INSERT INTO Consulta VALUES (1, \"" + diasSemana.get(2).plusDays(0) + "\",\"" + ds + "\", 0, 0, 1,  1)");
-        */
-        
+         */
     }
 
     public void limparBancoTest() throws SQLException {
