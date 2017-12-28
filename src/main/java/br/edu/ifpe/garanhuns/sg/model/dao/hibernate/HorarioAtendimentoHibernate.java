@@ -5,14 +5,15 @@
  */
 package br.edu.ifpe.garanhuns.sg.model.dao.hibernate;
 
-import br.edu.ifpe.garanhuns.sg.model.Atendimento;
+import br.edu.ifpe.garanhuns.sg.model.DiasSemana;
 import java.util.List;
 import br.edu.ifpe.garanhuns.sg.model.dao.HorarioAtendimentoDAO;
 import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
+import br.edu.ifpe.garanhuns.sg.model.Especialidade;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
+import java.util.ArrayList;
 
 /**
  *
@@ -99,7 +100,7 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
         }
         return null;
     }
-
+ 
     @Override
     public List<HorarioAtendimento> recuperarHorarioAtendimentoPorPostoSaude(PostoSaude ps) {
         Session session = HibernateUtil.getSession();
@@ -109,7 +110,7 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
                     + "select id from Atendimento a where a.postoSaude_id = " + ps.getId() + ")", HorarioAtendimento.class).list();
 
             if (horarios != null) {
-                return horarios;
+                return correcaoDiaSemana(horarios);
             }
 
         } catch (Exception e) {
@@ -132,7 +133,7 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
                     + "	where a.postoSaude_id = " + ps.getId() + " and especialidade =" + especialidade.getValor() + ");", HorarioAtendimento.class).list();
 
             if (horarios != null) {
-                return horarios;
+                return correcaoDiaSemana(horarios);
             }
 
         } catch (Exception e) {
@@ -140,5 +141,38 @@ public class HorarioAtendimentoHibernate implements HorarioAtendimentoDAO {
         }
 
         return null;
+    }
+
+    private List<HorarioAtendimento> correcaoDiaSemana(List<HorarioAtendimento> listaAntiga) {
+        List<HorarioAtendimento> listaNova = new ArrayList<>();
+        for (HorarioAtendimento horarioAtendimento : listaAntiga) {
+            switch (horarioAtendimento.getDia()) {
+                case SEGUNDA:
+                    horarioAtendimento.setDia(DiasSemana.DOMINGO);
+                    break;
+                case TERÇA:
+                    horarioAtendimento.setDia(DiasSemana.SEGUNDA);
+                    break;
+                case QUARTA:
+                    horarioAtendimento.setDia(DiasSemana.TERÇA);
+                    break;
+                case QUINTA:
+                    horarioAtendimento.setDia(DiasSemana.QUARTA);
+                    break;
+                case SEXTA:
+                    horarioAtendimento.setDia(DiasSemana.QUINTA);
+                    break;
+                case SABADO:
+                    horarioAtendimento.setDia(DiasSemana.SEXTA);
+                    break;
+                case DOMINGO:
+                    horarioAtendimento.setDia(DiasSemana.SABADO);
+                    break;
+                default:
+                    throw new AssertionError(horarioAtendimento.getDia().name());
+            }
+            listaNova.add(horarioAtendimento);
+        }
+        return listaNova;
     }
 }

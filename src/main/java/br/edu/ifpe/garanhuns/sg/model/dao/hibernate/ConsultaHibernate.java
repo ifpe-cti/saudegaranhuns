@@ -12,8 +12,8 @@ import br.edu.ifpe.garanhuns.sg.model.Consulta;
 import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
+import br.edu.ifpe.garanhuns.sg.model.Especialidade;
+import br.edu.ifpe.garanhuns.sg.model.Status;
 import org.hibernate.Session;
 import br.edu.ifpe.garanhuns.sg.util.HibernateUtil;
 import java.time.LocalDate;
@@ -262,7 +262,7 @@ public class ConsultaHibernate implements ConsultaDAO {
                 if (horariosAtandimento.get(i).getDia().getValor() == LocalDate.now().plusDays(j).getDayOfWeek().getValue()) {
                     List<Consulta> consultas = cH.recuperarConsultasDoPostoPorDiaEspecialidadeStatus(posto, LocalDate.now().plusDays(j), especialidade, Status.AGENDADO);
                     //Qua a quantidade de vagas no dia 
-                    if (consultas.size() <= horariosAtandimento.get(i).getQuantidade()) {
+                    if (consultas.size() < horariosAtandimento.get(i).getQuantidade()) {
                         retorno.add(LocalDate.now().plusDays(j));
                     }
                 }

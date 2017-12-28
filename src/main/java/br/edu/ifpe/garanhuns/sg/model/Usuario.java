@@ -5,7 +5,6 @@
  */
 package br.edu.ifpe.garanhuns.sg.model;
 
-import br.edu.ifpe.garanhuns.sg.model.enumarador.PerfilUsuario;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;

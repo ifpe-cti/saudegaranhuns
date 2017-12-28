@@ -3,23 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpe.garanhuns.sg.model.enumarador;
+package br.edu.ifpe.garanhuns.sg.model;
 
 /**
  *
- * @author Herikles
+ * @author Hérikles
  */
-public enum Prioridade {
-    NENHUMA(0, "Nenhuma"),
-    IDOSO(1, "Idoso"),
-    GESTANTE(2, "Gestante"),
-    DEFICIENTEFISICO(3, "Deficiente Físico"),
-    BEBEDECOLO(4, "Bebê de colo");
+public enum DiasSemana {
+
+    SEGUNDA(1, "Segunda-feira"),
+    TERÇA(2, "Terça-feira"),
+    QUARTA(3, "Quarta-feira"),
+    QUINTA(4, "Quinta-feira"),
+    SEXTA(5, "Sexta-feira"),
+    SABADO(6, "Sábado"),
+    DOMINGO(7, "Domingo");
 
     private int valor;
     private String nome;
 
-    private Prioridade(int valor, String nome) {
+    private DiasSemana(int valor, String nome) {
         this.valor = valor;
         this.nome = nome;
     }
@@ -31,4 +34,5 @@ public enum Prioridade {
     public String getNome() {
         return nome;
     }
+
 }

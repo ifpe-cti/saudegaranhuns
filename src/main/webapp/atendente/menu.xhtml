@@ -7,17 +7,18 @@
         <title>Menu do atendente</title>
     </h:head>
     <h:body>
-        <p:menubar id="menuAtendente">
-            <p:submenu label="Paciente">
-                <p:menuitem value="Cadastrar" url="../paciente/cadastro.xhtml"/>
-                <p:menuitem value="Listagem" url="../paciente/listagem.xhtml"/>
-            </p:submenu>
-            <p:submenu label="Consulta">
-                <p:menuitem value="Listagem" url="../consulta/listagem.xhtml"/>
-                <p:menuitem value="Listagem do dia" url="../consulta/listagem-do-dia.xhtml"/>
-            </p:submenu>
-            <p:menuitem value="Sair" action="#{loginUsuarioController.logout()}"/>
-        </p:menubar>
+        <h:form>
+            <p:menubar id="menuAtendente">
+                <p:submenu label="Paciente">
+                    <p:menuitem value="Cadastrar" url="../paciente/cadastro.xhtml"/>
+                    <p:menuitem value="Listagem" url="../paciente/listagem.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Consulta">
+                    <p:menuitem value="Listagem do dia" url="../consulta/listagem-do-dia.xhtml"/>
+                </p:submenu>
+                <p:menuitem value="Sair" action="#{loginUsuarioController.realizarLogout()}" update="@all"/>
+            </p:menubar>
+        </h:form>
     </h:body>
 </html>
 

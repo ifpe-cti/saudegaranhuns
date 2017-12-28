@@ -5,9 +5,6 @@
  */
 package br.edu.ifpe.garanhuns.sg.model;
 
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
 import com.google.gson.Gson;
 import java.io.Serializable;
 import java.time.LocalDate;

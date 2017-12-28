@@ -9,7 +9,7 @@ import br.edu.ifpe.garanhuns.sg.model.Paciente;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import br.edu.ifpe.garanhuns.sg.model.Usuario;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
-import br.edu.ifpe.garanhuns.sg.model.enumarador.PerfilUsuario;
+import br.edu.ifpe.garanhuns.sg.model.PerfilUsuario;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -36,6 +36,12 @@ public class PacienteController implements Serializable {
         paciente.setPostoSaude(new PostoSaude());
     }
 
+    public void limparCampos() {
+        paciente = new Paciente();
+        paciente.setUsuario(new Usuario());
+        paciente.setPostoSaude(new PostoSaude());
+    }
+    
     public PacienteController() {
     }
 
