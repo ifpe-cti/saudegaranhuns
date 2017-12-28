@@ -5,6 +5,17 @@
  */
 package br.edu.ifpe.garanhuns.sg.model;
 
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.AtendenteHibernate;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.HorarioAtendimentoHibernate;
+import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.DiasSemana;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Especialidade;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.PerfilUsuario;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Prioridade;
+import br.edu.ifpe.garanhuns.sg.model.enumarador.Status;
+import com.google.gson.Gson;
+import java.time.LocalDate;
+import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -19,17 +30,12 @@ public class ConsultaTest {
      */
     @Test
     public void testValidarConsultaJsonValido() {
-        String consultaTest = "{\"id\":0,\"especialidade\":\"GERAL\","
-                + "\"prioridade\":\"IDOSO\","
-                + "\"status\":\"AGENDADO\","
-                + "\"dataSolicitacao\":{\"year\":2017,\"month\":11,\"day\":24},"
-                + "\"dataAgendamento\":{\"year\":2018,\"month\":1,\"day\":1},"
-                + "\"paciente\":{\"id\":0,\"nome\":\"asdf\",\"cartaoSus\":\"321\",\"dataNascimento\":{\"year\":2010,\"month\":11,\"day\":10},"
-                + "\"postoSaude\":{\"id\":0,\"nome\":\"asd\","
-                + "\"endereco\":{\"id\":0,\"numero\":\"32\",\"logradouro\":\"Rua dos bobos\","
-                + "\"bairro\":{\"id\":0,\"nome\":\"Juliana\"}}},"
-                + "\"usuario\":{\"id\":0,\"login\":\"login\",\"senha\":\"senha\",\"perfilUsuario\":\"ADMINISTRADOR\"}}}\n"
-                + "";
+        String consultaTest = "{\"id\":0,\"especialidade\":\"GERAL\",\"prioridade\":\"IDOSO\",\"status\":\"AGENDADO\",\"dataSolicitacao\":{\"year\":2017,\"month\":12,\"day\":28},\"dataAgendamento\":{\"year\":2017,\"month\":12,\"day\":28},"
+                + "\"paciente\":{\"id\":0,\"nome\":\"Paciente Test\",\"cartaoSus\":\"0001\",\"dataNascimento\":{\"year\":2017,\"month\":12,\"day\":28},"
+                + "\"postoSaude\":{\"id\":0,\"nome\":\"Posto Teste\","
+                + "\"endereco\":{\"id\":0,\"numero\":\"007\",\"logradouro\":\"Rua Aqui\","
+                + "\"bairro\":{\"id\":0,\"nome\":\"Centro\"}}},"
+                + "\"usuario\":{\"id\":0,\"login\":\"t\",\"senha\":\"123\",\"perfilUsuario\":\"PACIENTE\"}}}";
         Assert.assertTrue(Consulta.validarConsultaJson(consultaTest));
 
     }
@@ -37,34 +43,24 @@ public class ConsultaTest {
     @Test
     public void testValidarConsultaJsonFormatoInvalido() {
 
-        String consultaTest = "\"id\":0,\"especialidade\":\"GERAL\","
-                + "\"prioridade\":\"IDOSO\","
-                + "\"status\":\"FILA\","
-                + "\"dataSolicitacao\":{\"year\":2017,\"month\":11,\"day\":24},"
-                + "\"dataAgendamento\":{\"year\":2018,\"month\":1,\"day\":1},"
-                + "\"paciente\":{\"id\":0,\"nome\":\"asdf\",\"cartaoSus\":\"321\",\"dataNascimento\":{\"year\":2010,\"month\":11,\"day\":10},"
-                + "\"postoSaude\":{\"id\":0,\"nome\":\"asd\","
-                + "\"endereco\":{\"id\":0,\"numero\":\"32\",\"logradouro\":\"Rua dos bobos\","
-                + "\"bairro\":{\"id\":0,\"nome\":\"Juliana\"}}},"
-                + "\"usuario\":{\"id\":0,\"login\":\"login\",\"senha\":\"senha\",\"perfilUsuario\":\"ADMINISTRADOR\"}}}\n"
-                + "";
+        String consultaTest = "\"id\":0,\"especialidade\":\"GERAL\",\"prioridade\":\"IDOSO\",\"status\":\"AGENDADO\",\"dataSolicitacao\":{\"year\":2017,\"month\":12,\"day\":28},\"dataAgendamento\":{\"year\":2017,\"month\":12,\"day\":28},"
+                + "\"paciente\":{\"id\":0,\"nome\":\"Paciente Test\",\"cartaoSus\":\"0001\",\"dataNascimento\":{\"year\":2017,\"month\":12,\"day\":28},"
+                + "\"postoSaude\":{\"id\":0,\"nome\":\"Posto Teste\","
+                + "\"endereco\":{\"id\":0,\"numero\":\"007\",\"logradouro\":\"Rua Aqui\","
+                + "\"bairro\":{\"id\":0,\"nome\":\"Centro\"}}},"
+                + "\"usuario\":{\"id\":0,\"login\":\"t\",\"senha\":\"123\",\"perfilUsuario\":\"PACIENTE\"}}}";
         Assert.assertFalse(Consulta.validarConsultaJson(consultaTest));
 
     }
 
     @Test
-    public void testValidarConsultaJsonCampoInvalido() {
-        String consultaTest = "{\"id\":0,\"especialidade\":\"GERAL\","
-                + "\"rioridade\":\"IDOSO\","
-                + "\"status\":\"FILA\","
-                + "\"dataSolicitacao\":{\"year\":2017,\"month\":11,\"day\":24},"
-                + "\"dataAgendamento\":{\"year\":2018,\"month\":1,\"day\":1},"
-                + "\"paciente\":{\"id\":0,\"nome\":\"asdf\",\"cartaoSus\":\"321\",\"dataNascimento\":{\"year\":2010,\"month\":11,\"day\":10},"
-                + "\"postoSaude\":{\"id\":0,\"nome\":\"asd\","
-                + "\"endereco\":{\"id\":0,\"numero\":\"32\",\"logradouro\":\"Rua dos bobos\","
-                + "\"bairro\":{\"id\":0,\"nome\":\"Juliana\"}}},"
-                + "\"usuario\":{\"id\":0,\"login\":\"login\",\"senha\":\"senha\",\"perfilUsuario\":\"ADMINISTRADOR\"}}}\n"
-                + "";
+    public void testValidarConsultaJsonCampoEspecialidadeInvalido() {
+        String consultaTest = "{\"id\":0,\"especialidad\":\"GERAL\",\"prioridade\":\"IDOSO\",\"status\":\"AGENDADO\",\"dataSolicitacao\":{\"year\":2017,\"month\":12,\"day\":28},\"dataAgendamento\":{\"year\":2017,\"month\":12,\"day\":28},"
+                + "\"paciente\":{\"id\":0,\"nome\":\"Paciente Test\",\"cartaoSus\":\"0001\",\"dataNascimento\":{\"year\":2017,\"month\":12,\"day\":28},"
+                + "\"postoSaude\":{\"id\":0,\"nome\":\"Posto Teste\","
+                + "\"endereco\":{\"id\":0,\"numero\":\"007\",\"logradouro\":\"Rua Aqui\","
+                + "\"bairro\":{\"id\":0,\"nome\":\"Centro\"}}},"
+                + "\"usuario\":{\"id\":0,\"login\":\"t\",\"senha\":\"123\",\"perfilUsuario\":\"PACIENTE\"}}}";
         Assert.assertFalse(Consulta.validarConsultaJson(consultaTest));
 
     }
