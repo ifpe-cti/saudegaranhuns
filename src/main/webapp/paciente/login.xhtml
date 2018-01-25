@@ -9,6 +9,7 @@
     </h:head>
     <h:body>
         <ui:include src="../menus.xhtml"/>
+        <p:growl autoUpdate="true"/>
         <center>
             <h5> </h5>
             <p:fieldset>
@@ -21,12 +22,12 @@
                 <center>
                     <h:panelGrid columns="2"  >
                         <h:outputLabel for="loginA" value="Cartão do SUS:" />
-                        <p:inputText id="loginA" value="#{login}" required="true" label="login" />
+                        <p:inputText id="loginA" value="#{login}" required="true" requiredMessage="O cartão do SUS é obrigátorio" label="login" />
                     </h:panelGrid>
                 </center>
                 <h6> </h6>
                 <center>
-                    <p:commandButton value="LOGIN" action="#{loginUsuarioController.realizarLogin(login, '00000')}" update="@all"/> 
+                    <p:commandButton value="LOGIN" action="#{loginUsuarioController.realizarLogin(login, '00000')}" update="form"/>
                     <p:button href="/paciente/cadastro.xhtml" value="Cadastrar"/>
                 </center>
             </p:panel>
