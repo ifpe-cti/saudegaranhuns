@@ -12,8 +12,6 @@ import br.edu.ifpe.garanhuns.sg.model.Usuario;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.AtendenteHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.ConsultaHibernate;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
-import br.edu.ifpe.garanhuns.sg.model.Especialidade;
-import br.edu.ifpe.garanhuns.sg.model.Prioridade;
 import br.edu.ifpe.garanhuns.sg.model.Status;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -141,18 +139,6 @@ public class ConsultaController implements Serializable {
         } catch (DocumentException ex) {
             System.err.println("Falha ao gerar pdf. Erro: " + ex);
         }
-    }
-
-    public Prioridade[] getPrioridade() {
-        return Prioridade.values();
-    }
-
-    public Especialidade[] getEspecialidade() {
-        return Especialidade.values();
-    }
-
-    public Status[] getStatus() {
-        return Status.values();
     }
 
     public Consulta getConsulta() {
