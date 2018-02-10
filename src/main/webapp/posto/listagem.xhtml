@@ -17,7 +17,7 @@
                 </p:column>
                 <p:column headerText ="Opções">
                     <p:commandButton value="Deletar"  icon="ui-icon-trash" actionListener="#{postoSaudeController.setPostosaude(posto)}" action="#{postoSaudeController.deletar()}" update="@form"/>
-                    <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{postoSaudeController.setPostosaude(posto)}"  action="alterar.xhtml?faces-redirect=true"/>
+                    <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{postoSaudeController.setPostosaude(posto)}"  action="/posto/alterar.xhtml"/>
                 </p:column>
             </p:dataTable>
         </h:form>

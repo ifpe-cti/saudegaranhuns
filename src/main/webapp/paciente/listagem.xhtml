@@ -23,7 +23,7 @@
                 </p:column>
                 <p:column headerText ="Opções">
                     <p:commandButton value="Deletar"  icon="ui-icon-trash" actionListener="#{pacienteController.setPaciente(paciente)}" action="#{pacienteController.deletar()}" update="@form"/>
-                    <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{pacienteController.setPaciente(paciente)}" action="alterar.xhtml"/>
+                    <p:commandButton value="Alterar"  icon="ui-icon-pencil" actionListener="#{pacienteController.setPaciente(paciente)}" action="/paciente/alterar.xhtml"/>
                 </p:column>
             </p:dataTable>
         </h:form>
