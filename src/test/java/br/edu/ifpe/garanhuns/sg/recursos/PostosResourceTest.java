@@ -19,23 +19,33 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.client.RestTemplate;
 
 /**
  *
  * @author Jose Junio
  */
-//@RunWith(SpringRunner.class)
-//@SpringBootTest(classes = PostosResourceTest.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@RunWith(SpringRunner.class)
+
 public class PostosResourceTest {
 
     /**
      * Test of recuperarTodosOsPostos method, of class PostosResource.
      */
-    //@Before
+    // @Ignore
+    @Autowired
+    private TestRestTemplate restTemplate;
+
+    @LocalServerPort
+    int port;
+
+    @Before
     public void removePostos() {
         List<PostoSaude> listPostos = new PostoSaudeHibernate().recuperarTodos();
         if (!(listPostos.isEmpty())) {
@@ -47,7 +57,9 @@ public class PostosResourceTest {
         }
     }
 
-    //@Test
+    //@Ignore
+    @Test
+
     public void testRecuperarTodosOsPostos() {
 
         new PostoSaudeHibernate().inserir(
@@ -57,8 +69,8 @@ public class PostosResourceTest {
                         )
                 )
         );
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity response = restTemplate.getForEntity(URI.create("http://localhost:8080/postos"), String.class);
+
+        ResponseEntity response = this.restTemplate.getForEntity(URI.create("http://localhost:" + port + "/postos"), String.class);
         Assert.assertTrue(response.getStatusCodeValue() == 200);
         String conteudo = (String) response.getBody();
         Gson gson = new Gson();
@@ -67,13 +79,14 @@ public class PostosResourceTest {
                 }.getType();
         List<PostoSaude> listaPostos = gson.fromJson(conteudo, postosListType);
         Assert.assertTrue(listaPostos.size() == 1);
+
     }
 
-    //@Test
+    //@Ignore
+    @Test
     public void testRecuperarListaDePostosVazia() {
 
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity response = restTemplate.getForEntity(URI.create("http://localhost:8080/postos"), String.class);
+        ResponseEntity response = this.restTemplate.getForEntity(URI.create("http://localhost:" + port + "/postos"), String.class);
         Assert.assertEquals(204, response.getStatusCodeValue());
         Assert.assertNull(response.getBody());
 
