@@ -23,8 +23,8 @@ import org.springframework.web.client.RestTemplate;
  *
  * @author Jose Junio
  */
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = PacientesResourceTest.class)
 public class PacientesResourceTest {
 
     /**
