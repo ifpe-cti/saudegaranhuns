@@ -30,7 +30,6 @@ public class PacientesResourceTest {
     /**
      * Test of cadastrarPaciente method, of class PacientesResource.
      */
-    @Ignore
     @Test
     public void testCadastrarPacienteJsonValido() {
 
@@ -51,7 +50,6 @@ public class PacientesResourceTest {
         new PacienteHibernate().deletar(p);
     }
 
-    @Ignore
     @Test
     public void testCadastrarPacienteJsonInvalido() {
         String pacienteJson = "\"id\":0,\"nome\":\"Teste\",\"cartaoSus\":\"321\",\"dataNascimento\":{\"year\":2010,\"month\":11,\"day\":10},"
@@ -71,7 +69,6 @@ public class PacientesResourceTest {
         Assert.assertNull(p);
     }
 
-    @Ignore
     @Test
     public void testCadastrarPacienteJsonCampoInvalido() {
         String pacienteJson = "{\"id\":0,\"ome\":\"Teste\",\"cartaoSus\":\"321\",\"dataNascimento\":{\"year\":2010,\"month\":11,\"day\":10},"
