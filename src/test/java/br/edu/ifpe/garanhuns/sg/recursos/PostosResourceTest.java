@@ -57,7 +57,6 @@ public class PostosResourceTest {
         }
     }
 
-    //@Ignore
     @Test
 
     public void testRecuperarTodosOsPostos() {
@@ -82,7 +81,6 @@ public class PostosResourceTest {
 
     }
 
-    //@Ignore
     @Test
     public void testRecuperarListaDePostosVazia() {
 
