@@ -5,8 +5,6 @@
  */
 package br.edu.ifpe.garanhuns.sg.recursos;
 
-import br.edu.ifpe.garanhuns.sg.model.Bairro;
-import br.edu.ifpe.garanhuns.sg.model.Endereco;
 import br.edu.ifpe.garanhuns.sg.model.PostoSaude;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PostoSaudeHibernate;
 import com.google.gson.Gson;
@@ -16,7 +14,6 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,29 +42,11 @@ public class PostosResourceTest {
     @LocalServerPort
     int port;
 
-    @Before
-    public void removePostos() {
-        List<PostoSaude> listPostos = new PostoSaudeHibernate().recuperarTodos();
-        if (!(listPostos.isEmpty())) {
-            for (int i = 0; i < listPostos.size(); i++) {
-                new PostoSaudeHibernate().deletar(
-                        new PostoSaudeHibernate().recuperar(
-                                listPostos.get(i).getId()));
-            }
-        }
-    }
-
     @Test
 
     public void testRecuperarTodosOsPostos() {
 
-        new PostoSaudeHibernate().inserir(
-                new PostoSaude("PSF",
-                        new Endereco("123", "Rua",
-                                new Bairro("Centro")
-                        )
-                )
-        );
+        int quantidadePostos = new PostoSaudeHibernate().recuperarTodos().size();
 
         ResponseEntity response = this.restTemplate.getForEntity(URI.create("http://localhost:" + port + "/postos"), String.class);
         Assert.assertTrue(response.getStatusCodeValue() == 200);
@@ -77,16 +56,7 @@ public class PostosResourceTest {
                 = new TypeToken<ArrayList<PostoSaude>>() {
                 }.getType();
         List<PostoSaude> listaPostos = gson.fromJson(conteudo, postosListType);
-        Assert.assertTrue(listaPostos.size() == 1);
-
-    }
-
-    @Test
-    public void testRecuperarListaDePostosVazia() {
-
-        ResponseEntity response = this.restTemplate.getForEntity(URI.create("http://localhost:" + port + "/postos"), String.class);
-        Assert.assertEquals(204, response.getStatusCodeValue());
-        Assert.assertNull(response.getBody());
+        Assert.assertTrue(listaPostos.size() == quantidadePostos);
 
     }
 
