@@ -23,6 +23,7 @@
          }
          //]]>
       </script>
+      <h:outputScript library="js" name="primefaces-pt_BR.js"/>
    </h:head>
    <h:body>
       <h:form>
@@ -30,17 +31,17 @@
             <p:panelGrid columns="2">
                <p:outputLabel value="Data do agendamento" for="dtAgendamento"/>
                <p:calendar value="#{consultaController.consulta.dataAgendamento}" id="dtAgendamento"
-                           beforeShowDay="disabilitarDias" converter="localDateConverter" pattern="dd/MM/yyyy"/>
+                           beforeShowDay="disabilitarDias" converter="localDateConverter" pattern="dd/MM/yyyy" locale="pt_BR"/>
             </p:panelGrid>
             <br/>
             <p:commandButton actionListener="#{consultaController.cadastrar()}" value="Cadastrar"
-                             action="listagem.xhtml?faces-redirect=true"/>
+                             action="/consulta/listagem.xhtml?faces-redirect=true"/>
             <p:commandButton oncomplete="PF('confDialCancelar').show()" value="Cancelar"/>
          </p:fieldset>
          <p:confirmDialog header="Deseja cancelar?" widgetVar="confDialCancelar"
                           message="Caso escolha cancelar, os dados que não foram salvos, serão
                           perdidos" >
-            <p:button href="listagem.xhtml" value="Sim"/>
+            <p:button href="/index.xhtml" value="Sim"/>
             <p:commandButton oncomplete="PF('confDialCancelar').hide()" value="Não"/>
          </p:confirmDialog>
       </h:form>
