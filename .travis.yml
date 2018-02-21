@@ -1,5 +1,5 @@
 language: java
-sudo: false
+sudo: true
 cache:
   directories:
     - $HOME/.m2
@@ -19,7 +19,7 @@ services:
 test:
   adapter: mysql2
   database: myapp_test
-  username: travis
+  username: root
   encoding: utf8
 
 before_install:
