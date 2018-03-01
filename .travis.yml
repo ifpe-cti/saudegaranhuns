@@ -12,3 +12,6 @@ env:
     - JAVA_OPTS="-Xmx256m"
 jdk:
   - oraclejdk8
+
+services:
+  - mysql
