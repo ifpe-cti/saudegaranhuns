@@ -1,5 +1,5 @@
 language: java
-sudo: true
+sudo: false
 cache:
   directories:
     - $HOME/.m2
@@ -12,28 +12,3 @@ env:
     - JAVA_OPTS="-Xmx256m"
 jdk:
   - oraclejdk8
-
-services:
-  - mysql
-
-test:
-  adapter: mysql2
-  database: test
-  username: root
-  encoding: utf8
-
-before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS test;
-
-addons:
-  apt:
-    sources:
-      - mysql-5.7-trusty
-    packages:
-      - mysql-server
-      - mysql-client
-
-before_install:
-  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
-  - sudo mysql_upgrade
-  - sudo service mysql restart
