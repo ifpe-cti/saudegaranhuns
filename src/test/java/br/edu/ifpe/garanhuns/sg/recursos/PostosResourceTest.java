@@ -43,7 +43,6 @@ public class PostosResourceTest {
     int port;
 
     @Test
-
     public void testRecuperarTodosOsPostos() {
 
         int quantidadePostos = new PostoSaudeHibernate().recuperarTodos().size();
