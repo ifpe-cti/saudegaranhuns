@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.google.gson.Gson;
+
 /**
  *
  * @author Herikles
@@ -92,6 +94,22 @@ public class Usuario implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public static boolean validarJson(String usuarioJson) {
+
+        Usuario usuarioValidado;
+
+        try {
+            usuarioValidado = new Gson().fromJson(usuarioJson, Usuario.class);
+            if (usuarioValidado.getLogin() != null /*&&
+                usuarioValidado.getSenha() != null*/) { // TODO: incluir senha no login.
+                return true;
+            }
+        } catch (com.google.gson.JsonSyntaxException err) {
+            return false;
+        }
+        return false;
     }
 
 }

@@ -38,7 +38,7 @@ public class PacienteHibernate implements PacienteDAO {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.err.println("Falha ao salvar Paciente. Erro: " + e.toString());
+            throw e;
         } finally {
             session.close();
         }

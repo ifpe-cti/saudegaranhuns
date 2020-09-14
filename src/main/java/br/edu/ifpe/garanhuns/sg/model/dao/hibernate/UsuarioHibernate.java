@@ -73,11 +73,12 @@ public class UsuarioHibernate implements UsuarioDAO {
         } finally {
             session.close();
         }
-        return null;}
+        return null;
+    }
 
     @Override
     public List<Usuario> recuperarTodos() {
-       Session session = HibernateUtil.getSession();
+        Session session = HibernateUtil.getSession();
         try {
             session.beginTransaction();
             List<Usuario> lista = session.createQuery("from " + Usuario.class.getName()).list();
@@ -94,19 +95,20 @@ public class UsuarioHibernate implements UsuarioDAO {
 
     @Override
     public void deletarEmCascata(Usuario u) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
+                                                                       // Tools | Templates.
     }
 
     @Override
     public Usuario recuperarUsuarioPorLogin(String login, String senha) {
-        try (Session session = HibernateUtil.getSession()) {
-            List<Usuario> usuarios = (session.createQuery("from Usuario u where u.login = :login and u.senha = :senha").setParameter("login", login).setParameter("senha", senha).list());
-            if(usuarios!=null && !usuarios.isEmpty())
-                return usuarios.get(0);
-            
-        } catch (Exception e) {
-            System.err.println("Falha ao recuperar usuario. Erro: " + e.toString());
+        Session session = HibernateUtil.getSession();
+        List<Usuario> usuarios = (session.createQuery("from Usuario u where u.login = :login and u.senha = :senha")
+                .setParameter("login", login).setParameter("senha", senha).list());
+        if (usuarios != null && !usuarios.isEmpty())
+            return usuarios.get(0);
+        else {
+            return null;
         }
-        return null;
+
     }
 }

@@ -6,12 +6,14 @@
 package br.edu.ifpe.garanhuns.sg.recursos;
 
 import br.edu.ifpe.garanhuns.sg.model.Paciente;
+import br.edu.ifpe.garanhuns.sg.model.PerfilUsuario;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.PacienteHibernate;
 import com.google.gson.Gson;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,18 +44,22 @@ public class PacientesResource {
      * @return an instance of java.lang.String
      */
     @RequestMapping(value = "/pacientes", method = RequestMethod.POST)
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity cadastrarPaciente(@RequestBody String pacienteJson) {
 
         if (Paciente.validarPacienteJson(pacienteJson)) {
             Paciente paciente = new Gson().fromJson(pacienteJson, Paciente.class);
+            paciente.getUsuario().setPerfilUsuario(PerfilUsuario.PACIENTE); // O perfil não está sendo reconhecido do frontend. Por isso está sendo definido aqui.
             try {
                 new PacienteHibernate().inserir(paciente);
                 return ResponseEntity.status(HttpStatus.CREATED).build();
+            }catch(org.hibernate.exception.ConstraintViolationException erro){
+                return ResponseEntity.status(HttpStatus.CONFLICT).build();
             } catch (Exception err) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
             }
         } else {
-            return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 
     }

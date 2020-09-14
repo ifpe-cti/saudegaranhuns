@@ -16,7 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 /**
  * REST Web Service
  *
@@ -42,6 +42,7 @@ public class PostosResource {
      * @return an instance of java.lang.String
      */
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> recuperarTodosOsPostos() {
 
         String postosJson;

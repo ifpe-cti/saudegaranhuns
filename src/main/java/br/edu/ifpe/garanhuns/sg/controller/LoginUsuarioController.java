@@ -19,13 +19,14 @@ import javax.servlet.http.HttpSession;
  *
  * @author Igor Sousa PC
  */
-@ManagedBean
+@ManagedBean()
 @SessionScoped
 public class LoginUsuarioController {
 
     private UsuarioHibernate usuarioh = new UsuarioHibernate();
 
     public LoginUsuarioController() {
+        System.out.println("Aqui");
     }
 
     public String realizarLogin(String login, String senha) {
@@ -49,6 +50,7 @@ public class LoginUsuarioController {
     }
 
     public String tipoUsuarioLogado() {
+        
         Usuario usuario = (Usuario) ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("usuarioLogado");
         if (usuario != null) {
             return usuario.getPerfilUsuario().getNome();

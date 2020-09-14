@@ -128,7 +128,7 @@ public class Paciente implements Serializable {
             pacienteValidado = new Gson().fromJson(pacienteJson, Paciente.class);
             if (pacienteValidado.getNome() != null
                     && pacienteValidado.getCartaoSus() != null
-                    && pacienteValidado.getDataNascimento() != null
+                    //&& pacienteValidado.getDataNascimento() != null
                     && pacienteValidado.getPostoSaude() != null
                     && pacienteValidado.getUsuario() != null) {
                 return true;
