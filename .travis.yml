@@ -12,3 +12,16 @@ env:
     - JAVA_OPTS="-Xmx256m"
 jdk:
   - oraclejdk8
+
+services:
+  - mysql
+
+before_install : - mysql -e 'CREATE DATABASE IF NOT EXISTS test;' 
+
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+      - mysql-client
