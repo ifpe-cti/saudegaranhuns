@@ -37,7 +37,7 @@ public class LoginUsuarioController {
             Map<String, Object> session = externalContext.getSessionMap();
             session.put("usuarioLogado", usuarioLogado);
             context.addMessage(null, new FacesMessage("Sucesso", "Login realizado com sucesso!"));
-            return "index.xhtml";
+            return "/index?faces-redirect=true";
         } else {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro!", "Login ou senha inválidos."));
             return null;
@@ -46,7 +46,7 @@ public class LoginUsuarioController {
 
     public String realizarLogout() {
         ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true)).invalidate();
-        return "index.xhtml";
+        return "/index?faces-redirect=true";
     }
 
     public String tipoUsuarioLogado() {

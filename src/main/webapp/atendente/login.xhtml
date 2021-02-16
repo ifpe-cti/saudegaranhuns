@@ -9,6 +9,7 @@
     </h:head>
     <h:body>
         <ui:include src="../menus.xhtml"/>
+        <p:growl autoUpdate="true"/>
         <center>
             <h5> </h5>
             <p:fieldset>
@@ -20,18 +21,16 @@
         <h:form id="form">
             <p:panel >
                 <center>
-
                     <h:panelGrid columns="2"  >
-
                         <h:outputLabel for="loginA" value="Login:" />
-                        <p:inputText id="loginA" value="#{login}" required="true" label="login" />
+                        <p:inputText id="loginA" value="#{login}" required="true" requiredMessage="O login é obrigátorio" label="login" />
                         <h:outputLabel for="senhaA" value="Senha:" />
-                        <p:password id="senhaA"  value="#{senha}" required="true" label="senha" />
+                        <p:password id="senhaA"  value="#{senha}" required="true" requiredMessage="A senha é obrigátoria" label="senha" />
                     </h:panelGrid>
                 </center>
                 <h6> </h6>
                 <center>
-                    <p:commandButton value="LOGIN" action="#{loginUsuarioController.realizarLogin(login, senha)}" update="@all"/> 
+                    <p:commandButton value="LOGIN" action="#{loginUsuarioController.realizarLogin(login, senha)}" update="form"/>
                 </center>
             </p:panel>
        	</h:form>
