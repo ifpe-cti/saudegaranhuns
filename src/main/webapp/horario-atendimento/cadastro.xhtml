@@ -9,6 +9,8 @@
         <title>Saúde Garanhuns</title>
     </h:head>
     <h:body>
+        <p:importEnum type="br.edu.ifpe.garanhuns.sg.model.DiasSemana" var="dias" allSuffix="ALL_ENUM_VALUES"/>
+        <p:importEnum type="br.edu.ifpe.garanhuns.sg.model.Especialidade" var="especialidades" allSuffix="ALL_ENUM_VALUES"/>
         <ui:include src="../menus.xhtml"/>
         <center>
             <p:fieldset>
@@ -23,13 +25,13 @@
 
                         <p:outputLabel value="Especialidade"/>
                         <p:selectOneMenu id="especialidade" value="#{horarioAtendimentoController.horarioAtendimento.atendimento.especialidade}">
-                            <f:selectItems var="especialidades" value="#{horarioAtendimentoController.especialidade}"
-                                           itemLabel="#{especialidades.nome}" itemValue="#{especialidades}" ></f:selectItems>
+                            <f:selectItems value="#{especialidades.ALL_ENUM_VALUES}" var="especialidade" 
+                                           itemLabel="#{especialidade.nome}" itemValue="#{especialidade}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="Dia"/>
                         <p:selectOneMenu id="dias" value="#{horarioAtendimentoController.horarioAtendimento.dia}">
-                            <f:selectItems var="dias" value="#{horarioAtendimentoController.dias}"
-                                           itemLabel="#{dias.nome}" itemValue="#{dias}" ></f:selectItems>
+                            <f:selectItems value="#{dias.ALL_ENUM_VALUES}" var="dia"
+                                           itemLabel="#{dia.nome}" itemValue="#{dia}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="Quantidade de atendimentos"/>
                         <p:inputNumber minValue="1" decimalPlaces="0"  value="#{horarioAtendimentoController.horarioAtendimento.quantidade}"></p:inputNumber>

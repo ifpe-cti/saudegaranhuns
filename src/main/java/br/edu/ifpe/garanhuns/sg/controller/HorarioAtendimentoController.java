@@ -7,8 +7,6 @@ package br.edu.ifpe.garanhuns.sg.controller;
 
 import br.edu.ifpe.garanhuns.sg.model.Atendente;
 import br.edu.ifpe.garanhuns.sg.model.Atendimento;
-import br.edu.ifpe.garanhuns.sg.model.DiasSemana;
-import br.edu.ifpe.garanhuns.sg.model.Especialidade;
 import br.edu.ifpe.garanhuns.sg.model.HorarioAtendimento;
 import br.edu.ifpe.garanhuns.sg.model.Usuario;
 import br.edu.ifpe.garanhuns.sg.model.dao.hibernate.AtendenteHibernate;
@@ -62,14 +60,6 @@ public class HorarioAtendimentoController implements Serializable {
 
     public void setHorarioAtendimento(HorarioAtendimento horarioAtendimento) {
         this.horarioAtendimento = horarioAtendimento;
-    }
-
-    public Especialidade[] getEspecialidade() {
-        return Especialidade.values();
-    }
-
-    public DiasSemana[] getDias() {
-        return DiasSemana.values();
     }
 
     public void recuperarAtendenteLogado() {

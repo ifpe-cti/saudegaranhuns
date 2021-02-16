@@ -9,6 +9,8 @@
         <title>Cadastro de consulta</title>
     </h:head>
     <f:event listener="#{consultaController.limpar()}" type="preRenderView"/>
+        <p:importEnum type="br.edu.ifpe.garanhuns.sg.model.Especialidade" var="especialidades" allSuffix="ALL_ENUM_VALUES"/>
+        <p:importEnum type="br.edu.ifpe.garanhuns.sg.model.Prioridade" var="prioridades" allSuffix="ALL_ENUM_VALUES"/>
     <h:body>
         <ui:include src="../menus.xhtml"/>
         <p:growl id='growl'/>
@@ -19,14 +21,14 @@
                     <p:selectOneRadio value="#{consultaController.consulta.prioridade}"
                                       id="radioPrioridade" required="true"
                                       requiredMessage="Campo prioridade obrigátorio">
-                        <f:selectItems value="#{consultaController.prioridade}" var="prioridade"
+                        <f:selectItems value="#{prioridades.ALL_ENUM_VALUES}" var="prioridade"
                                        itemLabel="#{prioridade.nome}" itemValue="#{prioridade}"/>
                     </p:selectOneRadio>
                     <p:outputLabel for="radioEspecialidade" value="Especialidade:" />
                     <p:selectOneRadio value="#{consultaController.consulta.especialidade}"
                                       id="radioEspecialidade" required="true"
                                       requiredMessage="Campo especialidade obrigátorio">
-                        <f:selectItems value="#{consultaController.especialidade}" var="especialidade"
+                        <f:selectItems value="#{especialidades.ALL_ENUM_VALUES}" var="especialidade"
                                        itemLabel="#{especialidade.nome}" itemValue="#{especialidade}"/>
                     </p:selectOneRadio>
                 </p:panelGrid>
